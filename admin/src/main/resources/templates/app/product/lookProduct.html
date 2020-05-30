@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>审核</title>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <h3 class="titNav">
+                <a href="javascript:;">产品管理 / </a>
+                <a href="javascript:;"> 产品信息审核</a>
+            </h3>
+            <hr>
+
+            <div class="proCon">
+                <h2 class="titH2">产品详情</h2>
+                <h3 class="titH3">基本信息</h3>
+                <form id="searchForm" class="layui-form">
+                    <input type="hidden" name="id" id="id" th:value="${product.id}">
+                    <div class="layui-row">
+                        <div class="layui-col-xs6">
+                            <div class="grid-demo grid-demo-bg1">
+                                <ul class="proInfo basicInfo">
+                                    <li class="layui-clear">
+                                        <span>产品名称：</span>
+                                        <p th:text="${product.name}">
+                                            <!--<input id="product-name" name="name"type="text" class="layui-input"/>-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>发行规模(元)：</span>
+                                        <p th:text="${product?.amount}">
+                                            <!--<input id="amount" name="amount"   type="text" class="layui-input" />-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>产品期限(天)：</span>
+                                        <p th:text="${product?.timeLimit}">
+                                            <!--<input  id="timeLimit" name="timeLimit" type="text" class="layui-input"/>-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>金交所产品名称：</span>
+                                        <p th:text="${product?.geName}">
+                                            <!--<input id="geName" name="geName" type="text" class="layui-input"/>-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>起购金额(元)：</span>
+                                        <p th:text="${product?.tenderInitAmount}">
+                                            <!--<input id="tenderInitAmount" name="tenderInitAmount"  type="text" class="layui-input"/>-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>单笔最大购买金额(元)：</span>
+                                        <p th:text="${product?.highSingleInvest}">
+                                            <!--<input  id="highSingleInvest" name="highSingleInvest" type="text" class="layui-input" />-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear timeLi">
+                                        <span><i>* </i> 募集开始时间：</span>
+                                        <p th:text="${product?.tenderStartTime}">
+                                            <!--<input  id="tenderStartTime" name="tenderStartTime"   type="text" class="layui-input" placeholder="yyyy-MM-dd">-->
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs6">
+                            <div class="grid-demo">
+                                <ul class="proInfo basicInfo">
+                                    <li class="layui-clear">
+                                        <span>产品编号：</span>
+                                        <p th:text="${product?.code}">
+                                            <!--<input id="code" name="code" type="text" class="layui-input"/>-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>金交所产品编号：</span>
+                                        <p th:text="${product?.geCode}">
+                                            <!--<input id="geCode" name="geCode" type="text" class="layui-input"/>-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>预期年化收益率(%)：</span>
+                                        <p th:text="${product?.annualRate}">
+                                            <!--<input id="annualRate" name="annualRate" th:text="${product?.annualRate}" type="text" class="layui-input" />-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>产品协议：</span>
+                                        <p>勘设项目协议</p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>偿还方式：</span>
+                                        <p th:text="${product?.repayType}">
+                                            <!--<input  id="repayType" name="repayType"  th:text="${product?.repayType}"  type="text" class="layui-input">-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span>递增金额(元)：</span>
+                                        <p th:text="${product?.tenderIncreaseAmount}">
+                                            <!--<input  id="tenderIncreaseAmount" name="tenderIncreaseAmount" th:text="${product?.tenderIncreaseAmount}"  type="text" class="layui-input" />-->
+                                        </p>
+                                    </li>
+                                    <li class="layui-clear timeLi">
+                                        <span>募集结束时间：</span>
+                                        <p th:text="${product?.tenderEndTime}">
+                                            <!--<input  id="tenderEndTime" name="tenderEndTime" th:text="${product?.tenderEndTime}"  type="text" class="layui-input"  placeholder="yyyy-MM-dd">-->
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <ul class="areaPart">
+                            <li class="layui-clear">
+                                <span>购买说明：</span>
+                                <div class="areaPartInfo">
+                                    <p th:text="${product?.purchaseDesc}">
+                                        <!--<textarea name="purchaseDesc" id="purchaseDesc"  th:text="${product?.purchaseDesc}"   class="layui-textarea">-->
+                                        <!--本产品直接使用账户可用余额购买，请提前安排资金，资金可使用绑定卡转入账户参与购买。-->
+                                        <!--产品总规模10000000元，起购金额40000元，追加金额10000元的整数倍，单笔最大购买金额1000000元，可多次购买。-->
+                                        <!--2019-06-19  09：00面向全体用户发售。-->
+                                        <!--本产品起息日为2019年06月21日，到期日为2109年09月19日，产品到期后本金及利息收益将于3个工作日内转入您的账户余额。-->
+                                        <!--请您在购买产品前仔细阅读并确认产品合同及认购协议。-->
+                                        <!--</textarea>-->
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="layui-clear">
+                                <span>产品介绍：</span>
+                                <div class="areaPartInfo">
+                                    <p th:text="${product?.projectSummary}">
+                                        <!--<textarea name="projectSummary" id="projectSummary"  th:text="${product?.projectSummary}"  class="layui-textarea">-->
+                                        <!--天津金融资产交易所“中铁11号”收益分享合约产品，本产品在天津金融资产交易所挂牌发行。-->
+                                        <!--产品特点：-->
+                                        <!--稳收益：预期年化收益达6.123%-->
+                                        <!--低风险：本收益分享合约产品的底层资产相关交易由上市公司提供担保增信-->
+                                        <!--超安心：国有金融交易中心甄选优质投资标的-->
+                                        <!--</textarea>-->
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <span>可提前还款：</span>
+                                <div class="areaPartInfo">
+                                    <p th:switch="${product.ifPrepay}">
+                                        <span th:case="'yes'">是</span>
+                                        <span th:case="'no'">否</span>
+                                        <span th:case="*">未定义</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="layui-clear">
+                                <span>提前还款说明：</span>
+                                <div class="areaPartInfo">
+                                    <p th:text="${product?.reasonsPrepay}">
+                                        <!--<textarea name="reasonsPrepay" id="reasonsPrepay" th:text="${product?.reasonsPrepay}"  class="layui-textarea">-->
+                                        <!--产品管理人享有在起息日满45天后的投资期限内任一天提前终止该产品的权利，并在提前终止日前3个工作日发布通知。投资人无法选择提前结束-->
+                                        <!--</textarea>-->
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="layui-clear">
+                                <span>收益计算：</span>
+                                <div class="areaPartInfo">
+                                    <p th:text="${product?.productAdvantage}">
+                                        <!--<textarea name="productAdvantage" id="productAdvantage"  th:text="${product?.productAdvantage}"  class="layui-textarea">-->
+                                        <!--投资收益=投资本金*[预期年化收益]*产品存续天数/365-->
+                                        <!--以本产品预期年化收益6.123%为例：-->
+                                        <!--您购买了10万元份额的中铁11号，那么到期后的收益是：-->
+                                        <!--(100000*0.06123*38)/365=637.47-->
+                                        <!--</textarea>-->
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="titH3">收款方信息</h3>
+                    <div class="layui-row">
+                        <div class="layui-col-xs6">
+                            <div class="grid-demo grid-demo-bg1">
+                                <ul class="proInfo basicInfo">
+                                    <li class="layui-clear">
+                                        <span>收款方：</span>
+                                        <p th:text="${product.hxName}">
+                                            <!--<input id="hxName" name="hxName" th:text="${product?.hxtName}" type="text" class="layui-input">-->
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs6">
+                            <div class="grid-demo">
+                                <ul class="proInfo basicInfo">
+                                    <li class="layui-clear">
+                                        <span>银行账号：</span>
+                                        <p th:text="${product.hxAcctNo}">
+                                            <!--<input  id="hxAcctNo" name="hxAcctNo" th:text="${product?.hxAcctNo}" type="text" class="layui-input" />-->
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="titH3">附件</h3>
+                    <div class="pdfList layui-clear addPaddingPdf">
+                        <div th:each="att : ${AttachFileList}">
+                            <a th:href="${att.fileUrl}" target="_blank"><i class="layui-icon layui-icon-close"></i><span
+                                    th:text="${att.fileName}"></span></a>
+                        </div>
+                    </div>
+                    <!--<h3 class="titH3" style="margin-top:30px;">审批发行信息</h3>-->
+                    <!--<div class="layui-row">-->
+                    <!--<ul class="areaPart">-->
+                    <!--<li>-->
+                    <!--<span>是否通过：</span>-->
+                    <!--<div class="layui-input-block">-->
+                    <!--<input type="radio" name="auditStatus" id="auditStatusY" title="通过" value="success" checked >-->
+                    <!--<input type="radio" name="auditStatus" id="auditStatusN" title="不通过" value="fail" style="margin-left:10px;">-->
+                    <!--</div>-->
+                    <!--</li>-->
+                    <!--<li class="layui-clear">-->
+                    <!--<span>备注：</span>-->
+                    <!--<textarea name="remark" id="remark" class="layui-textarea"></textarea>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--<a href="javascript:;" class="layui-btn cusBtn"  lay-submit lay-filter="update">提交</a>-->
+                    <a href="/product/listManage" class="layui-btn">返回</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--主题内容结束-->
+
+    <!--<div class="layui-footer">-->
+    <!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--勘设底部区域-->
+    <!--</div>-->
+</div>
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+<script>
+
+    layui.use(['form', 'layer', 'laydate', 'laypage', 'jquery'], function () {
+        var $ = layui.$,
+            form = layui.form;
+
+        var laydate = layui.laydate;
+        //监听提交
+        // form.on('submit(update)', function (data) {
+        //     $.ajax({
+        //         url: PageContext.getUrl('/product/productEditExam'),
+        //         type: 'post',
+        //         async: false,
+        //         data: data.field,
+        //         success: function (data) {
+        //             if (data.flag == "true") {
+        //                 location.href=PageContext.getUrl('/product/listExam');
+        //                 // window.location.href = '/product/addProductTwo';
+        //                 // top.layer.msg('保存成功', {icon: 1});
+        //             } else {
+        //                 top.layer.msg(data.msg, {icon: 5});
+        //             }
+        //             //重新加载当前页面
+        //             // location.reload();
+        //         }
+        //     });
+        //     return false;
+        // })
+        //日期时间选择范围
+        laydate.render({
+            elem: '#timeS' //募集开始时间
+            //,type: 'datetime'    //是否显示时间
+            //,trigger: 'click'
+            //,lang: 'en'    //英文
+            //,range: true //开启日期范围，默认使用“_”分割
+            /*,done: function(value, date, endDate){
+              console.log(value, date, endDate);
+            }
+            ,change: function(value, date, endDate){
+              console.log(value, date, endDate);
+            }*/
+        });
+        laydate.render({
+            elem: '#timeE' //募集结束时间
+        });
+    });
+
+    /*分页*/
+    // layui.use('laypage', function(){
+    //   var laypage=layui.laypage;
+    //   laypage.render({
+    //     elem: 'myPage',
+    //     count: 1000,
+    //     layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+    //     jump: function(obj){
+    //       console.log(obj)
+    //     }
+    //   });
+    // });
+
+
+</script>
+</body>
+</html>

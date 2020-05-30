@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>新建产品</title>
+</head>
+<!--<script type="text/javascript" src="/js/jquery-1.11.2.js"></script>-->
+<!--<script type="text/javascript" src="/js/number/format-number.js"></script>-->
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <h3 class="titNav">
+                <a href="javascript:;">产品管理 / </a>
+                <a href="javascript:;"> 新建产品</a>
+            </h3>
+            <hr>
+            <div class="proNav layui-clear">
+                <a id="jbInfo" href="javascript:;">基本信息</a>
+                <!--<a href="5收款方信息.html" class="layui-btn layui-btn-primary">收款方信息</a>-->
+                <a id="fuJ" class="" href="javascript:;">附件</a>
+            </div>
+            <form id="searchFormOne" class="layui-form">
+                <input type="hidden" id="id" name="id" th:value="${product?.id}">
+                <div id="dataOne" class="proCon">
+                    <div class="layui-row">
+                        <div class="layui-col-xs6">
+                            <div class="grid-demo grid-demo-bg1">
+                                <ul class="proInfo">
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 产品简称：</span>
+                                        <input id="product-name" name="name" th:value="${product?.name}" type="text"
+                                               class="layui-input"
+                                               placeholder="输入产品简称" lay-verify="productNotNuLL"/>
+                                        <label id="product-nameError" style="color: #ff0c1c;display: none;"
+                                               for="product-name" class="layui-form-label required">产品简称不能为空</label>
+                                        <span id="reName" style="color: #ff0c1c;display: none;">产品简称重复</span>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 金交所产品名称：</span>
+                                        <input id="geName" name="geName" th:value="${product?.geName}" type="text"
+                                               class="layui-input" lay-verify="productNotNuLL" placeholder="金交所产品名称"/>
+                                        <label id="geNameError" style="color: #ff0c1c;display: none;" for="geName"
+                                               class="layui-form-label required">金交所产品名称不能为空</label>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 产品协议：</span>
+                                        <div class="cusSelectBox">
+                                            <select id="productAgreementType" name="productAgreementType"
+                                                    class="cusSelect">
+                                                <option value="">请选择</option>
+                                                <th:block th:if="${not #lists.isEmpty(product)}">
+                                                    <option th:selected="${product.productAgreementType == 'ksXm'}"
+                                                            value="ksXm">勘设项目协议
+                                                    </option>
+                                                </th:block>
+                                                <th:block th:if="${#lists.isEmpty(product)}">
+                                                    <option value="ksXm">勘设项目协议</option>
+                                                </th:block>
+                                            </select>
+                                            <label id="productAgreementTypeError" style="color: #ff0c1c;display: none;"
+                                                   for="productAgreementType"
+                                                   class="layui-form-label required">产品协议不能为空</label>
+                                        </div>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 发行规模(元)：</span>
+                                        <input id="amount" name="amount" th:value="${product?.amount}" data-type="int"
+                                               data-name="int" type="text" class="layui-input"
+                                               lay-verify="productNotNuLL" placeholder="输入整数金额"/>
+                                        <label id="amountError" style="color: #ff0c1c;display: none;"
+                                               for="amount" class="layui-form-label required">发行规模不能为空</label>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 产品期限(天)：</span>
+                                        <input id="timeLimit" name="timeLimit" th:value="${product?.timeLimit}"
+                                               type="text" class="layui-input" lay-verify="productNotNuLL"
+                                               placeholder="输入天数"/>
+                                        <label id="timeLimitError" style="color: #ff0c1c;display: none;"
+                                               for="timeLimit" class="layui-form-label required">产品期限必须为正整数</label>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 起购金额(元)：</span>
+                                        <input id="tenderInitAmount" name="tenderInitAmount" data-type="int"
+                                               data-name="int" th:value="${product?.tenderInitAmount}" type="text"
+                                               class="layui-input" lay-verify="tenderInitAmount" placeholder="输入整数金额"/>
+                                        <label id="tenderInitAmountError" style="color: #ff0c1c;display: none;"
+                                               for="tenderInitAmount" class="layui-form-label required">起购金额不得少于发行规模的200分之一</label>
+                                        <span id="tenderInitAmountNotNull" style="color: #ff0c1c;display: none;">起购金额必须为非空正整数</span>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 递增金额(元)：</span>
+                                        <input id="tenderIncreaseAmount" name="tenderIncreaseAmount" data-type="int"
+                                               data-name="int" th:value="${product?.tenderIncreaseAmount}" type="text"
+                                               class="layui-input" lay-verify="productNotNuLL" placeholder="输入整数金额"/>
+                                        <label id="tenderIncreaseAmountError" style="color: #ff0c1c;display: none;"
+                                               for="tenderIncreaseAmount"
+                                               class="layui-form-label required">递增金额必须为正整数</label>
+
+                                    </li>
+                                    <li class="layui-clear timeLi">
+                                        <span><i>* </i> 募集开始时间：</span>
+                                        <input id="tenderStartTime" name="tenderStartTime"
+                                               th:value="${product?.tenderStartTime}" type="text" class="layui-input"
+                                               placeholder="yyyy-MM-dd" lay-verify="productNotNuLL">
+                                        <b class="layui-icon layui-icon-date"></b>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 收款方名称：</span>
+                                        <div class="cusSelectBox">
+                                            <select id="hxName" name="hxName" class="cusSelect"
+                                                    lay-verify="productNotNuLL">
+                                                <option value="">请选择</option>
+                                                <th:block th:if="${not #lists.isEmpty(product)}">
+                                                    <option th:selected="${product.hxName=='jjs'}" value="jjs">金交所
+                                                    </option>
+                                                </th:block>
+                                                <th:block th:if="${#lists.isEmpty(product)}">
+                                                    <option value="jjs">金交所</option>
+                                                </th:block>
+                                            </select>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <br/><br/>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs6">
+                            <div class="grid-demo">
+                                <ul class="proInfo">
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 产品编号：</span>
+                                        <input id="code" name="code" th:value="${product?.code}" type="text"
+                                               class="layui-input" placeholder="输入产品编号" lay-verify="productNotNuLL"/>
+                                        <label id="codeError" style="color: #ff0c1c;display: none;"
+                                               for="code" class="layui-form-label required">产品编号不能为空</label>
+                                        <span id="reCode" style="color: #ff0c1c;display: none;">产品编号重复</span>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 金交所产品编号：</span>
+                                        <input id="geCode" name="geCode" th:value="${product?.geCode}" type="text"
+                                               class="layui-input" placeholder="输入金交所产品编号" lay-verify="productNotNuLL"/>
+                                        <label id="geCodeError" style="color: #ff0c1c;display: none;"
+                                               for="geCode" class="layui-form-label required">金交所产品编号不能为空</label>
+                                        <span id="reGeCode" style="color: #ff0c1c;display: none;">产品编号重复</span>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 合同编号：</span>
+                                        <input id="contractNo" name="contractNo" th:value="${product?.contractNo}"
+                                               type="text" class="layui-input" placeholder="输入合同编号"
+                                               lay-verify="productNotNuLL"/>
+                                        <label id="contractNoError" style="color: #ff0c1c;display: none;"
+                                               for="contractNo" class="layui-form-label required">合同编号不能为空</label>
+                                        <span id="reContractNo" style="color: #ff0c1c;display: none;">合同编号重复</span>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 预期年化收益率(%)：</span>
+                                        <input id="annualRate" name="annualRate" th:value="${product?.annualRate}"
+                                               type="text" class="layui-input" lay-verify="productNotNuLL"
+                                               placeholder="精确到一位小数"/>
+                                        <label id="annualRateError" style="color: #ff0c1c;display: none;"
+                                               for="annualRate"
+                                               class="layui-form-label required">预期年化收益率精确到小数点后一位</label>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 还款方式：</span>
+                                        <div class="cusSelectBox">
+                                            <select id="repayType" name="repayType" class="cusSelect"
+                                                    lay-verify="productNotNuLL">
+                                                <option value="">请选择</option>
+                                                <!--<option value="equalPrincipalAndInterestMonthly">等额本息（月）</option>-->
+                                                <!--<option value="equalInterestMonthly">按月付息，到期还本</option>-->
+                                                <!--<option value="equalInterestQuarterly">按季付息，到期还本</option>-->
+                                                <!--<option value="equalInterestSemiannually">按半年付息，到期还本</option>-->
+                                                <!--<option value="equalInterestAnnually">按年付息，到期还本</option>-->
+                                                <th:block th:if="${not #lists.isEmpty(product)}">
+                                                    <option th:selected="${product.repayType == 'principalAndInterestTotally'}"
+                                                            value="principalAndInterestTotally">一次性还本付息
+                                                    </option>
+                                                </th:block>
+                                                <th:block th:if="${#lists.isEmpty(product)}">
+                                                    <option value="principalAndInterestTotally">一次性还本付息</option>
+                                                </th:block>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 单笔最大购买金额(元)：</span>
+                                        <input id="highSingleInvest" name="highSingleInvest"
+                                               th:value="${product?.highSingleInvest}" type="text" class="layui-input"
+                                               lay-verify="highSingleInvest" placeholder="输入整数金额"/>
+                                        <label id="highSingleInvestError" style="color: #ff0c1c;display: none;"
+                                               for="highSingleInvest"
+                                               class="layui-form-label required">单笔最大购买金额不能为空</label>
+                                        <span id="highSingleInvestErrorTwo" style="color: #ff0c1c;display: none;">单笔最大购买金额不能少于起购金额</span>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 最大成交人数：<i>默认200人</i> </span>
+                                        <!--<input id="tenderUsers" name="tenderUsers" value="200" type="text" class="layui-input" placeholder="默认200人" lay-verify="productNotNuLL"/>-->
+                                    </li>
+                                    <li class="layui-clear timeLi">
+                                        <span><i>* </i> 募集结束时间：</span>
+                                        <input id="tenderEndTime" name="tenderEndTime"
+                                               th:value="${product?.tenderEndTime}" type="text" class="layui-input"
+                                               placeholder="yyyy-MM-dd" lay-verify="productNotNuLL">
+                                        <b class="layui-icon layui-icon-date"></b>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span><i>* </i> 收款方银行账号：</span>
+                                        <input id="hxAcctNo" name="hxAcctNo" th:value="${product?.hxAcctNo}" type="text"
+                                               class="layui-input" placeholder="输入银行卡号" lay-verify="productNotNuLL"/>
+                                        <label id="hxAcctNoError" style="color: #ff0c1c;display: none;"
+                                               for="hxAcctNo" class="layui-form-label required">收款方银行账号不能超过20位</label>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <ul class="areaPart">
+                            <li class="layui-clear">
+                                <span><i>* </i>购买说明：</span>
+                                <!--<textarea name="purchaseDesc" id="purchaseDesc"  th:value="${product?.purchaseDesc}"   class="layui-textarea">-->
+                                <!--本产品直接使用账户可用余额购买，请提前安排资金，资金可使用绑定卡转入账户参与购买。-->
+                                <!--产品总规模10000000元，起购金额40000元，追加金额10000元的整数倍，单笔最大购买金额1000000元，可多次购买。-->
+                                <!--2019-06-19  09：00面向全体用户发售。-->
+                                <!--本产品起息日为2019年06月21日，到期日为2109年09月19日，产品到期后本金及利息收益将于3个工作日内转入您的账户余额。-->
+                                <!--请您在购买产品前仔细阅读并确认产品合同及认购协议。-->
+                                <!--</textarea>-->
+                                <br/>
+                                <div class="layui-input-block">
+                                    <script id="editorContentPurchaseDesc" type="text/plain"
+                                            style="width: 800px; height: 220px;"></script>
+                                    <
+                                    input
+                                    type = "hidden"
+                                    name = "purchaseDesc"
+                                    id = "purchaseDesc"
+                                    th:value = "${product?.purchaseDesc}"
+                                    lay - verify = "productNotNuLL" / >
+                                        < label
+                                    id = "purchaseDescError"
+                                    style = "color: #ff0c1c;display: none;"
+                                    for= "purchaseDesc" class
+                                    = "layui-form-label required" > 购买说明不能为空 < /label>
+                                        < /div>
+                                        < /li>
+                                        < li
+                                    class
+                                    = "layui-clear" >
+                                        < span > < i > * < /i>产品介绍：</s
+                                    pan >
+                                    <!--<textarea name="projectSummary" id="projectSummary"  th:value="${product?.projectSummary}"  class="layui-textarea">-->
+                                    <!--天津金融资产交易所“中铁11号”收益分享合约产品，本产品在天津金融资产交易所挂牌发行。-->
+                                    <!--产品特点：-->
+                                    <!--稳收益：预期年化收益达6.123%-->
+                                    <!--低风险：本收益分享合约产品的底层资产相关交易由上市公司提供担保增信-->
+                                    <!--超安心：国有金融交易中心甄选优质投资标的-->
+                                    < !-- < /textarea>-->
+                                    < br / >
+                                    < div
+                                    class
+                                    = "layui-input-block" >
+                                        < script
+                                    id = "editorContentProjectSummary"
+                                    type = "text/plain"
+                                    style = "width: 800px; height: 220px;" ></script>
+                                    <input type="hidden" name="projectSummary" id="projectSummary"
+                                           th:value="${product?.projectSummary}" lay-verify="productNotNuLL"/>
+                                    <label id="projectSummaryError" style="color: #ff0c1c;display: none;"
+                                           for="projectSummary" class="layui-form-label required">产品介绍不能为空</label>
+                                </div>
+                            </li>
+                            <li class="layui-clear">
+                                <span><i>* </i>收益计算：</span>
+                                <!--<textarea name="productAdvantage" id="productAdvantage"  th:value="${product?.productAdvantage}"  class="layui-textarea">-->
+                                <!--投资收益=投资本金*[预期年化收益]*产品存续天数/365-->
+                                <!--以本产品预期年化收益6.123%为例：-->
+                                <!--您购买了10万元份额的中铁11号，那么到期后的收益是：-->
+                                <!--(100000*0.06123*38)/365=637.47-->
+                                <!--</textarea>-->
+                                <br/>
+                                <div class="layui-input-block">
+                                    <script id="editorContentProductAdvantage" type="text/plain"
+                                            style="width: 800px; height: 200px;"></script>
+                                    <
+                                    input
+                                    type = "hidden"
+                                    name = "productAdvantage"
+                                    id = "productAdvantage"
+                                    th:value = "${product?.productAdvantage}"
+                                    lay - verify = "productNotNuLL" / >
+                                        < label
+                                    id = "productAdvantageError"
+                                    style = "color: #ff0c1c;display: none;"
+                                    for= "productAdvantage" class
+                                    = "layui-form-label required" > 收益计算不能为空 < /label>
+                                        < /div>
+                                        < /li>
+                                        < !-- < li >
+                                        < div
+                                    class
+                                    = "layui-form-item" >
+                                        < span > 可提前还款：<
+                                    /span>
+                                    < div
+                                    class
+                                    = "layui-input-block" >
+                                        < input
+                                    type = "radio"
+                                    name = "ifPrepay"
+                                    id = "ifPrepayY"
+                                    value = "yes"
+                                    title = "是"
+                                    th:field = "*{product.ifPrepay}" >
+                                        < input
+                                    type = "radio"
+                                    name = "ifPrepay"
+                                    id = "ifPrepayN"
+                                    value = "no"
+                                    title = "否"
+                                    th:field = "*{product.ifPrepay}"
+                                    style = "margin-left:10px;" >
+                                        < /div>
+                                        < /div>
+                                        < /li>-->
+                                        < li
+                                    class
+                                    = "layui-clear" >
+                                        < span > 提前还款说明：<
+                                    /span>
+                                    <!--<textarea name="reasonsPrepay" id="reasonsPrepay" th:value="${product?.reasonsPrepay}"  class="layui-textarea">-->
+                                    <!--产品管理人享有在起息日满45天后的投资期限内任一天提前终止该产品的权利，并在提前终止日前3个工作日发布通知。投资人无法选择提前结束-->
+                                    < !-- < /textarea>-->
+                                    < br / >
+                                    < div
+                                    class
+                                    = "layui-input-block" >
+                                        < script
+                                    id = "editorContent"
+                                    type = "text/plain"
+                                    style = "width: 800px; height: 200px;" ></script>
+                                    <input type="hidden" name="reasonsPrepay" id="reasonsPrepay"
+                                           th:value="${product?.reasonsPrepay}"/>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--<a id="temporaryStorage" href="javascript:;" class="layui-btn" >暂存</a>-->
+                    <!--<a href="/fujian" class="layui-btn" >附件</a>-->
+                    <th:block th:if="${not #lists.isEmpty(productIssue)}">
+                        <a id="two_show_issue" href="javascript:;" class="layui-btn" lay-submit
+                           lay-filter="addProductIssue">下一步</a>
+                        <a href="/product/listManageIssue" class="layui-btn">返回列表</a>
+                    </th:block>
+                    <th:block th:if="${#lists.isEmpty(productIssue)}">
+                        <a id="two_show" href="javascript:;" class="layui-btn" lay-submit
+                           lay-filter="addProduct">下一步</a>
+                        <a href="/product/list" class="layui-btn">返回列表</a>
+                    </th:block>
+                    <!--<a href="javascript:;" class="layui-btn cusBtn" lay-submit lay-filter="demo1">保存进入下一步</a>-->
+                    <!--<button class="layui-btn cusBtn"  lay-submit lay-filter="add">保存进入下一步</button>-->
+                </div>
+
+            </form>
+
+            <!------第二步---------------------------------->
+            <form id="searchForm" class="layui-form">
+                <div id="dataTwo" class="proCon">
+                    <p class="upTip"><i>*</i>请上传产品相关的说明、审批文件等</p>
+                    <div class="pdfList layui-clear" id="demo2">
+                        <div th:each="att : ${AttachFileList}">
+                            <a th:href="${att.fileUrl}" target="_blank"><i class="layui-icon layui-icon-close"></i><span
+                                    th:text="${att.fileName}"></span></a>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn layui-btn-warm" id="test2">多文件上传</button>
+                        <input type="hidden" id="attachFile" name="attachFile" required>
+                    </div>
+
+                    <div class="btnBox">
+                        <a id="one_show" href="javascript:;" class="layui-btn">上一步</a>
+                        <!--<a href="javascript:;" class="layui-btn">保存进入下一步</a>-->
+                        <th:block th:if="${not #lists.isEmpty(productIssue)}">
+                            <button class="layui-btn cusBtn" id="saveButton" lay-submit lay-filter="addTwo">重新提交审核
+                            </button>
+                        </th:block>
+                        <th:block th:if="${#lists.isEmpty(productIssue)}">
+                            <button class="layui-btn cusBtn" id="saveButtonOne" lay-submit lay-filter="add">提交审核
+                            </button>
+                        </th:block>
+                        <span>若无法提交，请返回上一步查看必填项是否填写</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--主题内容结束-->
+
+    <!--<div class="layui-footer">-->
+    <!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--勘设底部区域-->
+    <!--</div>-->
+</div>
+<script>
+    var n1 = new FormatNumber();
+    n1.init({trigger: $('[data-type="int"]'), decimal: 0});
+    // $('#amount').FormatNumber({decimal:0});
+</script>
+<script type="text/javascript" th:src="@{/js/app/product/add.js}"></script>
+
+</body>
+</html>
+<!--<script type="text/javascript" th:inline="javascript">-->
+<!--</script>-->

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>项目信息</title>
+</head>
+<body class="layui-layout-body">
+<fieldset class="layui-elem-field layui-field-title" style="margin:20px 0 0 0;">
+    <legend>项目详细信息</legend>
+</fieldset>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <div class="proCon">
+                <form id="searchForm" class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>业务类型：</label>
+                            <div class="layui-input-block">
+                                <p th:text="${xmxxgl.ywlx}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>产品名称：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.cpmc}"></p>
+                                <input id="id" name="id" type="hidden" th:value="${xmxxgl.id}" class="layui-input"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>产品规模：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.cpgm}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>产品期限：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.cpqx}"></p>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label">预期收益：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.yqsy}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>项目来源：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.xmly}"></p>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>资金来源：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.zjly}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>被投范围：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.btfw}"></p>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>承接主体：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.cjzt}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>直投项目：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.ztxm}"></p>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label">间投项目：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.jtxm}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i> 投资条件</label>
+                        <div class="layui-input-block">
+                            <p th:text="${xmxxgl.tztj}"></p>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>管理费：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.glf}"></p>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>认购费：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.rgf}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>托管费：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.tgf}"></p>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>申购费：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.sgf}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>销售费：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.xsf}"></p>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>赎回费：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.shf}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>项目负责人：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.xmfzrName}"></p>
+                                <input id="xmfzrId" name="xmfzrId" type="hidden" th:value="${xmxxgl.xmfzrId}"
+                                       class="layui-input"/>
+                                <input id="xmfzrXx" name="xmfzrXx" type="hidden" th:value="${xmxxgl.xmfzrXx}"
+                                       class="layui-input"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label "><i style=" color: #ec1a0d;">* </i>项目经办人：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.xmjbrName}"></p>
+                                <input id="xmjbrId" name="xmjbrId" type="hidden" th:value="${xmxxgl.xmjbrId}"
+                                       class="layui-input"/>
+                                <input id="xmjbrXx" name="xmjbrXx" type="hidden" th:value="${xmxxgl.xmjbrXx}"
+                                       class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>法务负责人：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.fwfzrName}"></p>
+                                <input id="fwfzrId" name="fwfzrId" type="hidden" th:value="${xmxxgl.fwfzrId}"
+                                       class="layui-input"/>
+                                <input id="fwfzrXx" name="fwfzrXx" type="hidden" th:value="${xmxxgl.fwfzrXx}"
+                                       class="layui-input"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label "><i style=" color: #ec1a0d;">* </i>财务负责人：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.cwfzrName}"></p>
+                                <input id="cwfzrId" name="cwfzrId" type="hidden" th:value="${xmxxgl.cwfzrId}"
+                                       class="layui-input"/>
+                                <input id="cwfzrXx" name="cwfzrXx" type="hidden" th:value="${xmxxgl.cwfzrXx}"
+                                       class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>其他成员：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.xmqtcyName}"></p>
+                                <input id="xmqtcyId" name="xmqtcyId" type="hidden" th:value="${xmxxgl.xmqtcyId}"
+                                       class="layui-input"/>
+                                <input id="xmqtcy" name="xmqtcy" type="hidden" th:value="${xmxxgl.xmqtcy}"
+                                       class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" id="sprDiv">
+                        <div class="layui-inline proInfo basicInfo">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>审批人：</label>
+                            <div class="layui-input-inline">
+                                <p th:text="${xmxxgl.sprName}"></p>
+                                <input id="sprId" name="sprId" type="hidden" th:value="${xmxxgl.sprId}"
+                                       class="layui-input"/>
+                                <input id="spr" name="spr" type="hidden" th:value="${xmxxgl.spr}" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" style="margin:0 0 10px 0;">
+                        <hr class="layui-bg-blue">
+                        <div class="layui-input-block">
+                            <a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>
+                        </div>
+                    </div>
+                </form>
+                <!--主题内容结束-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+<script type="text/javascript" th:src="@{/js/app/xmxxgl/add.js}"></script>
+
+</body>
+</html>

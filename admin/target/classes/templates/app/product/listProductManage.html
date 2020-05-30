@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>产品信息管理列表</title>
+</head>
+<body class="layui-layout-body" style="overflow: auto">
+<div class="layui-layout layui-layout-admin">
+    <!--<div class="layui-side layui-bg-black">-->
+    <!--<div class="layui-body">-->
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <h3 class="titNav">
+            <a href="javascript:;">产品信息管理</a>
+        </h3>
+        <hr>
+        <div class="layui-form layui-card-header" style="padding-bottom:15px;padding-top:10px;">
+            <form id="searchForm" class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">产品名称</label>
+                        <div class="layui-input-block">
+                            <input id="likeName" type="text" name="name" placeholder="输入产品名称"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">产品编码</label>
+                        <div class="layui-input-block">
+                            <input id="likeCode" type="text" name="code" placeholder="输入产品编码"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">起息日</label>
+                        <div class="layui-inline">
+                            <input name="repayStartDate" type="text" class="layui-input" id="repayStartDate">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">到期日</label>
+                        <div class="layui-inline">
+                            <input name="repayEndDate" type="text" class="layui-input" id="repayEndDate">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">
+                            <select name="status" lay-verify="required">
+                                <option value="">全部</option>
+                                <option value="init">未募集</option>
+                                <option value="tender">募集中</option>
+                                <option value="success">募集成功</option>
+                                <option value="fail">募集失败</option>
+                                <option value="repaying">计息中</option>
+                                <option value="repayed">已回款</option>
+                                <option value="prepayed">已提前回款</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <a class="layui-btn " data-type="search">
+                            <i class="layui-icon layui-icon-search"></i>查询
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="layui-row" style="padding:0 40px;">
+            <table id="productManage-table" lay-filter="productManage-table" class="layui-table recordInfo"></table>
+        </div>
+
+        <script id="repayType" type="text/html">
+            {{#  if(d.repayType === undefined){ }}
+            未知
+            {{#  } else { }}
+            {{#  if(d.repayType === 'principalAndInterestTotally'){ }}
+            一次性还本息
+            {{#  } else { }}
+            {{#  if(d.repayType === 'equalInterestAnnually'){ }}
+            按年付息，到期还本
+            {{#  } else { }}
+            {{#  if(d.repayType === 'equalInterestSemiannually'){ }}
+            按半年付息，到期还本
+            {{#  } else { }}
+            {{#  if(d.repayType === 'equalInterestQuarterly'){ }}
+            按季付息，到期还本
+            {{#  } else { }}
+            {{#  if(d.repayType === 'equalInterestMonthly'){ }}
+            按月付息，到期还本
+            {{#  } else { }}
+            {{#  if(d.repayType === 'equalPrincipalAndInterestMonthly'){ }}
+            等额本息（月）
+            {{#  } else { }}
+            --
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+        </script>
+
+        <script type="text/html" id="productManage-row-bar">
+            <!--{{#if(d.status === 'init' &&  d.publishStatus === 'notIssue'){ }}-->
+            <!--<a href="javascript:;" lay-event="enable">立即上架 </a>-->
+            <!--{{#  } else { }}-->
+            <!--{{#  if(d.status === 'init' && d.publishStatus === 'issue'){ }}-->
+            <!--<a href="javascript:;" lay-event="disable">下架 </a>-->
+            <!--{{#  } else { }}-->
+            {{#  if(d.status === 'tender'){ }}
+            <button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="refund"><i
+                    class="layui-icon layui-icon-cope"></i>流标
+            </button>
+            <button class="layui-btn layui-btn-xs" lay-event="productTran"><i class="layui-icon layui-icon-edit"></i>查看
+            </button>
+            {{#  } else { }}
+            {{#  if(d.status === 'success'){ }}
+            <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="loan"><i
+                    class="layui-icon layui-icon-cope"></i>放款
+            </button>
+            <button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="refund"><i
+                    class="layui-icon layui-icon-cope"></i>流标
+            </button>
+            <button class="layui-btn layui-btn-xs" lay-event="productTran"><i class="layui-icon layui-icon-edit"></i>查看
+            </button>
+            {{#  } else { }}
+            {{#  if(d.status === 'fail'){ }}
+            <button class="layui-btn layui-btn-xs" lay-event="productTran"><i class="layui-icon layui-icon-edit"></i>查看
+            </button>
+            {{#  } else { }}
+            {{#  if(d.status === 'repaying'){ }}
+            <button class="layui-btn layui-btn-xs layui-btn-warm" lay-event="moneyBack"><i
+                    class="layui-icon layui-icon-cope"></i>回款
+            </button>
+            <button class="layui-btn layui-btn-xs" lay-event="productTran"><i class="layui-icon layui-icon-edit"></i>查看
+            </button>
+            {{#  } else { }}
+            {{#  if(d.status === 'repayed' || d.status === 'prepayed'){ }}
+            <button class="layui-btn layui-btn-xs" lay-event="productTran"><i class="layui-icon layui-icon-edit"></i>查看
+            </button>
+            {{#  } else { }}
+            ---
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+            <!--{{#  } }}-->
+            <!--{{#  } }}-->
+        </script>
+        <!--分页-->
+    </div>
+    <!--</div>-->
+    <!--主题内容结束-->
+
+    <!--<div class="layui-footer">-->
+    <!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--勘设底部区域-->
+    <!--</div>-->
+</div>
+</div>
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+<script type="text/javascript" th:src="@{/js/app/product/listManage.js}"></script>
+</body>
+</html>

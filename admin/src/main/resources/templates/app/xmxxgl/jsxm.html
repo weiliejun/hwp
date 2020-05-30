@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>项目管理</title>
+</head>
+<body class="layui-layout-body">
+<fieldset class="layui-elem-field layui-field-title" style="margin:20px 0 0 0;">
+    <legend>结束项目</legend>
+</fieldset>
+<div class="layui-layout layui-layout-admin">
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+
+            <div class="proCon">
+                <form id="searchForm" class="layui-form">
+
+                    <div class="newInvest">
+                        <ul class="newInvestInfo">
+                            <li class="layui-clear">
+                                <span><i style=" color: #ec1a0d;">* </i>结束原因：</span>
+                                <input lay-verify="required" id="jsyy" name="jsyy" type="text" th:value="${xmxxgl.jsyy}"
+                                       class="layui-input"/>
+                                <input id="id" name="id" type="hidden" th:value="${xmxxgl.id}" class="layui-input"/>
+                            </li>
+                            <li class="layui-clear">
+                                <span><i style=" color: #ec1a0d;">* </i>详细描述：</span>
+                                <textarea lay-verify="required" id="xxms" name="xxms" th:text="${xmxxgl.xxms}"
+                                          class="layui-textarea" placeholder="请输入详细描述"></textarea>
+                            </li>
+
+                            <!--上传图片 s-->
+                            <!--<li class="layui-clear">
+                                <span><i style=" color: #ec1a0d;">* </i>上传附件：</span>
+                                <div class="uploadLogo">
+                                    <button type="button" class="layui-btn" id="upLogo">
+                                        <i class="layui-icon">&#xe67c;</i>点击上传
+                                    </button>
+                                </div>
+                                <div class="backImg">
+                                    <img id="imgSrc" src="/images/workImg.png" />
+                                    <p class="closeImgBox">
+                                        <b></b>
+                                        <a href="javascript:clearUploadImg()">&times;</a>
+                                    </p >
+                                </div>
+                                <span style="color: #a52a2a" id="isUpload">未上传</span>
+                                <input lay-verify="isUpload" type="hidden" id="logo" name="logo" th:value="${logo}" />
+                            </li>-->
+                            <li class="layui-clear">
+                            <p class="upTip"><i>*</i>上传附件</p>
+                            <div class="pdfList layui-clear" id="demo2">
+                                <div th:each="att : ${AttachFileList}">
+                                    <a th:href="${att.fileUrl}" target="_blank"><i class="layui-icon layui-icon-close"></i><span
+                                            th:text="${att.fileName}"></span></a>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn layui-btn-warm" id="test2">多文件上传</button>
+                                <input type="hidden" id="attachFile" name="attachFile" required>
+                            </div>
+                            </li>
+
+                            <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                <legend>上传附件：</legend>
+                            </fieldset>
+
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+                                <div class="layui-upload-list">
+                                    <table class="layui-table">
+                                        <thead>
+                                        <tr>
+                                            <th>文件名</th>
+                                            <th>大小</th>
+                                            <th>状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="demoList"></tbody>
+                                    </table>
+                                </div>
+                                <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+                            </div>-->
+                            <!--上传图片 e-->
+                            <li class="layui-clear">
+                                <span><i style=" color: #ec1a0d;">* </i>归档至：</span>
+                                <div class="articleState">
+                                    <itech:code property="gdlb" parentCode="gdlb" type="select"
+                                                th:value="${xmxxgl.gdlb}" lay-verify="required"/>
+                                </div>
+                            </li>
+
+                            <li class="layui-clear">
+                                <hr class="layui-bg-blue">
+                                <span><i style=" color: #ec1a0d;">* </i>审批人：</span>
+                                <div class="articleState">
+                                    <input id="jsxmSprName" name="jsxmSprName" type="text" lay-verify="required"
+                                           th:value="${xmxxgl.jsxmSprName}" readonly class="layui-input"/>
+                                    <input id="jsxmSprId" name="jsxmSprId" type="hidden" th:value="${xmxxgl.jsxmSprId}"
+                                           class="layui-input"/>
+                                    <input id="jsxmSpr" name="jsxmSpr" type="hidden" th:value="${xmxxgl.jsxmSpr}"
+                                           class="layui-input"/>
+                                </div>
+                                &nbsp;
+                                <div class="layui-input-inline">
+                                    <button type="button" class="layui-btn layui-btn-radius" data-type="selectJsxmSpr">
+                                        <i
+                                                class="layui-icon layui-icon-add-circle-fine"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <button id="saveButton" class="layui-btn" lay-submit lay-filter="save">保存</button>
+                    <a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--主题内容结束-->
+
+</div>
+<script type="text/javascript" th:src="@{/js/app/xmxxgl/jsxm.js}"></script>
+<script type="text/javascript">
+    // 清空上传图片
+    function clearUploadImg() {
+        // 提示文字
+        document.getElementById("isUpload").innerText = "未上传";
+        // 给input赋值
+        document.getElementById("logo").value = "";
+        // 回显原来图片
+        document.getElementById("imgSrc").src = "/images/workImg.png";
+
+    }
+</script>
+</body>
+</html>

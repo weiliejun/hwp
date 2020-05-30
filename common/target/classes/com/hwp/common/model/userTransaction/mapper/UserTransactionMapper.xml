@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userTransactionMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userTransaction.bean.UserTransaction">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="PAY_NO" property="payNo" jdbcType="VARCHAR"/>
+        <result column="WITHDRADAL_NO" property="withdradalNo" jdbcType="VARCHAR"/>
+        <result column="TRS_AMOUNT" property="trsAmount" jdbcType="DECIMAL"/>
+        <result column="TRS_BALANCE" property="trsBalance" jdbcType="DECIMAL"/>
+        <result column="TRADE_STATUS" property="tradeStatus" jdbcType="VARCHAR"/>
+        <result column="RTXN_TYPE_CODE" property="rtxnTypeCode" jdbcType="VARCHAR"/>
+        <result column="TXN_TIME" property="txnTime" jdbcType="VARCHAR"/>
+        <result column="TRS_END_TIME" property="trsEndTime" jdbcType="VARCHAR"/>
+        <result column="REXN_TYPE_NAME" property="rexnTypeName" jdbcType="VARCHAR"/>
+        <result column="FLOW_TYPE" property="flowType" jdbcType="VARCHAR"/>
+        <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR"/>
+        <result column="TRANS_ID" property="transId" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="billTrsAmount" property="billTrsAmount" jdbcType="CHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.userTransaction.bean.UserTransaction"
+               extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+
+    <!--用户信息和用户交易记录信息DTO-->
+    <resultMap id="UserAndTransactionDTO" type="com.hwp.common.model.userTransaction.dto.UserAndTransactionDTO"
+               extends="ResultMapWithBLOBs">
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--用户信息和基金信息和用户交易记录信息DTO-->
+    <resultMap id="UserAndFundAndTransactionDTO"
+               type="com.hwp.common.model.userTransaction.dto.UserAndFundAndTransactionDTO"
+               extends="ResultMapWithBLOBs">
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="PROD_SUB_ID" property="prodSubId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--用户信息和理财产品信息和用户交易记录信息DTO-->
+    <resultMap id="UserAndProductAndTransactionDTO"
+               type="com.hwp.common.model.userTransaction.dto.UserAndProductAndTransactionDTO"
+               extends="ResultMapWithBLOBs">
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_CODE" property="productCode" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--用户联名卡转入转出 基金申购赎回 理财产品 交易总额DTO-->
+    <resultMap id="UserTransactionSumDTO" type="com.hwp.common.model.userTransaction.dto.UserTransactionSumDTO">
+        <result column="BANK_CARD_OUT" property="bankCardOut" jdbcType="DECIMAL"/>
+        <result column="BANK_CARD_IN" property="bankCardIn" jdbcType="DECIMAL"/>
+        <result column="FUND_BUY" property="fundBuy" jdbcType="DECIMAL"/>
+        <result column="FUND_SELL" property="fundSell" jdbcType="DECIMAL"/>
+        <result column="PRODUCT_BUY_Y_FREEZE" property="productBuyYFreeze" jdbcType="DECIMAL"/>
+        <result column="PRODUCT_BUY_N_UNFREEZE" property="productBuyNUnfreeze" jdbcType="DECIMAL"/>
+        <result column="PRODUCT_BUY_Y_UNFREEZE" property="productBuyYUnfreeze" jdbcType="DECIMAL"/>
+        <result column="PRODUCT_BUY_Y_BACK" property="productBuyYBack" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <!--用户充值或体现详情记录DTO-->
+    <resultMap id="UserRechargeOrWithdrawDetailDTO"
+               type="com.hwp.common.model.userTransaction.dto.UserRechargeOrWithdrawDetailDTO">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="EACCOUNT_NO" property="eaccountNo" jdbcType="VARCHAR"/>
+        <result column="AC_NO" property="acNo" jdbcType="VARCHAR"/>
+        <result column="TRS_AMOUNT" property="trsAmount" jdbcType="DECIMAL"/>
+        <result column="CHANNEL_JNL_NO" property="channelJnlNo" jdbcType="VARCHAR"/>
+        <result column="JS_JNL_NO" property="jsJnlNo" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="TRADE_STATUS" property="tradeStatus" jdbcType="VARCHAR"/>
+        <result column="TXN_TIME" property="txnTime" jdbcType="VARCHAR"/>
+        <result column="TRS_END_TIME" property="trsEndTime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+    ID, UUID, USER_ID, PAY_NO, WITHDRADAL_NO, TRS_AMOUNT, TRS_BALANCE, TRADE_STATUS, 
+    RTXN_TYPE_CODE, TXN_TIME, TRS_END_TIME, REXN_TYPE_NAME, FLOW_TYPE, ORDER_ID, TRANS_ID, RETURN_CODE,
+    RETURN_MSG, DATA_STATUS, CREATE_TIME
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_TRANSACTION
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectBillBankCardByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map">
+    SELECT  ID,PAY_NO,WITHDRADAL_NO,RTXN_TYPE_CODE,
+    CONVERT(TRS_AMOUNT , CHAR)  billTrsAmount,
+    CREATE_TIME,
+    ORDER_ID,TRANS_ID
+    FROM USER_TRANSACTION
+    WHERE RTXN_TYPE_CODE='WTHI'  OR  RTXN_TYPE_CODE='RCGI'
+    and USER_ID = #{userId,jdbcType=VARCHAR}
+    ORDER BY CREATE_TIME DESC
+    </select>
+
+    <select id="selectBillFundByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map">
+    SELECT  ID,PAY_NO,WITHDRADAL_NO,RTXN_TYPE_CODE,
+    CONVERT(TRS_AMOUNT , CHAR)  billTrsAmount,
+    CREATE_TIME,
+    ORDER_ID,TRANS_ID
+    FROM USER_TRANSACTION
+    WHERE RTXN_TYPE_CODE='XYSG'  OR  RTXN_TYPE_CODE='XYSH'
+    and USER_ID = #{userId,jdbcType=VARCHAR}
+    ORDER BY CREATE_TIME DESC
+    </select>
+
+    <select id="selectBillProductByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map">
+    SELECT  ID,PAY_NO,WITHDRADAL_NO,RTXN_TYPE_CODE,
+    CONVERT(TRS_AMOUNT , CHAR)  billTrsAmount,
+    CREATE_TIME,
+    ORDER_ID,TRANS_ID
+    FROM USER_TRANSACTION
+    WHERE RTXN_TYPE_CODE='CPDJ'  OR  RTXN_TYPE_CODE='CPJD' OR  RTXN_TYPE_CODE='CPHK'
+    and USER_ID = #{userId,jdbcType=VARCHAR}
+    ORDER BY CREATE_TIME DESC
+    </select>
+
+    <select id="selectBillAllByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map">
+    SELECT  ID,PAY_NO,WITHDRADAL_NO,RTXN_TYPE_CODE,
+    CONVERT(TRS_AMOUNT , CHAR)  billTrsAmount,
+    CREATE_TIME,
+    ORDER_ID,TRANS_ID
+    FROM USER_TRANSACTION
+    WHERE  USER_ID = #{userId,jdbcType=VARCHAR} and RTXN_TYPE_CODE!='CPKK'
+    ORDER BY STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s') DESC
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from USER_TRANSACTION
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.userTransaction.bean.UserTransaction">
+    insert into USER_TRANSACTION (ID, UUID, USER_ID, 
+      PAY_NO, WITHDRADAL_NO, TRS_AMOUNT, 
+      TRS_BALANCE, TRADE_STATUS, RTXN_TYPE_CODE, 
+      TXN_TIME, TRS_END_TIME, REXN_TYPE_NAME, 
+      FLOW_TYPE, ORDER_ID, TRANS_ID, RETURN_CODE,
+      RETURN_MSG, DATA_STATUS, CREATE_TIME, 
+      REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{payNo,jdbcType=VARCHAR}, #{withdradalNo,jdbcType=VARCHAR}, #{trsAmount,jdbcType=DECIMAL}, 
+      #{trsBalance,jdbcType=DECIMAL}, #{tradeStatus,jdbcType=VARCHAR}, #{rtxnTypeCode,jdbcType=VARCHAR}, 
+      #{txnTime,jdbcType=VARCHAR}, #{trsEndTime,jdbcType=VARCHAR}, #{rexnTypeName,jdbcType=VARCHAR}, 
+      #{flowType,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{transId,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR},
+      #{returnMsg,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.userTransaction.bean.UserTransaction">
+        insert into USER_TRANSACTION
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="payNo != null">
+                PAY_NO,
+            </if>
+            <if test="withdradalNo != null">
+                WITHDRADAL_NO,
+            </if>
+            <if test="trsAmount != null">
+                TRS_AMOUNT,
+            </if>
+            <if test="trsBalance != null">
+                TRS_BALANCE,
+            </if>
+            <if test="tradeStatus != null">
+                TRADE_STATUS,
+            </if>
+            <if test="rtxnTypeCode != null">
+                RTXN_TYPE_CODE,
+            </if>
+            <if test="txnTime != null">
+                TXN_TIME,
+            </if>
+            <if test="trsEndTime != null">
+                TRS_END_TIME,
+            </if>
+            <if test="rexnTypeName != null">
+                REXN_TYPE_NAME,
+            </if>
+            <if test="flowType != null">
+                FLOW_TYPE,
+            </if>
+            <if test="orderId != null">
+                ORDER_ID,
+            </if>
+            <if test="transId != null">
+                TRANS_ID,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="payNo != null">
+                #{payNo,jdbcType=VARCHAR},
+            </if>
+            <if test="withdradalNo != null">
+                #{withdradalNo,jdbcType=VARCHAR},
+            </if>
+            <if test="trsAmount != null">
+                #{trsAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="trsBalance != null">
+                #{trsBalance,jdbcType=DECIMAL},
+            </if>
+            <if test="tradeStatus != null">
+                #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="rtxnTypeCode != null">
+                #{rtxnTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="txnTime != null">
+                #{txnTime,jdbcType=VARCHAR},
+            </if>
+            <if test="trsEndTime != null">
+                #{trsEndTime,jdbcType=VARCHAR},
+            </if>
+            <if test="rexnTypeName != null">
+                #{rexnTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="flowType != null">
+                #{flowType,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="transId != null">
+                #{transId,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.userTransaction.bean.UserTransaction">
+        update USER_TRANSACTION
+        <set>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="payNo != null">
+                PAY_NO = #{payNo,jdbcType=VARCHAR},
+            </if>
+            <if test="withdradalNo != null">
+                WITHDRADAL_NO = #{withdradalNo,jdbcType=VARCHAR},
+            </if>
+            <if test="trsAmount != null">
+                TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="trsBalance != null">
+                TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL},
+            </if>
+            <if test="tradeStatus != null">
+                TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="rtxnTypeCode != null">
+                RTXN_TYPE_CODE = #{rtxnTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="txnTime != null">
+                TXN_TIME = #{txnTime,jdbcType=VARCHAR},
+            </if>
+            <if test="trsEndTime != null">
+                TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR},
+            </if>
+            <if test="rexnTypeName != null">
+                REXN_TYPE_NAME = #{rexnTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="flowType != null">
+                FLOW_TYPE = #{flowType,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                ORDER_ID = #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="transId != null">
+                TRANS_ID = #{transId,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.userTransaction.bean.UserTransaction">
+    update USER_TRANSACTION
+    set UUID = #{uuid,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      PAY_NO = #{payNo,jdbcType=VARCHAR},
+      WITHDRADAL_NO = #{withdradalNo,jdbcType=VARCHAR},
+      TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL},
+      TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL},
+      TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+      RTXN_TYPE_CODE = #{rtxnTypeCode,jdbcType=VARCHAR},
+      TXN_TIME = #{txnTime,jdbcType=VARCHAR},
+      TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR},
+      REXN_TYPE_NAME = #{rexnTypeName,jdbcType=VARCHAR},
+      FLOW_TYPE = #{flowType,jdbcType=VARCHAR},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      TRANS_ID = #{transId,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.userTransaction.bean.UserTransaction">
+    update USER_TRANSACTION
+    set UUID = #{uuid,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      PAY_NO = #{payNo,jdbcType=VARCHAR},
+      WITHDRADAL_NO = #{withdradalNo,jdbcType=VARCHAR},
+      TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL},
+      TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL},
+      TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+      RTXN_TYPE_CODE = #{rtxnTypeCode,jdbcType=VARCHAR},
+      TXN_TIME = #{txnTime,jdbcType=VARCHAR},
+      TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR},
+      REXN_TYPE_NAME = #{rexnTypeName,jdbcType=VARCHAR},
+      FLOW_TYPE = #{flowType,jdbcType=VARCHAR},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      TRANS_ID = #{transId,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!--根据动态参数获取用户充值记录列表-->
+    <select id="listUserTransactionByParams" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_TRANSACTION
+        where DATA_STATUS='1'
+        <if test="uuid != null">
+            AND UUID = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="payNo != null">
+            AND PAY_NO = #{payNo,jdbcType=VARCHAR}
+        </if>
+        <if test="withdradalNo != null">
+            AND WITHDRADAL_NO = #{withdradalNo,jdbcType=VARCHAR}
+        </if>
+        <if test="trsAmount != null">
+            AND TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="trsBalance != null">
+            AND TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL}
+        </if>
+        <if test="tradeStatus != null">
+            AND TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="rtxnTypeCode != null">
+            AND RTXN_TYPE_CODE = #{rtxnTypeCode,jdbcType=VARCHAR}
+        </if>
+        <if test="txnTime != null">
+            AND TXN_TIME = #{txnTime,jdbcType=VARCHAR}
+        </if>
+        <if test="trsEndTime != null">
+            AND TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="rexnTypeName != null">
+            AND REXN_TYPE_NAME = #{rexnTypeName,jdbcType=VARCHAR}
+        </if>
+        <if test="flowType != null">
+            AND FLOW_TYPE = #{flowType,jdbcType=VARCHAR}
+        </if>
+        <if test="orderId != null">
+            AND ORDER_ID = #{orderId,jdbcType=VARCHAR}
+        </if>
+        <if test="transId != null">
+            AND TRANS_ID = #{transId,jdbcType=VARCHAR}
+        </if>
+        <if test="returnCode != null">
+            AND RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+        </if>
+        <if test="returnMsg != null">
+            AND RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=LONGVARCHAR}
+        </if>
+    </select>
+
+    <sql id="params">
+        <if test="uuid != null">
+            AND UUID = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="payNo != null">
+            AND PAY_NO = #{payNo,jdbcType=VARCHAR}
+        </if>
+        <if test="withdradalNo != null">
+            AND WITHDRADAL_NO = #{withdradalNo,jdbcType=VARCHAR}
+        </if>
+        <if test="trsAmount != null">
+            AND TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="trsBalance != null">
+            AND TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL}
+        </if>
+        <if test="tradeStatus != null">
+            AND TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="rtxnTypeCode != null">
+            AND RTXN_TYPE_CODE = #{rtxnTypeCode,jdbcType=VARCHAR}
+        </if>
+        <if test="txnTime != null">
+            AND TXN_TIME = #{txnTime,jdbcType=VARCHAR}
+        </if>
+        <if test="trsEndTime != null">
+            AND TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="rexnTypeName != null">
+            AND REXN_TYPE_NAME = #{rexnTypeName,jdbcType=VARCHAR}
+        </if>
+        <if test="flowType != null">
+            AND FLOW_TYPE = #{flowType,jdbcType=VARCHAR}
+        </if>
+        <if test="orderId != null">
+            AND ORDER_ID = #{orderId,jdbcType=VARCHAR}
+        </if>
+        <if test="transId != null">
+            AND TRANS_ID = #{transId,jdbcType=VARCHAR}
+        </if>
+        <if test="returnCode != null">
+            AND RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+        </if>
+        <if test="returnMsg != null">
+            AND RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=LONGVARCHAR}
+        </if>
+    </sql>
+
+    <sql id="Table_Params">
+        <if test="uuid != null">
+            AND T.UUID = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            AND T.USER_ID = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="payNo != null">
+            AND T.PAY_NO = #{payNo,jdbcType=VARCHAR}
+        </if>
+        <if test="withdradalNo != null">
+            AND T.WITHDRADAL_NO = #{withdradalNo,jdbcType=VARCHAR}
+        </if>
+        <if test="trsAmount != null">
+            AND T.TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="trsBalance != null">
+            AND T.TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL}
+        </if>
+        <if test="txnTime != null">
+            AND T.TXN_TIME = #{txnTime,jdbcType=VARCHAR}
+        </if>
+        <if test="trsEndTime != null">
+            AND T.TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="rexnTypeName != null">
+            AND T.REXN_TYPE_NAME = #{rexnTypeName,jdbcType=VARCHAR}
+        </if>
+        <if test="flowType != null">
+            AND T.FLOW_TYPE = #{flowType,jdbcType=VARCHAR}
+        </if>
+        <if test="orderId != null">
+            AND T.ORDER_ID = #{orderId,jdbcType=VARCHAR}
+        </if>
+        <if test="transId != null">
+            AND T.TRANS_ID = #{transId,jdbcType=VARCHAR}
+        </if>
+        <if test="returnCode != null">
+            AND T.RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+        </if>
+        <if test="returnMsg != null">
+            AND T.RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND T.DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            AND T.CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            AND T.REMARK = #{remark,jdbcType=LONGVARCHAR}
+        </if>
+    </sql>
+
+    <sql id="listTransactionByParams_fragment">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_TRANSACTION
+        where DATA_STATUS='1'
+        <include refid="params"></include>
+    </sql>
+
+    <!--根据动态参数获取用户交易记录列表-->
+    <select id="countTransactionByParams" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(TR.ID)
+        from
+        (<include refid="listTransactionByParams_fragment"/>) TR
+    </select>
+
+    <!--根据动态参数分页获取用户交易记录列表-->
+    <select id="listUserTransactionByPage" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+
+        <include refid="listTransactionByParams_fragment"/>
+        <if test="startPage!=null and pageSize!=null">
+            limit #{startPage,jdbcType=INTEGER} , #{pageSize,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <!--根据动态参数获取用户信息和用户交易记录列表 排序 时间范围 交易范围-->
+    <select id="listUserInfoAndTransactionMapByParams" parameterType="java.util.Map" resultMap="UserAndTransactionDTO">
+        SELECT
+        U.USER_NAME,
+        U.MOBILE,
+        T.ID,
+        T.UUID,
+        T.USER_ID,
+        T.PAY_NO,
+        T.WITHDRADAL_NO,
+        T.TRS_AMOUNT,
+        T.TRS_BALANCE,
+        T.TRADE_STATUS,
+        T.RTXN_TYPE_CODE,
+        T.TXN_TIME,
+        T.TRS_END_TIME,
+        T.REXN_TYPE_NAME,
+        T.FLOW_TYPE,
+        T.ORDER_ID,
+        T.TRANS_ID,
+        T.RETURN_CODE,
+        T.RETURN_MSG,
+        T.DATA_STATUS,
+        T.CREATE_TIME,
+        T.REMARK
+        FROM
+        USER_INFO U,
+        USER_TRANSACTION T
+        where T.DATA_STATUS='1'
+        and T.USER_ID=U.ID
+        and U.DATA_STATUS='1'
+        <include refid="Table_Params"></include>
+
+        <choose>
+            <when test="typeArr==null">
+                and T.RTXN_TYPE_CODE in('WTHI','RCGI')
+            </when>
+            <otherwise>
+                and T.RTXN_TYPE_CODE in
+                <foreach item="item" index="index" collection="typeArr" open="(" separator="," close=")">
+                    #{item,jdbcType=VARCHAR}
+                </foreach>
+            </otherwise>
+        </choose>
+
+        <if test="tradeStatus != null">
+            <choose>
+                <when test="tradeStatus==2">
+                    and T.TRADE_STATUS not in('0','1')
+                </when>
+                <otherwise>
+                    and T.TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR}
+                </otherwise>
+            </choose>
+        </if>
+
+        <if test="userName != null">
+            and U.USER_NAME=#{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            and U.MOBILE=#{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="startTranAmount != null">
+            and ABS(T.TRS_AMOUNT)&gt;=#{startTranAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="endTranAmount != null">
+            and ABS(T.TRS_AMOUNT)&lt;=#{endTranAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null and endTime !=null">
+            and STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=VARCHAR}
+            and STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s')&lt;=CONCAT(#{endTime,jdbcType=VARCHAR},' 23:59:59')
+            order by STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s') asc
+        </if>
+
+    </select>
+
+    <!--根据动态参数获取用户信息和基金信息和用户交易记录列表 排序 时间范围 交易范围-->
+    <select id="listUserInfoAndFundAndTransactionMapByParams" parameterType="java.util.Map"
+            resultMap="UserAndFundAndTransactionDTO">
+        SELECT
+        P.PROD_SUB_ID,
+        U.USER_NAME,
+        U.MOBILE,
+        T.ID,
+        T.UUID,
+        T.USER_ID,
+        T.PAY_NO,
+        T.WITHDRADAL_NO,
+        T.TRS_AMOUNT,
+        T.TRS_BALANCE,
+        T.TRADE_STATUS,
+        T.RTXN_TYPE_CODE,
+        T.TXN_TIME,
+        T.TRS_END_TIME,
+        T.REXN_TYPE_NAME,
+        T.FLOW_TYPE,
+        T.ORDER_ID,
+        T.TRANS_ID,
+        T.RETURN_CODE,
+        T.RETURN_MSG,
+        T.DATA_STATUS,
+        T.CREATE_TIME,
+        T.REMARK
+        FROM
+        USER_INFO U,
+        USER_TRANSACTION T,
+        PROD_SIGNING P
+        where T.DATA_STATUS='1'
+        and T.USER_ID=U.ID
+        and U.DATA_STATUS='1'
+
+        AND T.USER_ID = P.USER_ID
+        and P.DATA_STATUS='1'
+        <include refid="Table_Params"></include>
+
+        <choose>
+            <when test="rtxnTypeCode==null ">
+                and T.RTXN_TYPE_CODE in('XYSG','XYSH')
+            </when>
+            <otherwise>
+                and T.RTXN_TYPE_CODE =#{rtxnTypeCode,jdbcType=VARCHAR}
+            </otherwise>
+        </choose>
+
+        <if test="tradeStatus != null">
+            <choose>
+                <when test="tradeStatus==2">
+                    and T.TRADE_STATUS not in('0','1')
+                </when>
+                <otherwise>
+                    and T.TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR}
+                </otherwise>
+            </choose>
+        </if>
+        <if test="prodSubId != null">
+            and P.PROD_SUB_ID=#{prodSubId,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null">
+            and U.USER_NAME=#{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            and U.MOBILE=#{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="startTranAmount != null">
+            and ABS(T.TRS_AMOUNT)&gt;=#{startTranAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="endTranAmount != null">
+            and ABS(T.TRS_AMOUNT)&lt;=#{endTranAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null and endTime !=null">
+            and STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=VARCHAR}
+            and STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s')&lt;=CONCAT(#{endTime,jdbcType=VARCHAR},' 23:59:59')
+            order by STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s') asc
+        </if>
+
+    </select>
+
+    <!--根据动态参数获取用户信息和理财产品信息和用户交易记录列表 排序 时间范围 交易范围-->
+    <select id="listUserInfoAndProductAndTransactionByParams" parameterType="java.util.Map"
+            resultMap="UserAndProductAndTransactionDTO">
+        SELECT
+        P.CODE as PRODUCT_CODE,
+        U.USER_NAME,
+        U.MOBILE,
+        T.ID,
+        T.UUID,
+        T.USER_ID,
+        T.PAY_NO,
+        T.WITHDRADAL_NO,
+        T.TRS_AMOUNT,
+        T.TRS_BALANCE,
+        T.TRADE_STATUS,
+        T.RTXN_TYPE_CODE,
+        T.TXN_TIME,
+        T.TRS_END_TIME,
+        T.REXN_TYPE_NAME,
+        T.FLOW_TYPE,
+        T.ORDER_ID,
+        T.TRANS_ID,
+        T.RETURN_CODE,
+        T.RETURN_MSG,
+        T.DATA_STATUS,
+        T.CREATE_TIME,
+        T.REMARK
+        FROM
+        USER_INFO U,
+        USER_TRANSACTION T,
+        PRODUCT P,
+        TENDER D
+
+        where T.DATA_STATUS='1'
+        and T.USER_ID=U.ID
+
+        and D.ID=T.ORDER_ID
+
+        and D.PRODUCT_ID=P.ID
+        <include refid="Table_Params"></include>
+
+        <choose>
+            <when test="rtxnTypeCode==null ">
+                and T.RTXN_TYPE_CODE in('CPDJ','CPJD','CPKK','CPHK')
+            </when>
+            <otherwise>
+                and T.RTXN_TYPE_CODE =#{rtxnTypeCode,jdbcType=VARCHAR}
+            </otherwise>
+        </choose>
+
+        <if test="tradeStatus != null">
+            <choose>
+                <when test="tradeStatus==2">
+                    and T.TRADE_STATUS not in('0','1')
+                </when>
+                <otherwise>
+                    and T.TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR}
+                </otherwise>
+            </choose>
+        </if>
+
+        <if test="name!=null">
+            and P.NAME=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="code!=null">
+            and P.CODE=#{code,jdbcType=VARCHAR}
+        </if>
+        <if test="productId != null">
+            and P.ID=#{productId,jdbcType=VARCHAR}
+        </if>
+        <if test="prodSubId != null">
+            and P.PROD_SUB_ID=#{prodSubId,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null">
+            and U.USER_NAME=#{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            and U.MOBILE=#{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="startTranAmount != null">
+            and ABS(T.TRS_AMOUNT)&gt;=#{startTranAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="endTranAmount != null">
+            and ABS(T.TRS_AMOUNT)&lt;=#{endTranAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null and endTime !=null">
+            and STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=VARCHAR}
+            and STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s')&lt;=CONCAT(#{endTime,jdbcType=VARCHAR},' 23:59:59')
+            order by STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s') asc
+        </if>
+
+    </select>
+
+    <!--获取用户联名卡转入转出 基金申购赎回 理财产品 交易总额-->
+    <select id="getUserTransactionSum" resultMap="UserTransactionSumDTO">
+        SELECT
+
+        SUM(IF(RTXN_TYPE_CODE = 'WTHI',ABS(TRS_AMOUNT),0)) BANK_CARD_OUT,
+
+        SUM(IF(RTXN_TYPE_CODE = 'RCGI',ABS(TRS_AMOUNT),0)) BANK_CARD_IN,
+
+        SUM(IF(RTXN_TYPE_CODE = 'XYSG',ABS(TRS_AMOUNT),0)) FUND_BUY,
+
+        SUM(IF(RTXN_TYPE_CODE = 'XYSH',ABS(TRS_AMOUNT),0)) FUND_SELL,
+
+        SUM(IF(RTXN_TYPE_CODE = 'CPDJ',ABS(TRS_AMOUNT),0)) PRODUCT_BUY_Y_FREEZE,
+
+        SUM(IF(RTXN_TYPE_CODE = 'CPJD',ABS(TRS_AMOUNT),0)) PRODUCT_BUY_N_UNFREEZE,
+
+        SUM(IF(RTXN_TYPE_CODE = 'CPKK',ABS(TRS_AMOUNT),0)) PRODUCT_BUY_Y_UNFREEZE,
+
+        SUM(IF(RTXN_TYPE_CODE = 'CPHK',ABS(TRS_AMOUNT),0)) PRODUCT_BUY_Y_BACK
+
+        FROM USER_TRANSACTION
+    </select>
+
+    <!--根据渠道流水获取充值或提现详情记录DTO-->
+    <select id="getUserRechargeOrWithdrawDetailByOriJnlNo" parameterType="string"
+            resultMap="UserRechargeOrWithdrawDetailDTO">
+        SELECT
+            ID,
+            USER_ID,
+            UUID,
+            EACCOUNT_NO,
+            AC_NO,
+            CHANNEL_JNL_NO,
+            JS_JNL_NO,
+            TRS_AMOUNT,
+            TRADE_STATUS,
+            TXN_TIME,
+            TRS_END_TIME,
+            CREATE_TIME
+        FROM
+            USER_RECHARGE
+        WHERE
+            DATE_STATUS = '1'
+            AND CHANNEL_JNL_NO = #{oriJnlNO,jdbcType=VARCHAR} UNION
+        SELECT
+            ID,
+            USER_ID,
+            UUID,
+            EACCOUNT_NO,
+            AC_NO,
+            CHANNEL_JNL_NO,
+            JS_JNL_NO,
+            TRS_AMOUNT,
+            TRADE_STATUS,
+            TXN_TIME,
+            TRS_END_TIME,
+            CREATE_TIME
+        FROM
+            USER_WITHDRAW
+        WHERE
+            DATA_STATUS = '1'
+            AND CHANNEL_JNL_NO = #{oriJnlNO,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

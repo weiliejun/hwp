@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>新增公告</title>
+</head>
+<style type="text/css" media="screen">
+    .one-tj {
+        margin-left: 10px;
+        margin-right: 25px;
+    }
+
+    .one-btn-btn {
+        width: 230px;
+        padding-top: 10px;
+        margin: 0 auto;
+    }
+
+    .layui-form .layui-form-label {
+        padding-left: 15px;
+        color: #666666;
+    }
+
+    .layui-form .layui-input-block {
+        width: 300px;
+    }
+
+    .layui-form .layui-input-block input, .layui-form .layui-input-block textarea {
+        color: #aaaaaa;
+    }
+
+</style>
+<body>
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title site-title">
+    </fieldset>
+    <form class="layui-form">
+        <input id="id" type="hidden" name="id"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公告标题</label>
+            <div class="layui-input-block">
+                <input id="topic" type="text" name="topic" value="" class="layui-input" lay-verify="required"
+                       placeholder="请输入公告标题">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公告类型</label>
+            <div class="layui-input-block">
+                <input id="type" type="radio" name="type" value="0" title="系统公告">
+                <input type="radio" name="type" value="1" title="产品公告">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">公告内容</label>
+            <div class="layui-input-block">
+                <script id="editorContent" type="text/plain" style="width:500px;height:300px;"></script>
+                <
+                input
+                type = "hidden"
+                name = "content"
+                id = "content" / >
+                    < /div>
+                    < /div>
+
+                    < div
+                class
+                = "layui-form-item" >
+                    < label
+                class
+                = "layui-form-label" > 发布状态 < /label>
+                    < div
+                class
+                = "layui-input-block" >
+                    < input
+                id = "publishStatus"
+                type = "radio"
+                name = "publishStatus"
+                class
+                = "layui-ch"
+                value = "1"
+                title = "发布" >
+                    < input
+                type = "radio"
+                name = "publishStatus"
+                class
+                = "layui-ch"
+                value = "0"
+                title = "暂不发布" >
+                    < input
+                type = "radio"
+                name = "publishStatus"
+                class
+                = "layui-ch"
+                value = "2"
+                title = "停用" >
+                    < /div>
+                    < /div>
+
+                    < div
+                class
+                = "layui-form-item" >
+                    < label
+                class
+                = "layui-form-label" > 是否置顶 < /label>
+                    < div
+                class
+                = "layui-input-block" >
+                    < input
+                id = "topMark"
+                type = "radio"
+                name = "topMark"
+                class
+                = "layui-input"
+                value = "1"
+                title = "是" / >
+                    < input
+                type = "radio"
+                name = "topMark"
+                class
+                = "layui-input"
+                value = "0"
+                title = "否" / >
+
+                    < /div>
+                    < /div>
+
+                    < div
+                class
+                = "layui-form-item one-btn-btn" >
+                    < button
+                class
+                = "layui-btn one-tj"
+                id = "saveButton"
+                lay - submit
+                lay - filter = "add" > 立即提交 < /button>
+                    < button
+                type = "reset"
+                class
+                = "layui-btn layui-btn-primary" > 重置 < /button>
+                    < /div>
+                    < /form>
+                    < /div>
+
+
+                    < script
+                type = "text/javascript"
+                th:src = "@{/js/system/websiteBulletin/add.js}" ></script>
+                <script type="text/javascript">
+                    window.onload = function () {
+                        //实例化编辑器
+                        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+                        var ue = UE.getEditor('editorContent');
+                        ue.focus();
+                    };
+                </script>
+</body>
+</html>

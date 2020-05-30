@@ -1,0 +1,350 @@
+body {
+    margin: 0;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+.container {
+    width: 990px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+    border: 1px solid #dddddd;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.bs-docs-section {
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+/*p {
+  margin: 0 0 10px;
+}*/
+table {
+    max-width: 100%;
+    background-color: transparent;
+}
+
+th {
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.428571429;
+    border-top: 1px solid #666;
+}
+
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #666;
+}
+
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+
+.table > tbody + tbody {
+    border-top: 2px solid #666;
+}
+
+.table .table {
+    background-color: #ffffff;
+}
+
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > td {
+    padding: 5px;
+}
+
+.table-bordered {
+    border: 1px solid #666;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+    border: 1px solid #666;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+}
+
+.container_title {
+    height: 55px;
+    width: inherit;
+}
+
+.container_title .left {
+    float: left;
+}
+
+.container_title .center {
+    float: left;
+    width: 400px;
+    text-align: left;
+    height: 55px;
+    line-height: 55px;
+    display: block;
+}
+
+.container_title .center h3 {
+}
+
+.container_title .right {
+    float: right;
+    display: block;
+    height: 55px;
+    line-height: 55px;
+}
+
+.center h3 {
+    text-align: center;
+    width: 400px;
+    height: 55px;
+    line-height: 55px;
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 30px;
+    font-size: 24px;
+}
+
+.container_middle {
+    background: url(../images/shuiyin.png);
+}
+
+.agreementContent {
+}
+
+.agreementTit {
+    font-size: 16px;
+    padding-bottom: 16px;
+    padding-top: 10px;
+}
+
+.overdueTable td {
+    text-align: center;
+}
+
+.agreeNum {
+    text-align: right;
+    padding: 0 20px 20px 0;
+}
+
+.agreementContent .everyPartTit {
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 18px;
+}
+
+.infoTable tr {
+    height: 50px;
+}
+
+.infoTable td {
+    color: #333;
+}
+
+.tdOne {
+    width: 15%;
+}
+
+.tdTwo {
+    width: 18%;
+}
+
+.tdThree {
+    width: 12%;
+}
+
+.tdFour {
+    width: 18%;
+}
+
+.tdFive {
+    width: 12%;
+}
+
+.tdSix {
+    width: 25%;
+}
+
+.diffTxt p {
+    padding: 0;
+    margin: 0;
+}
+
+.infoOne {
+    width: 15%;
+}
+
+.borrowerDetailTit {
+    font-size: 18px;
+    padding-top: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.repayTableTit {
+    font-size: 18px;
+    padding-top: 20px;
+}
+
+.clauseH4 {
+    color: #333;
+}
+
+.clauseH5 {
+    font-size: 18px;
+    color: #000;
+    padding-top: 40px;
+}
+
+.haveIndent p {
+    text-indent: 2em;
+}
+
+.haveIndentNext {
+    padding-left: 60px;
+}
+
+.haveIndentNext span {
+    display: block;
+    line-height: 28px;
+}
+
+.userSignInfo {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+

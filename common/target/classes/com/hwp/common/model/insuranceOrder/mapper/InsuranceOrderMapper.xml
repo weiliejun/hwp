@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="InsuranceOrderMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.insuranceOrder.bean.InsuranceOrder">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="CAR_NUMBER" property="carNumber" jdbcType="VARCHAR"/>
+        <result column="ENGINE_NUMBER" property="engineNumber" jdbcType="VARCHAR"/>
+        <result column="FRAME_NUMBER" property="frameNumber" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="CAR_INSURANCE_TYPE" property="carInsuranceType" jdbcType="VARCHAR"/>
+        <result column="ORDER_INSURANCE_TYPE" property="orderInsuranceType" jdbcType="CHAR"/>
+        <result column="AUDIT_TIME" property="auditTime" jdbcType="VARCHAR"/>
+        <result column="AUDITOR_ID" property="auditorId" jdbcType="VARCHAR"/>
+        <result column="AUDITOR_NAME" property="auditorName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, STATUS, NAME, MOBILE, CAR_NUMBER, ENGINE_NUMBER, FRAME_NUMBER, REMARK, DATA_STATUS, CREATE_TIME,
+    CAR_INSURANCE_TYPE, ORDER_INSURANCE_TYPE, AUDIT_TIME, AUDITOR_ID, AUDITOR_NAME
+  </sql>
+    <select id="selectInsuranceOrderById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from INSURANCE_ORDER
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectInsuranceOrderListByMap" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from INSURANCE_ORDER
+        <where>
+            <if test="userId != null">
+                and USER_ID = #{userId,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and STATUS = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null">
+                and NAME = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="mobile != null">
+                and MOBILE = #{mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="carNumber != null">
+                and CAR_NUMBER = #{carNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="engineNumber != null">
+                and ENGINE_NUMBER = #{engineNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="frameNumber != null">
+                and FRAME_NUMBER = #{frameNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                and REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="dataStatus != null">
+                and DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="carInsuranceType != null">
+                and CAR_INSURANCE_TYPE = #{carInsuranceType,jdbcType=VARCHAR}
+            </if>
+            <if test="orderInsuranceType != null">
+                and ORDER_INSURANCE_TYPE = #{orderInsuranceType,jdbcType=CHAR}
+            </if>
+            <if test="auditTime != null">
+                and AUDIT_TIME = #{auditTime,jdbcType=VARCHAR}
+            </if>
+            <if test="auditorId != null">
+                and AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+            </if>
+            <if test="auditorName != null">
+                and AUDITOR_Name = #{auditorName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from INSURANCE_ORDER
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.insuranceOrder.bean.InsuranceOrder">
+    insert into INSURANCE_ORDER (ID, USER_ID, STATUS, NAME, MOBILE,
+      CAR_NUMBER, ENGINE_NUMBER, FRAME_NUMBER, 
+      REMARK, DATA_STATUS, CREATE_TIME, 
+      CAR_INSURANCE_TYPE, ORDER_INSURANCE_TYPE,
+      AUDIT_TIME, AUDITOR_ID, AUDITOR_NAME)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
+      #{carNumber,jdbcType=VARCHAR}, #{engineNumber,jdbcType=VARCHAR}, #{frameNumber,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{carInsuranceType,jdbcType=VARCHAR}, #{orderInsuranceType,jdbcType=CHAR},
+      #{auditTime,jdbcType=VARCHAR}, #{auditorId,jdbcType=VARCHAR}, #{auditorName,jdbcType=VARCHAR})
+  </insert>
+    <insert id="addInsuranceOrder" parameterType="com.hwp.common.model.insuranceOrder.bean.InsuranceOrder">
+        insert into INSURANCE_ORDER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+            <if test="carNumber != null">
+                CAR_NUMBER,
+            </if>
+            <if test="engineNumber != null">
+                ENGINE_NUMBER,
+            </if>
+            <if test="frameNumber != null">
+                FRAME_NUMBER,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="carInsuranceType != null">
+                CAR_INSURANCE_TYPE,
+            </if>
+            <if test="orderInsuranceType != null">
+                ORDER_INSURANCE_TYPE,
+            </if>
+            <if test="auditTime != null">
+                AUDIT_TIME,
+            </if>
+            <if test="auditorId != null">
+                AUDITOR_ID,
+            </if>
+            <if test="auditorName != null">
+                AUDITOR_NAME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="carNumber != null">
+                #{carNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="engineNumber != null">
+                #{engineNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="frameNumber != null">
+                #{frameNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="carInsuranceType != null">
+                #{carInsuranceType,jdbcType=VARCHAR},
+            </if>
+            <if test="orderInsuranceType != null">
+                #{orderInsuranceType,jdbcType=CHAR},
+            </if>
+            <if test="auditTime != null">
+                #{auditTime,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorId != null">
+                #{auditorId,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorName != null">
+                #{auditorName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateInsuranceOrderById" parameterType="com.hwp.common.model.insuranceOrder.bean.InsuranceOrder">
+        update INSURANCE_ORDER
+        <set>
+            <if test="userId != null">
+                NAME = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="carNumber != null">
+                CAR_NUMBER = #{carNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="engineNumber != null">
+                ENGINE_NUMBER = #{engineNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="frameNumber != null">
+                FRAME_NUMBER = #{frameNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="carInsuranceType != null">
+                CAR_INSURANCE_TYPE = #{carInsuranceType,jdbcType=VARCHAR},
+            </if>
+            <if test="orderInsuranceType != null">
+                ORDER_INSURANCE_TYPE = #{orderInsuranceType,jdbcType=CHAR},
+            </if>
+            <if test="auditTime != null">
+                AUDIT_TIME = #{auditTime,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorId != null">
+                AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorName != null">
+                AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.insuranceOrder.bean.InsuranceOrder">
+    update INSURANCE_ORDER
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+        STATUS = #{status,jdbcType=VARCHAR},
+        NAME = #{name,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      CAR_NUMBER = #{carNumber,jdbcType=VARCHAR},
+      ENGINE_NUMBER = #{engineNumber,jdbcType=VARCHAR},
+      FRAME_NUMBER = #{frameNumber,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      CAR_INSURANCE_TYPE = #{carInsuranceType,jdbcType=VARCHAR},
+      ORDER_INSURANCE_TYPE = #{orderInsuranceType,jdbcType=CHAR},
+      AUDIT_TIME = #{auditTime,jdbcType=VARCHAR},
+      AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+      AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <update id="updateDataStatusById" parameterType="com.hwp.common.model.insuranceOrder.bean.InsuranceOrder">
+    update INSURANCE_ORDER
+    set DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!--我的保险列表VO-->
+    <sql id="Base_Column_List_VO">
+    STATUS, NAME, MOBILE, CREATE_TIME, ORDER_INSURANCE_TYPE
+  </sql>
+
+    <!--根据动态参数获取用户预约保险列表按照创建时间降序排列-->
+    <select id="getInsuranceOrderListByOrderByCreateTimeDesc" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List_VO"/>
+        from INSURANCE_ORDER
+        <where>
+            <if test="userId != null">
+                and USER_ID = #{userId,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and STATUS = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null">
+                and NAME = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="mobile != null">
+                and MOBILE = #{mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="carNumber != null">
+                and CAR_NUMBER = #{carNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="engineNumber != null">
+                and ENGINE_NUMBER = #{engineNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="frameNumber != null">
+                and FRAME_NUMBER = #{frameNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                and REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="dataStatus != null">
+                and DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="carInsuranceType != null">
+                and CAR_INSURANCE_TYPE = #{carInsuranceType,jdbcType=VARCHAR}
+            </if>
+            <if test="orderInsuranceType != null">
+                and ORDER_INSURANCE_TYPE = #{orderInsuranceType,jdbcType=CHAR}
+            </if>
+            <if test="auditTime != null">
+                and AUDIT_TIME = #{auditTime,jdbcType=VARCHAR}
+            </if>
+            <if test="auditorId != null">
+                and AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+            </if>
+            <if test="auditorName != null">
+                and AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR}
+            </if>
+
+
+        </where>
+        order by STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+
+    <!--根据动态参数获取用户预约保险列表详情按照创建时间降序排列-->
+    <select id="getInsuranceOrderListDetailByOrderByCreateTimeDesc" resultMap="BaseResultMap"
+            parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from INSURANCE_ORDER
+        <where>
+            <if test="userId != null">
+                and USER_ID = #{userId,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and STATUS = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null">
+                and NAME = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="mobile != null">
+                and MOBILE = #{mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="carNumber != null">
+                and CAR_NUMBER = #{carNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="engineNumber != null">
+                and ENGINE_NUMBER = #{engineNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="frameNumber != null">
+                and FRAME_NUMBER = #{frameNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                and REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="dataStatus != null">
+                and DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="carInsuranceType != null">
+                and CAR_INSURANCE_TYPE = #{carInsuranceType,jdbcType=VARCHAR}
+            </if>
+            <if test="orderInsuranceType != null">
+                and ORDER_INSURANCE_TYPE = #{orderInsuranceType,jdbcType=CHAR}
+            </if>
+            <if test="auditTime != null">
+                and AUDIT_TIME = #{auditTime,jdbcType=VARCHAR}
+            </if>
+            <if test="auditorId != null">
+                and AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+            </if>
+            <if test="auditorName != null">
+                and AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR}
+            </if>
+
+            <if test="startTime != null and endTime !=null">
+                and STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=VARCHAR}
+                and STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s')&lt;=#{endTime,jdbcType=VARCHAR}
+                order by STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s') asc
+            </if>
+
+
+        </where>
+        <if test="startTime == null and endTime ==null">
+            order by STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s') desc
+        </if>
+    </select>
+
+</mapper>

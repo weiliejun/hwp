@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 后台大布局 - Layui</title>
+    <!--<link rel="stylesheet" href="css/layui.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/laydate.css" />-->
+    <!--<link rel="stylesheet" href="css/customLayui.css">-->
+    <style type="text/css">
+        #searchForm .layui-inline {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="layui-layout-body" style="overflow-y: auto">
+<div class="layui-layout layui-layout-admin">
+    <!--<div class="layui-header">-->
+    <!--  <div class="layui-logo">layui 后台布局</div>-->
+    <!--  &lt;!&ndash; 头部区域（可配合layui已有的水平导航） &ndash;&gt;-->
+    <!--  <ul class="layui-nav layui-layout-left">-->
+    <!--    <li class="layui-nav-item"><a href="">控制台</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">商品管理</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">用户</a></li>-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">其它系统</a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">邮件管理</a></dd>-->
+    <!--        <dd><a href="">消息管理</a></dd>-->
+    <!--        <dd><a href="">授权管理</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--  </ul>-->
+    <!--  <ul class="layui-nav layui-layout-right">-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">-->
+    <!--        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">-->
+    <!--        贤心-->
+    <!--      </a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">基本资料</a></dd>-->
+    <!--        <dd><a href="">安全设置</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--    <li class="layui-nav-item"><a href="">退了</a></li>-->
+    <!--  </ul>-->
+    <!--</div>-->
+
+    <!--<div class="layui-side layui-bg-black">-->
+    <!--  <div class="layui-side-scroll">-->
+    <!--    &lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
+    <!--    <ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+    <!--      <li class="layui-nav-item layui-nav-itemed">-->
+    <!--        <a class="" href="javascript:;">所有商品</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表三</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item">-->
+    <!--        <a href="javascript:;">解决方案</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item"><a href="">云市场</a></li>-->
+    <!--      <li class="layui-nav-item"><a href="">发布商品</a></li>-->
+    <!--    </ul>-->
+    <!--  </div>-->
+    <!--</div>-->
+
+    <!--<div class="layui-body">-->
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <!--<h3 class="titNav">-->
+        <!--  <a href="javascript:;">用户管理 / </a>-->
+        <!--  <a href="javascript:;">用户列表</a>-->
+        <!--</h3>-->
+        <!--<hr>-->
+
+        <div class="" style="padding-bottom:15px;padding-top:10px;">
+            <form id="searchForm" class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">姓名：</label>
+                        <div class="layui-input-block">
+                            <input id="likeName" type="text" name="userName" placeholder="输入用户姓名"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">手机号码：</label>
+                        <div class="layui-input-block">
+                            <input id="likeCode" type="text" name="mobile" placeholder="输入手机号码"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">身份证号：</label>
+                        <div class="layui-input-block">
+                            <input id="likeCode" type="text" name="idNo" placeholder="输入身份证号码"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">注册：</label>
+                        <div class="layui-input-block">
+                            <select name="city" lay-verify="required">
+                                <option value="">全部</option>
+                                <option value="0">是</option>
+                                <option value="1">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">绑卡：</label>
+                        <div class="layui-input-block">
+                            <select name="isBindCard" lay-verify="required">
+                                <option value="">全部</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">实名：</label>
+                        <div class="layui-input-block">
+                            <select name="isRealName" lay-verify="required">
+                                <option value="">全部</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">状态：</label>
+                        <div class="layui-input-block">
+                            <select name="status" lay-verify="required">
+                                <option value="">全部</option>
+                                <option value="Y">审核通过</option>
+                                <option value="N">审核不通过</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <a class="layui-btn " data-type="search">
+                            <i class="layui-icon layui-icon-search"></i>查询
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="layui-row" style="padding:0 40px;">
+            <table class="layui-table recordInfo" id="userInfoTables" lay-filter="userInfoTables">
+                <!--<thead>-->
+                <!--  <tr>-->
+                <!--    <th>用户ID</th>-->
+                <!--    <th>姓名</th>-->
+                <!--    <th>身份证号码</th>-->
+                <!--    <th>手机号码</th>-->
+                <!--    <th>是否注册</th>-->
+                <!--    <th>是否绑卡</th>-->
+                <!--    <th>是否实名</th>-->
+                <!--    <th>状态</th>-->
+                <!--    <th>注册时间</th>-->
+                <!--    <th>操作</th>-->
+                <!--  </tr> -->
+                <!--</thead>-->
+                <!--<tbody class="colorA">-->
+                <!--  <tr>-->
+                <!--    <td>000001</td>-->
+                <!--    <td>张三</td>-->
+                <!--    <td>511321********8152</td>-->
+                <!--    <td>136****8888</td>-->
+                <!--    <td>是</td>-->
+                <!--    <td>否</td>-->
+                <!--    <td>否</td>-->
+                <!--    <td>审核不通过</td>-->
+                <!--    <td>2018-05-20 15:26:22</td>-->
+                <!--    <td><a class="layui-btn">编辑</a> </td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>000001</td>-->
+                <!--    <td>张三</td>-->
+                <!--    <td>511321********8152</td>-->
+                <!--    <td>136****8888</td>-->
+                <!--    <td>否</td>-->
+                <!--    <td>是</td>-->
+                <!--    <td>否</td>-->
+                <!--    <td>待审核</td>-->
+                <!--    <td>2018-05-20 15:26:22</td>-->
+                <!--    <td><a class="layui-btn">查看</a> </td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>000001</td>-->
+                <!--    <td>张三</td>-->
+                <!--    <td>511321********8152</td>-->
+                <!--    <td>136****8888</td>-->
+                <!--    <td>否</td>-->
+                <!--    <td>是</td>-->
+                <!--    <td>是</td>-->
+                <!--    <td>在职</td>-->
+                <!--    <td>2018-05-20 15:26:22</td>-->
+                <!--    <td><a class="layui-btn">审核</a> </td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>000001</td>-->
+                <!--    <td>张三</td>-->
+                <!--    <td>511321********8152</td>-->
+                <!--    <td>136****8888</td>-->
+                <!--    <td>否</td>-->
+                <!--    <td>是</td>-->
+                <!--    <td>是</td>-->
+                <!--    <td>离职</td>-->
+                <!--    <td>2018-05-20 15:26:22</td>-->
+                <!--    <td><a class="layui-btn">编辑</a> </td>-->
+                <!--  </tr>-->
+                <!--</tbody>-->
+            </table>
+        </div>
+
+        <!--分页-->
+        <div id="myPage" class="layui-clear"></div>
+
+    </div>
+    <!--</div>-->
+    <!--主题内容结束-->
+
+    <!--<div class="layui-footer">-->
+    <!--  &lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--  勘设底部区域-->
+    <!--</div>-->
+</div>
+
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+
+<script id="userInfoBar" type="text/html">
+    <button class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon"></i>查看</button>
+</script>
+
+<script type="text/javascript" th:src="@{/js/app/userInfo/list.js}"></script>
+
+<script>
+
+    // layui.use('laydate', function(){
+    //   var laydate = layui.laydate;
+    //   //日期时间选择范围
+    //   laydate.render({
+    //     elem: '#test55' //指定元素
+    //     //,type: 'datetime'    //是否显示时间
+    //     ,trigger: 'click'
+    //     //,lang: 'en'    //英文
+    //     ,range: true //开启日期范围，默认使用“_”分割
+    //     /*,done: function(value, date, endDate){
+    //       console.log(value, date, endDate);
+    //     }
+    //     ,change: function(value, date, endDate){
+    //       console.log(value, date, endDate);
+    //     }*/
+    //   });
+    // });
+    //
+    // /*分页*/
+    // layui.use('laypage', function(){
+    //   var laypage=layui.laypage;
+    //   laypage.render({
+    //     elem: 'myPage',
+    //     count: 1000,
+    //     layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+    //     jump: function(obj){
+    //       console.log(obj)
+    //     }
+    //   });
+    // });
+
+
+</script>
+</body>
+</html>

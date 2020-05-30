@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XmxxglMapper">
+  <resultMap id="BaseResultMap" type="com.hwp.common.model.xmxxgl.bean.Xmxxgl">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="YWLX" jdbcType="VARCHAR" property="ywlx" />
+    <result column="CPMC" jdbcType="VARCHAR" property="cpmc" />
+    <result column="CPGM" jdbcType="VARCHAR" property="cpgm" />
+    <result column="CPQX" jdbcType="VARCHAR" property="cpqx" />
+    <result column="YQSY" jdbcType="VARCHAR" property="yqsy" />
+    <result column="XMLY" jdbcType="VARCHAR" property="xmly" />
+    <result column="ZJLY" jdbcType="VARCHAR" property="zjly" />
+    <result column="BTFW" jdbcType="VARCHAR" property="btfw" />
+    <result column="CJZT" jdbcType="VARCHAR" property="cjzt" />
+    <result column="ZTXM" jdbcType="VARCHAR" property="ztxm" />
+    <result column="JTXM" jdbcType="VARCHAR" property="jtxm" />
+    <result column="TZTJ" jdbcType="VARCHAR" property="tztj" />
+    <result column="GLF" jdbcType="VARCHAR" property="glf" />
+    <result column="RGF" jdbcType="VARCHAR" property="rgf" />
+    <result column="TGF" jdbcType="VARCHAR" property="tgf" />
+    <result column="SGF" jdbcType="VARCHAR" property="sgf" />
+    <result column="XSF" jdbcType="VARCHAR" property="xsf" />
+    <result column="SHF" jdbcType="VARCHAR" property="shf" />
+    <result column="XMFZR_ID" jdbcType="VARCHAR" property="xmfzrId" />
+    <result column="XMFZR_NAME" jdbcType="VARCHAR" property="xmfzrName" />
+    <result column="XMFZR_XX" jdbcType="VARCHAR" property="xmfzrXx" />
+    <result column="XMJBR_ID" jdbcType="VARCHAR" property="xmjbrId" />
+    <result column="XMJBR_NAME" jdbcType="VARCHAR" property="xmjbrName" />
+    <result column="XMJBR_XX" jdbcType="VARCHAR" property="xmjbrXx" />
+    <result column="FWFZR_ID" jdbcType="VARCHAR" property="fwfzrId" />
+    <result column="FWFZR_NAME" jdbcType="VARCHAR" property="fwfzrName" />
+    <result column="FWFZR_XX" jdbcType="VARCHAR" property="fwfzrXx" />
+    <result column="FKFZR_ID" jdbcType="VARCHAR" property="fkfzrId" />
+    <result column="FKFZR_NAME" jdbcType="VARCHAR" property="fkfzrName" />
+    <result column="FKFZR_XX" jdbcType="VARCHAR" property="fkfzrXx" />
+    <result column="CWFZR_ID" jdbcType="VARCHAR" property="cwfzrId" />
+    <result column="CWFZR_NAME" jdbcType="VARCHAR" property="cwfzrName" />
+    <result column="CWFZR_XX" jdbcType="VARCHAR" property="cwfzrXx" />
+    <result column="XMQTCY" jdbcType="VARCHAR" property="xmqtcy" />
+    <result column="XMQTCY_ID" jdbcType="VARCHAR" property="xmqtcyId" />
+    <result column="XMQTCY_NAME" jdbcType="VARCHAR" property="xmqtcyName" />
+    <result column="SPR" jdbcType="VARCHAR" property="spr" />
+    <result column="SPR_ID" jdbcType="VARCHAR" property="sprId" />
+    <result column="SPR_NAME" jdbcType="VARCHAR" property="sprName" />
+    <result column="XMJD" jdbcType="VARCHAR" property="xmjd" />
+    <result column="GDLB" jdbcType="VARCHAR" property="gdlb" />
+    <result column="XXMS" jdbcType="VARCHAR" property="xxms" />
+    <result column="JSYY" jdbcType="VARCHAR" property="jsyy" />
+    <result column="gdsj" jdbcType="VARCHAR" property="gdsj" />
+    <result column="CREATOR_ID" jdbcType="VARCHAR" property="creatorId" />
+    <result column="CREATOR_NAME" jdbcType="VARCHAR" property="creatorName" />
+    <result column="CREATE_TIME" jdbcType="CHAR" property="createTime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus" />
+    <result column="EDIT_TIME" jdbcType="CHAR" property="editTime" />
+    <result column="EDITOR_ID" jdbcType="INTEGER" property="editorId" />
+    <result column="EDITOR_NAME" jdbcType="VARCHAR" property="editorName" />
+    <result column="JSXM_SPR" jdbcType="VARCHAR" property="jsxmSpr" />
+    <result column="JSXM_SPR_ID" jdbcType="VARCHAR" property="jsxmSprId" />
+    <result column="JSXM_SPR_NAME" jdbcType="VARCHAR" property="jsxmSprName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, YWLX, CPMC, CPGM, CPQX, YQSY, XMLY, ZJLY, BTFW, CJZT, ZTXM, JTXM, TZTJ, GLF, 
+    RGF, TGF, SGF, XSF, SHF, XMFZR_ID, XMFZR_NAME, XMFZR_XX, XMJBR_ID, XMJBR_NAME, XMJBR_XX, 
+    FWFZR_ID, FWFZR_NAME, FWFZR_XX, FKFZR_ID, FKFZR_NAME, FKFZR_XX, CWFZR_ID, CWFZR_NAME, 
+    CWFZR_XX, XMQTCY, XMQTCY_ID, XMQTCY_NAME, SPR, SPR_ID, SPR_NAME, XMJD, GDLB, XXMS, 
+    JSYY, gdsj, CREATOR_ID, CREATOR_NAME, CREATE_TIME, REMARK, DATA_STATUS, EDIT_TIME, 
+    EDITOR_ID, EDITOR_NAME, JSXM_SPR, JSXM_SPR_ID, JSXM_SPR_NAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from XMXXGL
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from XMXXGL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hwp.common.model.xmxxgl.bean.Xmxxgl">
+    insert into XMXXGL (ID, YWLX, CPMC, 
+      CPGM, CPQX, YQSY, XMLY, 
+      ZJLY, BTFW, CJZT, ZTXM, 
+      JTXM, TZTJ, GLF, RGF, 
+      TGF, SGF, XSF, SHF, 
+      XMFZR_ID, XMFZR_NAME, XMFZR_XX, 
+      XMJBR_ID, XMJBR_NAME, XMJBR_XX, 
+      FWFZR_ID, FWFZR_NAME, FWFZR_XX, 
+      FKFZR_ID, FKFZR_NAME, FKFZR_XX, 
+      CWFZR_ID, CWFZR_NAME, CWFZR_XX, 
+      XMQTCY, XMQTCY_ID, XMQTCY_NAME, 
+      SPR, SPR_ID, SPR_NAME, 
+      XMJD, GDLB, XXMS, JSYY, 
+      gdsj, CREATOR_ID, CREATOR_NAME, 
+      CREATE_TIME, REMARK, DATA_STATUS, 
+      EDIT_TIME, EDITOR_ID, EDITOR_NAME, 
+      JSXM_SPR, JSXM_SPR_ID, JSXM_SPR_NAME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{ywlx,jdbcType=VARCHAR}, #{cpmc,jdbcType=VARCHAR}, 
+      #{cpgm,jdbcType=VARCHAR}, #{cpqx,jdbcType=VARCHAR}, #{yqsy,jdbcType=VARCHAR}, #{xmly,jdbcType=VARCHAR}, 
+      #{zjly,jdbcType=VARCHAR}, #{btfw,jdbcType=VARCHAR}, #{cjzt,jdbcType=VARCHAR}, #{ztxm,jdbcType=VARCHAR}, 
+      #{jtxm,jdbcType=VARCHAR}, #{tztj,jdbcType=VARCHAR}, #{glf,jdbcType=VARCHAR}, #{rgf,jdbcType=VARCHAR}, 
+      #{tgf,jdbcType=VARCHAR}, #{sgf,jdbcType=VARCHAR}, #{xsf,jdbcType=VARCHAR}, #{shf,jdbcType=VARCHAR}, 
+      #{xmfzrId,jdbcType=VARCHAR}, #{xmfzrName,jdbcType=VARCHAR}, #{xmfzrXx,jdbcType=VARCHAR}, 
+      #{xmjbrId,jdbcType=VARCHAR}, #{xmjbrName,jdbcType=VARCHAR}, #{xmjbrXx,jdbcType=VARCHAR}, 
+      #{fwfzrId,jdbcType=VARCHAR}, #{fwfzrName,jdbcType=VARCHAR}, #{fwfzrXx,jdbcType=VARCHAR}, 
+      #{fkfzrId,jdbcType=VARCHAR}, #{fkfzrName,jdbcType=VARCHAR}, #{fkfzrXx,jdbcType=VARCHAR}, 
+      #{cwfzrId,jdbcType=VARCHAR}, #{cwfzrName,jdbcType=VARCHAR}, #{cwfzrXx,jdbcType=VARCHAR}, 
+      #{xmqtcy,jdbcType=VARCHAR}, #{xmqtcyId,jdbcType=VARCHAR}, #{xmqtcyName,jdbcType=VARCHAR}, 
+      #{spr,jdbcType=VARCHAR}, #{sprId,jdbcType=VARCHAR}, #{sprName,jdbcType=VARCHAR}, 
+      #{xmjd,jdbcType=VARCHAR}, #{gdlb,jdbcType=VARCHAR}, #{xxms,jdbcType=VARCHAR}, #{jsyy,jdbcType=VARCHAR}, 
+      #{gdsj,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, #{creatorName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
+      #{editTime,jdbcType=CHAR}, #{editorId,jdbcType=INTEGER}, #{editorName,jdbcType=VARCHAR}, 
+      #{jsxmSpr,jdbcType=VARCHAR}, #{jsxmSprId,jdbcType=VARCHAR}, #{jsxmSprName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hwp.common.model.xmxxgl.bean.Xmxxgl">
+    insert into XMXXGL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="ywlx != null">
+        YWLX,
+      </if>
+      <if test="cpmc != null">
+        CPMC,
+      </if>
+      <if test="cpgm != null">
+        CPGM,
+      </if>
+      <if test="cpqx != null">
+        CPQX,
+      </if>
+      <if test="yqsy != null">
+        YQSY,
+      </if>
+      <if test="xmly != null">
+        XMLY,
+      </if>
+      <if test="zjly != null">
+        ZJLY,
+      </if>
+      <if test="btfw != null">
+        BTFW,
+      </if>
+      <if test="cjzt != null">
+        CJZT,
+      </if>
+      <if test="ztxm != null">
+        ZTXM,
+      </if>
+      <if test="jtxm != null">
+        JTXM,
+      </if>
+      <if test="tztj != null">
+        TZTJ,
+      </if>
+      <if test="glf != null">
+        GLF,
+      </if>
+      <if test="rgf != null">
+        RGF,
+      </if>
+      <if test="tgf != null">
+        TGF,
+      </if>
+      <if test="sgf != null">
+        SGF,
+      </if>
+      <if test="xsf != null">
+        XSF,
+      </if>
+      <if test="shf != null">
+        SHF,
+      </if>
+      <if test="xmfzrId != null">
+        XMFZR_ID,
+      </if>
+      <if test="xmfzrName != null">
+        XMFZR_NAME,
+      </if>
+      <if test="xmfzrXx != null">
+        XMFZR_XX,
+      </if>
+      <if test="xmjbrId != null">
+        XMJBR_ID,
+      </if>
+      <if test="xmjbrName != null">
+        XMJBR_NAME,
+      </if>
+      <if test="xmjbrXx != null">
+        XMJBR_XX,
+      </if>
+      <if test="fwfzrId != null">
+        FWFZR_ID,
+      </if>
+      <if test="fwfzrName != null">
+        FWFZR_NAME,
+      </if>
+      <if test="fwfzrXx != null">
+        FWFZR_XX,
+      </if>
+      <if test="fkfzrId != null">
+        FKFZR_ID,
+      </if>
+      <if test="fkfzrName != null">
+        FKFZR_NAME,
+      </if>
+      <if test="fkfzrXx != null">
+        FKFZR_XX,
+      </if>
+      <if test="cwfzrId != null">
+        CWFZR_ID,
+      </if>
+      <if test="cwfzrName != null">
+        CWFZR_NAME,
+      </if>
+      <if test="cwfzrXx != null">
+        CWFZR_XX,
+      </if>
+      <if test="xmqtcy != null">
+        XMQTCY,
+      </if>
+      <if test="xmqtcyId != null">
+        XMQTCY_ID,
+      </if>
+      <if test="xmqtcyName != null">
+        XMQTCY_NAME,
+      </if>
+      <if test="spr != null">
+        SPR,
+      </if>
+      <if test="sprId != null">
+        SPR_ID,
+      </if>
+      <if test="sprName != null">
+        SPR_NAME,
+      </if>
+      <if test="xmjd != null">
+        XMJD,
+      </if>
+      <if test="gdlb != null">
+        GDLB,
+      </if>
+      <if test="xxms != null">
+        XXMS,
+      </if>
+      <if test="jsyy != null">
+        JSYY,
+      </if>
+      <if test="gdsj != null">
+        gdsj,
+      </if>
+      <if test="creatorId != null">
+        CREATOR_ID,
+      </if>
+      <if test="creatorName != null">
+        CREATOR_NAME,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="dataStatus != null">
+        DATA_STATUS,
+      </if>
+      <if test="editTime != null">
+        EDIT_TIME,
+      </if>
+      <if test="editorId != null">
+        EDITOR_ID,
+      </if>
+      <if test="editorName != null">
+        EDITOR_NAME,
+      </if>
+      <if test="jsxmSpr != null">
+        JSXM_SPR,
+      </if>
+      <if test="jsxmSprId != null">
+        JSXM_SPR_ID,
+      </if>
+      <if test="jsxmSprName != null">
+        JSXM_SPR_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="ywlx != null">
+        #{ywlx,jdbcType=VARCHAR},
+      </if>
+      <if test="cpmc != null">
+        #{cpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cpgm != null">
+        #{cpgm,jdbcType=VARCHAR},
+      </if>
+      <if test="cpqx != null">
+        #{cpqx,jdbcType=VARCHAR},
+      </if>
+      <if test="yqsy != null">
+        #{yqsy,jdbcType=VARCHAR},
+      </if>
+      <if test="xmly != null">
+        #{xmly,jdbcType=VARCHAR},
+      </if>
+      <if test="zjly != null">
+        #{zjly,jdbcType=VARCHAR},
+      </if>
+      <if test="btfw != null">
+        #{btfw,jdbcType=VARCHAR},
+      </if>
+      <if test="cjzt != null">
+        #{cjzt,jdbcType=VARCHAR},
+      </if>
+      <if test="ztxm != null">
+        #{ztxm,jdbcType=VARCHAR},
+      </if>
+      <if test="jtxm != null">
+        #{jtxm,jdbcType=VARCHAR},
+      </if>
+      <if test="tztj != null">
+        #{tztj,jdbcType=VARCHAR},
+      </if>
+      <if test="glf != null">
+        #{glf,jdbcType=VARCHAR},
+      </if>
+      <if test="rgf != null">
+        #{rgf,jdbcType=VARCHAR},
+      </if>
+      <if test="tgf != null">
+        #{tgf,jdbcType=VARCHAR},
+      </if>
+      <if test="sgf != null">
+        #{sgf,jdbcType=VARCHAR},
+      </if>
+      <if test="xsf != null">
+        #{xsf,jdbcType=VARCHAR},
+      </if>
+      <if test="shf != null">
+        #{shf,jdbcType=VARCHAR},
+      </if>
+      <if test="xmfzrId != null">
+        #{xmfzrId,jdbcType=VARCHAR},
+      </if>
+      <if test="xmfzrName != null">
+        #{xmfzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="xmfzrXx != null">
+        #{xmfzrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjbrId != null">
+        #{xmjbrId,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjbrName != null">
+        #{xmjbrName,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjbrXx != null">
+        #{xmjbrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="fwfzrId != null">
+        #{fwfzrId,jdbcType=VARCHAR},
+      </if>
+      <if test="fwfzrName != null">
+        #{fwfzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="fwfzrXx != null">
+        #{fwfzrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="fkfzrId != null">
+        #{fkfzrId,jdbcType=VARCHAR},
+      </if>
+      <if test="fkfzrName != null">
+        #{fkfzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="fkfzrXx != null">
+        #{fkfzrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="cwfzrId != null">
+        #{cwfzrId,jdbcType=VARCHAR},
+      </if>
+      <if test="cwfzrName != null">
+        #{cwfzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="cwfzrXx != null">
+        #{cwfzrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="xmqtcy != null">
+        #{xmqtcy,jdbcType=VARCHAR},
+      </if>
+      <if test="xmqtcyId != null">
+        #{xmqtcyId,jdbcType=VARCHAR},
+      </if>
+      <if test="xmqtcyName != null">
+        #{xmqtcyName,jdbcType=VARCHAR},
+      </if>
+      <if test="spr != null">
+        #{spr,jdbcType=VARCHAR},
+      </if>
+      <if test="sprId != null">
+        #{sprId,jdbcType=VARCHAR},
+      </if>
+      <if test="sprName != null">
+        #{sprName,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjd != null">
+        #{xmjd,jdbcType=VARCHAR},
+      </if>
+      <if test="gdlb != null">
+        #{gdlb,jdbcType=VARCHAR},
+      </if>
+      <if test="xxms != null">
+        #{xxms,jdbcType=VARCHAR},
+      </if>
+      <if test="jsyy != null">
+        #{jsyy,jdbcType=VARCHAR},
+      </if>
+      <if test="gdsj != null">
+        #{gdsj,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorName != null">
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null">
+        #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="editTime != null">
+        #{editTime,jdbcType=CHAR},
+      </if>
+      <if test="editorId != null">
+        #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="editorName != null">
+        #{editorName,jdbcType=VARCHAR},
+      </if>
+      <if test="jsxmSpr != null">
+        #{jsxmSpr,jdbcType=VARCHAR},
+      </if>
+      <if test="jsxmSprId != null">
+        #{jsxmSprId,jdbcType=VARCHAR},
+      </if>
+      <if test="jsxmSprName != null">
+        #{jsxmSprName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.xmxxgl.bean.Xmxxgl">
+    update XMXXGL
+    <set>
+      <if test="ywlx != null">
+        YWLX = #{ywlx,jdbcType=VARCHAR},
+      </if>
+      <if test="cpmc != null">
+        CPMC = #{cpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cpgm != null">
+        CPGM = #{cpgm,jdbcType=VARCHAR},
+      </if>
+      <if test="cpqx != null">
+        CPQX = #{cpqx,jdbcType=VARCHAR},
+      </if>
+      <if test="yqsy != null">
+        YQSY = #{yqsy,jdbcType=VARCHAR},
+      </if>
+      <if test="xmly != null">
+        XMLY = #{xmly,jdbcType=VARCHAR},
+      </if>
+      <if test="zjly != null">
+        ZJLY = #{zjly,jdbcType=VARCHAR},
+      </if>
+      <if test="btfw != null">
+        BTFW = #{btfw,jdbcType=VARCHAR},
+      </if>
+      <if test="cjzt != null">
+        CJZT = #{cjzt,jdbcType=VARCHAR},
+      </if>
+      <if test="ztxm != null">
+        ZTXM = #{ztxm,jdbcType=VARCHAR},
+      </if>
+      <if test="jtxm != null">
+        JTXM = #{jtxm,jdbcType=VARCHAR},
+      </if>
+      <if test="tztj != null">
+        TZTJ = #{tztj,jdbcType=VARCHAR},
+      </if>
+      <if test="glf != null">
+        GLF = #{glf,jdbcType=VARCHAR},
+      </if>
+      <if test="rgf != null">
+        RGF = #{rgf,jdbcType=VARCHAR},
+      </if>
+      <if test="tgf != null">
+        TGF = #{tgf,jdbcType=VARCHAR},
+      </if>
+      <if test="sgf != null">
+        SGF = #{sgf,jdbcType=VARCHAR},
+      </if>
+      <if test="xsf != null">
+        XSF = #{xsf,jdbcType=VARCHAR},
+      </if>
+      <if test="shf != null">
+        SHF = #{shf,jdbcType=VARCHAR},
+      </if>
+      <if test="xmfzrId != null">
+        XMFZR_ID = #{xmfzrId,jdbcType=VARCHAR},
+      </if>
+      <if test="xmfzrName != null">
+        XMFZR_NAME = #{xmfzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="xmfzrXx != null">
+        XMFZR_XX = #{xmfzrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjbrId != null">
+        XMJBR_ID = #{xmjbrId,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjbrName != null">
+        XMJBR_NAME = #{xmjbrName,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjbrXx != null">
+        XMJBR_XX = #{xmjbrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="fwfzrId != null">
+        FWFZR_ID = #{fwfzrId,jdbcType=VARCHAR},
+      </if>
+      <if test="fwfzrName != null">
+        FWFZR_NAME = #{fwfzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="fwfzrXx != null">
+        FWFZR_XX = #{fwfzrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="fkfzrId != null">
+        FKFZR_ID = #{fkfzrId,jdbcType=VARCHAR},
+      </if>
+      <if test="fkfzrName != null">
+        FKFZR_NAME = #{fkfzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="fkfzrXx != null">
+        FKFZR_XX = #{fkfzrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="cwfzrId != null">
+        CWFZR_ID = #{cwfzrId,jdbcType=VARCHAR},
+      </if>
+      <if test="cwfzrName != null">
+        CWFZR_NAME = #{cwfzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="cwfzrXx != null">
+        CWFZR_XX = #{cwfzrXx,jdbcType=VARCHAR},
+      </if>
+      <if test="xmqtcy != null">
+        XMQTCY = #{xmqtcy,jdbcType=VARCHAR},
+      </if>
+      <if test="xmqtcyId != null">
+        XMQTCY_ID = #{xmqtcyId,jdbcType=VARCHAR},
+      </if>
+      <if test="xmqtcyName != null">
+        XMQTCY_NAME = #{xmqtcyName,jdbcType=VARCHAR},
+      </if>
+      <if test="spr != null">
+        SPR = #{spr,jdbcType=VARCHAR},
+      </if>
+      <if test="sprId != null">
+        SPR_ID = #{sprId,jdbcType=VARCHAR},
+      </if>
+      <if test="sprName != null">
+        SPR_NAME = #{sprName,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjd != null">
+        XMJD = #{xmjd,jdbcType=VARCHAR},
+      </if>
+      <if test="gdlb != null">
+        GDLB = #{gdlb,jdbcType=VARCHAR},
+      </if>
+      <if test="xxms != null">
+        XXMS = #{xxms,jdbcType=VARCHAR},
+      </if>
+      <if test="jsyy != null">
+        JSYY = #{jsyy,jdbcType=VARCHAR},
+      </if>
+      <if test="gdsj != null">
+        gdsj = #{gdsj,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null">
+        CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorName != null">
+        CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null">
+        DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="editTime != null">
+        EDIT_TIME = #{editTime,jdbcType=CHAR},
+      </if>
+      <if test="editorId != null">
+        EDITOR_ID = #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="editorName != null">
+        EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+      </if>
+      <if test="jsxmSpr != null">
+        JSXM_SPR = #{jsxmSpr,jdbcType=VARCHAR},
+      </if>
+      <if test="jsxmSprId != null">
+        JSXM_SPR_ID = #{jsxmSprId,jdbcType=VARCHAR},
+      </if>
+      <if test="jsxmSprName != null">
+        JSXM_SPR_NAME = #{jsxmSprName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.xmxxgl.bean.Xmxxgl">
+    update XMXXGL
+    set YWLX = #{ywlx,jdbcType=VARCHAR},
+      CPMC = #{cpmc,jdbcType=VARCHAR},
+      CPGM = #{cpgm,jdbcType=VARCHAR},
+      CPQX = #{cpqx,jdbcType=VARCHAR},
+      YQSY = #{yqsy,jdbcType=VARCHAR},
+      XMLY = #{xmly,jdbcType=VARCHAR},
+      ZJLY = #{zjly,jdbcType=VARCHAR},
+      BTFW = #{btfw,jdbcType=VARCHAR},
+      CJZT = #{cjzt,jdbcType=VARCHAR},
+      ZTXM = #{ztxm,jdbcType=VARCHAR},
+      JTXM = #{jtxm,jdbcType=VARCHAR},
+      TZTJ = #{tztj,jdbcType=VARCHAR},
+      GLF = #{glf,jdbcType=VARCHAR},
+      RGF = #{rgf,jdbcType=VARCHAR},
+      TGF = #{tgf,jdbcType=VARCHAR},
+      SGF = #{sgf,jdbcType=VARCHAR},
+      XSF = #{xsf,jdbcType=VARCHAR},
+      SHF = #{shf,jdbcType=VARCHAR},
+      XMFZR_ID = #{xmfzrId,jdbcType=VARCHAR},
+      XMFZR_NAME = #{xmfzrName,jdbcType=VARCHAR},
+      XMFZR_XX = #{xmfzrXx,jdbcType=VARCHAR},
+      XMJBR_ID = #{xmjbrId,jdbcType=VARCHAR},
+      XMJBR_NAME = #{xmjbrName,jdbcType=VARCHAR},
+      XMJBR_XX = #{xmjbrXx,jdbcType=VARCHAR},
+      FWFZR_ID = #{fwfzrId,jdbcType=VARCHAR},
+      FWFZR_NAME = #{fwfzrName,jdbcType=VARCHAR},
+      FWFZR_XX = #{fwfzrXx,jdbcType=VARCHAR},
+      FKFZR_ID = #{fkfzrId,jdbcType=VARCHAR},
+      FKFZR_NAME = #{fkfzrName,jdbcType=VARCHAR},
+      FKFZR_XX = #{fkfzrXx,jdbcType=VARCHAR},
+      CWFZR_ID = #{cwfzrId,jdbcType=VARCHAR},
+      CWFZR_NAME = #{cwfzrName,jdbcType=VARCHAR},
+      CWFZR_XX = #{cwfzrXx,jdbcType=VARCHAR},
+      XMQTCY = #{xmqtcy,jdbcType=VARCHAR},
+      XMQTCY_ID = #{xmqtcyId,jdbcType=VARCHAR},
+      XMQTCY_NAME = #{xmqtcyName,jdbcType=VARCHAR},
+      SPR = #{spr,jdbcType=VARCHAR},
+      SPR_ID = #{sprId,jdbcType=VARCHAR},
+      SPR_NAME = #{sprName,jdbcType=VARCHAR},
+      XMJD = #{xmjd,jdbcType=VARCHAR},
+      GDLB = #{gdlb,jdbcType=VARCHAR},
+      XXMS = #{xxms,jdbcType=VARCHAR},
+      JSYY = #{jsyy,jdbcType=VARCHAR},
+      gdsj = #{gdsj,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      EDIT_TIME = #{editTime,jdbcType=CHAR},
+      EDITOR_ID = #{editorId,jdbcType=INTEGER},
+      EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+      JSXM_SPR = #{jsxmSpr,jdbcType=VARCHAR},
+      JSXM_SPR_ID = #{jsxmSprId,jdbcType=VARCHAR},
+      JSXM_SPR_NAME = #{jsxmSprName,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectXmxxglList" parameterType="com.hwp.common.model.xmxxgl.bean.Xmxxgl" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from XMXXGL
+    <where>
+      <if test="name != null">
+        and CPMC like CONCAT('%',#{cpmc},'%')
+      </if>
+      <if test="startDate != null">
+        AND CREATE_TIME <![CDATA[>=]]> #{startTime,jdbcType=VARCHAR}
+      </if>
+      <if test="endDate != null">
+        AND CREATE_TIME <![CDATA[<=]]> #{endTime,jdbcType=VARCHAR}
+      </if>
+      <if test="dept != null">
+        and YWLX = #{ywlx,jdbcType=VARCHAR}
+      </if>
+      <if test="rank != null">
+        and XMJD = #{xmjd,jdbcType=VARCHAR}
+      </if>
+        <if test="ryid != null">
+            and (XMQTCY like CONCAT('%',#{ryid},'%') OR XMFZR_ID = #{ryid,jdbcType=VARCHAR} OR XMJBR_ID = #{ryid,jdbcType=VARCHAR} OR FWFZR_ID = #{ryid,jdbcType=VARCHAR} OR FKFZR_ID = #{ryid,jdbcType=VARCHAR} OR CWFZR_ID = #{ryid,jdbcType=VARCHAR})
+        </if>
+    </where>
+    ORDER BY CREATE_TIME DESC
+  </select>
+  <select id="listXmxxglByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from XMXXGL
+    <where>
+      <if test="name != null">
+        and CPMC like CONCAT('%',#{cpmc},'%')
+      </if>
+      <if test="startDate != null">
+        AND CREATE_TIME <![CDATA[>=]]> #{startTime,jdbcType=VARCHAR}
+      </if>
+      <if test="endDate != null">
+        AND CREATE_TIME <![CDATA[<=]]> #{endTime,jdbcType=VARCHAR}
+      </if>
+      <if test="dept != null">
+        and YWLX = #{ywlx,jdbcType=VARCHAR}
+      </if>
+      <if test="rank != null">
+        and XMJD = #{xmjd,jdbcType=VARCHAR}
+      </if>
+        <if test="ryid != null">
+            and (XMQTCY like CONCAT('%',#{ryid},'%') OR XMFZR_ID = #{ryid,jdbcType=VARCHAR} OR XMJBR_ID = #{ryid,jdbcType=VARCHAR} OR FWFZR_ID = #{ryid,jdbcType=VARCHAR} OR FKFZR_ID = #{ryid,jdbcType=VARCHAR} OR CWFZR_ID = #{ryid,jdbcType=VARCHAR})
+        </if>
+    </where>
+    ORDER BY CREATE_TIME DESC
+  </select>
+
+</mapper>

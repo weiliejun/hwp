@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>产品信息审核列表</title>
+</head>
+<body class="layui-layout-body" style="overflow: auto">
+<div class="layui-layout layui-layout-admin">
+
+    <!--<div class="layui-body">-->
+    <!-- 内容主体区域 -->
+    <!--style="padding: 15px;"-->
+    <div>
+        <h3 class="titNav">
+            <a href="javascript:;">产品信息审核</a>
+        </h3>
+        <hr>
+
+        <div class="layui-form layui-card-header" style="padding-bottom:15px;padding-top:10px;">
+            <form id="searchForm" class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">产品名称</label>
+                        <div class="layui-input-block">
+                            <input id="name" type="text" name="name" class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">产品编码</label>
+                        <div class="layui-input-block">
+                            <input id="code" type="text" name="code" class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">提交时间</label>
+                        <div class="layui-inline">
+                            <input id="timeScope" name="timeScope" type="text" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <a class="layui-btn " data-type="search">
+                            <i class="layui-icon layui-icon-search"></i>查询
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--<div class="layui-btn-container">-->
+        <!--</div>-->
+        <script type="text/html" id="productExam-row-bar">
+            <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="productCope"><i
+                    class="layui-icon layui-icon-cope"></i>复制
+            </button>
+            {{#  if(d.tenderAuditStatus === 'init'){ }}
+            <button class="layui-btn layui-btn-xs" lay-event="productExamEdit"><i
+                    class="layui-icon layui-icon-edit"></i>审核
+            </button>
+            {{#  } else { }}
+            {{#  if(d.tenderAuditStatus === 'finish'){ }}
+            <a class="" lay-event="do"><i class="fa fa-ban"></i>&nbsp;审核完成</a>
+            {{#  } else { }}
+            {{#  if(d.tenderAuditStatus === 'processing'){ }}
+            <button class="layui-btn layui-btn-xs" lay-event="productExamEdit"><i
+                    class="layui-icon layui-icon-edit"></i>审核
+            </button>
+            {{#  } else { }}
+            <a class="" lay-event="do"><i class="fa fa-ban"></i>&nbsp;---</a>
+            {{#  } }}
+            {{#  } }}
+            {{#  } }}
+        </script>
+
+        <div class="layui-row" style="padding:0 40px;">
+            <table id="productExam-table" class="layui-table recordInfo" lay-filter="productExam-table"></table>
+        </div>
+        <!--分页-->
+        <!--<div id="myPage" class="layui-clear"></div>-->
+    </div>
+    <!--</div>-->
+    <!--主题内容结束-->
+
+    <script id="repayType" type="text/html">
+        {{#  if(d.repayType === undefined){ }}
+        未知
+        {{#  } else { }}
+        {{#  if(d.repayType === 'principalAndInterestTotally'){ }}
+        一次性还本息
+        {{#  } else { }}
+        {{#  if(d.repayType === 'equalInterestAnnually'){ }}
+        按年付息，到期还本
+        {{#  } else { }}
+        {{#  if(d.repayType === 'equalInterestSemiannually'){ }}
+        按半年付息，到期还本
+        {{#  } else { }}
+        {{#  if(d.repayType === 'equalInterestQuarterly'){ }}
+        按季付息，到期还本
+        {{#  } else { }}
+        {{#  if(d.repayType === 'equalInterestMonthly'){ }}
+        按月付息，到期还本
+        {{#  } else { }}
+        {{#  if(d.repayType === 'equalPrincipalAndInterestMonthly'){ }}
+        等额本息（月）
+        {{#  } else { }}
+        ---
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+    </script>
+
+    <script id="auditStatus" type="text/html">
+        {{#  if(d.auditStatus === undefined){ }}
+        未知
+        {{#  } else { }}
+        {{#  if(d.auditStatus === 'init'){ }}
+        待提交
+        {{#  } else { }}
+        {{#  if(d.auditStatus === 'submit'){ }}
+        提交审核
+        {{#  } else { }}
+        {{#  if(d.auditStatus === 'processing'){ }}
+        审核处理中
+        {{#  } else { }}
+        {{#  if(d.auditStatus === 'fail'){ }}
+        审核不通过
+        {{#  } else { }}
+        {{#  if(d.auditStatus === 'success'){ }}
+        审核成功
+        {{#  } else { }}
+        --
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+        {{#  } }}
+    </script>
+    <!--<div class="layui-footer">-->
+    <!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--勘设底部区域-->
+    <!--</div>-->
+</div>
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+<script type="text/javascript" th:src="@{/js/app/product/listExam.js}"></script>
+<!--<script>-->
+
+<!--layui.use('laydate', function(){-->
+<!--var laydate = layui.laydate;-->
+<!--//日期时间选择范围-->
+<!--laydate.render({-->
+<!--elem: '#timeScope' //指定元素-->
+<!--//,type: 'datetime'    //是否显示时间-->
+<!--,trigger: 'click'-->
+<!--//,lang: 'en'    //英文-->
+<!--,range: true //开启日期范围，默认使用“_”分割-->
+<!--});-->
+<!--});-->
+
+<!--/*分页*/-->
+<!--layui.use('laypage', function(){-->
+<!--var laypage=layui.laypage;-->
+<!--laypage.render({-->
+<!--elem: 'myPage',-->
+<!--count: 1000,-->
+<!--layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],-->
+<!--jump: function(obj){-->
+<!--console.log(obj)-->
+<!--}-->
+<!--});-->
+<!--});-->
+<!---->
+
+<!--</script>-->
+</body>
+</html>

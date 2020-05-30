@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myProductMapper">
+    <resultMap id="productTenderResultMap" type="com.hwp.common.model.tender.pojo.MyProduct">
+        <id column="PRODUCT_ID" jdbcType="VARCHAR" property="productId"/>
+        <result column="productSum" jdbcType="VARCHAR" property="productSum"/>
+        <result column="yuJiPoFit" jdbcType="VARCHAR" property="yuJiPoFit"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <!--<result column="fistTime" jdbcType="VARCHAR" property="createTime"/>-->
+        <result column="USER_INFO_ID" jdbcType="VARCHAR" property="userInfoId"/>
+        <result column="REPAY_START_DATE" property="repayStartDate" jdbcType="CHAR"/>
+        <result column="REPAY_END_DATE" property="repayEndDate" jdbcType="CHAR"/>
+    </resultMap>
+    <select id="selectMyProductByUserId" parameterType="com.hwp.common.model.tender.pojo.MyProduct"
+            resultMap="productTenderResultMap">
+        SELECT PRODUCT_ID,
+        CONVERT (CONVERT (SUM(t.TRANS_AMOUNT), DECIMAL(10,2)) , CHAR) productSum,
+        CONVERT (CONVERT (p.ANNUAL_RATE*SUM(t.TRANS_AMOUNT)/365, DECIMAL(10,2)) , CHAR) yuJiPoFit,
+        NAME,p.STATUS,REPAY_START_DATE, REPAY_END_DATE
+        FROM PRODUCT p INNER JOIN TENDER t ON p.id=t.PRODUCT_ID
+        WHERE USER_INFO_ID=#{userInfoId,jdbcType=VARCHAR} and p.DATA_STATUS='1' and t.DATA_STATUS='1'
+        and  p.STATUS='fail' or  p.STATUS='tender' or  p.STATUS='cancel' or  p.STATUS='repaying'
+        GROUP BY t.PRODUCT_ID
+    </select>
+
+    <select id="selectReturnByUserId" parameterType="com.hwp.common.model.tender.pojo.MyProduct"
+            resultMap="productTenderResultMap">
+        SELECT PRODUCT_ID,
+        CONVERT (CONVERT (SUM(t.TRANS_AMOUNT), DECIMAL(10,2)) , CHAR) productSum,
+        CONVERT (CONVERT (p.ANNUAL_RATE*SUM(t.TRANS_AMOUNT)/365, DECIMAL(10,2)) , CHAR) yuJiPoFit,
+        NAME,p.STATUS,REPAY_START_DATE, REPAY_END_DATE
+        FROM PRODUCT p INNER JOIN TENDER t ON p.id=t.PRODUCT_ID
+        WHERE USER_INFO_ID=#{userInfoId,jdbcType=VARCHAR} and p.DATA_STATUS='1' and t.DATA_STATUS='1'
+        and  p.STATUS='repaying'
+        GROUP BY t.PRODUCT_ID
+    </select>
+
+    <select id="selectReturnMyProductByUserId" parameterType="com.hwp.common.model.tender.pojo.MyProduct"
+            resultMap="productTenderResultMap">
+        SELECT PRODUCT_ID,
+        CONVERT (CONVERT (SUM(t.TRANS_AMOUNT), DECIMAL(10,2)) , CHAR) productSum,
+        CONVERT (CONVERT (p.ANNUAL_RATE*SUM(t.TRANS_AMOUNT)/365, DECIMAL(10,2)) , CHAR) yuJiPoFit,
+        NAME,p.STATUS,REPAY_START_DATE, REPAY_END_DATE
+        FROM PRODUCT p INNER JOIN TENDER t ON p.id=t.PRODUCT_ID
+        WHERE USER_INFO_ID=#{userInfoId,jdbcType=VARCHAR} and p.DATA_STATUS='1' and t.DATA_STATUS='1'
+        and p.STATUS='repayed' or p.STATUS='prepayed'
+        <if test="status!=null || status!=''">
+            or p.STATUS=#{status,jdbcType=VARCHAR}
+        </if>
+        GROUP BY t.PRODUCT_ID
+    </select>
+
+    <select id="selectMyProductAllProductSumByUserId" parameterType="com.hwp.common.model.tender.pojo.MyProduct"
+            resultType="String">
+     SELECT CONVERT(CONVERT (SUM(TRANS_AMOUNT), DECIMAL(10,2)) , CHAR)  productSum
+     FROM TENDER
+     WHERE USER_INFO_ID=#{userInfoId,jdbcType=VARCHAR} AND DATA_STATUS='1'
+     AND STATUS='repaying' or STATUS='tender' or  STATUS='cancel'
+    </select>
+
+
+</mapper>

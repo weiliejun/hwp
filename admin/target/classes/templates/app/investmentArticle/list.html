@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>投资观点</title>
+</head>
+<body>
+<!--<body class="layui-layout-body">-->
+<!--<div class="layui-layout layui-layout-admin">-->
+<!-- <div class="layui-header">
+   <div class="layui-logo">layui 后台布局</div>
+   &lt;!&ndash; 头部区域（可配合layui已有的水平导航） &ndash;&gt;
+   <ul class="layui-nav layui-layout-left">
+     <li class="layui-nav-item"><a href="">控制台</a></li>
+     <li class="layui-nav-item"><a href="">商品管理</a></li>
+     <li class="layui-nav-item"><a href="">用户</a></li>
+     <li class="layui-nav-item">
+       <a href="javascript:;">其它系统</a>
+       <dl class="layui-nav-child">
+         <dd><a href="">邮件管理</a></dd>
+         <dd><a href="">消息管理</a></dd>
+         <dd><a href="">授权管理</a></dd>
+       </dl>
+     </li>
+   </ul>
+   <ul class="layui-nav layui-layout-right">
+     <li class="layui-nav-item">
+       <a href="javascript:;">
+         <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+         贤心
+       </a>
+       <dl class="layui-nav-child">
+         <dd><a href="">基本资料</a></dd>
+         <dd><a href="">安全设置</a></dd>
+       </dl>
+     </li>
+     <li class="layui-nav-item"><a href="">退了</a></li>
+   </ul>
+ </div>
+
+ <div class="layui-side layui-bg-black">
+   <div class="layui-side-scroll">
+     &lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;
+     <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+       <li class="layui-nav-item layui-nav-itemed">
+         <a class="" href="javascript:;">所有商品</a>
+         <dl class="layui-nav-child">
+           <dd><a href="javascript:;">列表一</a></dd>
+           <dd><a href="javascript:;">列表二</a></dd>
+           <dd><a href="javascript:;">列表三</a></dd>
+           <dd><a href="">超链接</a></dd>
+         </dl>
+       </li>
+       <li class="layui-nav-item">
+         <a href="javascript:;">解决方案</a>
+         <dl class="layui-nav-child">
+           <dd><a href="javascript:;">列表一</a></dd>
+           <dd><a href="javascript:;">列表二</a></dd>
+           <dd><a href="">超链接</a></dd>
+         </dl>
+       </li>
+       <li class="layui-nav-item"><a href="">云市场</a></li>
+       <li class="layui-nav-item"><a href="">发布商品</a></li>
+     </ul>
+   </div>
+ </div>-->
+
+
+<div class="layui-fluid">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <fieldset class="layui-elem-field" style="margin:0 0 0 40px;padding:0 40px;">
+            <legend>查询条件</legend>
+            <div class="layui-field-box" style="padding-top:15px;">
+                <form class="layui-form" id="searchForm">
+                    <div class="layui-form-item" style="padding-top:0px;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">标题：</label>
+                            <div class="layui-input-block">
+                                <input id="title" type="text" name="title" placeholder="请输入文章标题" class="layui-input"
+                                       th:value="${title}">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">创建时间：</label>
+                            <div class="layui-input-block">
+                                <input id="rangeTime1" type="text" name="createTimeScope" placeholder="时间范围"
+                                       class="layui-input"
+                                       value="">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">状态：</label>
+                            <div class="layui-input-block">
+                                <select name="status" lay-verify="required">
+                                    <option value="">全部</option>
+                                    <option value="1">上架</option>
+                                    <option value="2">下架</option>
+                                    <option value="0">草稿箱</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form" style="padding-bottom:0px;">
+                        <ul class="orderFormInfo layui-clear diffFormInfo2">
+                            <li>
+                                <span>来源：</span>
+                                <input type="text" name="source" placeholder="请输入文章来源" class="layui-input"/>
+                            </li>
+                            <li>
+                                <button type="button" class="layui-btn" data-type="search">查询</button>
+                                <button type="button" class="layui-btn" data-type="add">新建</button>
+                                <button type="button" class="layui-btn" data-type="searchFormClear">重置</button>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </fieldset>
+        <!--<div class="layui-row">-->
+        <div class="layui-row" style="padding:0 40px;">
+            <table class="layui-table recordInfo" id="investmentArticleTables" lay-filter="investmentArticleTables">
+                <!--<colgroup>-->
+                <!--  <col width="150">-->
+                <!--  <col width="200">-->
+                <!--  <col>-->
+                <!--</colgroup>-->
+                <!--<thead>-->
+                <!--  <tr>-->
+                <!--    <th>ID</th>-->
+                <!--    <th>标题</th>-->
+                <!--    <th>来源</th>-->
+                <!--    <th>状态</th>-->
+                <!--    <th>创建人</th>-->
+                <!--    <th>创建时间</th>-->
+                <!--    <th>更新时间</th>-->
+                <!--    <th>操作</th>-->
+                <!--  </tr> -->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--  <tr>-->
+                <!--    <td>1</td>-->
+                <!--    <td>油价短线跳水！WTI原油失守50美元整数关口 续创13个月低位</td>-->
+                <!--    <td>东方财富</td>-->
+                <!--    <td>上架</td>-->
+                <!--    <td>牟元佳</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>-->
+                <!--      <a href="javascript:;">上架</a> |-->
+                <!--      <a href="javascript:;">上架</a> |-->
+                <!--      <a href="javascript:;">上架</a>-->
+                <!--    </td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>2</td>-->
+                <!--    <td>28部门发布联合备忘录：IPO审核将参考申请对象社保失信信息</td>-->
+                <!--    <td>东方财富</td>-->
+                <!--    <td>已下架</td>-->
+                <!--    <td>牟元佳</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>-->
+                <!--      <a href="javascript:;">上架</a> |-->
+                <!--      <a href="javascript:;">上架</a> |-->
+                <!--      <a href="javascript:;">上架</a>-->
+                <!--    </td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>3</td>-->
+                <!--    <td>再次过堂，中粮地产坚持高溢价收购大悦城前景几何</td>-->
+                <!--    <td>第一财经</td>-->
+                <!--    <td>草稿箱</td>-->
+                <!--    <td>牟元佳</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>-->
+                <!--      <a href="javascript:;">上架</a> |-->
+                <!--      <a href="javascript:;">下架</a> |-->
+                <!--      <a href="javascript:;">修改</a>-->
+                <!--    </td>-->
+                <!--  </tr>-->
+                <!--</tbody>-->
+            </table>
+
+            <script id="status" type="text/html">
+                {{#  if(d.status === undefined){ }}
+                未知
+                {{#  } else { }}
+                {{#  if(d.status === '0'){ }}
+                草稿箱
+                {{#  } }}
+                {{#  if(d.status === '1'){ }}
+                上架
+                {{#  } }}
+                {{#  if(d.status === '2'){ }}
+                下架
+                {{#  } }}
+                {{#  } }}
+            </script>
+            <script id="investmentArticleBar" type="text/html">
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="up"><i
+                        class="layui-icon fa-ban"></i>上架</a>
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="down"><i class="fa fa-ban"></i>&nbsp;下架</a>
+                <a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon">&#xe642;</i>修改</a>
+            </script>
+
+        </div>
+        <!--分页-->
+        <!--<div id="myPage" class="layui-clear"></div>-->
+        </form>
+    </div>
+</div>
+<!--主体内容结束-->
+
+<!--<div class="layui-footer">
+  &lt;!&ndash; 底部固定区域 &ndash;&gt;
+  © layui.com - 底部固定区域
+</div>-->
+<!--</div>-->
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+<script type="text/javascript" th:src="@{/js/app/investmentArticle/list.js}"></script>
+<script type="javascript" th:inline="none">
+
+
+    // //初始化layui
+    // layui.use('element', function(){
+    //   var element = layui.element;
+    // });
+    //
+    // /*分页*/
+    // var laypage=layui.laypage;
+    // laypage.render({
+    //   elem: 'myPage',
+    //   count: 1000,
+    //   layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+    //   jump: function(obj){
+    //     console.log(obj)
+    //   }
+    // });
+    //
+    // layui.use('laydate', function(){
+    //   var laydate = layui.laydate;
+    //   //日期时间选择范围
+    //   laydate.render({
+    //     elem: '#rangeTime1' //指定元素
+    //     ,trigger: 'click'
+    //     ,range: true //开启日期范围，默认使用“_”分割
+    //   });
+    // });
+
+
+</script>
+</body>
+</html>

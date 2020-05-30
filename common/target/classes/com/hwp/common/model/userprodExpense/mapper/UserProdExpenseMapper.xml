@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UserProdExpense">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userprodExpense.bean.UserProdExpense">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="PROD_SUB_ID" property="prodSubId" jdbcType="VARCHAR"/>
+        <result column="TRS_AMOUNT" property="trsAmount" jdbcType="DECIMAL"/>
+        <result column="PROD_ID" property="prodId" jdbcType="VARCHAR"/>
+        <result column="TRS_PASSWORD" property="trsPassword" jdbcType="VARCHAR"/>
+        <result column="TRS_PASSWPRD_FLAG" property="trsPasswprdFlag" jdbcType="VARCHAR"/>
+        <result column="ACCT_NO" property="acctNo" jdbcType="VARCHAR"/>
+        <result column="TRANS_TIME" property="transTime" jdbcType="VARCHAR"/>
+        <result column="TRANS_DATE" property="transDate" jdbcType="VARCHAR"/>
+        <result column="TOTAL_SHARE" property="totalShare" jdbcType="DECIMAL"/>
+        <result column="LOADING_SHARE" property="loadingShare" jdbcType="DECIMAL"/>
+        <result column="CHANNEL_JNL_NO" property="channelJnlNo" jdbcType="VARCHAR"/>
+        <result column="JS_JNL_NO" property="jsJnlNo" jdbcType="VARCHAR"/>
+        <result column="APPOINT_FLG" property="appointFlg" jdbcType="VARCHAR"/>
+        <result column="RE_MSG" property="reMsg" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="TRS_TYPE" property="trsType" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="ORI_JNL_NO" property="oriJnlNo" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="STATUS_RETUEN_MSG" property="statusRetuenMsg" jdbcType="VARCHAR"/>
+        <result column="STATUS_RETURN_CODE" property="statusReturnCode" jdbcType="VARCHAR"/>
+        <result column="RETUEN_MSG" property="retuenMsg" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.userprodExpense.bean.UserProdExpense"
+               extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, PROD_SUB_ID, TRS_AMOUNT, PROD_ID, TRS_PASSWORD, TRS_PASSWPRD_FLAG, ACCT_NO, 
+    TRANS_TIME, TRANS_DATE, TOTAL_SHARE, LOADING_SHARE, CHANNEL_JNL_NO, JS_JNL_NO, APPOINT_FLG, 
+    RE_MSG, STATUS, TRS_TYPE, DATA_STATUS, UUID, ORI_JNL_NO, CREATE_TIME, STATUS_RETUEN_MSG, 
+    STATUS_RETURN_CODE, RETUEN_MSG, RETURN_CODE
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_PROD_EXPENSE
+        where ID = #{userId,jdbcType=VARCHAR} and DATA_STATUS = '1'
+    </select>
+    <select id="selectByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_PROD_EXPENSE
+        where USER_ID = #{id,jdbcType=VARCHAR} and DATA_STATUS = '1'
+    </select>
+    <select id="selectByOriJnlNo" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_PROD_EXPENSE
+        where ORI_JNL_NO = #{oriJnlNo,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from USER_PROD_EXPENSE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.userprodExpense.bean.UserProdExpense">
+    insert into USER_PROD_EXPENSE (ID, USER_ID, PROD_SUB_ID, 
+      TRS_AMOUNT, PROD_ID, TRS_PASSWORD, 
+      TRS_PASSWPRD_FLAG, ACCT_NO, TRANS_TIME, 
+      TRANS_DATE, TOTAL_SHARE, LOADING_SHARE, 
+      CHANNEL_JNL_NO, JS_JNL_NO, APPOINT_FLG, 
+      RE_MSG, STATUS, TRS_TYPE, 
+      DATA_STATUS, UUID, ORI_JNL_NO, 
+      CREATE_TIME, STATUS_RETUEN_MSG, STATUS_RETURN_CODE, 
+      RETUEN_MSG, RETURN_CODE, REMARK
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{prodSubId,jdbcType=VARCHAR}, 
+      #{trsAmount,jdbcType=DECIMAL}, #{prodId,jdbcType=VARCHAR}, #{trsPassword,jdbcType=VARCHAR}, 
+      #{trsPasswprdFlag,jdbcType=VARCHAR}, #{acctNo,jdbcType=VARCHAR}, #{transTime,jdbcType=VARCHAR}, 
+      #{transDate,jdbcType=VARCHAR}, #{totalShare,jdbcType=DECIMAL}, #{loadingShare,jdbcType=DECIMAL}, 
+      #{channelJnlNo,jdbcType=VARCHAR}, #{jsJnlNo,jdbcType=VARCHAR}, #{appointFlg,jdbcType=VARCHAR}, 
+      #{reMsg,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{trsType,jdbcType=VARCHAR}, 
+      #{dataStatus,jdbcType=CHAR}, #{uuid,jdbcType=VARCHAR}, #{oriJnlNo,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{statusRetuenMsg,jdbcType=VARCHAR}, #{statusReturnCode,jdbcType=VARCHAR}, 
+      #{retuenMsg,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.userprodExpense.bean.UserProdExpense">
+        insert into USER_PROD_EXPENSE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="prodSubId != null">
+                PROD_SUB_ID,
+            </if>
+            <if test="trsAmount != null">
+                TRS_AMOUNT,
+            </if>
+            <if test="prodId != null">
+                PROD_ID,
+            </if>
+            <if test="trsPassword != null">
+                TRS_PASSWORD,
+            </if>
+            <if test="trsPasswprdFlag != null">
+                TRS_PASSWPRD_FLAG,
+            </if>
+            <if test="acctNo != null">
+                ACCT_NO,
+            </if>
+            <if test="transTime != null">
+                TRANS_TIME,
+            </if>
+            <if test="transDate != null">
+                TRANS_DATE,
+            </if>
+            <if test="totalShare != null">
+                TOTAL_SHARE,
+            </if>
+            <if test="loadingShare != null">
+                LOADING_SHARE,
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO,
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO,
+            </if>
+            <if test="appointFlg != null">
+                APPOINT_FLG,
+            </if>
+            <if test="reMsg != null">
+                RE_MSG,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="trsType != null">
+                TRS_TYPE,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="oriJnlNo != null">
+                ORI_JNL_NO,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="statusRetuenMsg != null">
+                STATUS_RETUEN_MSG,
+            </if>
+            <if test="statusReturnCode != null">
+                STATUS_RETURN_CODE,
+            </if>
+            <if test="retuenMsg != null">
+                RETUEN_MSG,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubId != null">
+                #{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="trsAmount != null">
+                #{trsAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="prodId != null">
+                #{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPassword != null">
+                #{trsPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPasswprdFlag != null">
+                #{trsPasswprdFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctNo != null">
+                #{acctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="transTime != null">
+                #{transTime,jdbcType=VARCHAR},
+            </if>
+            <if test="transDate != null">
+                #{transDate,jdbcType=VARCHAR},
+            </if>
+            <if test="totalShare != null">
+                #{totalShare,jdbcType=DECIMAL},
+            </if>
+            <if test="loadingShare != null">
+                #{loadingShare,jdbcType=DECIMAL},
+            </if>
+            <if test="channelJnlNo != null">
+                #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="appointFlg != null">
+                #{appointFlg,jdbcType=VARCHAR},
+            </if>
+            <if test="reMsg != null">
+                #{reMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="trsType != null">
+                #{trsType,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="oriJnlNo != null">
+                #{oriJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="statusRetuenMsg != null">
+                #{statusRetuenMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="statusReturnCode != null">
+                #{statusReturnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="retuenMsg != null">
+                #{retuenMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.userprodExpense.bean.UserProdExpense">
+        update USER_PROD_EXPENSE
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubId != null">
+                PROD_SUB_ID = #{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="trsAmount != null">
+                TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="prodId != null">
+                PROD_ID = #{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPassword != null">
+                TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPasswprdFlag != null">
+                TRS_PASSWPRD_FLAG = #{trsPasswprdFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctNo != null">
+                ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="transTime != null">
+                TRANS_TIME = #{transTime,jdbcType=VARCHAR},
+            </if>
+            <if test="transDate != null">
+                TRANS_DATE = #{transDate,jdbcType=VARCHAR},
+            </if>
+            <if test="totalShare != null">
+                TOTAL_SHARE = #{totalShare,jdbcType=DECIMAL},
+            </if>
+            <if test="loadingShare != null">
+                LOADING_SHARE = #{loadingShare,jdbcType=DECIMAL},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="appointFlg != null">
+                APPOINT_FLG = #{appointFlg,jdbcType=VARCHAR},
+            </if>
+            <if test="reMsg != null">
+                RE_MSG = #{reMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="trsType != null">
+                TRS_TYPE = #{trsType,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="oriJnlNo != null">
+                ORI_JNL_NO = #{oriJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="statusRetuenMsg != null">
+                STATUS_RETUEN_MSG = #{statusRetuenMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="statusReturnCode != null">
+                STATUS_RETURN_CODE = #{statusReturnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="retuenMsg != null">
+                RETUEN_MSG = #{retuenMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.userprodExpense.bean.UserProdExpense">
+    update USER_PROD_EXPENSE
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      PROD_SUB_ID = #{prodSubId,jdbcType=VARCHAR},
+      TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL},
+      PROD_ID = #{prodId,jdbcType=VARCHAR},
+      TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+      TRS_PASSWPRD_FLAG = #{trsPasswprdFlag,jdbcType=VARCHAR},
+      ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      TRANS_TIME = #{transTime,jdbcType=VARCHAR},
+      TRANS_DATE = #{transDate,jdbcType=VARCHAR},
+      TOTAL_SHARE = #{totalShare,jdbcType=DECIMAL},
+      LOADING_SHARE = #{loadingShare,jdbcType=DECIMAL},
+      CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+      JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+      APPOINT_FLG = #{appointFlg,jdbcType=VARCHAR},
+      RE_MSG = #{reMsg,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      TRS_TYPE = #{trsType,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      ORI_JNL_NO = #{oriJnlNo,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      STATUS_RETUEN_MSG = #{statusRetuenMsg,jdbcType=VARCHAR},
+      STATUS_RETURN_CODE = #{statusReturnCode,jdbcType=VARCHAR},
+      RETUEN_MSG = #{retuenMsg,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByDataStatus" parameterType="com.hwp.common.model.userprodExpense.bean.UserProdExpense">
+    update USER_PROD_EXPENSE
+    set
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

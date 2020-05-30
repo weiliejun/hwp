@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RyxxglMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.ryxxgl.bean.Ryxxgl">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="PHONE" jdbcType="VARCHAR" property="phone"/>
+        <result column="GSYX" jdbcType="VARCHAR" property="gsyx"/>
+        <result column="GRYX" jdbcType="VARCHAR" property="gryx"/>
+        <result column="DEPT" jdbcType="VARCHAR" property="dept"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="CREATE_TIME" jdbcType="CHAR" property="createTime"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="RANK" jdbcType="VARCHAR" property="rank"/>
+    </resultMap>
+    <resultMap id="selectListResultMap" type="com.hwp.common.model.ryxxgl.bean.RyxxglSelect">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="PHONE" jdbcType="VARCHAR" property="phone"/>
+        <result column="GSYX" jdbcType="VARCHAR" property="gsyx"/>
+        <result column="GRYX" jdbcType="VARCHAR" property="gryx"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, NAME, PHONE, GSYX, GRYX, DEPT, STATUS, CREATE_TIME, REMARK, DATA_STATUS, RANK
+  </sql>
+    <select id="selectRyxxglList" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from RYXXGL
+        <where>
+            <if test="name != null">
+                and NAME like CONCAT('%',#{name},'%')
+            </if>
+            <if test="phone != null">
+                and PHONE like CONCAT('%',#{phone},'%')
+            </if>
+            <if test="dept != null">
+                and DEPT = #{dept,jdbcType=VARCHAR}
+            </if>
+            <if test="rank != null">
+                and RANK = #{rank,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <select id="listRyxxglByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from RYXXGL
+        <where>
+            <if test="name != null">
+                and NAME like CONCAT('%',#{name},'%')
+            </if>
+            <if test="phone != null">
+                and PHONE like CONCAT('%',#{phone},'%')
+            </if>
+            <if test="dept != null">
+                and DEPT = #{dept,jdbcType=VARCHAR}
+            </if>
+            <if test="rank != null">
+                and RANK = #{rank,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <select id="selectList" parameterType="java.util.Map" resultMap="selectListResultMap">
+        select ID, NAME, PHONE, GSYX, GRYX
+        from RYXXGL
+        <where>
+            <if test="name != null">
+                and NAME like CONCAT('%',#{name},'%')
+            </if>
+            <if test="phone != null">
+                and PHONE like CONCAT('%',#{phone},'%')
+            </if>
+            <if test="dept != null">
+                and DEPT = #{dept,jdbcType=VARCHAR}
+            </if>
+            <if test="rank != null">
+                and RANK = #{rank,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from RYXXGL
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from RYXXGL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl">
+    insert into RYXXGL (ID, NAME, PHONE,
+      GSYX, GRYX, DEPT, STATUS,
+      CREATE_TIME, REMARK, DATA_STATUS,
+      RANK)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+      #{gsyx,jdbcType=VARCHAR}, #{gryx,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+      #{createTime,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR},
+      #{rank,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl">
+        insert into RYXXGL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="phone != null">
+                PHONE,
+            </if>
+            <if test="gsyx != null">
+                GSYX,
+            </if>
+            <if test="gryx != null">
+                GRYX,
+            </if>
+            <if test="dept != null">
+                DEPT,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="rank != null">
+                RANK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="gsyx != null">
+                #{gsyx,jdbcType=VARCHAR},
+            </if>
+            <if test="gryx != null">
+                #{gryx,jdbcType=VARCHAR},
+            </if>
+            <if test="dept != null">
+                #{dept,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="rank != null">
+                #{rank,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl">
+        update RYXXGL
+        <set>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                PHONE = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="gsyx != null">
+                GSYX = #{gsyx,jdbcType=VARCHAR},
+            </if>
+            <if test="gryx != null">
+                GRYX = #{gryx,jdbcType=VARCHAR},
+            </if>
+            <if test="dept != null">
+                DEPT = #{dept,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="rank != null">
+                RANK = #{rank,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl">
+    update RYXXGL
+    set NAME = #{name,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      GSYX = #{gsyx,jdbcType=VARCHAR},
+      GRYX = #{gryx,jdbcType=VARCHAR},
+      DEPT = #{dept,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      RANK = #{rank,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

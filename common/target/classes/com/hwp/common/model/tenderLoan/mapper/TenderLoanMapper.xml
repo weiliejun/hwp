@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TenderLoanMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.tenderLoan.bean.TenderLoan">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="TENDER_ID" property="tenderId" jdbcType="VARCHAR"/>
+        <result column="USER_INFO_ID" property="userInfoId" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR"/>
+        <result column="Pro_Num" property="proNum" jdbcType="VARCHAR"/>
+        <result column="CHANNEL_JNL_NO" property="channelJnlNo" jdbcType="VARCHAR"/>
+        <result column="JS_JNL_NO" property="jsJnlNo" jdbcType="VARCHAR"/>
+        <result column="Batch_Code" property="batchCode" jdbcType="VARCHAR"/>
+        <result column="Hx_Acct_No" property="hxAcctNo" jdbcType="VARCHAR"/>
+        <result column="RESP_CONTENT" property="respContent" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="CREATOR_ID" property="creatorId" jdbcType="VARCHAR"/>
+        <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="REQUEST_CONTENT" property="requestContent" jdbcType="VARCHAR"/>
+        <result column="Un_Freeze_List" property="unFreezeList" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, TENDER_ID, USER_INFO_ID, UUID, PRODUCT_ID, Pro_Num, CHANNEL_JNL_NO, JS_JNL_NO, 
+    Batch_Code, Hx_Acct_No, RESP_CONTENT, RETURN_CODE, RETURN_MSG, CREATE_TIME, CREATOR_ID, 
+    CREATOR_NAME, REMARK, DATA_STATUS, REQUEST_CONTENT, Un_Freeze_List
+  </sql>
+    <select id="selectTenderLoanById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from TENDER_LOAN
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectTenderLoanList" resultMap="BaseResultMap"
+            parameterType="com.hwp.common.model.tenderLoan.bean.TenderLoan">
+        select
+        <include refid="Base_Column_List"/>
+        from TENDER_LOAN
+        <where>
+            <if test="tenderId != null">
+                and TENDER_ID = #{tenderId,jdbcType=VARCHAR}
+            </if>
+            <if test="userInfoId != null">
+                and USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR}
+            </if>
+            <if test="uuid != null">
+                and UUID = #{uuid,jdbcType=VARCHAR}
+            </if>
+            <if test="productId != null">
+                and PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+            </if>
+            <if test="proNum != null">
+                and Pro_Num = #{proNum,jdbcType=VARCHAR}
+            </if>
+            <if test="channelJnlNo != null">
+                and CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR}
+            </if>
+            <if test="jsJnlNo != null">
+                and JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR}
+            </if>
+            <if test="batchCode != null">
+                and Batch_Code = #{batchCode,jdbcType=VARCHAR}
+            </if>
+            <if test="hxAcctNo != null">
+                and Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR}
+            </if>
+            <if test="respContent != null">
+                and RESP_CONTENT = #{respContent,jdbcType=VARCHAR}
+            </if>
+            <if test="returnCode != null">
+                and RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+            </if>
+            <if test="returnMsg != null">
+                and RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="creatorId != null">
+                and CREATOR_ID = #{creatorId,jdbcType=VARCHAR}
+            </if>
+            <if test="creatorName != null">
+                and CREATOR_NAME = #{creatorName,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                and REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="dataStatus != null">
+                and DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+            </if>
+            <if test="requestContent != null">
+                and REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR}
+            </if>
+            <if test="unFreezeList != null">
+                and Un_Freeze_List = #{unFreezeList,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TENDER_LOAN
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.tenderLoan.bean.TenderLoan">
+    insert into TENDER_LOAN (ID, TENDER_ID, USER_INFO_ID, 
+      UUID, PRODUCT_ID, Pro_Num, 
+      CHANNEL_JNL_NO, JS_JNL_NO, Batch_Code, 
+      Hx_Acct_No, RESP_CONTENT, RETURN_CODE, 
+      RETURN_MSG, CREATE_TIME, CREATOR_ID, 
+      CREATOR_NAME, REMARK, DATA_STATUS, 
+      REQUEST_CONTENT, Un_Freeze_List)
+    values (#{id,jdbcType=VARCHAR}, #{tenderId,jdbcType=VARCHAR}, #{userInfoId,jdbcType=VARCHAR}, 
+      #{uuid,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{proNum,jdbcType=VARCHAR}, 
+      #{channelJnlNo,jdbcType=VARCHAR}, #{jsJnlNo,jdbcType=VARCHAR}, #{batchCode,jdbcType=VARCHAR}, 
+      #{hxAcctNo,jdbcType=VARCHAR}, #{respContent,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, 
+      #{returnMsg,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, 
+      #{creatorName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
+      #{requestContent,jdbcType=VARCHAR}, #{unFreezeList,jdbcType=VARCHAR})
+  </insert>
+    <insert id="addTenderLoan" parameterType="com.hwp.common.model.tenderLoan.bean.TenderLoan">
+        insert into TENDER_LOAN
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="tenderId != null">
+                TENDER_ID,
+            </if>
+            <if test="userInfoId != null">
+                USER_INFO_ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID,
+            </if>
+            <if test="proNum != null">
+                Pro_Num,
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO,
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO,
+            </if>
+            <if test="batchCode != null">
+                Batch_Code,
+            </if>
+            <if test="hxAcctNo != null">
+                Hx_Acct_No,
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT,
+            </if>
+            <if test="unFreezeList != null">
+                Un_Freeze_List,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderId != null">
+                #{tenderId,jdbcType=VARCHAR},
+            </if>
+            <if test="userInfoId != null">
+                #{userInfoId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="proNum != null">
+                #{proNum,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hxAcctNo != null">
+                #{hxAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="requestContent != null">
+                #{requestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="unFreezeList != null">
+                #{unFreezeList,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateTenderLoanById" parameterType="com.hwp.common.model.tenderLoan.bean.TenderLoan">
+        update TENDER_LOAN
+        <set>
+            <if test="tenderId != null">
+                TENDER_ID = #{tenderId,jdbcType=VARCHAR},
+            </if>
+            <if test="userInfoId != null">
+                USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="proNum != null">
+                Pro_Num = #{proNum,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                Batch_Code = #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hxAcctNo != null">
+                Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="unFreezeList != null">
+                Un_Freeze_List = #{unFreezeList,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.tenderLoan.bean.TenderLoan">
+    update TENDER_LOAN
+    set TENDER_ID = #{tenderId,jdbcType=VARCHAR},
+      USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+      Pro_Num = #{proNum,jdbcType=VARCHAR},
+      CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+      JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+      Batch_Code = #{batchCode,jdbcType=VARCHAR},
+      Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR},
+      RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+      Un_Freeze_List = #{unFreezeList,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateDataStatusById" parameterType="com.hwp.common.model.tenderLoan.bean.TenderLoan">
+    update TENDER_LOAN
+    set DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,145 @@
+layui.use(['layer', 'laydate', 'form', 'table'], function () {
+    var $ = layui.$,
+        layer = layui.layer,
+        form = layui.form,
+        table = layui.table,
+        laydate = layui.laydate;
+
+    // 初始化日期选择器
+    laydate.render({
+        elem: '#rangeTime1', //指定元素
+        range: true //开启日期范围，默认使用“_”分割
+    });
+
+    var toolbar = '#toolbarDemo';
+    var type = $("#type").val();
+    var cxmk = $("#cxmk").val();
+    var cols = [[
+        {type: type},
+        {
+            field: 'name',
+            title: '姓名',
+            align: 'center',
+            sort: true
+        }, {
+            field: 'phone',
+            title: '手机号码',
+            align: 'center',
+            sort: true
+        }, {
+            field: 'gsyx',
+            title: '公司邮箱',
+            align: 'center',
+            width: '20%',
+            sort: true
+        }, {
+            field: 'gryx',
+            title: '个人邮箱',
+            align: 'center',
+            width: '20%',
+            sort: true
+        }, {
+            title: '常用操作',
+            align: 'center',
+            fixed: "right",
+            toolbar: '#ryxxglBar',
+            width: '20%',
+            sort: true
+        }
+    ]];
+
+    // 表格渲染
+    var initTable = Common.initTable('#ryxxglTables', '/ryxxgl/selectList', cols, table);
+
+    //监听列工具条
+    table.on('tool(ryxxglTables)', function (obj) {
+        var data = obj.data;
+        //修改
+        if (obj.event === 'update') {
+            window.location.href = PageContext.getUrl("/ryxxgl/get/update/" + data.id);
+
+        } else if (obj.event === 'view') {
+            window.location.href = PageContext.getUrl("/ryxxgl/get/view/" + data.id);
+        }
+    });
+    //头工具栏事件
+    table.on('toolbar(ryxxglTables)', function (obj) {
+        var checkStatus = table.checkStatus(obj.config.id); //获取选中行状态
+        switch (obj.event) {
+            case 'getCheckData':
+                var data = checkStatus.data;  //获取选中行数据
+                if (data == null || data == undefined || data == "") {
+                    layer.alert("请选择一条数据！");
+                    return false;
+                }
+                layer.alert(JSON.stringify(data));
+                var json = eval('(' + JSON.stringify(data) + ')');
+                // var  json= $.parseJSON(JSON.stringify(data));
+                console.log("type------" + type);
+                console.log("cxmk------" + cxmk);
+
+                if (cxmk == "selectXmfzr") {
+                    //项目负责人
+                    window.parent.selectXmfzrCallback(json[0]);
+                } else if (cxmk == "selectXmjbr") {
+                    //项目经办人
+                    window.parent.selectXmjbrCallback(json[0]);
+                } else if (cxmk == "selectFwfzr") {
+                    //法务负责人
+                    window.parent.selectFwfzrCallback(json[0]);
+                } else if (cxmk == "selectCwfzr") {
+                    //财务负责人
+                    window.parent.selectCwfzrCallback(json[0]);
+                } else if (cxmk == "selectSpr") {
+                    //审批人
+                    window.parent.selectSprCallback(json);
+                } else if (cxmk == "selectXmqtcy") {
+                    //项目其他成员
+                    // layer.alert("selectXmqtcy");
+                    window.parent.selectXmqtcyCallback(json);
+                }else if (cxmk == "selectJsxmSpr") {
+                    //结束项目审批人
+                    window.parent.selectJsxmSprCallback(json);
+                }
+                //先得到当前iframe层的索引
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index); //再执行关闭
+                break;
+            case 'cancel':
+                //点击取消关闭窗口
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+
+        }
+        ;
+    });
+
+    function Person(id, name, gsyx, gryx) {
+        this.id = id;
+        this.name = name;
+        this.gsyx = gsyx;
+        this.gryx = gryx;
+    }
+
+    //按钮事件监听
+    $('.layui-btn').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+
+    //按钮事件定义
+    var active = {
+        search: function () {
+            Common.searchTable('searchForm', initTable);
+        },
+        searchFormClear: function () {
+            Common.searchTableClear('searchForm');
+        }
+    };
+
+    //打开新窗口
+    function addTab(_this) {
+        tab.tabAdd(_this);
+    }
+});
+

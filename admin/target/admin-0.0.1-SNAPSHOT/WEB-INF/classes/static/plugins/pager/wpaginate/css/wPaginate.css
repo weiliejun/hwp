@@ -1,0 +1,70 @@
+/*** styling ***/
+._wPaginate_link {
+    cursor: pointer;
+}
+
+._wPaginate_link_first, ._wPaginate_link_prev, ._wPaginate_link_next, ._wPaginate_link_last {
+    width: auto;
+    line-height: 10px;
+    padding: 3px 5px;
+}
+
+._wPaginate_total {
+    float: right;
+    font-size: 14px;
+    color: #666;
+    float: right;
+    border: 0px solid #ccc;
+    text-decoration: none;
+}
+
+/*** themes ***
+
+
+/*** grey ***/
+._wPaginate_grey {
+    text-align: left;
+    padding: 0px;
+    margin: 20px 10px 30px 0px;
+}
+
+._wPaginate_grey ._wPaginate_link {
+    height: 20px;
+    padding: 5px 10px;
+    border: 1px solid #dadada;
+    margin: 0px 0px 0px 5px;
+    line-height: 20px;
+    font-size: 12px;
+    overflow: hidden;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    text-shadow: none;
+}
+
+._wPaginate_grey ._wPaginate_link:hover,
+._wPaginate_grey ._wPaginate_link.visited {
+    background: #0d99fd;
+    border: 1px solid #0d99fd;
+    color: #fff;
+    text-decoration: none;
+}
+
+._wPaginate_grey ._wPaginate_link_active {
+    color: #FF9114;
+    background: none;
+    border: none;
+    font-weight: bold;
+}
+
+._wPaginate_grey ._wPaginate_link_active:hover, ._wPaginate_grey ._wPaginate_link_active:visited {
+    color: #FF9114;
+    background: none;
+    border: none;
+    font-weight: bold;
+}
+
+._wPaginate_grey ._wPaginate_link_prev, ._wPaginate_grey ._wPaginate_link_next {
+    display: none;
+}

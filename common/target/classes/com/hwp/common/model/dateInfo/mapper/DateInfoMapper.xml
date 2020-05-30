@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dateInfo">
+    <resultMap id="dateInfoResultMap" type="com.hwp.common.model.dateInfo.bean.DateInfo">
+        <result column="TIME" property="time" jdbcType="CHAR"/>
+        <result column="DATE_TYPE" property="dateType" jdbcType="VARCHAR"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.hwp.common.model.dateInfo.bean.DateInfo">
+    insert into DATE_INFO (TIME, DATE_TYPE)
+    values (#{time,jdbcType=CHAR}, #{dateType,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertDateInfo" parameterType="com.hwp.common.model.dateInfo.bean.DateInfo">
+        insert into DATE_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="time != null">
+                TIME,
+            </if>
+            <if test="dateType != null">
+                DATE_TYPE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="time != null">
+                #{time,jdbcType=CHAR},
+            </if>
+            <if test="dateType != null">
+                #{dateType,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectDateInfoByDate" resultMap="dateInfoResultMap" parameterType="java.lang.String">
+    select TIME, DATE_TYPE
+    from DATE_INFO
+    where TIME = #{time,jdbcType=CHAR}
+
+  </select>
+
+    <select id="selectDateInfoByYear" resultMap="dateInfoResultMap" parameterType="java.lang.String">
+    select TIME, DATE_TYPE
+    from DATE_INFO
+    where TIME like CONCAT('%',#{year},'%')
+  </select>
+
+    <select id="selectNextWorkday" resultMap="dateInfoResultMap" parameterType="java.lang.String">
+    select TIME, DATE_TYPE
+      from DATE_INFO
+     where str_to_date(TIME,'%Y-%m-%d')> str_to_date(#{time,jdbcType=CHAR},'%Y-%m-%d')
+     order by TIME
+  </select>
+
+    <!-- 批量插入数据 -->
+    <insert id="insertMoreDateInfo" parameterType="java.util.HashMap">
+        insert into DATE_INFO (TIME, DATE_TYPE)
+        values
+        <foreach collection="dateInfoList" item="item" index="index" separator=",">
+            (#{item.time},#{item.dateType})
+        </foreach>
+    </insert>
+
+    <delete id="deleteDateInfo" parameterType="java.lang.String">
+    delete from DATE_INFO
+    where TIME = #{time,jdbcType=CHAR}
+  </delete>
+
+    <!-- 删除某一年的数据 -->
+    <delete id="deleteDateInfoByYear" parameterType="java.lang.String">
+    delete from DATE_INFO
+    where TIME like CONCAT('%',#{year},'%')
+  </delete>
+</mapper>

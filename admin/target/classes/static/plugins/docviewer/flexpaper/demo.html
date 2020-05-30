@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1,user-scalable=0,maximum-scale=1,width=device-width"/>
+    <style type="text/css" media="screen">
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+
+        #flashContent {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/flexpaper.css?r65543"/>
+    <script type="text/javascript" src="js/jquery.min.js?r65543"></script>
+    <script type="text/javascript" src="js/jquery.extensions.min.js?r65543"></script>
+    <script type="text/javascript" src="js/flexpaper.js?r65543"></script>
+    <script type="text/javascript" src="js/flexpaper_handlers.js?r65543"></script>
+</head>
+<body>
+<div id="documentViewer" class="flexpaper_viewer"
+     style="position:absolute;;width:100%;height:100%;background-color:#222222"></div>
+<script type="text/javascript">
+    $('#documentViewer').FlexPaperViewer(
+        {
+            config: {
+
+                SWFFile: '{docs/MongoDB_1_en.pdf_[*,0].swf,41}',
+                //IMGFiles : 'docs/MongoDB_1_en.pdf_{page}.png',
+                //JSONFile : 'docs/MongoDB_1_en.pdf_{page}.js',
+                //PDFFile : 'docs/MongoDB_1_en_[*,2].pdf',
+                //ThumbIMGFiles : 'docs/MongoDB_1_en.pdf_{page}_thumb.png',
+
+                Scale: 0.1,
+                ZoomTransition: 'easeOut',
+                ZoomTime: 0.5,
+                ZoomInterval: 0.1,
+                FitPageOnLoad: true,
+                FitWidthOnLoad: false,
+                AutoAdjustPrintSize: true,
+                PrintPaperAsBitmap: false,
+                FullScreenAsMaxWindow: false,
+                ProgressiveLoading: false,
+                MinZoomSize: 0.1,
+                MaxZoomSize: 5,
+                SearchMatchAll: true,
+                InitViewMode: 'Zine',
+                RenderingOrder: 'flash,html',
+                StartAtPage: 1,
+                MixedMode: true,
+                PublicationTitle: '',
+
+                ViewModeToolsVisible: true,
+                ZoomToolsVisible: true,
+                NavToolsVisible: true,
+                CursorToolsVisible: true,
+                SearchToolsVisible: false,
+
+                UIConfig: 'UI_Zine.xml?r65543',
+                WMode: 'transparent',
+
+                key: '#V2ZzfGBFXlpcSBhwB0lEWFVfYw',
+                localeChain: 'en_US'
+            }
+        }
+    );
+
+</script>
+</body>
+</html>

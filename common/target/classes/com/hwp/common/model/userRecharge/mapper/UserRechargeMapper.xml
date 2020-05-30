@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userRechargeMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userRecharge.bean.UserRecharge">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="EACCOUNT_NO" property="eaccountNo" jdbcType="VARCHAR"/>
+        <result column="AC_NO" property="acNo" jdbcType="VARCHAR"/>
+        <result column="TRS_PASSWORD" property="trsPassword" jdbcType="VARCHAR"/>
+        <result column="TRS_AMOUNT" property="trsAmount" jdbcType="DECIMAL"/>
+        <result column="VERIFY_TRS_PASSWORD_FLAG" property="verifyTrsPasswordFlag" jdbcType="VARCHAR"/>
+        <result column="TRS_BALANCE" property="trsBalance" jdbcType="DECIMAL"/>
+        <result column="CHANNEL_JNL_NO" property="channelJnlNo" jdbcType="VARCHAR"/>
+        <result column="JS_JNL_NO" property="jsJnlNo" jdbcType="VARCHAR"/>
+        <result column="TRANS_RESULT" property="transResult" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="DATE_STATUS" property="dateStatus" jdbcType="CHAR"/>
+        <result column="TRADE_STATUS" property="tradeStatus" jdbcType="VARCHAR"/>
+        <result column="TXN_TIME" property="txnTime" jdbcType="VARCHAR"/>
+        <result column="TRS_END_TIME" property="trsEndTime" jdbcType="VARCHAR"/>
+
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.userRecharge.bean.UserRecharge"
+               extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, UUID, EACCOUNT_NO, AC_NO, TRS_PASSWORD, TRS_AMOUNT, VERIFY_TRS_PASSWORD_FLAG, 
+    TRS_BALANCE, CHANNEL_JNL_NO, JS_JNL_NO, TRANS_RESULT, RETURN_CODE, RETURN_MSG, CREATE_TIME, 
+    DATE_STATUS, TRADE_STATUS, TXN_TIME, TRS_END_TIME
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_RECHARGE
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from USER_RECHARGE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.userRecharge.bean.UserRecharge">
+    insert into USER_RECHARGE (ID, USER_ID, UUID, 
+      EACCOUNT_NO, AC_NO, TRS_PASSWORD, 
+      TRS_AMOUNT, VERIFY_TRS_PASSWORD_FLAG, TRS_BALANCE, 
+      CHANNEL_JNL_NO, JS_JNL_NO, TRANS_RESULT, 
+      RETURN_CODE, RETURN_MSG, CREATE_TIME, 
+      DATE_STATUS, REMARK, TRADE_STATUS, TXN_TIME, TRS_END_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, 
+      #{eaccountNo,jdbcType=VARCHAR}, #{acNo,jdbcType=VARCHAR}, #{trsPassword,jdbcType=VARCHAR}, 
+      #{trsAmount,jdbcType=DECIMAL}, #{verifyTrsPasswordFlag,jdbcType=VARCHAR}, #{trsBalance,jdbcType=DECIMAL}, 
+      #{channelJnlNo,jdbcType=VARCHAR}, #{jsJnlNo,jdbcType=VARCHAR}, #{transResult,jdbcType=VARCHAR}, 
+      #{returnCode,jdbcType=VARCHAR}, #{returnMsg,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{dateStatus,jdbcType=CHAR}, #{remark,jdbcType=LONGVARCHAR}, #{tradeStatus,jdbcType=VARCHAR}, #{txnTime,jdbcType=VARCHAR}, #{trsEndTime,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.userRecharge.bean.UserRecharge">
+        insert into USER_RECHARGE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="eaccountNo != null">
+                EACCOUNT_NO,
+            </if>
+            <if test="acNo != null">
+                AC_NO,
+            </if>
+            <if test="trsPassword != null">
+                TRS_PASSWORD,
+            </if>
+            <if test="trsAmount != null">
+                TRS_AMOUNT,
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                VERIFY_TRS_PASSWORD_FLAG,
+            </if>
+            <if test="trsBalance != null">
+                TRS_BALANCE,
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO,
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO,
+            </if>
+            <if test="transResult != null">
+                TRANS_RESULT,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="dateStatus != null">
+                DATE_STATUS,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="tradeStatus != null">
+                TRADE_STATUS,
+            </if>
+            <if test="txnTime != null">
+                TXN_TIME,
+            </if>
+            <if test="trsEndTime != null">
+                TRS_END_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="eaccountNo != null">
+                #{eaccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acNo != null">
+                #{acNo,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPassword != null">
+                #{trsPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="trsAmount != null">
+                #{trsAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="trsBalance != null">
+                #{trsBalance,jdbcType=DECIMAL},
+            </if>
+            <if test="channelJnlNo != null">
+                #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="transResult != null">
+                #{transResult,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dateStatus != null">
+                #{dateStatus,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="tradeStatus != null">
+                #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="txnTime != null">
+                #{txnTime,jdbcType=VARCHAR},
+            </if>
+            <if test="trsEndTime != null">
+                #{trsEndTime,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.userRecharge.bean.UserRecharge">
+        update USER_RECHARGE
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="eaccountNo != null">
+                EACCOUNT_NO = #{eaccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acNo != null">
+                AC_NO = #{acNo,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPassword != null">
+                TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="trsAmount != null">
+                TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="trsBalance != null">
+                TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="transResult != null">
+                TRANS_RESULT = #{transResult,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dateStatus != null">
+                DATE_STATUS = #{dateStatus,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="tradeStatus != null">
+                TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="txnTime != null">
+                TXN_TIME = #{txnTime,jdbcType=VARCHAR},
+            </if>
+            <if test="trsEndTime != null">
+                TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.userRecharge.bean.UserRecharge">
+    update USER_RECHARGE
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      EACCOUNT_NO = #{eaccountNo,jdbcType=VARCHAR},
+      AC_NO = #{acNo,jdbcType=VARCHAR},
+      TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+      TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL},
+      VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+      TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL},
+      CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+      JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+      TRANS_RESULT = #{transResult,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      DATE_STATUS = #{dateStatus,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR},
+      TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+      TXN_TIME = #{txnTime,jdbcType=VARCHAR},
+      TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.userRecharge.bean.UserRecharge">
+    update USER_RECHARGE
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      EACCOUNT_NO = #{eaccountNo,jdbcType=VARCHAR},
+      AC_NO = #{acNo,jdbcType=VARCHAR},
+      TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+      TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL},
+      VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+      TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL},
+      CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+      JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+      TRANS_RESULT = #{transResult,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      DATE_STATUS = #{dateStatus,jdbcType=CHAR},
+      TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+      TXN_TIME = #{txnTime,jdbcType=VARCHAR},
+      TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!--根据动态参数获取用户充值列表-->
+    <select id="listUserRechargeByParams" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_RECHARGE
+        where DATE_STATUS='1'
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="uuid != null">
+            AND UUID = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <if test="eaccountNo != null">
+            AND EACCOUNT_NO = #{eaccountNo,jdbcType=VARCHAR}
+        </if>
+        <if test="acNo != null">
+            AND AC_NO = #{acNo,jdbcType=VARCHAR}
+        </if>
+        <if test="trsPassword != null">
+            AND TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR}
+        </if>
+        <if test="trsAmount != null">
+            AND TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="verifyTrsPasswordFlag != null">
+            AND VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR}
+        </if>
+        <if test="trsBalance != null">
+            AND TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL}
+        </if>
+        <if test="channelJnlNo != null">
+            AND CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR}
+        </if>
+        <if test="jsJnlNo != null">
+            AND JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR}
+        </if>
+        <if test="transResult != null">
+            AND TRANS_RESULT = #{transResult,jdbcType=VARCHAR}
+        </if>
+        <if test="returnCode != null">
+            AND RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+        </if>
+        <if test="returnMsg != null">
+            AND RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="dateStatus != null">
+            AND DATE_STATUS = #{dateStatus,jdbcType=CHAR}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=LONGVARCHAR}
+        </if>
+        <if test="tradeStatus != null">
+            AND TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="txnTime != null">
+            AND TXN_TIME = #{txnTime,jdbcType=VARCHAR}
+        </if>
+        <if test="trsEndTime != null">
+            AND TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR}
+        </if>
+
+
+    </select>
+</mapper>

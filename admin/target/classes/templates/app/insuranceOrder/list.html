@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+    <title>layout 后台大布局 - Layui</title>
+</head>
+<body class="layui-layout-body" style="overflow-y: auto">
+<div class="layui-layout layui-layout-admin">
+    <!--<div class="layui-header">-->
+    <!--  <div class="layui-logo">layui 后台布局</div>-->
+    <!--  &lt;!&ndash; 头部区域（可配合layui已有的水平导航） &ndash;&gt;-->
+    <!--  <ul class="layui-nav layui-layout-left">-->
+    <!--    <li class="layui-nav-item"><a href="">控制台</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">商品管理</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">用户</a></li>-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">其它系统</a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">邮件管理</a></dd>-->
+    <!--        <dd><a href="">消息管理</a></dd>-->
+    <!--        <dd><a href="">授权管理</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--  </ul>-->
+    <!--  <ul class="layui-nav layui-layout-right">-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">-->
+    <!--        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">-->
+    <!--        贤心-->
+    <!--      </a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">基本资料</a></dd>-->
+    <!--        <dd><a href="">安全设置</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--    <li class="layui-nav-item"><a href="">退了</a></li>-->
+    <!--  </ul>-->
+    <!--</div>-->
+
+    <!--<div class="layui-side layui-bg-black">-->
+    <!--  <div class="layui-side-scroll">-->
+    <!--    &lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
+    <!--    <ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+    <!--      <li class="layui-nav-item layui-nav-itemed">-->
+    <!--        <a class="" href="javascript:;">所有商品</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表三</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item">-->
+    <!--        <a href="javascript:;">解决方案</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item"><a href="">云市场</a></li>-->
+    <!--      <li class="layui-nav-item"><a href="">发布商品</a></li>-->
+    <!--    </ul>-->
+    <!--  </div>-->
+    <!--</div>-->
+
+    <!--<div class="layui-body">-->
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <!--<h3 class="titNav">-->
+        <!--  <a href="javascript:;">保险预约记录</a>-->
+        <!--</h3>-->
+        <!--<hr>-->
+
+        <div class="" style="padding-bottom:15px;padding-top:10px;">
+            <form id="searchForm" class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">联系人：</label>
+                        <div class="layui-input-block">
+                            <input id="likeName" type="text" name="name" placeholder="输入姓名"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">联系电话：</label>
+                        <div class="layui-input-block">
+                            <input id="likeCode" type="text" name="mobile" placeholder="输入手机号码"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">预约险种：</label>
+                        <div class="layui-input-block">
+                            <select name="orderInsuranceType" lay-verify="required">
+                                <option value="">全部</option>
+                                <option value="1">车险</option>
+                                <option value="2">重大疾病</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">是否处理：</label>
+                        <div class="layui-input-block">
+                            <select name="status" lay-verify="required">
+                                <option value="">全部</option>
+                                <option value="1">已处理</option>
+                                <option value="0">未处理</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">预约时间：</label>
+                        <div class="layui-inline">
+                            <input type="text" name="createTimeScope" class="layui-input" id="rangeTime1">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <a class="layui-btn " data-type="search">
+                            <i class="layui-icon layui-icon-search"></i>查询
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="layui-row" style="padding:0 40px;">
+            <table class="layui-table recordInfo" id="insuranceOrderTables" lay-filter="insuranceOrderTables">
+                <!--<thead>-->
+                <!--  <tr>-->
+                <!--    <th>联系人</th>-->
+                <!--    <th>手机号</th>-->
+                <!--    <th>预约险种</th>-->
+                <!--    <th>预约时间</th>-->
+                <!--    <th>是否处理</th>-->
+                <!--    <th>操作</th>-->
+                <!--  </tr> -->
+                <!--</thead>-->
+                <!--<tbody class="colorA">-->
+                <!--  <tr>-->
+                <!--    <td>张三</td>-->
+                <!--    <td>136****8888</td>-->
+                <!--    <td>车险</td>-->
+                <!--    <td>2018-05-20 15:26:22</td>-->
+                <!--    <td>未处理</td>-->
+                <!--    <td><a class="layui-btn">查看</a> </td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>张三</td>-->
+                <!--    <td>136****8888</td>-->
+                <!--    <td>车险</td>-->
+                <!--    <td>2018-05-20 15:26:22</td>-->
+                <!--    <td>已处理</td>-->
+                <!--    <td><a class="layui-btn">查看</a> </td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>张三</td>-->
+                <!--    <td>136****8888</td>-->
+                <!--    <td>重大疾病</td>-->
+                <!--    <td>2018-05-20 15:26:22</td>-->
+                <!--    <td>未处理</td>-->
+                <!--    <td><a class="layui-btn">查看</a> </td>-->
+                <!--  </tr>-->
+                <!--</tbody>-->
+            </table>
+        </div>
+
+        <!--分页-->
+        <!--<div id="myPage" class="layui-clear"></div>-->
+
+    </div>
+    <!--</div>-->
+    <!--主题内容结束-->
+
+    <!--<div class="layui-footer">-->
+    <!--  &lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--  勘设底部区域-->
+    <!--</div>-->
+</div>
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+
+<script id="insuranceOrderBar" type="text/html">
+
+    <button class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon"></i>查看</button>
+
+    <!--<a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon">&#xe642;</i>修改</a>-->
+    <!--{{#  if(d.status === '1'){ }}-->
+    <!--<a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="disable"><i class="fa fa-ban"></i>&nbsp;禁用</a>-->
+    <!--{{#  } else { }}-->
+    <!--<a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="enable"><i class="fa fa-circle-o"></i>&nbsp;置为可用</a>-->
+    <!--{{#  } }}-->
+    <!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete"><i class="layui-icon">&#xe640;</i>删除</a>-->
+</script>
+
+
+<script type="text/javascript" th:src="@{/js/app/insuranceOrder/list.js}"></script>
+<script>
+
+    // layui.use('laydate', function(){
+    //   var laydate = layui.laydate;
+    //   //日期时间选择范围
+    //   laydate.render({
+    //     elem: '#test55' //指定元素
+    //     //,type: 'datetime'    //是否显示时间
+    //     ,trigger: 'click'
+    //     //,lang: 'en'    //英文
+    //     ,range: true //开启日期范围，默认使用“_”分割
+    //     /*,done: function(value, date, endDate){
+    //       console.log(value, date, endDate);
+    //     }
+    //     ,change: function(value, date, endDate){
+    //       console.log(value, date, endDate);
+    //     }*/
+    //   });
+    // });
+    //
+    // /*分页*/
+    // layui.use('laypage', function(){
+    //   var laypage=layui.laypage;
+    //   laypage.render({
+    //     elem: 'myPage',
+    //     count: 1000,
+    //     layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+    //     jump: function(obj){
+    //       console.log(obj)
+    //     }
+    //   });
+    // });
+</script>
+</body>
+</html>

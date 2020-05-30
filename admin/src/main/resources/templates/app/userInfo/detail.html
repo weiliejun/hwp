@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 后台大布局 - Layui</title>
+    <!--<link rel="stylesheet" href="css/layui.css">-->
+    <!--<link rel="stylesheet" href="css/customLayui.css">-->
+</head>
+<body class="layui-layout-body" style="overflow-y: auto">
+<div class="layui-layout layui-layout-admin">
+    <!--<div class="layui-header">-->
+    <!--  <div class="layui-logo">layui 后台布局</div>-->
+    <!--  &lt;!&ndash; 头部区域（可配合layui已有的水平导航） &ndash;&gt;-->
+    <!--  <ul class="layui-nav layui-layout-left">-->
+    <!--    <li class="layui-nav-item"><a href="">控制台</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">商品管理</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">用户</a></li>-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">其它系统</a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">邮件管理</a></dd>-->
+    <!--        <dd><a href="">消息管理</a></dd>-->
+    <!--        <dd><a href="">授权管理</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--  </ul>-->
+    <!--  <ul class="layui-nav layui-layout-right">-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">-->
+    <!--        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">-->
+    <!--        贤心-->
+    <!--      </a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">基本资料</a></dd>-->
+    <!--        <dd><a href="">安全设置</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--    <li class="layui-nav-item"><a href="">退了</a></li>-->
+    <!--  </ul>-->
+    <!--</div>-->
+
+    <!--<div class="layui-side layui-bg-black">-->
+    <!--  <div class="layui-side-scroll">-->
+    <!--    &lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
+    <!--    <ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+    <!--      <li class="layui-nav-item layui-nav-itemed">-->
+    <!--        <a class="" href="javascript:;">所有商品</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表三</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item">-->
+    <!--        <a href="javascript:;">解决方案</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item"><a href="">云市场</a></li>-->
+    <!--      <li class="layui-nav-item"><a href="">发布商品</a></li>-->
+    <!--    </ul>-->
+    <!--  </div>-->
+    <!--</div>-->
+
+    <!--<div class="layui-body">-->
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <div class="layui-form layui-card-header" style="padding-bottom:15px;">
+            <input type="hidden" id="userId" th:value="${userId}">
+            <form id="searchForm" class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">姓名</label>
+                        <div class="layui-input-block">
+                            <input id="likeName" type="text" name="userName" placeholder="请输入用户姓名"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">手机号</label>
+                        <div class="layui-input-block">
+                            <input id="likeCode" type="text" name="mobile" placeholder="请输入用户登录手机号"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">身份证号</label>
+                        <div class="layui-input-block">
+                            <input id="likeCode" type="text" name="idNo" placeholder="请输入用户身份证号"
+                                   class="layui-input" value="">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <a class="layui-btn " data-type="search">
+                            <i class="layui-icon layui-icon-search"></i>
+                        </a>
+                        <a type="button" class="layui-btn" data-type="searchFormClear">
+                            <i class="layui-icon layui-icon-delete"></i>
+                        </a>
+                        <a href="javascript:;" class="layui-btn" id="back">返回</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--<div class="layui-row myCustom" style="width:80%;margin:30px;">-->
+        <!--  <div class="layui-col-xs6">-->
+        <!--    <div class="grid-demo grid-demo-bg1">-->
+        <!--     <fieldset class="layui-elem-field layui-field-title">-->
+        <!--      <legend>基本信息</legend>-->
+        <!--      <div class="layui-field-box">-->
+        <!--        <ul class="messageCon">-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>用户ID</span>-->
+        <!--            <p>1000001</p>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>用户姓名</span>-->
+        <!--            <p>牟元佳</p>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>身份证号</span>-->
+        <!--            <p>511321********8152</p>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>登录手机号</span>-->
+        <!--            <p>15810006829</p>-->
+        <!--            <a href="javascript:;">更换登录手机号</a>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>是否注册</span>-->
+        <!--            <p>已注册</p>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>是否绑卡</span>-->
+        <!--            <p>已绑卡</p>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>是否实名</span>-->
+        <!--            <p>已实名</p>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>账户状态</span>-->
+        <!--            <p>在职</p>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>晋商手机号</span>-->
+        <!--            <p>15810006829</p>-->
+        <!--          </li>-->
+        <!--          <li class="layui-clear">-->
+        <!--            <span>晋商联名卡账户</span>-->
+        <!--            <p>6231 7918 3510 0871 935</p>-->
+        <!--          </li>-->
+        <!--        </ul>-->
+        <!--        <ul class="cusBottom">-->
+        <!--          <li>-->
+        <!--            <b>银行名称：</b>-->
+        <!--            <div class="wholeCon">-->
+        <!--              <p>招商银行</p>-->
+        <!--              <p>银行卡号：<span>62238293829182342</span></p>-->
+        <!--              <p>是否签约：<span>是</span></p>-->
+        <!--              <p>是否默认：<span>是</span></p>-->
+        <!--              <p>签约关联号：<span>2018123456666778899989098</span></p>-->
+        <!--              <p>可执行操作：<a href="javascript:;">更换银行卡</a><a href="javascript:;">同步资产</a></p>-->
+        <!--            </div>-->
+        <!--          </li>-->
+        <!--        </ul>-->
+        <!--      </div>-->
+        <!--    </fieldset>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--  <div class="layui-col-xs6">-->
+        <!--    <div class="grid-demo">-->
+        <!--      <fieldset class="layui-elem-field layui-field-title">-->
+        <!--        <legend>持仓信息</legend>-->
+        <!--        <div class="layui-field-box">-->
+        <!--          <ul class="cusBottom">-->
+        <!--            <li class="layui-clear">-->
+        <!--              <b>账户总金额</b>-->
+        <!--              <div class="wholeCon">8000000.2</div>-->
+        <!--            </li>-->
+        <!--            <li class="layui-clear">-->
+        <!--              <b>银行可用余额</b>-->
+        <!--              <div class="wholeCon">200000.2</div>-->
+        <!--            </li>-->
+        <!--            <li class="layui-clear">-->
+        <!--              <b>累计收益</b>-->
+        <!--              <div class="wholeCon">200000.2</div>-->
+        <!--            </li>-->
+        <!--            <li class="layui-clear">-->
+        <!--              <b>工资宝</b>-->
+        <!--              <div class="wholeCon">-->
+        <!--                <p>确认份额：<span>200000.2</span></p>-->
+        <!--                <p>在途金额：<span>10000</span></p>-->
+        <!--                <p>昨日收益：<span>10.23</span></p>-->
+        <!--                <p>累计收益：<span>10.23</span></p>-->
+        <!--              </div>-->
+        <!--            </li>-->
+        <!--            <li class="layui-clear">-->
+        <!--              <b>固收理财</b>-->
+        <!--              <div class="wholeCon">-->
+        <!--                <p>中铁1号：<span>100000.00</span></p>-->
+        <!--                <p>到期日：<span>2019-10-23</span></p>-->
+        <!--                <p>预计收益：<span>510.23</span></p>-->
+        <!--                <p>中铁2号：<span>5000000.00</span></p>-->
+        <!--                <p>到期日：<span>2019-11-23</span></p>-->
+        <!--                <p>预计收益：<span>5310.23</span></p>-->
+        <!--              </div>-->
+        <!--            </li>-->
+        <!--          </ul>-->
+        <!--        </div>-->
+        <!--      </fieldset>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--</div>-->
+
+        <div id="view"></div>
+
+        <div class="layui-row">
+            <div class="layui-form-item">
+                <label class="layui-form-label">交易记录</label>
+                <div class="layui-input-block cusCheck">
+                    <input type="checkbox" name="exOption" id="excludeOption" title="不含余额宝收益">
+                    <label for="excludeOption">不含余额宝收益</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row" style="padding:0 40px;">
+            <table class="layui-table recordInfo" id="userTranTables" fly-filter="userTranTables">
+                <!--<colgroup>-->
+                <!--  <col width="150">-->
+                <!--  <col width="200">-->
+                <!--  <col>-->
+                <!--</colgroup>-->
+                <!--<thead>-->
+                <!--  <tr>-->
+                <!--    <th>订单号</th>-->
+                <!--    <th>支付流水</th>-->
+                <!--    <th>交易金额(元)</th>-->
+                <!--    <th>交易类型</th>-->
+                <!--    <th>交易状态</th>-->
+                <!--    <th>回执消息</th>-->
+                <!--    <th>操作时间</th>-->
+                <!--    <th>回执时间</th>-->
+                <!--    <th>详情</th>-->
+                <!--  </tr> -->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--  <tr>-->
+                <!--    <td>201988989299901</td>-->
+                <!--    <td class="flowDetails">-->
+                <!--      <a href="javascript:;" class="flowNum">0222019042300000051</a>-->
+                <!--      <ul class="flowCon">-->
+                <!--        <li class="layui-clear">-->
+                <!--          <span>产品名称</span>-->
+                <!--          <p>中铁1号</p>-->
+                <!--        </li>-->
+                <!--        <li class="layui-clear">-->
+                <!--          <span>产品编码</span>-->
+                <!--          <p>SFH-AADD-SFH-AAD-AADD-DSFH</p>-->
+                <!--        </li>-->
+                <!--      </ul>-->
+                <!--    </td>-->
+                <!--    <td>300000.00</td>-->
+                <!--    <td>产品购买(冻结)</td>-->
+                <!--    <td>成功</td>-->
+                <!--    <td>冻结成功</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td><a href="javascript:;" class="transDetails">交易详情</a></td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>201988989299901</td>-->
+                <!--    <td class="flowDetails">-->
+                <!--      <a href="javascript:;" class="flowNum">0222019042300000051</a>-->
+                <!--      <ul class="flowCon">-->
+                <!--        <li class="layui-clear">-->
+                <!--          <span>产品名称</span>-->
+                <!--          <p>中铁1号</p>-->
+                <!--        </li>-->
+                <!--        <li class="layui-clear">-->
+                <!--          <span>产品编码</span>-->
+                <!--          <p>SFH-AADD-SFH-AAD-AADD-DSFH</p>-->
+                <!--        </li>-->
+                <!--      </ul>-->
+                <!--    </td>-->
+                <!--    <td>300000.00</td>-->
+                <!--    <td>产品购买(冻结)</td>-->
+                <!--    <td>成功</td>-->
+                <!--    <td>冻结成功</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td><a href="javascript:;" class="transDetails">交易详情</a></td>-->
+                <!--  </tr>-->
+                <!--  <tr>-->
+                <!--    <td>201988989299901</td>-->
+                <!--    <td class="flowDetails">-->
+                <!--      <a href="javascript:;" class="flowNum">0222019042300000051</a>-->
+                <!--      <ul class="flowCon">-->
+                <!--        <li class="layui-clear">-->
+                <!--          <span>产品名称</span>-->
+                <!--          <p>中铁1号</p>-->
+                <!--        </li>-->
+                <!--        <li class="layui-clear">-->
+                <!--          <span>产品编码</span>-->
+                <!--          <p>SFH-AADD-SFH-AAD-AADD-DSFH</p>-->
+                <!--        </li>-->
+                <!--      </ul>-->
+                <!--    </td>-->
+                <!--    <td>300000.00</td>-->
+                <!--    <td>产品购买(冻结)</td>-->
+                <!--    <td>成功</td>-->
+                <!--    <td>冻结成功</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                <!--    <td><a href="javascript:;" class="transDetails">交易详情</a></td>-->
+                <!--  </tr>-->
+                <!--</tbody>-->
+            </table>
+        </div>
+
+        <!--分页-->
+        <div id="myPage" class="layui-clear"></div>
+    </div>
+    <!--</div>-->
+    <!--主题内容结束-->
+
+
+    <!--layui 模板引擎 用户详情 s-->
+
+    <script id="detailView" type="text/html">
+        <div class="layui-row myCustom" style="width:80%;margin:30px;">
+            <div class="layui-col-xs6">
+                <div class="grid-demo grid-demo-bg1">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend>基本信息</legend>
+                        <div class="layui-field-box">
+                            <ul class="messageCon">
+                                <li class="layui-clear">
+                                    <span>用户ID</span>
+                                    <p>{{d.userInfo?d.userInfo.id:'无'}}</p>
+                                    <!--<p>1000001</p>-->
+                                </li>
+                                <li class="layui-clear">
+                                    <span>用户姓名</span>
+                                    <p>{{d.userInfo?d.userInfo.userName:'无'}}</p>
+                                    <!--<p>牟元佳</p>-->
+                                </li>
+                                <li class="layui-clear">
+                                    <span>身份证号</span>
+                                    <p>{{d.userInfo?d.userInfo.idNo:'无'}}</p>
+                                    <!--<p>511321********8152</p>-->
+                                </li>
+                                <li class="layui-clear">
+                                    <span>登录手机号</span>
+                                    <p>{{d.userInfo?d.userInfo.mobile:'无'}}</p>
+                                    <!--<p>15810006829</p>-->
+                                    <a href="javascript:;">更换登录手机号</a>
+                                </li>
+                                <li class="layui-clear">
+                                    <span>是否注册</span>
+                                    <p>已注册</p>
+                                </li>
+                                <li class="layui-clear">
+                                    <span>是否绑卡</span>
+                                    {{# if(d.userInfo!==null && (d.userInfo.acNo!==null && d.userInfo.acNo!=='')){ }}
+                                    <p>已绑卡</p>
+                                    {{# }else{ }}
+                                    <p>未绑卡</p>
+                                    {{# } }}
+                                    <!--<p>已绑卡</p>-->
+                                </li>
+                                <li class="layui-clear">
+                                    <span>是否实名</span>
+                                    {{# if(d.userInfo!==null && (d.userInfo.authenticationStatus!==null &&
+                                    d.userInfo.authenticationStatus!=='')){ }}
+                                    {{# if(d.userInfo.authenticationStatus=='S'){}}
+                                    <p>已实名</p>
+                                    {{# }else{ }}
+                                    <p>未实名</p>
+                                    {{# } }}
+
+                                    {{# }else{ }}
+                                    <p>未实名</p>
+                                    {{# } }}
+                                    <!--<p>已实名</p>-->
+                                </li>
+                                <li class="layui-clear">
+                                    <span>账户状态</span>
+                                    <p>在职</p>
+                                </li>
+                                <li class="layui-clear">
+                                    <span>晋商手机号</span>
+                                    <p>{{d.userInfo?d.userInfo.mobile:'无'}}</p>
+                                    <!--<p>15810006829</p>-->
+                                </li>
+                                <li class="layui-clear">
+                                    <span>晋商联名卡账户</span>
+                                    <p>{{d.userInfo?d.userInfo.eaccountNo:'无'}}</p>
+                                    <!--<p>6231 7918 3510 0871 935</p>-->
+                                </li>
+                            </ul>
+                            <ul class="cusBottom">
+                                <li>
+                                    <b>银行名称：</b>
+                                    <div class="wholeCon">
+                                        <p>{{d.userBankCard?d.userBankCard.bankName:'无'}}</p>
+                                        <!--<p>招商银行</p>-->
+                                        <p>银行卡号：<span>{{d.userBankCard?d.userBankCard.acNo:'无'}}</span></p>
+                                        <!--<p>银行卡号：<span>62238293829182342</span></p>-->
+                                        <p>是否签约：
+                                            {{# if(d.userInfo!==null && (d.userInfo.signState!==null &&
+                                            d.userInfo.signState!=='')){ }}
+                                            {{# if(d.userInfo.signState=='Y'){}}
+                                            <span>是</span>
+                                            {{# }else{ }}
+                                            <span>否</span>
+                                            {{# } }}
+
+                                            {{# }else{ }}
+                                            <span>否</span>
+                                            {{# } }}
+                                            <!--<span>是</span>-->
+                                        </p>
+                                        <p>是否默认：
+                                            {{# if(d.userInfo!==null && (d.userInfo.isBindCard!==null &&
+                                            d.userInfo.isBindCard!=='')){ }}
+                                            {{# if(d.userInfo.isBindCard=='Y'){}}
+                                            <span>是</span>
+                                            {{# }else{ }}
+                                            <span>否</span>
+                                            {{# } }}
+
+                                            {{# }else{ }}
+                                            <span>否</span>
+                                            {{# } }}
+                                            <!--<span>是</span>-->
+                                        </p>
+                                        <p>签约关联号：<span>{{d.userBankCard?d.userBankCard.pin:'无'}}</span></p>
+                                        <!--<p>签约关联号：<span>2018123456666778899989098</span></p>-->
+                                        <p>可执行操作：<a href="javascript:;">更换银行卡</a><a href="javascript:;">同步资产</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="grid-demo">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend>持仓信息</legend>
+                        <div class="layui-field-box">
+                            <ul class="cusBottom">
+                                <li class="layui-clear">
+                                    <b>账户总金额</b>
+                                    <div class="wholeCon">{{d.userBalance?d.userBalance.localAvailBalall:'无'}}</div>
+                                    <!--<div class="wholeCon">8000000.2</div>-->
+                                </li>
+                                <li class="layui-clear">
+                                    <b>银行可用余额</b>
+                                    <div class="wholeCon">{{d.userBalance?d.userBalance.localDepositAvailbal:'无'}}</div>
+                                    <!--<div class="wholeCon">200000.2</div>-->
+                                </li>
+                                <li class="layui-clear">
+                                    <b>累计收益</b>
+                                    <div class="wholeCon">{{d.totalProfit?d.totalProfit:'无'}}</div>
+                                </li>
+                                <li class="layui-clear">
+                                    <b>工资宝</b>
+                                    <div class="wholeCon">
+                                        <p>确认份额：<span>{{d.newProfitInfo?d.newProfitInfo.totalShare:'无'}}</span></p>
+                                        <!--<p>确认份额：<span>200000.2</span></p>-->
+                                        <p>在途金额：<span>{{d.newProfitInfo?d.newProfitInfo.loadingShare:'无'}}</span></p>
+                                        <!--<p>在途金额：<span>10000</span></p>-->
+                                        <p>昨日收益：<span>{{d.newProfitInfo?d.newProfitInfo.lastProfit:'无'}}</span></p>
+                                        <!--<p>昨日收益：<span>10.23</span></p>-->
+                                        <p>累计收益：<span>{{d.newProfitInfo?d.newProfitInfo.totalAllProfits:'无'}}</span></p>
+                                        <!--<p>累计收益：<span>10.23</span></p>-->
+                                    </div>
+                                </li>
+                                <li class="layui-clear">
+                                    <b>固收理财</b>
+                                    <div class="wholeCon">
+                                        {{# if(d.productList!=null) { }}
+                                        {{# layui.each(d.productList, function(index, item){ }}
+                                        <p>{{item.productName}}：<span>{{item.transAmount}}</span></p>
+                                        <p>到期日：<span>{{item.repayEndTime}}</span></p>
+                                        <p>预计收益：<span>{{item.predictEarning}}</span></p>
+                                        {{# }); }}
+                                        {{# if(d.productList.length === 0){ }}
+                                        无数据
+                                        {{# } }}
+                                        {{# }else{ }}
+                                        <p>无数据</p>
+                                        {{# } }}
+                                        <!--<p>中铁1号：<span>100000.00</span></p>-->
+                                        <!--<p>到期日：<span>2019-10-23</span></p>-->
+                                        <!--<p>预计收益：<span>510.23</span></p>-->
+                                        <!--<p>中铁2号：<span>5000000.00</span></p>-->
+                                        <!--<p>到期日：<span>2019-11-23</span></p>-->
+                                        <!--<p>预计收益：<span>5310.23</span></p>-->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!--layui 模板引擎 用户详情 e-->
+
+    <!--<div class="layui-footer">-->
+    <!--  &lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--  © layui.com - 底部固定区域-->
+    <!--</div>-->
+</div>
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+
+<script type="text/javascript" th:src="@{/js/app/userInfo/detail.js}"></script>
+
+<script>
+    //   //初始化layui
+    //   layui.use('element', function(){
+    //     var element = layui.element;
+    //   });
+    //
+    //   /*分页*/
+    //   var laypage=layui.laypage;
+    //   laypage.render({
+    //     elem: 'myPage',
+    //     count: 1000,
+    //     layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+    //     jump: function(obj){
+    //       console.log(obj)
+    //     }
+    //   });
+    //
+    // /*鼠标滑过数据显隐*/
+    // $(function(){
+    //   $('.flowNum').mouseover(function(){
+    //     $(this).siblings('.flowCon').css('display','block');
+    //   });
+    //   $('.flowNum').mouseout(function(){
+    //     $(this).siblings('.flowCon').css('display','none');
+    //   });
+    // });
+
+</script>
+</body>
+</html>

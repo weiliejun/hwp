@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>货基投资记录</title>
+</head>
+<body class="layui-layout-body" style="overflow-y: auto">
+<!--<body class="layui-layout-body">-->
+<div class="layui-layout layui-layout-admin">
+    <!--<div class="layui-header">-->
+    <!--  <div class="layui-logo">layui 后台布局</div>-->
+    <!--  &lt;!&ndash; 头部区域（可配合layui已有的水平导航） &ndash;&gt;-->
+    <!--  <ul class="layui-nav layui-layout-left">-->
+    <!--    <li class="layui-nav-item"><a href="">控制台</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">商品管理</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">用户</a></li>-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">其它系统</a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">邮件管理</a></dd>-->
+    <!--        <dd><a href="">消息管理</a></dd>-->
+    <!--        <dd><a href="">授权管理</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--  </ul>-->
+    <!--  <ul class="layui-nav layui-layout-right">-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">-->
+    <!--        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">-->
+    <!--        贤心-->
+    <!--      </a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">基本资料</a></dd>-->
+    <!--        <dd><a href="">安全设置</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--    <li class="layui-nav-item"><a href="">退了</a></li>-->
+    <!--  </ul>-->
+    <!--</div>-->
+
+    <!--<div class="layui-side layui-bg-black">-->
+    <!--  <div class="layui-side-scroll">-->
+    <!--    &lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
+    <!--    <ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+    <!--      <li class="layui-nav-item layui-nav-itemed">-->
+    <!--        <a class="" href="javascript:;">所有商品</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表三</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item">-->
+    <!--        <a href="javascript:;">解决方案</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item"><a href="">云市场</a></li>-->
+    <!--      <li class="layui-nav-item"><a href="">发布商品</a></li>-->
+    <!--    </ul>-->
+    <!--  </div>-->
+    <!--</div>-->
+
+    <!--<div class="layui-body">-->
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <form class="layui-form" id="searchForm">
+            <div class="layui-form" style="padding:25px 0 15px;">
+                <ul class="orderFormInfo layui-clear">
+                    <li>
+                        <span>订单号：</span>
+                        <input id="orderId" name="orderId" type="text" placeholder="请输入订单号" class="layui-input"/>
+                    </li>
+                    <li>
+                        <span>支付流水号：</span>
+                        <input id="transId" name="transId" type="text" placeholder="请输入支付流水号" class="layui-input"/>
+                    </li>
+                    <li>
+                        <span>操作时间：</span>
+                        <input name="createTimeScope" type="text" placeholder="请输入时间范围" class="layui-input"
+                               id="rangeTime1"/>
+                    </li>
+                    <li>
+                        <span>用户名：</span>
+                        <input id="userName" name="userName" type="text" placeholder="请输入用户姓名" class="layui-input"/>
+                    </li>
+                    <li>
+                        <span>手机号：</span>
+                        <input id="mobile" name="mobile" type="text" placeholder="请输入用户登录手机号" class="layui-input"/>
+                    </li>
+                    <li>
+                        <span>投资金额：</span>
+                        <input id="startTranAmount" name="startTranAmount" type="text" placeholder="从"
+                               class="layui-input" style="width:32%;"/>
+                        <i>-</i>
+                        <input id="endTranAmount" name="endTranAmount" type="text" placeholder="到" class="layui-input"
+                               style="width:32%;"/>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">交易类型：</label>
+                    <div class="layui-input-block">
+                        <select name="rtxnTypeCode">
+                            <option value="">全部</option>
+                            <option value="XYSG">申购</option>
+                            <option value="XYSH">赎回</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">交易状态：</label>
+                    <div class="layui-input-block">
+                        <select name="tradeStatus">
+                            <option value="">全部</option>
+                            <option value="0">成功</option>
+                            <option value="1">失败</option>
+                            <option value="2">处理中</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">基金代码：</label>
+                    <div class="layui-input-block">
+                        <input id="" type="text" name="prodSubId" placeholder="请输入基金代码" class="layui-input" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form" style="padding-bottom:15px;">
+                <ul class="orderFormInfo layui-clear diffFormInfo2">
+                    <li>
+                        <span>购买：</span>
+                        <p th:text="${userTransactionSum?.fundBuy}">20,000,000.00元</p>
+                    </li>
+                    <li>
+                        <span>赎回：</span>
+                        <p th:text="${userTransactionSum?.fundSell}">20,000.00元</p>
+                    </li>
+                    <li>
+                        <span>收益：</span>
+                        <p>20.00元</p>
+                    </li>
+                    <li>
+                        <button type="button" class="layui-btn" lay-submit="" data-type="search">
+                            <i class="layui-icon layui-icon-search"></i>
+                            查询
+                        </button>
+                        <button type="button" class="layui-btn" data-type="searchFormClear">清空</button>
+                        <button type="button" class="layui-btn" data-type="exportExcel">导出excel</button>
+                    </li>
+                </ul>
+            </div>
+
+            <!--<div class="layui-row" style="padding:0 40px;">-->
+            <div class="layui-row" style="padding:0 20px;">
+                <table class="layui-table recordInfo" id="fundTransactionTables" lay-filter="fundTransactionTables">
+                    <!--<colgroup>-->
+                    <!--  <col width="150">-->
+                    <!--  <col width="200">-->
+                    <!--  <col>-->
+                    <!--</colgroup>-->
+                    <!--<thead>-->
+                    <!--  <tr>-->
+                    <!--    <th>订单号</th>-->
+                    <!--    <th>用户名</th>-->
+                    <!--    <th>手机号</th>-->
+                    <!--    <th>支付流水</th>-->
+                    <!--    <th>基金代码</th>-->
+                    <!--    <th>交易金额(元)</th>-->
+                    <!--    <th>交易类型</th>-->
+                    <!--    <th>交易状态</th>-->
+                    <!--    <th>回执消息</th>-->
+                    <!--    <th>操作时间</th>-->
+                    <!--    <th>回执时间</th>-->
+                    <!--  </tr> -->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--  <tr>-->
+                    <!--    <td>201988989299901</td>-->
+                    <!--    <td>牟元佳</td>-->
+                    <!--    <td>15810006829</td>-->
+                    <!--    <td class="flowDetails">-->
+                    <!--      <a href="javascript:;" class="flowNum">0222019042300000051</a>-->
+                    <!--      <ul class="flowCon">-->
+                    <!--        <li class="layui-clear">-->
+                    <!--          <span>实体卡号</span>-->
+                    <!--          <p>43674206206110367878</p>-->
+                    <!--        </li>-->
+                    <!--        <li class="layui-clear">-->
+                    <!--          <span>晋商账号</span>-->
+                    <!--          <p>62317918351008719351</p>-->
+                    <!--        </li>-->
+                    <!--      </ul>-->
+                    <!--    </td>-->
+                    <!--    <td>000023</td>-->
+                    <!--    <td>300000.00</td>-->
+                    <!--    <td>购买</td>-->
+                    <!--    <td>成功</td>-->
+                    <!--    <td>充值成功</td>-->
+                    <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                    <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                    <!--  </tr>-->
+                    <!--  <tr>-->
+                    <!--    <td>201988989299901</td>-->
+                    <!--    <td>牟元佳</td>-->
+                    <!--    <td>15810006829</td>-->
+                    <!--    <td class="flowDetails">-->
+                    <!--      <a href="javascript:;" class="flowNum">0222019042300000051</a>-->
+                    <!--      <ul class="flowCon">-->
+                    <!--        <li class="layui-clear">-->
+                    <!--          <span>实体卡号</span>-->
+                    <!--          <p>43674206206110367878</p>-->
+                    <!--        </li>-->
+                    <!--        <li class="layui-clear">-->
+                    <!--          <span>晋商账号</span>-->
+                    <!--          <p>62317918351008719351</p>-->
+                    <!--        </li>-->
+                    <!--      </ul>-->
+                    <!--    </td>-->
+                    <!--    <td>000023</td>-->
+                    <!--    <td>300000.00</td>-->
+                    <!--    <td>赎回</td>-->
+                    <!--    <td>成功</td>-->
+                    <!--    <td>充值成功</td>-->
+                    <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                    <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                    <!--  </tr>-->
+                    <!--  <tr>-->
+                    <!--    <td>201988989299901</td>-->
+                    <!--    <td>牟元佳</td>-->
+                    <!--    <td>15810006829</td>-->
+                    <!--    <td class="flowDetails">-->
+                    <!--      <a href="javascript:;" class="flowNum">0222019042300000051</a>-->
+                    <!--      <ul class="flowCon">-->
+                    <!--        <li class="layui-clear">-->
+                    <!--          <span>实体卡号</span>-->
+                    <!--          <p>43674206206110367878</p>-->
+                    <!--        </li>-->
+                    <!--        <li class="layui-clear">-->
+                    <!--          <span>晋商账号</span>-->
+                    <!--          <p>62317918351008719351</p>-->
+                    <!--        </li>-->
+                    <!--      </ul>-->
+                    <!--    </td>-->
+                    <!--    <td>000023</td>-->
+                    <!--    <td>300000.00</td>-->
+                    <!--    <td>收益</td>-->
+                    <!--    <td>成功</td>-->
+                    <!--    <td>充值成功</td>-->
+                    <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                    <!--    <td>2019-04-22 <br /> 11:23:23</td>-->
+                    <!--  </tr>-->
+                    <!--</tbody>-->
+                </table>
+            </div>
+            <!--分页-->
+            <div id="myPage" class="layui-clear"></div>
+        </form>
+    </div>
+</div>
+
+<!--交易类型状态模板-->
+<script id="rtxnTypeCodeTemplet" type="text/html">
+    {{#  if(d.rtxnTypeCode === undefined){ }}
+    未知
+    {{#  } else { }}
+    {{#  if(d.rtxnTypeCode=='XYSG'){ }}
+    申购
+    {{#  } else if(d.rtxnTypeCode=='XYSH'){ }}
+    赎回
+    {{#  } }}
+    {{#  } }}
+</script>
+
+<!--交易状态模板-->
+<script id="tradeStatusTemplet" type="text/html">
+    {{#  if(d.tradeStatus === undefined){ }}
+    未知
+    {{#  } else { }}
+    {{#  if(d.tradeStatus==='0'){ }}
+    交易成功
+    {{#  } else if(d.tradeStatus==='1'){ }}
+    交易失败
+    {{#  } else if(d.tradeStatus==='2'){ }}
+    交易进行中
+    {{#  } else { }}
+    交易进行中
+    {{#  } }}
+    {{#  } }}
+</script>
+<!--主体内容结束-->
+
+<!--  <div class="layui-footer">-->
+<!--    &lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+<!--    © layui.com - 底部固定区域-->
+<!--  </div>-->
+<!--</div>-->
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+
+<script type="text/javascript" th:src="@{/js/app/fund/list.js}"></script>
+
+<script>
+    //初始化layui
+    // layui.use('element', function(){
+    //   var element = layui.element;
+    // });
+    //
+    // /*分页*/
+    // var laypage=layui.laypage;
+    // laypage.render({
+    //   elem: 'myPage',
+    //   count: 1000,
+    //   layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+    //   jump: function(obj){
+    //     console.log(obj)
+    //   }
+    // });
+    //
+    // /*鼠标滑过数据显隐*/
+    // $(function(){
+    //   $('.flowNum').mouseover(function(){
+    //     $(this).siblings('.flowCon').css('display','block');
+    //   });
+    //   $('.flowNum').mouseout(function(){
+    //     $(this).siblings('.flowCon').css('display','none');
+    //   });
+    // });
+    //
+    //
+    // layui.use('laydate', function(){
+    //   var laydate = layui.laydate;
+    //   //日期时间选择范围
+    //   laydate.render({
+    //     elem: '#rangeTime1' //指定元素
+    //     ,trigger: 'click'
+    //     ,range: true //开启日期范围，默认使用“_”分割
+    //   });
+    // });
+
+</script>
+</body>
+</html>

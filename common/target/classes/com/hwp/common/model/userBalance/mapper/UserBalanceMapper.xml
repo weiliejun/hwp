@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UserBalance">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userBalance.bean.UserBalance">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="ACCOUNT_NO" property="accountNo" jdbcType="VARCHAR"/>
+        <result column="AVAIL_BALAL" property="availBalal" jdbcType="DECIMAL"/>
+        <result column="DEPOSIT_AVAILBAL" property="depositAvailbal" jdbcType="DECIMAL"/>
+        <result column="DEPOSIT_BAL" property="depositBal" jdbcType="DECIMAL"/>
+        <result column="FUND_BALANCES" property="fundBalances" jdbcType="DECIMAL"/>
+        <result column="FINA_BALANCES" property="finaBalances" jdbcType="DECIMAL"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="LOCAL_AVAIL_BALALL" property="localAvailBalall" jdbcType="DECIMAL"/>
+        <result column="LOCAL_DEPOSIT_AVAILBAL" property="localDepositAvailbal" jdbcType="DECIMAL"/>
+        <result column="LOCAL_DEPOSIT_BAL" property="localDepositBal" jdbcType="DECIMAL"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.userBalance.bean.UserBalance" extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, ACCOUNT_NO, AVAIL_BALAL, DEPOSIT_AVAILBAL, DEPOSIT_BAL, FUND_BALANCES, 
+    FINA_BALANCES, CREATE_TIME, UPDATE_TIME, DATA_STATUS, UUID, LOCAL_AVAIL_BALALL, LOCAL_DEPOSIT_AVAILBAL, 
+    LOCAL_DEPOSIT_BAL
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_BALANCE
+        where UUID = #{uuid,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_BALANCE
+        where USER_ID = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    update USER_BALANCE
+    set  DATA_STATUS = #{0,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.userBalance.bean.UserBalance">
+    insert into USER_BALANCE (ID, USER_ID, ACCOUNT_NO, 
+      AVAIL_BALAL, DEPOSIT_AVAILBAL, DEPOSIT_BAL, 
+      FUND_BALANCES, FINA_BALANCES, CREATE_TIME, 
+      UPDATE_TIME, DATA_STATUS, UUID, 
+      LOCAL_AVAIL_BALALL, LOCAL_DEPOSIT_AVAILBAL, 
+      LOCAL_DEPOSIT_BAL, REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{accountNo,jdbcType=VARCHAR}, 
+      #{availBalal,jdbcType=DECIMAL}, #{depositAvailbal,jdbcType=DECIMAL}, #{depositBal,jdbcType=DECIMAL}, 
+      #{fundBalances,jdbcType=DECIMAL}, #{finaBalances,jdbcType=DECIMAL}, #{createTime,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, #{uuid,jdbcType=VARCHAR}, 
+      #{localAvailBalall,jdbcType=DECIMAL}, #{localDepositAvailbal,jdbcType=DECIMAL}, 
+      #{localDepositBal,jdbcType=DECIMAL}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.userBalance.bean.UserBalance">
+        insert into USER_BALANCE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="accountNo != null">
+                ACCOUNT_NO,
+            </if>
+            <if test="availBalal != null">
+                AVAIL_BALAL,
+            </if>
+            <if test="depositAvailbal != null">
+                DEPOSIT_AVAILBAL,
+            </if>
+            <if test="depositBal != null">
+                DEPOSIT_BAL,
+            </if>
+            <if test="fundBalances != null">
+                FUND_BALANCES,
+            </if>
+            <if test="finaBalances != null">
+                FINA_BALANCES,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="localAvailBalall != null">
+                LOCAL_AVAIL_BALALL,
+            </if>
+            <if test="localDepositAvailbal != null">
+                LOCAL_DEPOSIT_AVAILBAL,
+            </if>
+            <if test="localDepositBal != null">
+                LOCAL_DEPOSIT_BAL,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="accountNo != null">
+                #{accountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="availBalal != null">
+                #{availBalal,jdbcType=DECIMAL},
+            </if>
+            <if test="depositAvailbal != null">
+                #{depositAvailbal,jdbcType=DECIMAL},
+            </if>
+            <if test="depositBal != null">
+                #{depositBal,jdbcType=DECIMAL},
+            </if>
+            <if test="fundBalances != null">
+                #{fundBalances,jdbcType=DECIMAL},
+            </if>
+            <if test="finaBalances != null">
+                #{finaBalances,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="localAvailBalall != null">
+                #{localAvailBalall,jdbcType=DECIMAL},
+            </if>
+            <if test="localDepositAvailbal != null">
+                #{localDepositAvailbal,jdbcType=DECIMAL},
+            </if>
+            <if test="localDepositBal != null">
+                #{localDepositBal,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.userBalance.bean.UserBalance">
+        update USER_BALANCE
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="accountNo != null">
+                ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="availBalal != null">
+                AVAIL_BALAL = #{availBalal,jdbcType=DECIMAL},
+            </if>
+            <if test="depositAvailbal != null">
+                DEPOSIT_AVAILBAL = #{depositAvailbal,jdbcType=DECIMAL},
+            </if>
+            <if test="depositBal != null">
+                DEPOSIT_BAL = #{depositBal,jdbcType=DECIMAL},
+            </if>
+            <if test="fundBalances != null">
+                FUND_BALANCES = #{fundBalances,jdbcType=DECIMAL},
+            </if>
+            <if test="finaBalances != null">
+                FINA_BALANCES = #{finaBalances,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="localAvailBalall != null">
+                LOCAL_AVAIL_BALALL = #{localAvailBalall,jdbcType=DECIMAL},
+            </if>
+            <if test="localDepositAvailbal != null">
+                LOCAL_DEPOSIT_AVAILBAL = #{localDepositAvailbal,jdbcType=DECIMAL},
+            </if>
+            <if test="localDepositBal != null">
+                LOCAL_DEPOSIT_BAL = #{localDepositBal,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.userBalance.bean.UserBalance">
+    update USER_BALANCE
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      AVAIL_BALAL = #{availBalal,jdbcType=DECIMAL},
+      DEPOSIT_AVAILBAL = #{depositAvailbal,jdbcType=DECIMAL},
+      DEPOSIT_BAL = #{depositBal,jdbcType=DECIMAL},
+      FUND_BALANCES = #{fundBalances,jdbcType=DECIMAL},
+      FINA_BALANCES = #{finaBalances,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      LOCAL_AVAIL_BALALL = #{localAvailBalall,jdbcType=DECIMAL},
+      LOCAL_DEPOSIT_AVAILBAL = #{localDepositAvailbal,jdbcType=DECIMAL},
+      LOCAL_DEPOSIT_BAL = #{localDepositBal,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByDataStatus" parameterType="com.hwp.common.model.userBalance.bean.UserBalance">
+    update USER_BALANCE
+    set
+      UPDATE_TIME = #{now(),jdbcType=VARCHAR},
+      DATA_STATUS = '1',
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

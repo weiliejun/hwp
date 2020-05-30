@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>app轮播图配置列表</title>
+    <style></style>
+</head>
+<body class="layui-layout-body">
+<!--<div class="layui-layout layui-layout-admin">-->
+
+<!--<div class="layui-body">-->
+<!-- 内容主体区域 -->
+<div style="padding: 15px;">
+    <h3 class="titNav">
+        <a href="javascript:;">保险预约记录</a>
+    </h3>
+    <hr>
+    <div class="" style="padding-bottom:15px;padding-top:10px;">
+        <form id="searchForm" class="">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">标题：</label>
+                    <div class="layui-input-block">
+                        <input id="topic" type="text" name="topic" placeholder="输入标题"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">所属板块：</label>
+                    <div class="layui-input-block">
+                        <select name="channel" lay-verify="required" style="width:200px;height:36px;">
+                            <option value="">全部</option>
+                            <option value="0">开机广告</option>
+                            <option value="1">首页轮播图</option>
+                            <option value="2">首页核心板块</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">展现形式：</label>
+                    <div class="layui-input-block">
+                        <select name="type" lay-verify="required" style="width:200px;height:36px;">
+                            <option value="">全部</option>
+                            <option value="0">图片</option>
+                            <option value="1">文字</option>
+                            <option value="2">轮播图</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">状态：</label>
+                    <div class="layui-input-block">
+                        <select name="status" lay-verify="required" style="width:200px;height:36px;">
+                            <option value="">全部</option>
+                            <option value="1">显示</option>
+                            <option value="0">不显示</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <a class="layui-btn " data-type="search">
+                        <i class="layui-icon layui-icon-search"></i>查询
+                    </a>
+                    <a class="layui-btn " data-type="add">
+                        <i class="layui-icon layui-icon-add-1"></i>新增
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="layui-row" style="padding:0 40px;">
+        <table id="websiteAdvertiseTables" class="layui-table recordInfo" lay-filter="websiteAdvertiseTables"></table>
+    </div>
+
+    <!--分页-->
+    <!--<div id="myPage" class="layui-clear"></div>-->
+
+    <!--</div>-->
+    <!--</div>-->
+    <!--主题内容结束-->
+
+    <!--<div class="layui-footer">-->
+    <!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+    <!--勘设底部区域-->
+    <!--</div>-->
+</div>
+<script id="channel" type="text/html">
+    {{#  if(d.channel === undefined){ }}
+    未知
+    {{#  } else { }}
+    {{#  if(d.channel === '2'){ }}
+    首页核心板块
+    {{#  } else { }}
+    {{#  if(d.channel === '1'){ }}
+    首页轮播图
+    {{#  } else { }}
+    {{#  if(d.channel === '0'){ }}
+    开机广告
+    {{#  } else { }}
+    ---
+    {{#  } }}
+    {{#  } }}
+    {{#  } }}
+    {{#  } }}
+</script>
+<script id="type" type="text/html">
+    {{#  if(d.type === undefined){ }}
+    未知
+    {{#  } else { }}
+    {{#  if(d.type === '0'){ }}
+    图片
+    {{#  } else { }}
+    {{#  if(d.type === '1'){ }}
+    文字
+    {{#  } else { }}
+    {{#  if(d.type === '2'){ }}
+    轮播图
+    {{#  } else { }}
+    ---
+    {{#  } }}
+    {{#  } }}
+    {{#  } }}
+    {{#  } }}
+</script>
+<script id="status" type="text/html">
+    {{#  if(d.status === undefined){ }}
+    未知
+    {{#  } else { }}
+    {{#  if(d.status === '1'){ }}
+    显示
+    {{#  } else { }}
+    {{#  if(d.status === '0'){ }}
+    不显示
+    {{#  } else { }}
+    ---
+    {{#  } }}
+    {{#  } }}
+    {{#  } }}
+</script>
+<script type="text/html" id="websiteAdvertisebar">
+    <a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+    {{#  if(d.status === '0'){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="enable"><i class="layui-icon layui-icon-edit"></i>显示</a>
+    {{#  } else { }}
+    {{#  if(d.status === '1'){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="disable"><i class="layui-icon layui-icon-edit"></i>不显示</a>
+    {{#  } else { }}
+    ---
+    {{#  } }}
+    {{#  } }}
+</script>
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="layui.js"></script>-->
+<script type="text/javascript" th:src="@{/js/app/websiteAdvertise/list.js}"></script>
+</body>
+</html>

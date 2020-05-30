@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tenderMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.tender.bean.Tender">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_INFO_ID" property="userInfoId" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR"/>
+        <result column="TRANS_AMOUNT" property="transAmount" jdbcType="DECIMAL"/>
+        <result column="CANCEL_Batch_Code" property="cancelBatchCode" jdbcType="VARCHAR"/>
+        <result column="CANCEL_JS_JNL_NO" property="cancelJsJnlNo" jdbcType="VARCHAR"/>
+        <result column="CANCEL_CHANNEL_JNL_NO" property="cancelChannelJnlNo" jdbcType="VARCHAR"/>
+        <result column="CANCEL_REQUEST_CONTENT" property="cancelRequestContent" jdbcType="VARCHAR"/>
+        <result column="RESP_CONTENT" property="respContent" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+        <result column="FREEZE_NO" property="freezeNo" jdbcType="VARCHAR"/>
+        <result column="CANCEL_TYPE" property="cancelType" jdbcType="VARCHAR"/>
+        <result column="CANCEL_TIME" property="cancelTime" jdbcType="VARCHAR"/>
+        <result column="CANCEL_REMARK" property="cancelRemark" jdbcType="VARCHAR"/>
+        <result column="CANCEL_RESP_CONTENT" property="cancelRespContent" jdbcType="VARCHAR"/>
+        <result column="CANCEL_RETURN_CODE" property="cancelReturnCode" jdbcType="VARCHAR"/>
+        <result column="CANCEL_RETURN_MSG" property="cancelReturnMsg" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="TERMINAL" property="terminal" jdbcType="VARCHAR"/>
+        <result column="TRS_PASSWORD" property="trsPassword" jdbcType="VARCHAR"/>
+        <result column="Batch_Code" property="batchCode" jdbcType="VARCHAR"/>
+        <result column="JS_JNL_NO" property="jsJnlNo" jdbcType="VARCHAR"/>
+        <result column="CHANNEL_JNL_NO" property="channelJnlNo" jdbcType="VARCHAR"/>
+        <result column="VERIFY_TRS_PASSWORD_FLAG" property="verifyTrsPasswordFlag" jdbcType="VARCHAR"/>
+        <result column="REQUEST_CONTENT" property="requestContent" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <!--用户信息和理财产品信息和投标记录信息DTO-->
+    <resultMap id="UserAndProductAndTenderDTO" type="com.hwp.common.model.tender.dto.UserAndProductAndTenderDTO"
+               extends="BaseResultMap">
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_CODE" property="productCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_INFO_ID, UUID, PRODUCT_ID, TRANS_AMOUNT, CANCEL_Batch_Code, CANCEL_JS_JNL_NO, 
+    CANCEL_CHANNEL_JNL_NO, CANCEL_REQUEST_CONTENT, RESP_CONTENT, RETURN_CODE, RETURN_MSG, 
+    FREEZE_NO, CANCEL_TYPE, CANCEL_TIME, CANCEL_REMARK, CANCEL_RESP_CONTENT, CANCEL_RETURN_CODE, 
+    CANCEL_RETURN_MSG, STATUS, REMARK, CREATE_TIME, DATA_STATUS, TERMINAL, TRS_PASSWORD, 
+    Batch_Code, JS_JNL_NO, CHANNEL_JNL_NO, VERIFY_TRS_PASSWORD_FLAG, REQUEST_CONTENT
+  </sql>
+    <select id="selectFistBuyTimeByUserIdAndProductId" resultMap="BaseResultMap"
+            parameterType="com.hwp.common.model.tender.bean.Tender">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM TENDER
+        WHERE USER_INFO_ID=#{userInfoId,jdbcType=VARCHAR}
+        AND PRODUCT_ID =#{productId,jdbcType=VARCHAR}
+        AND DATA_STATUS='1'
+        ORDER BY CREATE_TIME ASC
+        LIMIT 1,1
+    </select>
+    <select id="selectTenderById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from TENDER
+        where ID = #{id,jdbcType=VARCHAR} and DATA_STATUS='1'
+    </select>
+    <select id="selectTrsAmountSumByProductId" resultMap="BaseResultMap">
+    SELECT SUM(TRANS_AMOUNT) TRANS_AMOUNT,PRODUCT_ID
+    FROM TENDER
+    GROUP BY PRODUCT_ID
+  </select>
+
+    <select id="selectTrsAmountSumByProductIdAndUserId" resultMap="BaseResultMap"
+            parameterType="com.hwp.common.model.tender.bean.Tender">
+    SELECT SUM(TRANS_AMOUNT) TRANS_AMOUNT,PRODUCT_ID,USER_INFO_ID
+    FROM TENDER
+    where PRODUCT_ID =#{productId,jdbcType=VARCHAR} and USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR} and DATA_STATUS='1'
+  </select>
+
+    <select id="selectTenderList" resultMap="BaseResultMap" parameterType="com.hwp.common.model.tender.bean.Tender">
+        select
+        <include refid="Base_Column_List"/>
+        from TENDER
+        <where>
+            <if test="userInfoId != null">
+                and USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR}
+            </if>
+            <if test="uuid != null">
+                and UUID = #{uuid,jdbcType=VARCHAR}
+            </if>
+            <if test="productId != null">
+                and PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+            </if>
+            <if test="transAmount != null">
+                and TRANS_AMOUNT = #{transAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="cancelBatchCode != null">
+                and CANCEL_Batch_Code = #{cancelBatchCode,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelJsJnlNo != null">
+                and CANCEL_JS_JNL_NO = #{cancelJsJnlNo,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelChannelJnlNo != null">
+                and CANCEL_CHANNEL_JNL_NO = #{cancelChannelJnlNo,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelRequestContent != null">
+                and CANCEL_REQUEST_CONTENT = #{cancelRequestContent,jdbcType=VARCHAR}
+            </if>
+            <if test="respContent != null">
+                and RESP_CONTENT = #{respContent,jdbcType=VARCHAR}
+            </if>
+            <if test="returnCode != null">
+                and RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+            </if>
+            <if test="returnMsg != null">
+                and RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+            </if>
+            <if test="freezeNo != null">
+                and FREEZE_NO = #{freezeNo,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelType != null">
+                and CANCEL_TYPE = #{cancelType,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelTime != null">
+                and CANCEL_TIME = #{cancelTime,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelRemark != null">
+                and CANCEL_REMARK = #{cancelRemark,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelRespContent != null">
+                and CANCEL_RESP_CONTENT = #{cancelRespContent,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelReturnCode != null">
+                and CANCEL_RETURN_CODE = #{cancelReturnCode,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelReturnMsg != null">
+                and CANCEL_RETURN_MSG = #{cancelReturnMsg,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and STATUS = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                and REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="terminal != null">
+                and TERMINAL = #{terminal,jdbcType=VARCHAR}
+            </if>
+            <if test="trsPassword != null">
+                and TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR}
+            </if>
+            <if test="batchCode != null">
+                and Batch_Code = #{batchCode,jdbcType=VARCHAR}
+            </if>
+            <if test="jsJnlNo != null">
+                and JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR}
+            </if>
+            <if test="channelJnlNo != null">
+                and CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR}
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                and VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR}
+            </if>
+            <if test="requestContent != null">
+                and REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR}
+            </if>
+            and DATA_STATUS = '1'
+        </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TENDER
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.tender.bean.Tender">
+    insert into TENDER (ID, USER_INFO_ID, UUID, 
+      PRODUCT_ID, TRANS_AMOUNT, CANCEL_Batch_Code, 
+      CANCEL_JS_JNL_NO, CANCEL_CHANNEL_JNL_NO, CANCEL_REQUEST_CONTENT, 
+      RESP_CONTENT, RETURN_CODE, RETURN_MSG, 
+      FREEZE_NO, CANCEL_TYPE, CANCEL_TIME, 
+      CANCEL_REMARK, CANCEL_RESP_CONTENT, CANCEL_RETURN_CODE, 
+      CANCEL_RETURN_MSG, STATUS, REMARK, 
+      CREATE_TIME, DATA_STATUS, TERMINAL, 
+      TRS_PASSWORD, Batch_Code, JS_JNL_NO, 
+      CHANNEL_JNL_NO, VERIFY_TRS_PASSWORD_FLAG, REQUEST_CONTENT
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userInfoId,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, 
+      #{productId,jdbcType=VARCHAR}, #{transAmount,jdbcType=DECIMAL}, #{cancelBatchCode,jdbcType=VARCHAR}, 
+      #{cancelJsJnlNo,jdbcType=VARCHAR}, #{cancelChannelJnlNo,jdbcType=VARCHAR}, #{cancelRequestContent,jdbcType=VARCHAR}, 
+      #{respContent,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, #{returnMsg,jdbcType=VARCHAR}, 
+      #{freezeNo,jdbcType=VARCHAR}, #{cancelType,jdbcType=VARCHAR}, #{cancelTime,jdbcType=VARCHAR}, 
+      #{cancelRemark,jdbcType=VARCHAR}, #{cancelRespContent,jdbcType=VARCHAR}, #{cancelReturnCode,jdbcType=VARCHAR}, 
+      #{cancelReturnMsg,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, #{terminal,jdbcType=VARCHAR}, 
+      #{trsPassword,jdbcType=VARCHAR}, #{batchCode,jdbcType=VARCHAR}, #{jsJnlNo,jdbcType=VARCHAR}, 
+      #{channelJnlNo,jdbcType=VARCHAR}, #{verifyTrsPasswordFlag,jdbcType=VARCHAR}, #{requestContent,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="addTender" parameterType="com.hwp.common.model.tender.bean.Tender">
+        insert into TENDER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userInfoId != null">
+                USER_INFO_ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID,
+            </if>
+            <if test="transAmount != null">
+                TRANS_AMOUNT,
+            </if>
+            <if test="cancelBatchCode != null">
+                CANCEL_Batch_Code,
+            </if>
+            <if test="cancelJsJnlNo != null">
+                CANCEL_JS_JNL_NO,
+            </if>
+            <if test="cancelChannelJnlNo != null">
+                CANCEL_CHANNEL_JNL_NO,
+            </if>
+            <if test="cancelRequestContent != null">
+                CANCEL_REQUEST_CONTENT,
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="freezeNo != null">
+                FREEZE_NO,
+            </if>
+            <if test="cancelType != null">
+                CANCEL_TYPE,
+            </if>
+            <if test="cancelTime != null">
+                CANCEL_TIME,
+            </if>
+            <if test="cancelRemark != null">
+                CANCEL_REMARK,
+            </if>
+            <if test="cancelRespContent != null">
+                CANCEL_RESP_CONTENT,
+            </if>
+            <if test="cancelReturnCode != null">
+                CANCEL_RETURN_CODE,
+            </if>
+            <if test="cancelReturnMsg != null">
+                CANCEL_RETURN_MSG,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="terminal != null">
+                TERMINAL,
+            </if>
+            <if test="trsPassword != null">
+                TRS_PASSWORD,
+            </if>
+            <if test="batchCode != null">
+                Batch_Code,
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO,
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO,
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                VERIFY_TRS_PASSWORD_FLAG,
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userInfoId != null">
+                #{userInfoId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="transAmount != null">
+                #{transAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="cancelBatchCode != null">
+                #{cancelBatchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelJsJnlNo != null">
+                #{cancelJsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelChannelJnlNo != null">
+                #{cancelChannelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRequestContent != null">
+                #{cancelRequestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="freezeNo != null">
+                #{freezeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelType != null">
+                #{cancelType,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTime != null">
+                #{cancelTime,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRemark != null">
+                #{cancelRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRespContent != null">
+                #{cancelRespContent,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReturnCode != null">
+                #{cancelReturnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReturnMsg != null">
+                #{cancelReturnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="terminal != null">
+                #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPassword != null">
+                #{trsPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                #{requestContent,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateTenderById" parameterType="com.hwp.common.model.tender.bean.Tender">
+        update TENDER
+        <set>
+            <if test="userInfoId != null">
+                USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="transAmount != null">
+                TRANS_AMOUNT = #{transAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="cancelBatchCode != null">
+                CANCEL_Batch_Code = #{cancelBatchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelJsJnlNo != null">
+                CANCEL_JS_JNL_NO = #{cancelJsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelChannelJnlNo != null">
+                CANCEL_CHANNEL_JNL_NO = #{cancelChannelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRequestContent != null">
+                CANCEL_REQUEST_CONTENT = #{cancelRequestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="freezeNo != null">
+                FREEZE_NO = #{freezeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelType != null">
+                CANCEL_TYPE = #{cancelType,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTime != null">
+                CANCEL_TIME = #{cancelTime,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRemark != null">
+                CANCEL_REMARK = #{cancelRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRespContent != null">
+                CANCEL_RESP_CONTENT = #{cancelRespContent,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReturnCode != null">
+                CANCEL_RETURN_CODE = #{cancelReturnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReturnMsg != null">
+                CANCEL_RETURN_MSG = #{cancelReturnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="terminal != null">
+                TERMINAL = #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPassword != null">
+                TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                Batch_Code = #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--根据用户ID修改-->
+    <update id="updateTenderByUserInfoId" parameterType="com.hwp.common.model.tender.bean.Tender">
+        update TENDER
+        <set>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="transAmount != null">
+                TRANS_AMOUNT = #{transAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="cancelBatchCode != null">
+                CANCEL_Batch_Code = #{cancelBatchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelJsJnlNo != null">
+                CANCEL_JS_JNL_NO = #{cancelJsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelChannelJnlNo != null">
+                CANCEL_CHANNEL_JNL_NO = #{cancelChannelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRequestContent != null">
+                CANCEL_REQUEST_CONTENT = #{cancelRequestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="freezeNo != null">
+                FREEZE_NO = #{freezeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelType != null">
+                CANCEL_TYPE = #{cancelType,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTime != null">
+                CANCEL_TIME = #{cancelTime,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRemark != null">
+                CANCEL_REMARK = #{cancelRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRespContent != null">
+                CANCEL_RESP_CONTENT = #{cancelRespContent,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReturnCode != null">
+                CANCEL_RETURN_CODE = #{cancelReturnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReturnMsg != null">
+                CANCEL_RETURN_MSG = #{cancelReturnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="terminal != null">
+                TERMINAL = #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPassword != null">
+                TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                Batch_Code = #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR}
+    </update>
+    <!--根据产品ID修改-->
+    <update id="updateTenderByProductId" parameterType="com.hwp.common.model.tender.bean.Tender">
+        update TENDER
+        <set>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="transAmount != null">
+                TRANS_AMOUNT = #{transAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="cancelBatchCode != null">
+                CANCEL_Batch_Code = #{cancelBatchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelJsJnlNo != null">
+                CANCEL_JS_JNL_NO = #{cancelJsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelChannelJnlNo != null">
+                CANCEL_CHANNEL_JNL_NO = #{cancelChannelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRequestContent != null">
+                CANCEL_REQUEST_CONTENT = #{cancelRequestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="freezeNo != null">
+                FREEZE_NO = #{freezeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelType != null">
+                CANCEL_TYPE = #{cancelType,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTime != null">
+                CANCEL_TIME = #{cancelTime,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRemark != null">
+                CANCEL_REMARK = #{cancelRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelRespContent != null">
+                CANCEL_RESP_CONTENT = #{cancelRespContent,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReturnCode != null">
+                CANCEL_RETURN_CODE = #{cancelReturnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReturnMsg != null">
+                CANCEL_RETURN_MSG = #{cancelReturnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="terminal != null">
+                TERMINAL = #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="trsPassword != null">
+                TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                Batch_Code = #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="verifyTrsPasswordFlag != null">
+                VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.tender.bean.Tender">
+    update TENDER
+    set USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+      TRANS_AMOUNT = #{transAmount,jdbcType=DECIMAL},
+      CANCEL_Batch_Code = #{cancelBatchCode,jdbcType=VARCHAR},
+      CANCEL_JS_JNL_NO = #{cancelJsJnlNo,jdbcType=VARCHAR},
+      CANCEL_CHANNEL_JNL_NO = #{cancelChannelJnlNo,jdbcType=VARCHAR},
+      CANCEL_REQUEST_CONTENT = #{cancelRequestContent,jdbcType=VARCHAR},
+      RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      FREEZE_NO = #{freezeNo,jdbcType=VARCHAR},
+      CANCEL_TYPE = #{cancelType,jdbcType=VARCHAR},
+      CANCEL_TIME = #{cancelTime,jdbcType=VARCHAR},
+      CANCEL_REMARK = #{cancelRemark,jdbcType=VARCHAR},
+      CANCEL_RESP_CONTENT = #{cancelRespContent,jdbcType=VARCHAR},
+      CANCEL_RETURN_CODE = #{cancelReturnCode,jdbcType=VARCHAR},
+      CANCEL_RETURN_MSG = #{cancelReturnMsg,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      TERMINAL = #{terminal,jdbcType=VARCHAR},
+      TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR},
+      Batch_Code = #{batchCode,jdbcType=VARCHAR},
+      JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+      CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+      VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR},
+      REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateDataStatusById" parameterType="com.hwp.common.model.tender.bean.Tender">
+    update TENDER
+    set   DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <sql id="Table_Params">
+        <if test="userInfoId != null">
+            and T.USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR}
+        </if>
+        <if test="uuid != null">
+            and T.UUID = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <if test="productId != null">
+            and T.PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+        </if>
+        <if test="transAmount != null">
+            and T.TRANS_AMOUNT = #{transAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="cancelBatchCode != null">
+            and T.CANCEL_Batch_Code = #{cancelBatchCode,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelJsJnlNo != null">
+            and T.CANCEL_JS_JNL_NO = #{cancelJsJnlNo,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelChannelJnlNo != null">
+            and T.CANCEL_CHANNEL_JNL_NO = #{cancelChannelJnlNo,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelRequestContent != null">
+            and T.CANCEL_REQUEST_CONTENT = #{cancelRequestContent,jdbcType=VARCHAR}
+        </if>
+        <if test="respContent != null">
+            and T.RESP_CONTENT = #{respContent,jdbcType=VARCHAR}
+        </if>
+        <if test="returnCode != null">
+            and T.RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+        </if>
+        <if test="returnMsg != null">
+            and T.RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="freezeNo != null">
+            and T.FREEZE_NO = #{freezeNo,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelType != null">
+            and T.CANCEL_TYPE = #{cancelType,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelTime != null">
+            and T.CANCEL_TIME = #{cancelTime,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelRemark != null">
+            and T.CANCEL_REMARK = #{cancelRemark,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelRespContent != null">
+            and T.CANCEL_RESP_CONTENT = #{cancelRespContent,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelReturnCode != null">
+            and T.CANCEL_RETURN_CODE = #{cancelReturnCode,jdbcType=VARCHAR}
+        </if>
+        <if test="cancelReturnMsg != null">
+            and T.CANCEL_RETURN_MSG = #{cancelReturnMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            and T.STATUS = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            and T.REMARK = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            and T.CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            and T.DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="terminal != null">
+            and T.TERMINAL = #{terminal,jdbcType=VARCHAR}
+        </if>
+        <if test="trsPassword != null">
+            and T.TRS_PASSWORD = #{trsPassword,jdbcType=VARCHAR}
+        </if>
+        <if test="batchCode != null">
+            and T.Batch_Code = #{batchCode,jdbcType=VARCHAR}
+        </if>
+        <if test="jsJnlNo != null">
+            and T.JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR}
+        </if>
+        <if test="channelJnlNo != null">
+            and T.CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR}
+        </if>
+        <if test="verifyTrsPasswordFlag != null">
+            and T.VERIFY_TRS_PASSWORD_FLAG = #{verifyTrsPasswordFlag,jdbcType=VARCHAR}
+        </if>
+        <if test="requestContent != null">
+            and T.REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR}
+        </if>
+    </sql>
+
+    <!--根据动态参数查询用户和产品信息以及投标信息列表-->
+    <select id="listUserAndProductAndTenderByParams" parameterType="java.util.Map"
+            resultMap="UserAndProductAndTenderDTO">
+        select
+        U.USER_NAME,
+        U.MOBILE,
+        P.CODE as PRODUCT_CODE,
+        T.ID,
+        T.USER_INFO_ID,
+        T.UUID,
+        T.PRODUCT_ID,
+        T.TRANS_AMOUNT,
+        T.CANCEL_Batch_Code,
+        T.CANCEL_JS_JNL_NO,
+        T.CANCEL_CHANNEL_JNL_NO,
+        T.CANCEL_REQUEST_CONTENT,
+        T.RESP_CONTENT,
+        T.RETURN_CODE,
+        T.RETURN_MSG,
+        T.FREEZE_NO,
+        T.CANCEL_TYPE,
+        T.CANCEL_TIME,
+        T.CANCEL_REMARK,
+        T.CANCEL_RESP_CONTENT,
+        T.CANCEL_RETURN_CODE,
+        T.CANCEL_RETURN_MSG,
+        T.STATUS,
+        T.REMARK,
+        T.CREATE_TIME,
+        T.DATA_STATUS,
+        T.TERMINAL,
+        T.TRS_PASSWORD,
+        T.Batch_Code,
+        T.JS_JNL_NO,
+        T.CHANNEL_JNL_NO,
+        T.VERIFY_TRS_PASSWORD_FLAG,
+        T.REQUEST_CONTENT
+
+        from
+        TENDER T,
+        USER_INFO U,
+        PRODUCT P
+
+        where
+        T.DATA_STATUS='1'
+        and
+        T.USER_INFO_ID=U.ID
+        and
+        T.PRODUCT_ID=P.ID
+
+        <include refid="Table_Params"></include>
+
+        <if test="name!=null">
+            and P.NAME=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="code!=null">
+            and P.CODE=#{code,jdbcType=VARCHAR}
+        </if>
+        <if test="userName!=null">
+            and U.USER_NAME=#{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile!=null">
+            and U.MOBILE=#{mobile,jdbcType=VARCHAR}
+        </if>
+
+        <if test="startTranAmount != null">
+            and ABS(T.TRANS_AMOUNT)&gt;=#{startTranAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="endTranAmount != null">
+            and ABS(T.TRANS_AMOUNT)&lt;=#{endTranAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null and endTime !=null">
+            and STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=VARCHAR}
+            and STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s')&lt;=#{endTime,jdbcType=VARCHAR}
+            order by STR_TO_DATE(T.CREATE_TIME, '%Y-%m-%d %H:%i:%s') asc
+        </if>
+
+    </select>
+</mapper>

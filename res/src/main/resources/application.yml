@@ -1,0 +1,26 @@
+server:
+  port: 85
+  servlet:
+    context-path: /
+  tomcat:
+    max-http-post-size: -1
+    basedir: /tmp/tomcat
+logging:
+    level:
+        com.hwp.*: debug
+    #path: C\:\\Users\\zwj\\Desktop
+    path: /data/logs/res
+    file: res.log
+    config: classpath:logback-spring.xml
+spring:
+  servlet:
+    multipart:
+      location: /data/upload_tmp
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+
+.multipleSelectBoxControl span { /* Labels above select boxes*/
+    font-family: Tahoma, "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: none;
+    float: left;
+    height: 22px;
+    color: #0069d6;
+}
+
+.multipleSelectBoxControl div select { /* Select box layout */
+    font-family: arial;
+    height: 100%;
+    float: left;
+}
+
+.multipleSelectBoxControl input { /* Small butons */
+    width: 25px;
+    float: left;
+}
+
+.multipleSelectBoxControl div {
+    float: left;
+}
+
+.multipleSelectBoxDiv {
+    float: left;
+}

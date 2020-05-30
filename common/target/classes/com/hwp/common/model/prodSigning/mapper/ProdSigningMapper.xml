@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProdSigning">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.prodSigning.bean.ProdSigning">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="PROD_ID" property="prodId" jdbcType="VARCHAR"/>
+        <result column="PROD_SUB_ID" property="prodSubId" jdbcType="VARCHAR"/>
+        <result column="FUND_CIF_NO" property="fundCifNo" jdbcType="VARCHAR"/>
+        <result column="CHANNEL_JNL_NO" property="channelJnlNo" jdbcType="VARCHAR"/>
+        <result column="JS_JNL_NO" property="jsJnlNo" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETUEN_MSG" property="retuenMsg" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.prodSigning.bean.ProdSigning" extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, UUID, USER_ID, PROD_ID, PROD_SUB_ID, FUND_CIF_NO, CHANNEL_JNL_NO, JS_JNL_NO, 
+    RETURN_CODE, RETUEN_MSG, CREATE_TIME, UPDATE_TIME, DATA_STATUS
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PROD_SIGNING
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectProdByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PROD_SIGNING
+        where USER_ID = #{userId,jdbcType=VARCHAR}
+    </select>
+    <select id="selectProdByUUId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PROD_SIGNING
+        where UUID = #{uuid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PROD_SIGNING
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.prodSigning.bean.ProdSigning">
+    insert into PROD_SIGNING (ID, UUID, USER_ID, 
+      PROD_ID, PROD_SUB_ID, FUND_CIF_NO, 
+      CHANNEL_JNL_NO, JS_JNL_NO, RETURN_CODE, 
+      RETUEN_MSG, CREATE_TIME, UPDATE_TIME, 
+      DATA_STATUS, REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{prodId,jdbcType=VARCHAR}, #{prodSubId,jdbcType=VARCHAR}, #{fundCifNo,jdbcType=VARCHAR}, 
+      #{channelJnlNo,jdbcType=VARCHAR}, #{jsJnlNo,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, 
+      #{retuenMsg,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
+      #{dataStatus,jdbcType=CHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.prodSigning.bean.ProdSigning">
+        insert into PROD_SIGNING
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="prodId != null">
+                PROD_ID,
+            </if>
+            <if test="prodSubId != null">
+                PROD_SUB_ID,
+            </if>
+            <if test="fundCifNo != null">
+                FUND_CIF_NO,
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO,
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="retuenMsg != null">
+                RETUEN_MSG,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodId != null">
+                #{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubId != null">
+                #{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="fundCifNo != null">
+                #{fundCifNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="retuenMsg != null">
+                #{retuenMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.prodSigning.bean.ProdSigning">
+        update PROD_SIGNING
+        <set>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodId != null">
+                PROD_ID = #{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubId != null">
+                PROD_SUB_ID = #{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="fundCifNo != null">
+                FUND_CIF_NO = #{fundCifNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="retuenMsg != null">
+                RETUEN_MSG = #{retuenMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.prodSigning.bean.ProdSigning">
+    update PROD_SIGNING
+    set UUID = #{uuid,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      PROD_ID = #{prodId,jdbcType=VARCHAR},
+      PROD_SUB_ID = #{prodSubId,jdbcType=VARCHAR},
+      FUND_CIF_NO = #{fundCifNo,jdbcType=VARCHAR},
+      CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+      JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETUEN_MSG = #{retuenMsg,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByDataStatus" parameterType="com.hwp.common.model.prodSigning.bean.ProdSigning">
+    update PROD_SIGNING
+    set
+      UPDATE_TIME = #{now(),jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

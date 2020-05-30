@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cfcaTrustSignRecord">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.cfcaTrustsignRecord.bean.CfcaTrustsignRecord">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="TX_CODE" property="txCode" jdbcType="VARCHAR"/>
+        <result column="REQ" property="req" jdbcType="VARCHAR"/>
+        <result column="SIGNATRUE" property="signatrue" jdbcType="VARCHAR"/>
+        <result column="RES" property="res" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="CHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, TX_CODE, REQ, SIGNATRUE, RES, REMARK, CREATE_TIME, DATA_STATUS
+  </sql>
+    <sql id="selectCfcaTrustSignRecord_fragment">
+        select
+        <include refid="Base_Column_List"/>
+        from CFCA_CONTRACTNO_RECORD
+        where data_status = '1'
+        <if test="businessType != null">
+            AND TX_CODE = #{businessType,jdbcType=VARCHAR}
+        </if>
+        <if test="startDate != null">
+            AND CREATE_TIME <![CDATA[>=]]> #{startDate,jdbcType=VARCHAR}
+        </if>
+        <if test="endDate != null">
+            AND CREATE_TIME <![CDATA[<=]]> #{endDate,jdbcType=VARCHAR}
+        </if>
+    </sql>
+    <select id="findCfcaTrustSignRecordsTotalCount" resultType="integer" parameterType="java.util.HashMap">
+        select count (*) as total from (
+        <include refid="selectCfcaTrustSignRecord_fragment"/>
+        )
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from CFCA_TRUSTSIGN_RECORD
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CFCA_TRUSTSIGN_RECORD
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <delete id="deleteCfcaTrustSignRecord"
+            parameterType="com.hwp.common.model.cfcaTrustsignRecord.bean.CfcaTrustsignRecord">
+    delete from CFCA_TRUSTSIGN_RECORD
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.cfcaTrustsignRecord.bean.CfcaTrustsignRecord">
+    insert into CFCA_TRUSTSIGN_RECORD (ID, TX_CODE, REQ, 
+      SIGNATRUE, RES, REMARK, 
+      CREATE_TIME, DATA_STATUS)
+    values (#{id,jdbcType=VARCHAR}, #{txCode,jdbcType=VARCHAR}, #{req,jdbcType=VARCHAR}, 
+      #{signatrue,jdbcType=VARCHAR}, #{res,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=CHAR}, #{dataStatus,jdbcType=CHAR})
+  </insert>
+    <insert id="insertCfcaTrustSignRecord"
+            parameterType="com.hwp.common.model.cfcaTrustsignRecord.bean.CfcaTrustsignRecord">
+        insert into CFCA_TRUSTSIGN_RECORD
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="txCode != null">
+                TX_CODE,
+            </if>
+            <if test="req != null">
+                REQ,
+            </if>
+            <if test="signatrue != null">
+                SIGNATRUE,
+            </if>
+            <if test="res != null">
+                RES,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="txCode != null">
+                #{txCode,jdbcType=VARCHAR},
+            </if>
+            <if test="req != null">
+                #{req,jdbcType=VARCHAR},
+            </if>
+            <if test="signatrue != null">
+                #{signatrue,jdbcType=VARCHAR},
+            </if>
+            <if test="res != null">
+                #{res,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateCfcaTrustSignRecord"
+            parameterType="com.hwp.common.model.cfcaTrustsignRecord.bean.CfcaTrustsignRecord">
+        update CFCA_TRUSTSIGN_RECORD
+        <set>
+            <if test="txCode != null">
+                TX_CODE = #{txCode,jdbcType=VARCHAR},
+            </if>
+            <if test="req != null">
+                REQ = #{req,jdbcType=VARCHAR},
+            </if>
+            <if test="signatrue != null">
+                SIGNATRUE = #{signatrue,jdbcType=VARCHAR},
+            </if>
+            <if test="res != null">
+                RES = #{res,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.cfcaTrustsignRecord.bean.CfcaTrustsignRecord">
+    update CFCA_TRUSTSIGN_RECORD
+    set TX_CODE = #{txCode,jdbcType=VARCHAR},
+      REQ = #{req,jdbcType=VARCHAR},
+      SIGNATRUE = #{signatrue,jdbcType=VARCHAR},
+      RES = #{res,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

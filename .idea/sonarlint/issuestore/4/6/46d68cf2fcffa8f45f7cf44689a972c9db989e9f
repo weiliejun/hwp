@@ -1,0 +1,15 @@
+
+N
+java:S1854?"8Remove this useless assignment to local variable "flag".(¢Óùƒ
+o
+java:S2293>"YReplace the type specification in this constructor call with the diamond operator ("<>").(™µè©
+c
+java:S4488+"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(úÇÉèıÿÿÿÿ
+e
+java:S44886"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(³İĞ°øÿÿÿÿ
+\
+java:S1192?"FDefine a constant instead of duplicating this literal "false" 8 times.(¢Óùƒ
+c
+java:S4488v"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÁÖËşÿÿÿÿ
+A
+java:S14528"&Remove usage of generic wildcard type.(ÉÈ¤”øÿÿÿÿ

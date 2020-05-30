@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userInfoExtendMapper">
+    <resultMap id="userInfoResultMap" type="com.hwp.common.model.user.bean.UserInfo">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="USER_NAME" jdbcType="VARCHAR" property="userName"/>
+        <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName"/>
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="PORTRAIT" jdbcType="VARCHAR" property="portrait"/>
+        <result column="AUTHENTICATION_STATUS" jdbcType="CHAR" property="authenticationStatus"/>
+        <result column="TERMINAL" jdbcType="VARCHAR" property="terminal"/>
+        <result column="APPKEY" jdbcType="VARCHAR" property="appkey"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="VARCHAR" property="updateTime"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="USER_ACCOUNT_BALANCE" jdbcType="DECIMAL" property="userAccountBalance"/>
+        <result column="APPSECRET" jdbcType="VARCHAR" property="appsecret"/>
+        <result column="UUID" jdbcType="VARCHAR" property="uuid"/>
+        <result column="REFERR_NO" jdbcType="VARCHAR" property="referrNo"/>
+        <result column="ID_NO" jdbcType="VARCHAR" property="idNo"/>
+        <result column="AC_NO" jdbcType="VARCHAR" property="acNo"/>
+        <result column="USER_DUTY" jdbcType="VARCHAR" property="userDuty"/>
+        <result column="EDUCATION" jdbcType="VARCHAR" property="education"/>
+        <result column="TRS_PASSWORD" jdbcType="VARCHAR" property="trsPassword"/>
+        <result column="EACCOUNT_TRS_PWD" jdbcType="VARCHAR" property="eaccountTrsPwd"/>
+        <result column="EACCOUNT_NO" jdbcType="VARCHAR" property="eaccountNo"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="RETURN_CODE" jdbcType="VARCHAR" property="returnCode"/>
+        <result column="RETURN_MSG" jdbcType="VARCHAR" property="returnMsg"/>
+        <result column="PERSON_CODE" jdbcType="VARCHAR" property="personCode"/>
+        <result column="INTEGRA_AMOUNT" jdbcType="DECIMAL" property="integraAmount"/>
+        <result column="RECOMMEND_CODE" jdbcType="VARCHAR" property="recommendCode"/>
+        <result column="WXOPENID" jdbcType="VARCHAR" property="wxopenid"/>
+        <result column="TRUST_SIGN_ID" jdbcType="VARCHAR" property="trustSignId"/>
+        <result column="Appid" jdbcType="VARCHAR" property="appid"/>
+        <result column="AUTHORIZATION_QQ_ID" jdbcType="VARCHAR" property="authorizationQqId"/>
+        <result column="AUTHORIZATION_WEIBO_ID" jdbcType="VARCHAR" property="authorizationWeiboId"/>
+    </resultMap>
+    <!-- USER_INFO表字段  -->
+    <sql id="userInfoColumn">
+     ID, USER_NAME, NICK_NAME, MOBILE, PASSWORD, PORTRAIT, AUTHENTICATION_STATUS, TERMINAL,
+    APPKEY, DATA_STATUS, CREATE_TIME, UPDATE_TIME, REMARK, USER_ACCOUNT_BALANCE, APPSECRET,
+    UUID, REFERR_NO, ID_NO, AC_NO, USER_DUTY, EDUCATION, TRS_PASSWORD, EACCOUNT_TRS_PWD,
+    EACCOUNT_NO, STATUS, RETURN_CODE, RETURN_MSG, PERSON_CODE, INTEGRA_AMOUNT, RECOMMEND_CODE,
+    WXOPENID, TRUST_SIGN_ID, Appid, AUTHORIZATION_QQ_ID, AUTHORIZATION_WEIBO_ID
+  </sql>
+
+
+    <!-- 根据动态参数查询用户列表 添加参数 是否绑卡 是否实名认证-->
+    <select id="listUserInfoBySpecificParams" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        select
+        <include refid="userInfoColumn"/>
+        from USER_INFO
+        where
+        DATA_STATUS = '1'
+        <if test="userName != null">
+            AND USER_NAME = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="nickName != null">
+            AND NICK_NAME = #{nickName,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            AND MOBILE = #{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null">
+            AND PASSWORD = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="portrait != null">
+            AND PORTRAIT = #{portrait,jdbcType=VARCHAR}
+        </if>
+        <if test="authenticationStatus != null">
+            AND AUTHENTICATION_STATUS = #{authenticationStatus,jdbcType=CHAR}
+        </if>
+        <if test="terminal != null">
+            AND TERMINAL = #{terminal,jdbcType=VARCHAR}
+        </if>
+        <if test="appkey != null">
+            AND APPKEY = #{appkey,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="updateTime != null">
+            AND UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=VARCHAR}
+        </if>
+
+        <if test="idNo != null">
+            AND ID_NO = #{idNo,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=VARCHAR}
+        </if>
+
+        <choose>
+            <when test="isBindCard!=null and isBindCard==1">
+                AND AC_NO!=''
+            </when>
+            <when test="isBindCard!=null and isBindCard==0">
+                AND AC_NO is null or AC_NO=''
+            </when>
+        </choose>
+
+
+        <choose>
+            <when test="isRealName!=null and isRealName==1">
+                AND AUTHENTICATION_STATUS='S'
+            </when>
+            <when test="isRealName!=null and isRealName==0">
+                AND AUTHENTICATION_STATUS in ('N', 'T')
+            </when>
+        </choose>
+
+
+        order by STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+
+    <!--用户交易记录返回resultMap-->
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userTransaction.bean.UserTransaction">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="PAY_NO" property="payNo" jdbcType="VARCHAR"/>
+        <result column="WITHDRADAL_NO" property="withdradalNo" jdbcType="VARCHAR"/>
+        <result column="TRS_AMOUNT" property="trsAmount" jdbcType="DECIMAL"/>
+        <result column="TRS_BALANCE" property="trsBalance" jdbcType="DECIMAL"/>
+        <result column="TRADE_STATUS" property="tradeStatus" jdbcType="VARCHAR"/>
+        <result column="RTXN_TYPE_CODE" property="rtxnTypeCode" jdbcType="VARCHAR"/>
+        <result column="TXN_TIME" property="txnTime" jdbcType="VARCHAR"/>
+        <result column="TRS_END_TIME" property="trsEndTime" jdbcType="VARCHAR"/>
+        <result column="REXN_TYPE_NAME" property="rexnTypeName" jdbcType="VARCHAR"/>
+        <result column="FLOW_TYPE" property="flowType" jdbcType="VARCHAR"/>
+        <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR"/>
+        <result column="TRANS_ID" property="transId" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="billTrsAmount" property="billTrsAmount" jdbcType="CHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.userTransaction.bean.UserTransaction"
+               extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+
+    <!--用户交易记录列名sql userTransaction-->
+    <sql id="Base_Column_List">
+        ID, UUID, USER_ID, PAY_NO, WITHDRADAL_NO, TRS_AMOUNT, TRS_BALANCE, TRADE_STATUS,
+        RTXN_TYPE_CODE, TXN_TIME, TRS_END_TIME, REXN_TYPE_NAME, FLOW_TYPE, ORDER_ID, TRANS_ID, RETURN_CODE,
+        RETURN_MSG, DATA_STATUS, CREATE_TIME
+    </sql>
+
+    <!--用户交易记录动态参数sql-->
+    <sql id="params">
+        <if test="uuid != null">
+            AND UUID = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="payNo != null">
+            AND PAY_NO = #{payNo,jdbcType=VARCHAR}
+        </if>
+        <if test="withdradalNo != null">
+            AND WITHDRADAL_NO = #{withdradalNo,jdbcType=VARCHAR}
+        </if>
+        <if test="trsAmount != null">
+            AND TRS_AMOUNT = #{trsAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="trsBalance != null">
+            AND TRS_BALANCE = #{trsBalance,jdbcType=DECIMAL}
+        </if>
+        <if test="tradeStatus != null">
+            AND TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="rtxnTypeCode != null">
+            AND RTXN_TYPE_CODE = #{rtxnTypeCode,jdbcType=VARCHAR}
+        </if>
+        <if test="txnTime != null">
+            AND TXN_TIME = #{txnTime,jdbcType=VARCHAR}
+        </if>
+        <if test="trsEndTime != null">
+            AND TRS_END_TIME = #{trsEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="rexnTypeName != null">
+            AND REXN_TYPE_NAME = #{rexnTypeName,jdbcType=VARCHAR}
+        </if>
+        <if test="flowType != null">
+            AND FLOW_TYPE = #{flowType,jdbcType=VARCHAR}
+        </if>
+        <if test="orderId != null">
+            AND ORDER_ID = #{orderId,jdbcType=VARCHAR}
+        </if>
+        <if test="transId != null">
+            AND TRANS_ID = #{transId,jdbcType=VARCHAR}
+        </if>
+        <if test="returnCode != null">
+            AND RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+        </if>
+        <if test="returnMsg != null">
+            AND RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=LONGVARCHAR}
+        </if>
+    </sql>
+
+    <!--
+        根据动态参数获取用户交易信息列表
+        WTHI=资金转出
+        RCGI=资金转入
+        XYSG=兴业基金申购
+        XYSH=兴业基金赎回
+        XYSY=兴业收益
+        CPDJ=产品购买-冻结
+        CPJD=产品流标-解冻
+        CPKK=产品满标-扣款
+        CPHK=产品回款
+        -->
+    <select id="listUserTransactionByParams" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"></include>
+        from USER_TRANSACTION
+
+        <where>
+            <include refid="params"></include>
+            <if test="isNotEarning!=null">
+                and RTXN_TYPE_CODE not in ('XYSY')
+            </if>
+        </where>
+        order by STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+
+
+    <!-- 根据动态参数查询用户列表 -->
+    <select id="listUserInfoByParams" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        select
+        <include refid="userInfoColumn"/>
+        from USER_INFO
+        where
+        DATA_STATUS = '1'
+        <if test="userId != null">
+            AND ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="userName != null">
+            AND USER_NAME = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="nickName != null">
+            AND NICK_NAME = #{nickName,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            AND MOBILE = #{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null">
+            AND PASSWORD = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="portrait != null">
+            AND PORTRAIT = #{portrait,jdbcType=VARCHAR}
+        </if>
+        <if test="authenticationStatus != null">
+            AND AUTHENTICATION_STATUS = #{authenticationStatus,jdbcType=CHAR}
+        </if>
+        <if test="terminal != null">
+            AND TERMINAL = #{terminal,jdbcType=VARCHAR}
+        </if>
+        <if test="appkey != null">
+            AND APPKEY = #{appkey,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="updateTime != null">
+            AND UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+
+    <!--UserProductInfoDTO resultMap-->
+    <resultMap id="userProductInfoDTO" type="com.hwp.common.model.user.dto.UserProductInfoDTO">
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR"/>
+        <result column="TENDER_ID" property="tenderId" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR"/>
+        <result column="TRANS_AMOUNT" property="transAmount" jdbcType="VARCHAR"/>
+        <result column="REPAY_END_TIME" property="repayEndTime" jdbcType="VARCHAR"/>
+        <result column="PREDICT_EARNING" property="predictEarning" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--根据用户id获取用户产品信息列表 UserProductInfoDTO-->
+    <select id="listUserProductInfoDTOByUserId" resultMap="userProductInfoDTO" parameterType="String">
+        SELECT
+	        t.USER_INFO_ID as USER_ID,
+	        t.PRODUCT_ID,
+	        p.NAME as PRODUCT_NAME,
+	        p.REPAY_END_DATE as REPAY_END_DATE,
+	        ( SUM( t.TRANS_AMOUNT ) * p.ANNUAL_RATE / 100.00 * p.TIME_LIMIT / 365 ) as PREDICT_EARNING
+        FROM
+	        TENDER t
+	    RIGHT JOIN PRODUCT p ON t.PRODUCT_ID = p.ID
+        WHERE
+	    t.USER_INFO_ID = #{userId,jdbcType=VARCHAR}
+	    AND ( t.`STATUS` = "repayed" OR t.`STATUS` = "repaying" OR t.`STATUS` = "prepayed" )
+        GROUP BY
+	    t.PRODUCT_ID
+    </select>
+
+</mapper>

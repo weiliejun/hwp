@@ -1,0 +1,81 @@
+.notifications {
+    position: relative;
+}
+
+/* Positioning */
+.notifications.top-right {
+    position: fixed;
+    right: 10px;
+    top: 25px;
+}
+
+.notifications.top-left {
+    position: fixed;
+    left: 10px;
+    top: 25px;
+}
+
+.notifications.bottom-left {
+    position: fixed;
+    left: 10px;
+    bottom: 25px;
+}
+
+.notifications.bottom-right {
+    position: fixed;
+    right: 10px;
+    bottom: 25px;
+}
+
+/* Notification Element */
+.notifications > div {
+    position: relative;
+    z-index: 2;
+}
+
+/* Notification Element */
+.notifications > div.alert-danger {
+    background-color: #e74c3c;
+    border-width: 0px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 0px;
+    text-align: center;
+    text-shadow: none;
+}
+
+.notifications > div.alert-info {
+    background-color: #2d87e2;
+    border-width: 0px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 0px;
+    text-align: center;
+    text-shadow: none;
+}
+
+.notifications > div.alert-success {
+    background-color: #a3d48e;
+    border-width: 0px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 0px;
+    text-align: center;
+    text-shadow: none;
+}
+
+.notifications > div.alert-warning {
+    background-color: #f0c36d;
+    border-width: 0px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 0px;
+    text-align: center;
+    text-shadow: none;
+}
+
+.notifications > div a.close {
+    color: #fff;
+    text-shadow: 0 0 0 #666;
+    opacity: 1;
+}

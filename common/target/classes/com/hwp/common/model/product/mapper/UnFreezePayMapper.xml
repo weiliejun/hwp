@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="unFreezePayEntity">
+    <resultMap id="unFreezeMap" type="com.hwp.common.model.product.entity.UnFreezeEntity">
+        <id column="TENDER_ID" jdbcType="VARCHAR" property="tenderId"/>
+        <result column="PRODUCT_ID" jdbcType="VARCHAR" property="productId"/>
+        <result column="EACCOUNT_NO" jdbcType="VARCHAR" property="AcNo"/>
+        <result column="CANCEL_CHANNEL_JNL_NO" jdbcType="VARCHAR" property="FreezeJnlNo"/>
+        <result column="TRANS_AMOUNT" jdbcType="CHAR" property="TrsAmount"/>
+    </resultMap>
+    <!--查询解冻列表-->
+    <select id="selectUnFreezeByProductId" parameterType="map" resultMap="unFreezeMap">
+         SELECT t.ID TENDER_ID,u.EACCOUNT_NO EACCOUNT_NO,t.TRANS_AMOUNT TRANS_AMOUNT,
+         t.CANCEL_CHANNEL_JNL_NO CANCEL_CHANNEL_JNL_NO,t.PRODUCT_ID PRODUCT_ID
+         FROM  USER_INFO  u inner JOIN TENDER t ON  u.ID=t.USER_INFO_ID
+         WHERE PRODUCT_ID= #{productId,jdbcType=VARCHAR}  AND u.DATA_STATUS='1' AND t.DATA_STATUS='1'
+    </select>
+
+    <!--查询还款列表-->
+    <resultMap id="payEntityMap" type="com.hwp.common.model.product.entity.PayEntity">
+        <id column="PRODUCT_ID" jdbcType="VARCHAR" property="productId"/>
+        <result column="EACCOUNT_NO" jdbcType="VARCHAR" property="AcNo"/>
+        <result column="TRANS_AMOUNT" jdbcType="CHAR" property="Principal"/>
+    </resultMap>
+    <select id="selectPayEntityByProductId" resultMap="payEntityMap" parameterType="map">
+         SELECT u.EACCOUNT_NO EACCOUNT_NO, SUM(t.TRANS_AMOUNT) TRANS_AMOUNT
+         FROM  USER_INFO  u INNER JOIN TENDER  t  ON  u.ID=t.USER_INFO_ID
+         WHERE PRODUCT_ID= #{productId,jdbcType=VARCHAR} AND u.DATA_STATUS='1' AND t.DATA_STATUS='1'
+         GROUP BY u.id
+         ORDER BY SUM(t.TRANS_AMOUNT)
+    </select>
+
+</mapper>

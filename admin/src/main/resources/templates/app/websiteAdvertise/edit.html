@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>轮播图编辑</title>
+    <style>
+        #searchForm .layui-form-select dl {
+            min-width: 43% !important;
+            left: 125px !important;
+        }
+
+        #searchForm .layui-form-select .layui-edge {
+            right: 300px !important;
+        }
+
+        #con .layui-form-select {
+            width: 310px;
+            float: left;
+        }
+
+        .layui-form-radio {
+            margin-right: 0;
+            padding-right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title site-title">
+    </fieldset>
+    <form id="searchForm" class="layui-form">
+        <input id="id" type="hidden" name="id"/>
+        <div id="con">
+            <ul class="deviceUpInfo">
+                <li class="layui-clear">
+                    <span class="addLineH"><i>* </i> 标题：</span>
+                    <input type="text" id="topic" name="topic"/>
+                </li>
+                <li class="layui-clear" style="width:430px;">
+                    <span class="addLineH"><i>* </i> 所属板块：</span>
+                    <select id="channel" name="channel">
+                        <option value="">全部</option>
+                        <option value="0">开机广告</option>
+                        <option value="1">首页轮播图</option>
+                        <option value="2">首页核心板块</option>
+                    </select>
+                </li>
+                <li class="layui-clear">
+                    <span class="addLineH"><i>* </i> 链接：</span>
+                    <input type="text" id="targetUrl" name="targetUrl"/>
+                </li>
+                <!--<li class="layui-clear">-->
+                <!--<span class="addLineH"><i>* </i> 创建时间：</span>-->
+                <!--<input  class="layui-input test-item" id="createTime" name="createTime" type="text" placeholder="请输入开始时间"/>-->
+                <!--</li>-->
+                <li class="layui-clear">
+                    <span><i>* </i> 展现形式：</span>
+                    <div class="deviceType">
+                        <input id="tp" type="radio" name="type" value="1" title=""
+                               style="margin-right:0;padding-right:0;"/>
+                        <label for="tp" style="margin-right:10px;">图片</label>
+                        <input id="wz" type="radio" name="type" value="0" title=""/>
+                        <label for="wz">文字</label>
+                        <input id="lbt" type="radio" name="type" value="2" title=""/>
+                        <label for="lbt">轮播图</label>
+                    </div>
+                </li>
+                <li class="layui-clear">
+                    <span><i>* </i> 状态：</span>
+                    <div class="deviceType">
+                        <input id="status" type="radio" name="status" value="1" title=""
+                               style="margin-right:0;padding-right:0;">
+                        <label for="status"></label>显示
+                        <input id="noShowSta" type="radio" name="status" value="0" title=""
+                               style="margin-right:0;padding-right:0;"/>
+                        <label for="noShowSta"></label>不显示
+                    </div>
+                </li>
+                <li class="layui-clear">
+                    <span class="addLineH">宣传图片：</span>
+                    <a href="javascript:;" class="selectImg layui-btn layui-btn-normal">选择配图<input id="advertiseImg"
+                                                                                                   name="advertiseImg"
+                                                                                                   type="file"/></a>
+                    <input type="hidden" name="advertisePicture" id="advertisePicture" value=""/>
+                    <div id="advertisePictureImg">
+                        <img id="demo1">
+                    </div>
+                    <p id="demoText"></p>
+                </li>
+            </ul>
+            <!--<div class="saveBox">-->
+            <!--<a href="javascript:;" class="layui-btn" style="margin:0 auto;">保存</a>-->
+            <!--</div>-->
+            <div class="layui-form-item one-btn-btn">
+                <button class="layui-btn one-tj" id="saveButton" lay-submit lay-filter="add">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" th:src="@{/js/app/websiteAdvertise/add.js}"></script>
+<!--<script type="text/javascript">-->
+<!--$(function(){-->
+<!--layui.use(['form','layer'], function(){-->
+<!--var form =layui.form,-->
+<!--layer=layui.layer;-->
+<!--})-->
+<!--});-->
+<!--</script>-->
+</body>
+</html>

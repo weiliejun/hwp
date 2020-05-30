@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--<settings>
+       <setting name="logImpl" value="LOG4J"/>
+    </settings>-->
+    <typeAliases>
+
+        <typeAlias alias="userinfo" type="com.hwp.common.model.user.bean.UserInfo"/>
+        <typeAlias alias="sysMessage" type="com.hwp.common.model.sysMessage.bean.SysMessage"/>
+        <typeAlias alias="sysMessageTmpl" type="com.hwp.common.model.sysMessageTmpl.bean.SysMessageTmpl"/>
+        <typeAlias alias="websiteAdvertise" type="com.hwp.common.model.websiteAdvertise.bean.WebsiteAdvertise"/>
+        <typeAlias alias="websiteBulletin" type="com.hwp.common.model.websiteBulletin.bean.WebsiteBulletin"/>
+        <typeAlias alias="serviceCallLog" type="com.hwp.common.model.servicecalllog.bean.ServiceCallLog"/>
+        <typeAlias alias="sysDictionary" type="com.hwp.common.model.sysdictionary.bean.SysDictionary"/>
+        <typeAlias alias="userWebsiteBulletinRead"
+                   type="com.hwp.common.model.userWebsiteBulletinRead.bean.UserWebsiteBulletinRead"/>
+
+        <typeAlias alias="sysManager" type="com.hwp.common.model.sysManager.bean.SysManager"/>
+        <typeAlias alias="sysManagerRole" type="com.hwp.common.model.sysManagerRole.bean.SysManagerRole"/>
+        <typeAlias alias="sysRole" type="com.hwp.common.model.sysRole.bean.SysRole"/>
+        <typeAlias alias="sysFunction" type="com.hwp.common.model.sysFunction.bean.SysFunction"/>
+        <typeAlias alias="sysRoleFunction" type="com.hwp.common.model.sysRoleFunction.bean.SysRoleFunction"/>
+        <typeAlias alias="userSmsTemplateApplication"
+                   type="com.hwp.common.model.userSmsTemplateApplication.bean.UserSmsTemplateApplication"/>
+        <typeAlias alias="websiteCase" type="com.hwp.common.model.websiteCase.bean.WebsiteCase"/>
+        <typeAlias alias="apploginlog" type="com.hwp.common.model.loginlog.bean.AppLoginLog"/>
+
+        <typeAlias alias="UserBalance" type="com.hwp.common.model.userBalance.bean.UserBalance"/>
+        <typeAlias alias="ProdRevenueStatus" type="com.hwp.common.model.prodrevenueStatus.bean.ProdRevenueStatus"/>
+        <typeAlias alias="ProdSigning" type="com.hwp.common.model.prodSigning.bean.ProdSigning"/>
+        <typeAlias alias="UserProdExpense" type="com.hwp.common.model.userprodExpense.bean.UserProdExpense"/>
+
+    </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!-- 参数默认为false，设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 -->
+            <property name="offsetAsPageNum" value="true"/>
+            <!-- 参数默认为false，设置为true时，使用RowBounds分页会进行count查询 -->
+            <property name="rowBoundsWithCount" value="true"/>
+            <!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+            <property name="pageSizeZero" value="true"/>
+            <!-- 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页 -->
+            <!-- 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据 -->
+            <property name="reasonable" value="true"/>
+            <!-- 增加了一个`params`参数来配置参数映射，用于从Map或ServletRequest中取值 -->
+            <!-- 可以配置pageNum,pageSize,count,pageSizeZero,reasonable,orderBy,不配置映射的用默认值 -->
+            <property name="params" value="pageNum=start;pageSize=limit;"/>
+            <!-- 支持通过Mapper接口参数来传递分页参数 -->
+            <property name="supportMethodsArguments" value="true"/>
+            <!-- always总是返回PageInfo类型,check检查返回类型是否为PageInfo,none返回Page -->
+            <property name="returnPageInfo" value="check"/>
+        </plugin>
+    </plugins>
+</configuration>
