@@ -60,8 +60,8 @@ public class TaskExecutorConfig implements AsyncConfigurer {
 
     /**
      * 自定义异常处理类
-     * @author hry
      *
+     * @author hry
      */
     class MyAsyncExceptionHandler implements AsyncUncaughtExceptionHandler {
 

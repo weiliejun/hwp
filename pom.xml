@@ -34,6 +34,7 @@
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
         <commons-fileupload.version>1.3.3</commons-fileupload.version>
         <httpClient.version>4.5.2</httpClient.version>
+        <tomcat.version>8.5.20</tomcat.version>
     </properties>
     <!-- 声明一些项目依赖管理，方便我们的依赖版本管理 -->
     <dependencies>
@@ -49,6 +50,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
+            <!-- 移除嵌入式tomcat插件 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,11 +64,17 @@
             <version>${spring-boot.version}</version>
         </dependency>
         <!--屏蔽springboot中tomcat容器 -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <version>${spring-boot.version}</version>
             <scope>provided</scope>
+        </dependency>-->
+        <!-- 显式指定Tomcat版本 -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.version}</version>
         </dependency>
         <!-- Spring Boot Test 依赖 -->
         <dependency>
@@ -267,6 +281,7 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>-->
+
     </dependencies>
 
 </project>

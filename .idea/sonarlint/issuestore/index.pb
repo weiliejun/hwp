@@ -15,3 +15,9 @@ Gadmin/src/main/java/com/hwp/admin/system/service/SysManagerService.java,5\5\55
 Kadmin/src/main/java/com/hwp/admin/system/service/SysManagerServiceImpl.java,2\8\284046a9e45e41b60b324aade748001d30f1011b
 y
 Iadmin/src/main/java/com/hwp/admin/portal/controller/PortalController.java,4\6\46d68cf2fcffa8f45f7cf44689a972c9db989e9f
+v
+Fadmin/src/main/java/com/hwp/admin/app/controller/XmrwxxController.java,c\6\c608a6bc6481ee7888b45f2692a7b6ab971c7761
+ç
+]common/src/main/java/com/hwp/common/components/cfca/trustsign/converter/JsonObjectMapper.java,4\d\4d590f6d36a6460b8c9a8b320956b18b0c731e6b
+x
+Hcommon/src/main/java/com/hwp/common/model/ryxxgl/mapper/RyxxglMapper.xml,6\0\6055ca71d9dfa3a4de589b3731f297ab24caad67

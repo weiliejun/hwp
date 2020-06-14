@@ -97,9 +97,18 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
                     //项目其他成员
                     // layer.alert("selectXmqtcy");
                     window.parent.selectXmqtcyCallback(json);
-                }else if (cxmk == "selectJsxmSpr") {
+                } else if (cxmk == "selectJsxmSpr") {
                     //结束项目审批人
                     window.parent.selectJsxmSprCallback(json);
+                } else if (cxmk == "selectFzr") {
+                    //任务负责人
+                    window.parent.selectFzrCallback(json[0]);
+                } else if (cxmk == "selectFhr") {
+                    //任务复核人
+                    window.parent.selectFhrCallback(json);
+                } else if (cxmk == "selectZhr") {
+                    //任务知会人
+                    window.parent.selectZhrCallback(json);
                 }
                 //先得到当前iframe层的索引
                 var index = parent.layer.getFrameIndex(window.name);

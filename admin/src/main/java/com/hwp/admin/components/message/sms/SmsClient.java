@@ -3,7 +3,6 @@ package com.hwp.admin.components.message.sms;
 import cn.exclusive.emay.sdk.client.api.Client;
 import com.hwp.admin.components.message.exception.MessageSenderFailedException;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.rmi.RemoteException;

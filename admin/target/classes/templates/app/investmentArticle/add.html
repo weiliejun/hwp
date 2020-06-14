@@ -1,299 +1,382 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>投资观点</title>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
-  <!--<div class="layui-header">-->
-  <!--  <div class="layui-logo">layui 后台布局</div>-->
-  <!--  &lt;!&ndash; 头部区域（可配合layui已有的水平导航） &ndash;&gt;-->
-  <!--  <ul class="layui-nav layui-layout-left">-->
-  <!--    <li class="layui-nav-item"><a href="">控制台</a></li>-->
-  <!--    <li class="layui-nav-item"><a href="">商品管理</a></li>-->
-  <!--    <li class="layui-nav-item"><a href="">用户</a></li>-->
-  <!--    <li class="layui-nav-item">-->
-  <!--      <a href="javascript:;">其它系统</a>-->
-  <!--      <dl class="layui-nav-child">-->
-  <!--        <dd><a href="">邮件管理</a></dd>-->
-  <!--        <dd><a href="">消息管理</a></dd>-->
-  <!--        <dd><a href="">授权管理</a></dd>-->
-  <!--      </dl>-->
-  <!--    </li>-->
-  <!--  </ul>-->
-  <!--  <ul class="layui-nav layui-layout-right">-->
-  <!--    <li class="layui-nav-item">-->
-  <!--      <a href="javascript:;">-->
-  <!--        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">-->
-  <!--        贤心-->
-  <!--      </a>-->
-  <!--      <dl class="layui-nav-child">-->
-  <!--        <dd><a href="">基本资料</a></dd>-->
-  <!--        <dd><a href="">安全设置</a></dd>-->
-  <!--      </dl>-->
-  <!--    </li>-->
-  <!--    <li class="layui-nav-item"><a href="">退了</a></li>-->
-  <!--  </ul>-->
-  <!--</div>-->
-  
-  <!--<div class="layui-side layui-bg-black">-->
-  <!--  <div class="layui-side-scroll">-->
-  <!--    &lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
-  <!--    <ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
-  <!--      <li class="layui-nav-item layui-nav-itemed">-->
-  <!--        <a class="" href="javascript:;">所有商品</a>-->
-  <!--        <dl class="layui-nav-child">-->
-  <!--          <dd><a href="javascript:;">列表一</a></dd>-->
-  <!--          <dd><a href="javascript:;">列表二</a></dd>-->
-  <!--          <dd><a href="javascript:;">列表三</a></dd>-->
-  <!--          <dd><a href="">超链接</a></dd>-->
-  <!--        </dl>-->
-  <!--      </li>-->
-  <!--      <li class="layui-nav-item">-->
-  <!--        <a href="javascript:;">解决方案</a>-->
-  <!--        <dl class="layui-nav-child">-->
-  <!--          <dd><a href="javascript:;">列表一</a></dd>-->
-  <!--          <dd><a href="javascript:;">列表二</a></dd>-->
-  <!--          <dd><a href="">超链接</a></dd>-->
-  <!--        </dl>-->
-  <!--      </li>-->
-  <!--      <li class="layui-nav-item"><a href="">云市场</a></li>-->
-  <!--      <li class="layui-nav-item"><a href="">发布商品</a></li>-->
-  <!--    </ul>-->
-  <!--  </div>-->
-  <!--</div>-->
-  
-  <div class="layui-body">
-    <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
-      <!--<h3 class="titNav">-->
-      <!--  <a href="javascript:;">投资观点 / </a>-->
-      <!--  <a href="javascript:;">新建投资观点</a>-->
-      <!--</h3>-->
-      <!--<hr>-->
+    <!--<div class="layui-header">-->
+    <!--  <div class="layui-logo">layui 后台布局</div>-->
+    <!--  &lt;!&ndash; 头部区域（可配合layui已有的水平导航） &ndash;&gt;-->
+    <!--  <ul class="layui-nav layui-layout-left">-->
+    <!--    <li class="layui-nav-item"><a href="">控制台</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">商品管理</a></li>-->
+    <!--    <li class="layui-nav-item"><a href="">用户</a></li>-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">其它系统</a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">邮件管理</a></dd>-->
+    <!--        <dd><a href="">消息管理</a></dd>-->
+    <!--        <dd><a href="">授权管理</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--  </ul>-->
+    <!--  <ul class="layui-nav layui-layout-right">-->
+    <!--    <li class="layui-nav-item">-->
+    <!--      <a href="javascript:;">-->
+    <!--        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">-->
+    <!--        贤心-->
+    <!--      </a>-->
+    <!--      <dl class="layui-nav-child">-->
+    <!--        <dd><a href="">基本资料</a></dd>-->
+    <!--        <dd><a href="">安全设置</a></dd>-->
+    <!--      </dl>-->
+    <!--    </li>-->
+    <!--    <li class="layui-nav-item"><a href="">退了</a></li>-->
+    <!--  </ul>-->
+    <!--</div>-->
 
-     <!--  <div class="proNav layui-clear">
-         <a href="4新建产品.html" class="layui-btn">基本信息</a>
-         <a href="5收款方信息.html" class="layui-btn layui-btn-primary">收款方信息</a>
-         <a href="6附件.html" class="layui-btn layui-btn-primary">附件</a>
-     </div> -->
-      <div class="proCon">
-        <form id="searchForm" class="layui-form">
-          <!--<div class="layui-row">
-            <div class="layui-col-xs6">
-              <div class="grid-demo grid-demo-bg1">
-                <ul class="proInfo">
-                  <li class="layui-clear">
-                    <span><i>* </i> 产品名称：</span>
-                    <input type="text" class="layui-input" placeholder="输入产品全称" />
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 发行规模(元)：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 产品期限(天)：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 存续期(天)：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 起购金额(元)：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 单笔最大购买金额(元)：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear timeLi">
-                    <span><i>* </i> 募集开始时间：</span>
-                    <input type="text" class="layui-input" id="timeS" placeholder="yyyy-MM-dd">
-                    <b class="layui-icon layui-icon-date"></b>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="layui-col-xs6">
-              <div class="grid-demo">
-                <ul class="proInfo">
-                  <li class="layui-clear">
-                    <span><i>* </i> 产品编号：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 预期年化收益率(%)：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 产品协议：</span>
-                    <div class="cusSelectBox">
-                      <select name="city" class="cusSelect">
-                        <option value="">请选择</option>
-                        <option value="0">勘设项目协议</option>
-                      </select>
-                    </div>
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 偿还方式：</span>
-                    <div class="cusSelectBox">
-                      <select name="city" class="cusSelect">
-                        <option value="">请选择</option>
-                        <option value="0">一次性还本付息</option>
-                      </select>
-                    </div>
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 递增金额(元)：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear">
-                    <span><i>* </i> 单人持有份额上限(元)：</span>
-                    <input type="text" class="layui-input" />
-                  </li>
-                  <li class="layui-clear timeLi">
-                    <span><i>* </i> 募集结束时间：</span>
-                    <input type="text" class="layui-input" id="timeE" placeholder="yyyy-MM-dd">
-                    <b class="layui-icon layui-icon-date"></b>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div> -->
-          
-          <div class="newInvest">
-            <ul class="newInvestInfo">
-              <li class="layui-clear">
-                <span><i style=" color: #ec1a0d;">* </i>标题：</span>
-                <input lay-verify="required" id="title" name="title" type="text" th:value="${investmentArticle?.title}" class="layui-input" />
-                <input id="id" name="id" type="hidden" th:value="${investmentArticle?.id}"  class="layui-input" />
-              </li>
-              <li class="layui-clear">
-                <span><i style=" color: #ec1a0d;">* </i>简介：</span>
-                <textarea lay-verify="required" id="summary" name="summary" th:text="${investmentArticle?.summary}" class="layui-textarea" placeholder="请输入文章简介"></textarea>
-              </li>
-              <li class="layui-clear">
-                <span><i style=" color: #ec1a0d;">* </i>正文：</span>
-                <div class="editorBox">编辑器内容部分
-                    <script id="editorContent" type="text/plain" style="width: 700px; height: 500px;"></script>
-                    <input lay-verify="required" type="hidden" name="content" th:value="${investmentArticle?.content}" id="content" />
-                </div>
-              </li>
-                <!--上传图片 s-->
-                <li class="layui-clear">
-                    <span><i style=" color: #ec1a0d;">* </i>上传Logo：</span>
-                    <div class="uploadLogo">
-                        <button type="button" class="layui-btn" id="upLogo">
-                            <i class="layui-icon">&#xe67c;</i>点击上传
-                        </button>
-                    </div>
-                    <div class="backImg">
-                        <img id="imgSrc" src="/images/workImg.png" />
-                        <p class="closeImgBox">
-                            <b></b>
-                            <a href="javascript:clearUploadImg()">&times;</a>
-                        </p >
-                    </div>
-                    <span style="color: #a52a2a" id="isUpload">未上传</span>
-                    <input lay-verify="isUpload" type="hidden" id="logo" name="logo" th:value="${investmentArticle?.logo}" />
-                </li>
-                <!--上传图片 e-->
-              <li class="layui-clear">
-                <span><i style=" color: #ec1a0d;">* </i>文章来源：</span>
-                <input lay-verify="required" id="source" name="source" type="text" th:value="${investmentArticle?.source}" class="layui-input" />
-              </li>
-              <li class="layui-clear">
-                <span><i style=" color: #ec1a0d;">* </i>文章状态：</span>
-                <div class="articleState">
-                  <select id="status" name="status" lay-verify="required">
-                    <option value="">请选择</option>
-                    <option value="0" th:selected="${investmentArticle?.status =='0'}">草稿箱</option>
-                    <option value="1" th:selected="${investmentArticle?.status =='1'}">上架</option>
-                    <option value="2" th:selected="${investmentArticle?.status =='2'}">下架</option>
-                  </select>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <a href="javascript:;" class="layui-btn" style="margin-left:110px;" id="preview">预览</a>
-            <button id="saveButton" class="layui-btn" lay-submit="" lay-filter="add">保存</button>
-            <a href="javascript:window.history.go(-1);" class="layui-btn" >返回</a>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--主题内容结束-->
+    <!--<div class="layui-side layui-bg-black">-->
+    <!--  <div class="layui-side-scroll">-->
+    <!--    &lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
+    <!--    <ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+    <!--      <li class="layui-nav-item layui-nav-itemed">-->
+    <!--        <a class="" href="javascript:;">所有商品</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表三</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item">-->
+    <!--        <a href="javascript:;">解决方案</a>-->
+    <!--        <dl class="layui-nav-child">-->
+    <!--          <dd><a href="javascript:;">列表一</a></dd>-->
+    <!--          <dd><a href="javascript:;">列表二</a></dd>-->
+    <!--          <dd><a href="">超链接</a></dd>-->
+    <!--        </dl>-->
+    <!--      </li>-->
+    <!--      <li class="layui-nav-item"><a href="">云市场</a></li>-->
+    <!--      <li class="layui-nav-item"><a href="">发布商品</a></li>-->
+    <!--    </ul>-->
+    <!--  </div>-->
+    <!--</div>-->
 
-  <!--<div class="layui-footer">-->
-  <!--  &lt;!&ndash; 底部固定区域 &ndash;&gt;-->
-  <!--  勘设底部区域-->
-  <!--</div>-->
-</div>
-<!-- <script src="js/layui.js"></script> -->
-<!--<script type="text/javascript" src="js/laydate.js"></script>-->
-<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
-<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
-<script type="text/javascript" th:src="@{/js/app/investmentArticle/add.js}"></script>
-<script  type="text/javascript">
-    var ue = UE.getEditor('editorContent');
-    ue.autoFloatEnabled = false;
-    ue.focus();
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <!--<h3 class="titNav">-->
+            <!--  <a href="javascript:;">投资观点 / </a>-->
+            <!--  <a href="javascript:;">新建投资观点</a>-->
+            <!--</h3>-->
+            <!--<hr>-->
 
-    // 预览功能
-    document.getElementById("preview").onclick = function () {
-        ue.execCommand( 'preview' );
-    };
+            <!--  <div class="proNav layui-clear">
+                <a href="4新建产品.html" class="layui-btn">基本信息</a>
+                <a href="5收款方信息.html" class="layui-btn layui-btn-primary">收款方信息</a>
+                <a href="6附件.html" class="layui-btn layui-btn-primary">附件</a>
+            </div> -->
+            <div class="proCon">
+                <form id="searchForm" class="layui-form">
+                    <!--<div class="layui-row">
+                      <div class="layui-col-xs6">
+                        <div class="grid-demo grid-demo-bg1">
+                          <ul class="proInfo">
+                            <li class="layui-clear">
+                              <span><i>* </i> 产品名称：</span>
+                              <input type="text" class="layui-input" placeholder="输入产品全称" />
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 发行规模(元)：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 产品期限(天)：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 存续期(天)：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 起购金额(元)：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 单笔最大购买金额(元)：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear timeLi">
+                              <span><i>* </i> 募集开始时间：</span>
+                              <input type="text" class="layui-input" id="timeS" placeholder="yyyy-MM-dd">
+                              <b class="layui-icon layui-icon-date"></b>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="layui-col-xs6">
+                        <div class="grid-demo">
+                          <ul class="proInfo">
+                            <li class="layui-clear">
+                              <span><i>* </i> 产品编号：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 预期年化收益率(%)：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 产品协议：</span>
+                              <div class="cusSelectBox">
+                                <select name="city" class="cusSelect">
+                                  <option value="">请选择</option>
+                                  <option value="0">勘设项目协议</option>
+                                </select>
+                              </div>
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 偿还方式：</span>
+                              <div class="cusSelectBox">
+                                <select name="city" class="cusSelect">
+                                  <option value="">请选择</option>
+                                  <option value="0">一次性还本付息</option>
+                                </select>
+                              </div>
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 递增金额(元)：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear">
+                              <span><i>* </i> 单人持有份额上限(元)：</span>
+                              <input type="text" class="layui-input" />
+                            </li>
+                            <li class="layui-clear timeLi">
+                              <span><i>* </i> 募集结束时间：</span>
+                              <input type="text" class="layui-input" id="timeE" placeholder="yyyy-MM-dd">
+                              <b class="layui-icon layui-icon-date"></b>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div> -->
 
-    // 清空上传图片
-    function clearUploadImg(){
-        // 提示文字
-        document.getElementById("isUpload").innerText = "未上传";
-        // 给input赋值
-        document.getElementById("logo").value = "";
-        // 回显原来图片
-        document.getElementById("imgSrc").src = "/images/workImg.png";
+                    <div class="newInvest">
+                        <ul class="newInvestInfo">
+                            <li class="layui-clear">
+                                <span><i style=" color: #ec1a0d;">* </i>标题：</span>
+                                <input lay-verify="required" id="title" name="title" type="text"
+                                       th:value="${investmentArticle?.title}" class="layui-input"/>
+                                <input id="id" name="id" type="hidden" th:value="${investmentArticle?.id}"
+                                       class="layui-input"/>
+                            </li>
+                            <li class="layui-clear">
+                                <span><i style=" color: #ec1a0d;">* </i>简介：</span>
+                                <textarea lay-verify="required" id="summary" name="summary"
+                                          th:text="${investmentArticle?.summary}" class="layui-textarea"
+                                          placeholder="请输入文章简介"></textarea>
+                            </li>
+                            <li class="layui-clear">
+                                <span><i style=" color: #ec1a0d;">* </i>正文：</span>
+                                <div class="editorBox">编辑器内容部分
+                                    <script id="editorContent" type="text/plain"
+                                            style="width: 700px; height: 500px;"></script>
+                                    <
+                                    input
+                                    lay - verify = "required"
+                                    type = "hidden"
+                                    name = "content"
+                                    th:value = "${investmentArticle?.content}"
+                                    id = "content" / >
+                                        < /div>
+                                        < /li>
+                                        <!--上传图片 s-->
+                                        < li
+                                    class
+                                    = "layui-clear" >
+                                        < span > < i
+                                    style = " color: #ec1a0d;" > * < /i>上传Logo：</s
+                                    pan >
+                                    < div
+                                    class
+                                    = "uploadLogo" >
+                                        < button
+                                    type = "button"
+                                    class
+                                    = "layui-btn"
+                                    id = "upLogo" >
+                                        < i
+                                    class
+                                    = "layui-icon" > &
+                                    #
+                                    xe67c;
+                                    <
+                                    /i>点击上传
+                                    < /button>
+                                    < /div>
+                                    < div
+                                    class
+                                    = "backImg" >
+                                        < img
+                                    id = "imgSrc"
+                                    src = "/images/workImg.png" / >
+                                        < p
+                                    class
+                                    = "closeImgBox" >
+                                        < b > < /b>
+                                        < a
+                                    href = "javascript:clearUploadImg()" > & times;
+                                    <
+                                    /a>
+                                    < /p >
+                                    < /div>
+                                    < span
+                                    style = "color: #a52a2a"
+                                    id = "isUpload" > 未上传 < /span>
+                                        < input
+                                    lay - verify = "isUpload"
+                                    type = "hidden"
+                                    id = "logo"
+                                    name = "logo"
+                                    th:value = "${investmentArticle?.logo}" / >
+                                        < /li>
+                                        <!--上传图片 e-->
+                                        < li
+                                    class
+                                    = "layui-clear" >
+                                        < span > < i
+                                    style = " color: #ec1a0d;" > * < /i>文章来源：</s
+                                    pan >
+                                    < input
+                                    lay - verify = "required"
+                                    id = "source"
+                                    name = "source"
+                                    type = "text"
+                                    th:value = "${investmentArticle?.source}"
+                                    class
+                                    = "layui-input" / >
+                                        < /li>
+                                        < li
+                                    class
+                                    = "layui-clear" >
+                                        < span > < i
+                                    style = " color: #ec1a0d;" > * < /i>文章状态：</s
+                                    pan >
+                                    < div
+                                    class
+                                    = "articleState" >
+                                        < select
+                                    id = "status"
+                                    name = "status"
+                                    lay - verify = "required" >
+                                        < option
+                                    value = "" > 请选择 < /option>
+                                        < option
+                                    value = "0"
+                                    th:selected = "${investmentArticle?.status =='0'}" > 草稿箱 < /option>
+                                        < option
+                                    value = "1"
+                                    th:selected = "${investmentArticle?.status =='1'}" > 上架 < /option>
+                                        < option
+                                    value = "2"
+                                    th:selected = "${investmentArticle?.status =='2'}" > 下架 < /option>
+                                        < /select>
+                                        < /div>
+                                        < /li>
+                                        < /ul>
+                                        < /div>
+                                        < a
+                                    href = "javascript:;"
+                                    class
+                                    = "layui-btn"
+                                    style = "margin-left:110px;"
+                                    id = "preview" > 预览 < /a>
+                                        < button
+                                    id = "saveButton"
+                                    class
+                                    = "layui-btn"
+                                    lay - submit = ""
+                                    lay - filter = "add" > 保存 < /button>
+                                        < a
+                                    href = "javascript:window.history.go(-1);"
+                                    class
+                                    = "layui-btn" > 返回 < /a>
+                                        < /form>
+                                        < /div>
+                                        < /div>
+                                        < /div>
+                                        <!--主题内容结束-->
 
-    }
+                                        <!--<div class="layui-footer">-->
+                                        <!--  &lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+                                        <!--  勘设底部区域-->
+                                        < !-- < /div>-->
+                                        < /div>
+                                        < !-- < script
+                                    src = "js/layui.js" ></script> -->
+                                    <!--<script type="text/javascript" src="js/laydate.js"></script>-->
+                                    <!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+                                    <!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+                                    <script type="text/javascript"
+                                            th:src="@{/js/app/investmentArticle/add.js}"></script>
+                                    <script type="text/javascript">
+                                        var ue = UE.getEditor('editorContent');
+                                        ue.autoFloatEnabled = false;
+                                        ue.focus();
+
+                                        // 预览功能
+                                        document.getElementById("preview").onclick = function () {
+                                            ue.execCommand('preview');
+                                        };
+
+                                        // 清空上传图片
+                                        function clearUploadImg() {
+                                            // 提示文字
+                                            document.getElementById("isUpload").innerText = "未上传";
+                                            // 给input赋值
+                                            document.getElementById("logo").value = "";
+                                            // 回显原来图片
+                                            document.getElementById("imgSrc").src = "/images/workImg.png";
+
+                                        }
 
 
+                                        // layui.use('laydate', function(){
+                                        //   var laydate = layui.laydate;
+                                        //   //日期时间选择范围
+                                        //   laydate.render({
+                                        //     elem: '#timeS' //募集开始时间
+                                        //     //,type: 'datetime'    //是否显示时间
+                                        //     //,trigger: 'click'
+                                        //     //,lang: 'en'    //英文
+                                        //     //,range: true //开启日期范围，默认使用“_”分割
+                                        //     /*,done: function(value, date, endDate){
+                                        //       console.log(value, date, endDate);
+                                        //     }
+                                        //     ,change: function(value, date, endDate){
+                                        //       console.log(value, date, endDate);
+                                        //     }*/
+                                        //   });
+                                        //   laydate.render({
+                                        //     elem: '#timeE' //募集结束时间
+                                        //   });
+                                        // });
+                                        //
+                                        // /*分页*/
+                                        // layui.use('laypage', function(){
+                                        //   var laypage=layui.laypage;
+                                        //   laypage.render({
+                                        //     elem: 'myPage',
+                                        //     count: 1000,
+                                        //     layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                                        //     jump: function(obj){
+                                        //       console.log(obj)
+                                        //     }
+                                        //   });
+                                        // });
 
 
-  // layui.use('laydate', function(){
-  //   var laydate = layui.laydate;
-  //   //日期时间选择范围
-  //   laydate.render({
-  //     elem: '#timeS' //募集开始时间
-  //     //,type: 'datetime'    //是否显示时间
-  //     //,trigger: 'click'
-  //     //,lang: 'en'    //英文
-  //     //,range: true //开启日期范围，默认使用“_”分割
-  //     /*,done: function(value, date, endDate){
-  //       console.log(value, date, endDate);
-  //     }
-  //     ,change: function(value, date, endDate){
-  //       console.log(value, date, endDate);
-  //     }*/
-  //   });
-  //   laydate.render({
-  //     elem: '#timeE' //募集结束时间
-  //   });
-  // });
-  //
-  // /*分页*/
-  // layui.use('laypage', function(){
-  //   var laypage=layui.laypage;
-  //   laypage.render({
-  //     elem: 'myPage',
-  //     count: 1000,
-  //     layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
-  //     jump: function(obj){
-  //       console.log(obj)
-  //     }
-  //   });
-  // });
-  
-
-</script>
+                                    </script>
 </body>
 </html>

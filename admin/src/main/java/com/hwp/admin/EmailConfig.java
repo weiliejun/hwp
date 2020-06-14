@@ -41,12 +41,15 @@ public class EmailConfig {
     public void setHost(String host) {
         this.host = host;
     }
+
     public void setPort(Integer port) {
         this.port = port;
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }

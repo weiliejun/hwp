@@ -22,13 +22,14 @@
         <result column="GRYX" jdbcType="VARCHAR" property="gryx"/>
     </resultMap>
     <sql id="Base_Column_List">
-    ID, NAME, PHONE, GSYX, GRYX, DEPT, STATUS, CREATE_TIME, REMARK, DATA_STATUS, RANK
+    ID, NAME, PHONE, GSYX, GRYX, DEPT, STATUS, CREATE_TIME, REMARK, DATA_STATUS, RYXXGL.RANK
   </sql>
     <select id="selectRyxxglList" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from RYXXGL
         <where>
+            DATA_STATUS='1'
             <if test="name != null">
                 and NAME like CONCAT('%',#{name},'%')
             </if>
@@ -39,7 +40,7 @@
                 and DEPT = #{dept,jdbcType=VARCHAR}
             </if>
             <if test="rank != null">
-                and RANK = #{rank,jdbcType=VARCHAR}
+                and RYXXGL.RANK = #{rank,jdbcType=VARCHAR}
             </if>
         </where>
         ORDER BY CREATE_TIME DESC
@@ -49,6 +50,7 @@
         <include refid="Base_Column_List"/>
         from RYXXGL
         <where>
+            DATA_STATUS='1'
             <if test="name != null">
                 and NAME like CONCAT('%',#{name},'%')
             </if>
@@ -59,7 +61,7 @@
                 and DEPT = #{dept,jdbcType=VARCHAR}
             </if>
             <if test="rank != null">
-                and RANK = #{rank,jdbcType=VARCHAR}
+                and RYXXGL.RANK = #{rank,jdbcType=VARCHAR}
             </if>
         </where>
         ORDER BY CREATE_TIME DESC
@@ -68,6 +70,7 @@
         select ID, NAME, PHONE, GSYX, GRYX
         from RYXXGL
         <where>
+            DATA_STATUS='1'
             <if test="name != null">
                 and NAME like CONCAT('%',#{name},'%')
             </if>
@@ -78,7 +81,7 @@
                 and DEPT = #{dept,jdbcType=VARCHAR}
             </if>
             <if test="rank != null">
-                and RANK = #{rank,jdbcType=VARCHAR}
+                and RYXXGL.RANK = #{rank,jdbcType=VARCHAR}
             </if>
         </where>
         ORDER BY CREATE_TIME DESC
@@ -97,7 +100,7 @@
     insert into RYXXGL (ID, NAME, PHONE,
       GSYX, GRYX, DEPT, STATUS,
       CREATE_TIME, REMARK, DATA_STATUS,
-      RANK)
+      RYXXGL.RANK)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
       #{gsyx,jdbcType=VARCHAR}, #{gryx,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
       #{createTime,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR},
@@ -137,7 +140,7 @@
                 DATA_STATUS,
             </if>
             <if test="rank != null">
-                RANK,
+                RYXXGL.RANK,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -207,7 +210,7 @@
                 DATA_STATUS = #{dataStatus,jdbcType=CHAR},
             </if>
             <if test="rank != null">
-                RANK = #{rank,jdbcType=VARCHAR},
+                RYXXGL.RANK = #{rank,jdbcType=VARCHAR},
             </if>
         </set>
         where ID = #{id,jdbcType=VARCHAR}
@@ -223,7 +226,14 @@
       CREATE_TIME = #{createTime,jdbcType=CHAR},
       REMARK = #{remark,jdbcType=VARCHAR},
       DATA_STATUS = #{dataStatus,jdbcType=CHAR},
-      RANK = #{rank,jdbcType=VARCHAR}
+      RYXXGL.RANK = #{rank,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+
+    <select id="selectRyxxglByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from RYXXGL
+        where NAME = #{name,jdbcType=VARCHAR}
+    </select>
 </mapper>

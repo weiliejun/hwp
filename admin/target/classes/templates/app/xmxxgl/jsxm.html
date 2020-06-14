@@ -14,7 +14,7 @@
         <div style="padding: 15px;">
 
             <div class="proCon">
-                <form id="searchForm" class="layui-form">
+                <form id="searchForm" class="layui-form" enctype="multipart/form-data">
 
                     <div class="newInvest">
                         <ul class="newInvestInfo">
@@ -49,18 +49,19 @@
                                 <input lay-verify="isUpload" type="hidden" id="logo" name="logo" th:value="${logo}" />
                             </li>-->
                             <li class="layui-clear">
-                            <p class="upTip"><i>*</i>上传附件</p>
-                            <div class="pdfList layui-clear" id="demo2">
-                                <div th:each="att : ${AttachFileList}">
-                                    <a th:href="${att.fileUrl}" target="_blank"><i class="layui-icon layui-icon-close"></i><span
-                                            th:text="${att.fileName}"></span></a>
+                                <p class="upTip">上传附件</p>
+                                <div class="pdfList layui-clear" id="demo2">
+                                    <div th:each="att : ${AttachFileList}">
+                                        <a th:href="${att.fileUrl}" target="_blank"><i
+                                                class="layui-icon layui-icon-close"></i><span
+                                                th:text="${att.fileName}"></span></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <br/>
-                            <div class="layui-upload">
-                                <button type="button" class="layui-btn layui-btn-warm" id="test2">多文件上传</button>
-                                <input type="hidden" id="attachFile" name="attachFile" required>
-                            </div>
+                                <br/>
+                                <div class="layui-upload">
+                                    <button type="button" class="layui-btn layui-btn-warm" id="test2">多文件上传</button>
+                                    <input type="hidden" id="attachFile" name="attachFile" required>
+                                </div>
                             </li>
 
                             <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
@@ -113,8 +114,9 @@
                             </li>
                         </ul>
                     </div>
-                    <button id="saveButton" class="layui-btn" lay-submit lay-filter="save">保存</button>
-                    <a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>
+                    <button id="saveButton" class="layui-btn" lay-submit lay-filter="save">提交</button>
+                    <a href="javascript:window.history.go(-1);" class="layui-btn layui-btn-primary">返回</a>
+                    <!--<button class="layui-btn layui-btn-primary" data-type="cancel">返回</button>-->
                 </form>
             </div>
         </div>

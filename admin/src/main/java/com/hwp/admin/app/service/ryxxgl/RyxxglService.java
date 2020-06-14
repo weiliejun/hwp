@@ -11,6 +11,8 @@ public interface RyxxglService {
 
     Ryxxgl getRyxxglById(String id);
 
+    Ryxxgl getRyxxglByName(String name);
+
     void updateRyxxgl(Ryxxgl ryxxgl);
 
     List<Ryxxgl> listRyxxglByParams(Map<String, Object> params);

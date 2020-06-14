@@ -26,10 +26,12 @@ com\hwp\common\components\exception\MessageTypeTmplInexistenceException.class
 com\hwp\common\components\cfca\trustsign\common\vo\cs\HeadVO.class
 com\hwp\common\components\verifycode\VerifyCodeImageGenarator.class
 com\hwp\common\components\cfca\trustsign\common\vo\response\tx3\Tx3301ResVO.class
+com\hwp\common\model\xmrwxx\dao\XmrwxxMapper.class
 com\hwp\common\util\JsonUtil.class
 com\hwp\common\util\JsonHelper.class
 com\hwp\common\model\sysdictionary\bean\SysDictionary.class
 com\hwp\common\model\websiteBulletin\bean\WebsiteBulletin.class
+com\hwp\common\model\spsqxx\bean\XmSpsqxx.class
 com\hwp\common\components\cfca\trustsign\common\vo\response\tx3\Tx3208ResVO.class
 com\hwp\common\components\cfca\trustsign\common\vo\request\tx3\Tx3203ReqVO.class
 com\hwp\common\util\RedisUtil.class
@@ -107,7 +109,6 @@ com\hwp\common\redis\WriteStringRedisTemplate.class
 com\hwp\common\components\filesync\action\ReceiveFile.class
 com\hwp\common\components\cfca\trustsign\common\vo\cs\GetContractSignatureAttrVO.class
 com\hwp\common\components\cfca\trustsign\common\vo\response\tx3\Tx3ResVO.class
-META-INF\spring-configuration-metadata.json
 com\hwp\common\model\userRisk\bean\UserRisk.class
 com\hwp\common\model\servicecalllog\dao\ServiceCallLogDao.class
 com\hwp\common\service\userProdExpenseService\UserProdExpenseService.class
@@ -122,6 +123,7 @@ com\hwp\common\thirdparty\util\EecServiceUtil.class
 com\hwp\common\components\filesync\MoreSystemFileSynchronizer.class
 com\hwp\common\components\filesync\action\DeleteFile.class
 com\hwp\common\components\cfca\trustsign\common\vo\cs\InvestmentInfoVO.class
+test\TestJDBC.class
 com\hwp\common\util\ResultStatusHelper$Status.class
 com\hwp\common\model\sysMessage\bean\SysMessage.class
 com\hwp\common\db\DynamicDataSourceConfig.class
@@ -189,6 +191,7 @@ com\csii\bop\pcommon\signature\Assert.class
 com\hwp\common\components\cfca\trustsign\common\vo\response\tx3\Tx3210ResVO.class
 com\hwp\common\db\DataSource.class
 com\hwp\common\components\rsa\exception\BaseRuntimeException.class
+test\TestMysql.class
 com\hwp\common\util\Holiday.class
 com\hwp\common\web\taglibs\code\CodeDialect.class
 com\hwp\common\model\tenderRepayment\dao\TenderRepaymentMapper.class
@@ -207,6 +210,7 @@ com\hwp\common\util\HttpClientUtil.class
 com\hwp\common\components\cfca\trustsign\common\vo\cs\SignKeywordVO.class
 com\hwp\common\model\sysManager\bean\SysManager.class
 com\hwp\common\components\exception\MessageBusiTypeTmplInexistenceException.class
+com\hwp\common\model\spsqxx\dao\SpsqxxMapper.class
 com\hwp\common\components\cfca\trustsign\common\vo\request\tx3\Tx3202ReqVO.class
 com\hwp\common\model\userInfoExt\dao\UserInfoExtDao.class
 com\hwp\common\components\cfca\trustsign\common\vo\response\tx3\Tx3299ResVO.class
@@ -233,6 +237,7 @@ com\hwp\common\redis\RedisTemplate.class
 com\hwp\common\components\exception\MessageSenderFailedException.class
 com\hwp\common\components\cfca\trustsign\connector\HttpClient$1.class
 com\hwp\common\model\sysManager\dao\SysManagerDao.class
+com\hwp\common\model\xmrwxx\bean\Xmrwxx.class
 com\hwp\common\service\userBankCardManage\UserBankCardService.class
 com\hwp\common\constant\ResultCode.class
 com\hwp\common\web\SessionUser.class
@@ -245,6 +250,7 @@ com\hwp\common\util\KeyManager.class
 com\hwp\common\model\userTransaction\dto\UserTransactionSumDTO.class
 com\hwp\common\model\sysMessageTmpl\dao\SysMessageTmplDao.class
 com\hwp\common\components\cfca\trustsign\common\vo\cs\SignatoryVO.class
+test\TestNumber.class
 com\hwp\common\components\cfca\trustsign\common\vo\request\tx3\Tx3207ReqVO.class
 com\hwp\common\redis\dao\CacheDaoImpl.class
 com\hwp\common\util\HttpClientHelper.class
@@ -275,6 +281,7 @@ com\hwp\common\components\cfca\trustsign\constant\Request.class
 com\hwp\common\model\product\dao\UnFreezePayEntityMapper.class
 com\hwp\common\components\exception\ParameterNullPointerException.class
 com\hwp\common\service\insuranceOrderService\InsuranceOrderService.class
+test\TestOracle.class
 com\hwp\common\model\user\dto\UserInfoDetailDTO.class
 com\hwp\common\redis\JedisClusterConfig.class
 com\hwp\common\redis\ReadRedisTemplate.class
@@ -319,7 +326,9 @@ com\hwp\common\components\cfca\trustsign\connector\HttpConnector.class
 com\hwp\common\model\servicecalllog\bean\ServiceCallLog.class
 com\hwp\common\redis\RedisCluster.class
 com\hwp\common\components\cfca\trustsign\common\vo\cs\CertUnbindingVO.class
+com\hwp\common\model\spsqxx\bean\Spsqxx.class
 com\hwp\common\model\sysMessage\bean\UserMessageSet.class
+test\TestDate.class
 com\hwp\common\util\VerifyUtil$1.class
 com\hwp\common\util\VerifyUtil$InterfaceName.class
 com\hwp\common\service\userWorkInfo\UserWorkInfoService.class
@@ -370,6 +379,7 @@ com\csii\bop\pcommon\signature\Constants.class
 com\hwp\common\web\bean\CurrentManager.class
 com\hwp\common\model\productOtherAttachFile\dao\ProductOtherAttachFileMapper.class
 com\hwp\common\util\AssertObject.class
+test\JunitTest\BaseDAOTEST.class
 com\hwp\common\util\SpringContextUtil.class
 com\hwp\common\model\prodInfo\bean\ProdInfo.class
 com\hwp\common\model\websiteCase\bean\WebsiteCase.class

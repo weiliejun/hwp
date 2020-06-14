@@ -107,6 +107,7 @@ public class FileSynchronizer {
 
         MultipartEntityBuilder entity = MultipartEntityBuilder.create();
         ContentType contentType = ContentType.create("text/plain", "UTF-8");
+        entity.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);//加上此行代码解决返回中文乱码问题
         entity.addPart("file", new FileBody(file));
         entity.addPart("filePath", new StringBody(filePath, contentType));
         entity.addPart("fileName", new StringBody(fileName, contentType));

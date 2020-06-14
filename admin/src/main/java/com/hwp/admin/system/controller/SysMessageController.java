@@ -2,14 +2,12 @@ package com.hwp.admin.system.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.hwp.admin.components.message.mail.MailEntity;
 import com.hwp.admin.components.message.mail.MailSenderService;
 import com.hwp.admin.system.service.SysManagerService;
 import com.hwp.admin.system.service.SysMessageService;
 import com.hwp.admin.web.base.AbstractBaseController;
 import com.hwp.common.constant.GlobalConstant;
 import com.hwp.common.model.sysMessage.bean.SysMessage;
-import com.hwp.common.model.sysMessage.dao.SysMessageDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

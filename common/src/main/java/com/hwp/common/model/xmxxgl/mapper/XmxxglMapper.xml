@@ -58,6 +58,8 @@
     <result column="JSXM_SPR" jdbcType="VARCHAR" property="jsxmSpr" />
     <result column="JSXM_SPR_ID" jdbcType="VARCHAR" property="jsxmSprId" />
     <result column="JSXM_SPR_NAME" jdbcType="VARCHAR" property="jsxmSprName" />
+    <result column="SPYJ" jdbcType="VARCHAR" property="spyj" />
+    <result column="SPMS" jdbcType="VARCHAR" property="spms" />
   </resultMap>
   <sql id="Base_Column_List">
     ID, YWLX, CPMC, CPGM, CPQX, YQSY, XMLY, ZJLY, BTFW, CJZT, ZTXM, JTXM, TZTJ, GLF, 
@@ -65,7 +67,7 @@
     FWFZR_ID, FWFZR_NAME, FWFZR_XX, FKFZR_ID, FKFZR_NAME, FKFZR_XX, CWFZR_ID, CWFZR_NAME, 
     CWFZR_XX, XMQTCY, XMQTCY_ID, XMQTCY_NAME, SPR, SPR_ID, SPR_NAME, XMJD, GDLB, XXMS, 
     JSYY, gdsj, CREATOR_ID, CREATOR_NAME, CREATE_TIME, REMARK, DATA_STATUS, EDIT_TIME, 
-    EDITOR_ID, EDITOR_NAME, JSXM_SPR, JSXM_SPR_ID, JSXM_SPR_NAME
+    EDITOR_ID, EDITOR_NAME, JSXM_SPR, JSXM_SPR_ID, JSXM_SPR_NAME, SPYJ, SPMS
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -94,8 +96,8 @@
       gdsj, CREATOR_ID, CREATOR_NAME, 
       CREATE_TIME, REMARK, DATA_STATUS, 
       EDIT_TIME, EDITOR_ID, EDITOR_NAME, 
-      JSXM_SPR, JSXM_SPR_ID, JSXM_SPR_NAME
-      )
+      JSXM_SPR, JSXM_SPR_ID, JSXM_SPR_NAME, 
+      SPYJ, SPMS)
     values (#{id,jdbcType=VARCHAR}, #{ywlx,jdbcType=VARCHAR}, #{cpmc,jdbcType=VARCHAR}, 
       #{cpgm,jdbcType=VARCHAR}, #{cpqx,jdbcType=VARCHAR}, #{yqsy,jdbcType=VARCHAR}, #{xmly,jdbcType=VARCHAR}, 
       #{zjly,jdbcType=VARCHAR}, #{btfw,jdbcType=VARCHAR}, #{cjzt,jdbcType=VARCHAR}, #{ztxm,jdbcType=VARCHAR}, 
@@ -112,8 +114,8 @@
       #{gdsj,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, #{creatorName,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
       #{editTime,jdbcType=CHAR}, #{editorId,jdbcType=INTEGER}, #{editorName,jdbcType=VARCHAR}, 
-      #{jsxmSpr,jdbcType=VARCHAR}, #{jsxmSprId,jdbcType=VARCHAR}, #{jsxmSprName,jdbcType=VARCHAR}
-      )
+      #{jsxmSpr,jdbcType=VARCHAR}, #{jsxmSprId,jdbcType=VARCHAR}, #{jsxmSprName,jdbcType=VARCHAR}, 
+      #{spyj,jdbcType=VARCHAR}, #{spms,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hwp.common.model.xmxxgl.bean.Xmxxgl">
     insert into XMXXGL
@@ -286,6 +288,12 @@
       <if test="jsxmSprName != null">
         JSXM_SPR_NAME,
       </if>
+      <if test="spyj != null">
+        SPYJ,
+      </if>
+      <if test="spms != null">
+        SPMS,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -455,6 +463,12 @@
       </if>
       <if test="jsxmSprName != null">
         #{jsxmSprName,jdbcType=VARCHAR},
+      </if>
+      <if test="spyj != null">
+        #{spyj,jdbcType=VARCHAR},
+      </if>
+      <if test="spms != null">
+        #{spms,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -626,6 +640,12 @@
       <if test="jsxmSprName != null">
         JSXM_SPR_NAME = #{jsxmSprName,jdbcType=VARCHAR},
       </if>
+      <if test="spyj != null">
+        SPYJ = #{spyj,jdbcType=VARCHAR},
+      </if>
+      <if test="spms != null">
+        SPMS = #{spms,jdbcType=VARCHAR},
+      </if>
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
@@ -685,7 +705,9 @@
       EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
       JSXM_SPR = #{jsxmSpr,jdbcType=VARCHAR},
       JSXM_SPR_ID = #{jsxmSprId,jdbcType=VARCHAR},
-      JSXM_SPR_NAME = #{jsxmSprName,jdbcType=VARCHAR}
+      JSXM_SPR_NAME = #{jsxmSprName,jdbcType=VARCHAR},
+      SPYJ = #{spyj,jdbcType=VARCHAR},
+      SPMS = #{spms,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
 
@@ -694,19 +716,20 @@
     <include refid="Base_Column_List" />
     from XMXXGL
     <where>
-      <if test="name != null">
+      DATA_STATUS='1'
+      <if test="cpmc != null">
         and CPMC like CONCAT('%',#{cpmc},'%')
       </if>
-      <if test="startDate != null">
+      <if test="startTime != null">
         AND CREATE_TIME <![CDATA[>=]]> #{startTime,jdbcType=VARCHAR}
       </if>
-      <if test="endDate != null">
+      <if test="endTime != null">
         AND CREATE_TIME <![CDATA[<=]]> #{endTime,jdbcType=VARCHAR}
       </if>
-      <if test="dept != null">
+      <if test="ywlx != null">
         and YWLX = #{ywlx,jdbcType=VARCHAR}
       </if>
-      <if test="rank != null">
+      <if test="xmjd != null">
         and XMJD = #{xmjd,jdbcType=VARCHAR}
       </if>
         <if test="ryid != null">
@@ -720,24 +743,25 @@
     <include refid="Base_Column_List" />
     from XMXXGL
     <where>
-      <if test="name != null">
+      DATA_STATUS='1'
+      <if test="cpmc != null">
         and CPMC like CONCAT('%',#{cpmc},'%')
       </if>
-      <if test="startDate != null">
+      <if test="startTime != null">
         AND CREATE_TIME <![CDATA[>=]]> #{startTime,jdbcType=VARCHAR}
       </if>
-      <if test="endDate != null">
+      <if test="endTime != null">
         AND CREATE_TIME <![CDATA[<=]]> #{endTime,jdbcType=VARCHAR}
       </if>
-      <if test="dept != null">
+      <if test="ywlx != null">
         and YWLX = #{ywlx,jdbcType=VARCHAR}
       </if>
-      <if test="rank != null">
+      <if test="xmjd != null">
         and XMJD = #{xmjd,jdbcType=VARCHAR}
       </if>
-        <if test="ryid != null">
-            and (XMQTCY like CONCAT('%',#{ryid},'%') OR XMFZR_ID = #{ryid,jdbcType=VARCHAR} OR XMJBR_ID = #{ryid,jdbcType=VARCHAR} OR FWFZR_ID = #{ryid,jdbcType=VARCHAR} OR FKFZR_ID = #{ryid,jdbcType=VARCHAR} OR CWFZR_ID = #{ryid,jdbcType=VARCHAR})
-        </if>
+      <if test="ryid != null">
+        and (XMQTCY like CONCAT('%',#{ryid},'%') OR XMFZR_ID = #{ryid,jdbcType=VARCHAR} OR XMJBR_ID = #{ryid,jdbcType=VARCHAR} OR FWFZR_ID = #{ryid,jdbcType=VARCHAR} OR FKFZR_ID = #{ryid,jdbcType=VARCHAR} OR CWFZR_ID = #{ryid,jdbcType=VARCHAR})
+      </if>
     </where>
     ORDER BY CREATE_TIME DESC
   </select>

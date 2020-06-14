@@ -4,7 +4,6 @@ import com.hwp.common.model.product.bean.Product;
 import com.hwp.common.model.product.dao.ProductMapper;
 import com.hwp.common.util.DateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -43,7 +42,7 @@ public class ProductQuartz {
 //        }
 //    }
 
-    @Scheduled(cron = "* 5 14 * * ?")
+    //    @Scheduled(cron = "* 5 14 * * ?")
     public void tenderProductStatusTB() {
         System.out.println("定时任务执行中----------------");
         //获取当前时间

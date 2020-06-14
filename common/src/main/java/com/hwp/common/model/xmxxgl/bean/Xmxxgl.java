@@ -115,6 +115,10 @@ public class Xmxxgl implements Serializable {
 
     private String jsxmSprName;
 
+    private String spyj;
+
+    private String spms;
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {
@@ -563,5 +567,21 @@ public class Xmxxgl implements Serializable {
 
     public void setJsxmSprName(String jsxmSprName) {
         this.jsxmSprName = jsxmSprName == null ? null : jsxmSprName.trim();
+    }
+
+    public String getSpyj() {
+        return spyj;
+    }
+
+    public void setSpyj(String spyj) {
+        this.spyj = spyj == null ? null : spyj.trim();
+    }
+
+    public String getSpms() {
+        return spms;
+    }
+
+    public void setSpms(String spms) {
+        this.spms = spms == null ? null : spms.trim();
     }
 }

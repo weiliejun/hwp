@@ -5,7 +5,6 @@ import com.hwp.admin.system.service.SysMessageTmplService;
 import com.hwp.common.components.exception.ParameterNullPointerException;
 import com.hwp.common.constant.GlobalConstant;
 import com.hwp.common.model.sysMessage.bean.SysMessage;
-import com.hwp.common.model.sysMessage.dao.SysMessageDao;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;

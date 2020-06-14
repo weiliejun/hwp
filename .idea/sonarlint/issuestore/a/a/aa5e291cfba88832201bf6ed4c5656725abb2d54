@@ -1,89 +1,121 @@
 
-^
-java:S4488g"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(°¢ÍË
-E
-java:S1125ñ")Remove the literal "false" boolean value.(¨Ú¬°ûÿÿÿÿ
-f
-java:S2259½"OA "NullPointerException" could be thrown; "formMultipartFile" is nullable here.(ñ•ƒ”
-I
-java:S1135ä"2Complete the task associated to this TODO comment.(ÚëÚô
-d
-java:S1192†"HDefine a constant instead of duplicating this literal "message" 3 times.(Ú®İàÿÿÿÿÿ
-c
-java:S1192Å"LDefine a constant instead of duplicating this literal "tmpFileName" 4 times.(î×Ó€
-W	java:S125Ú"<This block of commented-out lines of code should be removed.(âù­ºÿÿÿÿÿ
-u	java:S116="[Rename this field "FileSynchronizer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¶¤®ûÿÿÿÿ
-H
-java:S1135w"2Complete the task associated to this TODO comment.(ÚëÚô
-f
-java:S3027ƒ"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(­”ÕÕüÿÿÿÿ
-J
-java:S1066O"/Merge this if statement with the enclosing one.(ÑÎ¤½ùÿÿÿÿ
-N
-java:S1135£"2Complete the task associated to this TODO comment.(àÇ­şÿÿÿÿ
-]
-java:S1192k"GDefine a constant instead of duplicating this literal "xmxxgl" 3 times.(Ô±¹Æ
-p
-java:S2293¹"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
-S
-java:S2629ü"7Use the built-in formatting to construct this argument.(ÑÂ¹øÿÿÿÿ
-H
-java:S1135c"2Complete the task associated to this TODO comment.(ÚëÚô
-^
-java:S1854ë"BRemove this useless assignment to local variable "currentManager".(™²¬Äûÿÿÿÿ
-l
-java:S1192Á"PDefine a constant instead of duplicating this literal "createTimeScope" 3 times.(ıĞ¨ùÿÿÿÿÿ
-i
-java:S2259Ç"MA "NullPointerException" could be thrown; "createTimeScope" is nullable here.(šœÍˆşÿÿÿÿ
+a
+java:S1155Œ">Use isEmpty() to check whether the collection is empty or not.(Æœğòùÿÿÿÿ8˜îßÚª.
 >
-java:S1659À"'Declare "startTime" on a separate line.(®÷ŞÜ
-f
-java:S4488ä"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(òÓìÂıÿÿÿÿ
-I
-java:S1135²"2Complete the task associated to this TODO comment.(ÚëÚô
+java:S1659Õ"'Declare "startTime" on a separate line.(®÷ŞÜ
 p
-java:S2293‘"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
-X
-java:S3457Ş"AFormat specifiers should be used instead of string concatenation.(é£
-_
-java:S5361‹"HReplace this call to "replaceAll()" by a call to the "replace()" method.(´²»²
-u
-java:S2293©"YReplace the type specification in this constructor call with the diamond operator ("<>").(çœµ‰şÿÿÿÿ
+java:S2293Î"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+w
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‹ëõ¤8ÅßøÅª.
+l
+java:S1192Ö"PDefine a constant instead of duplicating this literal "createTimeScope" 3 times.(ıĞ¨ùÿÿÿÿÿ
 N
-java:S2629Ş"7Use the built-in formatting to construct this argument.(é£
-F
-java:S3740Â"/Provide the parametrized type for this generic.(ÑÖ³±
-d
-java:S4488§"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÏÊÃ×ûÿÿÿÿ
-I
-java:S1135‰"2Complete the task associated to this TODO comment.(ÚëÚô
-p
-java:S2293ì"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
-K
-java:S3740Ä"/Provide the parametrized type for this generic.(ìÀºåùÿÿÿÿ
+java:S2629í"7Use the built-in formatting to construct this argument.(é£
 Z
-java:S3752¬">Add a "method" parameter to this "@RequestMapping" annotation.(şÉ®¶üÿÿÿÿ
+java:S3752»">Add a "method" parameter to this "@RequestMapping" annotation.(şÉ®¶üÿÿÿÿ
+U
+java:S1135ª"2Complete the task associated to this TODO comment.(Ï–½ùÿÿÿÿ8ÅßøÅª.
+^
+java:S4488u"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(°¢ÍË
+g	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó·åÏ
 i
-java:S3776®"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.( Òë
-
-java:S1157Ô"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(ëóÈ¨ûÿÿÿÿ
-?
-java:S1148Š"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-j
-java:S1192Ø"SDefine a constant instead of duplicating this literal "é¡¹ç›®ä¿¡æ¯ç®¡ç†" 4 times.(Ëú¢·
-O
-java:S1481ë"3Remove this unused "currentManager" local variable.(™²¬Äûÿÿÿÿ
-]
-java:S3027ù"FPut single-quotes around '.' to use the faster "indexOf(char)" method.(×Ûµ
-c
-java:S4488{"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ïâãòúÿÿÿÿ
-<
-java:S1659À"%Declare "endTime" on a separate line.(®÷ŞÜ
-]
-java:S3457ü"AFormat specifiers should be used instead of string concatenation.(ÑÂ¹øÿÿÿÿ
-g	java:S117§"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó·åÏ
-i
-java:S4042["NUse "java.nio.file.Files#delete" here for better messages on error conditions.(áùˆ«ûÿÿÿÿ
-g	java:S117ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó·åÏ
+java:S4042i"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(áùˆ«ûÿÿÿÿ
+I
+java:S1135…"2Complete the task associated to this TODO comment.(ÚëÚô
+d
+java:S1192Ç"FDefine a constant instead of duplicating this literal "false" 3 times.(ò›®’8ÅßøÅª.
 X
-java:S2209ø"5Change this instance-reference to a static reference.( Í³†ûÿÿÿÿ8»ãŞ‡¦.
+java:S2209‡"5Change this instance-reference to a static reference.( Í³†ûÿÿÿÿ8˜îßÚª.
+N
+java:S1135¸"2Complete the task associated to this TODO comment.(àÇ­şÿÿÿÿ
+F
+java:S3740Í"/Provide the parametrized type for this generic.(ÑÖ³±
+H
+java:S1135q"2Complete the task associated to this TODO comment.(ÚëÚô
+d
+java:S4488‰"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ïâãòúÿÿÿÿ
+p
+java:S2293ÿ"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+_
+java:S5361™"HReplace this call to "replaceAll()" by a call to the "replace()" method.(´²»²
+u
+java:S3776ı"RRefactor this method to reduce its Cognitive Complexity from 64 to the 15 allowed.(×‰÷Óùÿÿÿÿ8ÅßøÅª.
+[	java:S106¦"9Replace this use of System.out or System.err by a logger.(ãæ­şÿÿÿÿÿ8ÅßøÅª.
+f
+java:S3027’"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(­”ÕÕüÿÿÿÿ
+„
+java:S1192½"fDefine a constant instead of duplicating this literal "{'zrwxh':'2', 'rwmc':'ä¸Šä¼ æ–‡ä»¶'}]" 3 times.(¾ã˜8ÅßøÅª.
+I
+java:S1135Ç"2Complete the task associated to this TODO comment.(ÚëÚô
+
+java:S1157ã"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(ëóÈ¨ûÿÿÿÿ
+w
+java:S2293´"YReplace the type specification in this constructor call with the diamond operator ("<>").(ˆ¥ÏÛ8ÅßøÅª.
+u
+java:S3776Š"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(øå•üÿÿÿÿ8ÅßøÅª.
+E
+java:S1125€")Remove the literal "false" boolean value.(¨Ú¬°ûÿÿÿÿ
+f
+java:S4488ó"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(òÓìÂıÿÿÿÿ
+Š
+java:S1192¼"gDefine a constant instead of duplicating this literal "[{'zrwxh':'1', 'rwmc':'èµ„æ–™æ¸…å•'}," 3 times.(€–êœùÿÿÿÿ8ÅßøÅª.
+n	java:S117±"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó·åÏ8ÅßøÅª.
+d
+java:S3457±"AFormat specifiers should be used instead of string concatenation.(‡¨Àİùÿÿÿÿ8ÅßøÅª.
+i
+java:S3776½"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.( Òë
+p
+java:S3776Ï"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(´Ûõá8ÅßøÅª.
+J
+java:S1066]"/Merge this if statement with the enclosing one.(ÑÎ¤½ùÿÿÿÿ
+<
+java:S1659Õ"%Declare "endTime" on a separate line.(®÷ŞÜ
+K
+java:S3740Ï"/Provide the parametrized type for this generic.(ìÀºåùÿÿÿÿ
+w
+java:S2293ˆ"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¬á¢8ÅßøÅª.
+|
+java:S2293ì"YReplace the type specification in this constructor call with the diamond operator ("<>").(º¦¹àüÿÿÿÿ8ÅßøÅª.
+I
+java:S1135É"2Complete the task associated to this TODO comment.(ÚëÚô
+f
+java:S2259Ì"OA "NullPointerException" could be thrown; "formMultipartFile" is nullable here.(ñ•ƒ”
+w
+java:S2293·"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¬á¢8ÅßøÅª.
+u
+java:S2293´"YReplace the type specification in this constructor call with the diamond operator ("<>").(çœµ‰şÿÿÿÿ
+]
+java:S1192y"GDefine a constant instead of duplicating this literal "xmxxgl" 5 times.(Ô±¹Æ
+D
+java:S1659µ"!Declare "msg" on a separate line.(·¶Â¥øÿÿÿÿ8ÅßøÅª.
+X
+java:S3457í"AFormat specifiers should be used instead of string concatenation.(é£
+c
+java:S1192Ô"LDefine a constant instead of duplicating this literal "tmpFileName" 4 times.(î×Ó€
+|
+java:S2293¡"YReplace the type specification in this constructor call with the diamond operator ("<>").(º¦¹àüÿÿÿÿ8ÅßøÅª.
+u	java:S116I"[Rename this field "FileSynchronizer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¶¤®ûÿÿÿÿ
+d
+java:S4488¼"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÏÊÃ×ûÿÿÿÿ
+g	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó·åÏ
+?
+java:S1148™"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+I
+java:S1135÷"2Complete the task associated to this TODO comment.(ÚëÚô
+p
+java:S2293Ñ"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+]
+java:S3457‹"AFormat specifiers should be used instead of string concatenation.(ÑÂ¹øÿÿÿÿ
+w
+java:S2293â"YReplace the type specification in this constructor call with the diamond operator ("<>").(‹ëõ¤8ÅßøÅª.
+]
+java:S3027ˆ"FPut single-quotes around '.' to use the faster "indexOf(char)" method.(×Ûµ
+i
+java:S2259Ü"MA "NullPointerException" could be thrown; "createTimeScope" is nullable here.(šœÍˆşÿÿÿÿ
+d
+java:S1192”"HDefine a constant instead of duplicating this literal "message" 3 times.(Ú®İàÿÿÿÿÿ
+v
+java:S1192í"SDefine a constant instead of duplicating this literal "é¡¹ç›®ä¿¡æ¯ç®¡ç†" 4 times.(Ö±ùÿÿÿÿ8ÅßøÅª.
+[	java:S106ñ"9Replace this use of System.out or System.err by a logger.(ãæ­şÿÿÿÿÿ8ÅßøÅª.
+S
+java:S2629‹"7Use the built-in formatting to construct this argument.(ÑÂ¹øÿÿÿÿ

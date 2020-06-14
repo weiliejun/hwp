@@ -30,7 +30,7 @@ var Common = function () {
             page: true,
             // toolbar: true, //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             totalRow: true, //开启合计行
-            // skin: 'row',
+            skin: 'layui-bg-gray',
             even: true,
             cols: cols,
             done: function (res, curr, count) {

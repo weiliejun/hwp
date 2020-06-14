@@ -4,28 +4,28 @@ layui.use(['form', 'upload', 'layer', 'layer', 'jquery'], function () {
         form = layui.form,
         upload = layui.upload,
         layer = layui.layer;
-   /* $(function () {
-        console.log("ready执行");
-        var ue = UE.getEditor('editorContent');
-        ue.autoFloatEnabled = false;
-        ue.focus();
+    /* $(function () {
+         console.log("ready执行");
+         var ue = UE.getEditor('editorContent');
+         ue.autoFloatEnabled = false;
+         ue.focus();
 
-        ue.ready(function () {
-            console.log("回显数据js执行");
-            ue.setContent($("#content").val());
-
-
-        });
+         ue.ready(function () {
+             console.log("回显数据js执行");
+             ue.setContent($("#content").val());
 
 
-        if ($("#logo").val().length > 0) {
-            // 回显提示文字
-            $("#isUpload").text("上传成功");
-            // 回显图片
-            $(".backImg img").attr("src", $("#logo").val());
-        }
+         });
 
-    });*/
+
+         if ($("#logo").val().length > 0) {
+             // 回显提示文字
+             $("#isUpload").text("上传成功");
+             // 回显图片
+             $(".backImg img").attr("src", $("#logo").val());
+         }
+
+     });*/
 
     // 上传图片
     /* upload.render({
@@ -178,7 +178,8 @@ layui.use(['form', 'upload', 'layer', 'layer', 'jquery'], function () {
 
 
     form.on('submit(save)', function (data) {
-        console.log(data.field);
+        console.log(JSON.stringify(data.field));
+        // alert(JSON.stringify(data.field));
         var ajaxReturnData;
         $.ajax({
             url: PageContext.getUrl('/xmxxgl/addOrUpdate2/jsxm'),
@@ -194,19 +195,20 @@ layui.use(['form', 'upload', 'layer', 'layer', 'jquery'], function () {
         if (ajaxReturnData.flag == 'true') {
             top.layer.msg('保存成功', {icon: 1});
             // 保存成功后禁用掉保存按钮
-            $('#saveButton').addClass('layui-btn-disabled').attr('disabled', "true");
+            // $('#saveButton').addClass('layui-btn-disabled').attr('disabled', "true");
             //先得到当前iframe层的索引
             //var index = parent.layer.getFrameIndex(window.name);
             //parent.layer.close(index); //再执行关闭
             //刷新父页面
-            //parent.location.reload();
+            // parent.location.reload();
+            window.location.href = PageContext.getUrl("/xmxxgl/list");
         } else {
             top.layer.msg(ajaxReturnData.msg, {icon: 5});
         }
         return false;
     });
 
-    window.selectJsxmSprCallback = function (selectJsxmSpr) { 
+    window.selectJsxmSprCallback = function (selectJsxmSpr) {
         // layer.alert("selectJsxmSpr");
         var jsxmSprId = '';
         var jsxmSprName = '';
@@ -229,6 +231,9 @@ layui.use(['form', 'upload', 'layer', 'layer', 'jquery'], function () {
     var active = {
         selectJsxmSpr: function () {
             Common.openFrame("/ryxxgl/selectList?cxmk=selectJsxmSpr", "选择审批人", '1000px', '600px');
+        },
+        cancel: function () {
+            parent.location.reload();
         }
     };
 

@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.hwp.admin.system.service.SysMessageTmplService;
 import com.hwp.admin.web.base.AbstractBaseController;
 import com.hwp.common.constant.GlobalConstant;
-import com.hwp.common.model.ryxxgl.bean.Ryxxgl;
 import com.hwp.common.model.sysMessageTmpl.bean.SysMessageTmpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,7 +52,7 @@ public class SysMessageTmplController extends AbstractBaseController {
         if (id != null) {
             SysMessageTmpl sysMessageTmpl = sysMessageTmplService.getSysMessageTmplById(id);
             model.addAttribute("sysMessageTmpl", sysMessageTmpl);
-        }else{
+        } else {
             model.addAttribute("sysMessageTmpl", new SysMessageTmpl());
         }
         return "/system/sysMessageTmpl/add";

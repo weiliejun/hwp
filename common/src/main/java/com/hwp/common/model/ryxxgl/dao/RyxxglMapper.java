@@ -31,6 +31,15 @@ public class RyxxglMapper extends AbstractBaseDao {
     }
 
     /**
+     * @Description 根据name查找人员信息
+     * @Author 魏列军
+     * @UpdateDate 2020/5/15 10:12
+     */
+    public Ryxxgl selectRyxxglByName(String name) {
+        return (Ryxxgl) queryForObject("RyxxglMapper.selectRyxxglByName", name);
+    }
+
+    /**
      * @Description 获取人员信息列表
      * @Author 魏列军
      * @UpdateDate 2020/5/15 10:12

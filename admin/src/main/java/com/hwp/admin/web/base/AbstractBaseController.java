@@ -3,7 +3,6 @@ package com.hwp.admin.web.base;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageHelper;
 import com.hwp.admin.system.service.MonitorService;
 import com.hwp.common.constant.ApplicationSessionKeys;
 import com.hwp.common.constant.GlobalConstant;
@@ -267,9 +266,9 @@ public abstract class AbstractBaseController {
             CurrentManager currentManager = (CurrentManager) subject.getSession().getAttribute(ApplicationSessionKeys.CURRENT_USER);
             String operationData = JSON.toJSONString(data);
             logger.info("调试信息：");
-            // if (operationData != null && operationData.length() > 1300) {
-            // operationData = operationData.substring(0, 1300);
-            // }
+            if (operationData != null && operationData.length() > 1300) {
+                operationData = operationData.substring(0, 1300);
+            }
             String message = "操作人员:" + currentManager.getSysManager().getName() + " 操作时间:" + DateHelper.getYMDHMSFormatDate(new Date()) + " 操作功能模块：" + functionModule + " 操作功能描述:" + functionDescription + " 操作数据:" + operationData;
             logger.info(message);
             monitorService.saveBusinessLog(currentManager, functionModule, functionDescription, operationData);

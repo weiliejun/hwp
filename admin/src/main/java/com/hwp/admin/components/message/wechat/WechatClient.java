@@ -1,9 +1,6 @@
 package com.hwp.admin.components.message.wechat;
 
-import io.lettuce.core.RedisClient;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 @Component
 public class WechatClient {

@@ -12,10 +12,7 @@ import com.hwp.common.model.ryxxgl.bean.RyxxglSelect;
 import com.hwp.common.model.sysManager.bean.SysManager;
 import com.hwp.common.model.xmxxgl.bean.Xmxxgl;
 import com.hwp.common.util.DateHelper;
-import com.hwp.common.util.FileCopyHelper;
-import com.hwp.common.util.RandomUtil;
 import com.hwp.common.util.StringHelper;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +21,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -88,7 +84,7 @@ public class RyxxglController extends AbstractBaseController {
         if (id != null) {
             Ryxxgl ryxxgl = ryxxglService.getRyxxglById(id);
             model.addAttribute("ryxxgl", ryxxgl);
-        }else{
+        } else {
             model.addAttribute("ryxxgl", new Ryxxgl());
         }
         return "/app/ryxxgl/add";
@@ -108,7 +104,7 @@ public class RyxxglController extends AbstractBaseController {
         Ryxxgl ryxxgl = ryxxglService.getRyxxglById(id);
         model.addAttribute("ryxxgl", ryxxgl);
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
-        if(StringHelper.isNotBlank(type)&&type.equalsIgnoreCase("view")){
+        if (StringHelper.isNotBlank(type) && type.equalsIgnoreCase("view")) {
             return "/app/ryxxgl/view";
         }
         return "/app/ryxxgl/add";
@@ -129,8 +125,8 @@ public class RyxxglController extends AbstractBaseController {
         String flag = "true", msg = "获取成功";
         try {
             Map<String, Object> params = new HashMap<String, Object>();
-            params.put("ryid",id);
-            List<Xmxxgl> xmInfo=xmxxglService.listXmxxglByParams(params);
+            params.put("ryid", id);
+            List<Xmxxgl> xmInfo = xmxxglService.listXmxxglByParams(params);
             resultMap.put("data", xmInfo);
         } catch (Exception e) {
             logger.error("异常");
@@ -219,21 +215,34 @@ public class RyxxglController extends AbstractBaseController {
             model.addAttribute("type", "checkbox");
             model.addAttribute("cxmk", "selectSpr");
             return "app/ryxxgl/selectList";
-        }else if (params.get("cxmk").equals("selectXmjbr")) {
+        } else if (params.get("cxmk").equals("selectXmjbr")) {
             model.addAttribute("type", "radio");
             model.addAttribute("cxmk", "selectXmjbr");
             return "app/ryxxgl/selectList";
-        }else if (params.get("cxmk").equals("selectXmqtcy")) {
+        } else if (params.get("cxmk").equals("selectXmqtcy")) {
             model.addAttribute("type", "checkbox");
             model.addAttribute("cxmk", "selectXmqtcy");
             return "app/ryxxgl/selectList";
-        }else if (params.get("cxmk").equals("selectJsxmSpr")) {
+        } else if (params.get("cxmk").equals("selectJsxmSpr")) {
             model.addAttribute("type", "checkbox");
             model.addAttribute("cxmk", "selectJsxmSpr");
+            return "app/ryxxgl/selectList";
+        }else if (params.get("cxmk").equals("selectFzr")) {
+            model.addAttribute("type", "radio");
+            model.addAttribute("cxmk", "selectFzr");
+            return "app/ryxxgl/selectList";
+        }else if (params.get("cxmk").equals("selectFhr")) {
+            model.addAttribute("type", "checkbox");
+            model.addAttribute("cxmk", "selectFhr");
+            return "app/ryxxgl/selectList";
+        }else if (params.get("cxmk").equals("selectZhr")) {
+            model.addAttribute("type", "checkbox");
+            model.addAttribute("cxmk", "selectZhr");
             return "app/ryxxgl/selectList";
         }
         return "/app/ryxxgl/selectList";
     }
+
     /**
      * 人员信息查询负责人页面
      *
@@ -284,7 +293,7 @@ public class RyxxglController extends AbstractBaseController {
             // 数据有效
             ryxxgl.setDataStatus(GlobalConstant.DATA_VALID);
             ryxxgl.setCreateTime(DateHelper.getYMDHMSFormatDate(new Date()));
-            ryxxgl=ryxxglService.addRyxxgl(ryxxgl);
+            ryxxgl = ryxxglService.addRyxxgl(ryxxgl);
             resultMap.put("flag", "true");
             resultMap.put("msg", "人员信息新增成功");
 

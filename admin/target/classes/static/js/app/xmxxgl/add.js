@@ -20,23 +20,14 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
         $("#btfw1").css('display', 'none');
     });
 
-    $('#ywlx').blur(function () {
-        layer.alert("没有起作用");
-        var that = this;
-        if (that.value == "" || that.value.length <= 0 || that.value == '主动管理型契约型基金' || that.value == '主动管理型合伙型基金') {
+    form.on('select(ywlx)', function (data) {
+        if (data.value == "" || data.value.length <= 0 || data.value == '主动管理型契约型基金' || data.value == '主动管理型合伙型基金') {
             $("#btfw1").css('display', 'inline-block');
             $("#btfw2").css('display', 'none');
         } else {
             $("#btfw2").css('display', 'inline-block');
             $("#btfw1").css('display', 'none');
         }
-    });
-
-    form.on('select(ywlx)', function (data) {
-        layer.alert("没有起作用");
-        category = data.value;
-        categoryName = data.elem[data.elem.selectedIndex].text;
-        form.render('select');
     });
 
     form.on('submit(save)', function (data) {

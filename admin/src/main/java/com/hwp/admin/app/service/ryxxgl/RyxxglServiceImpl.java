@@ -57,6 +57,11 @@ public class RyxxglServiceImpl implements RyxxglService {
         return ryxxglMapper.selectRyxxglById(id);
     }
 
+    @Override
+    public Ryxxgl getRyxxglByName(String name) {
+        return ryxxglMapper.selectRyxxglByName(name);
+    }
+
     /**
      * 修改人员信息管理
      *

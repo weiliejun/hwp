@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ccshr" uuid="a96c9c52-40ef-4de7-91b5-c353ab161125">
-      <driver-ref>oracle</driver-ref>
+    <data-source source="LOCAL" name="huawuxiangmu_test@192.168.1.37" uuid="e2a38b88-980f-4872-8c73-1c5889a8da92">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@localhost:1521:orcl</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="mbiger" uuid="2c8fe67f-9fd0-4365-943a-bcda7d1d9809">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/mbiger</jdbc-url>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://192.168.1.37:3306/huawuxiangmu_test</jdbc-url>
       <driver-properties>
-        <property name="serverTimezone" value="UTC" />
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
   </component>

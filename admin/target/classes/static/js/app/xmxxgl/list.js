@@ -83,51 +83,18 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         } else if (obj.event === 'view') {
             window.location.href = PageContext.getUrl("/xmxxgl/get/view/" + data.id);
 
-        } else if (obj.event === 'jsxm') {
-            window.location.href = PageContext.getUrl("/xmxxgl/get/jsxm/" + data.id);
+        } else if (obj.event === 'xmgl') {
+            window.location.href = PageContext.getUrl("/xmxxgl/get/xmgl/" + data.id + "?xmjd=" + data.xmjd);
 
-        } else if (obj.event === 'up') {//上架操作
-            layer.confirm('真的要上架么？', function (index) {
-                var ajaxReturnData;
-                $.ajax({
-                    url: PageContext.getUrl('/xmxxgl/update/up'),
-                    type: 'post',
-                    async: false,
-                    data: {id: data.id},
-                    success: function (data) {
-                        ajaxReturnData = data;
-                    }
-                });
-                if (ajaxReturnData.flag == 'true') {
-                    Common.searchTable('searchForm', initTable);
-                    // table.reload('xmxxglTables');
-                    layer.msg(ajaxReturnData.msg, {icon: 1});
-                } else {
-                    layer.msg('操作失败', {icon: 5});
-                }
+        } else if (obj.event === 'jsxm') {
+            layer.confirm('真的要结束项目吗？', function (index) {
+                window.location.href = PageContext.getUrl("/xmxxgl/get/jsxm/" + data.id);
                 layer.close(index);
             });
-        } else if (obj.event === 'down') {//下架操作
-            layer.confirm('真的要下架么？？', function (index) {
-                var ajaxReturnData;
-                $.ajax({
-                    url: PageContext.getUrl('/xmxxgl/update/down'),
-                    type: 'post',
-                    async: false,
-                    data: {id: data.id},
-                    success: function (data) {
-                        ajaxReturnData = data;
-                    }
-                });
-                if (ajaxReturnData.flag == 'true') {
-                    Common.searchTable('searchForm', initTable);
-                    // table.reload('xmxxglTables');
-                    layer.msg(ajaxReturnData.msg, {icon: 1});
-                } else {
-                    layer.msg('操作失败', {icon: 5});
-                }
-                layer.close(index);
-            });
+
+        } else if (obj.event === 'bgjd') {
+            // window.location.href = PageContext.getUrl("/xmxxgl/get/bgjd/" + data.id);
+            Common.openFrame("/xmxxgl/get/bgjd/" + data.id, "变更阶段", '600px', '350px');
         }
     });
 
@@ -146,7 +113,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             Common.searchTableClear('searchForm');
         },
         add: function () {
-            //Common.openFrame("/app/xmxxgl/add", "新增人员", '1200px', '1000px');
+            // Common.openFrame("/xmxxgl/toAdd", "新增人员", '1200px', '1000px');
             window.location.href = "/xmxxgl/toAdd";
         }
     };

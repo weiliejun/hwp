@@ -5,13 +5,10 @@ import com.hwp.common.constant.GlobalConstant;
 import com.hwp.common.model.xmxxgl.bean.Xmxxgl;
 import com.hwp.common.model.xmxxgl.dao.XmxxglMapper;
 import com.hwp.common.util.RandomUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +25,7 @@ public class XmxxglServiceImpl implements XmxxglService {
     private XmxxglMapper xmxxglMapper;
     @Autowired
     private MailSenderService mailSenderService;
+
     /**
      * 添加项目信息管理
      *

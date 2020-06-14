@@ -101,7 +101,7 @@ public class CodeTagProcessor extends AbstractElementTagProcessor {
             if (StringUtils.isNotBlank(layVerify)) {
                 selVerify = " lay-verify='required'";
             }
-            content = content + "<select  id='" + property + "' name='" + property + "' class='form-control'" + selVerify + ">";
+            content = content + "<select  id='" + property + "' name='" + property + "' lay-filter='" + property + "' class='form-control'" + selVerify + ">";
             String selected = "";
             if (StringUtils.isBlank(value) && StringUtils.isBlank(defaultValue)) {
                 selected = "selected='selected'";
@@ -109,7 +109,7 @@ public class CodeTagProcessor extends AbstractElementTagProcessor {
             content = content + "<option value='' " + selected + ">请选择</option>";
             Iterator<SysDictionary> it = sysDictionarys.iterator();
             while (it.hasNext()) {
-                SysDictionary sysDictionary = (SysDictionary)it.next();
+                SysDictionary sysDictionary = (SysDictionary) it.next();
                 String key = sysDictionary.getCode();
                 String label = sysDictionary.getName();
                 selected = "";
