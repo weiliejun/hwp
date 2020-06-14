@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech"
+      lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>项目信息管理</title>
+</head>
+<body class="layui-layout-body">
+<!--<div class="layui-layout layui-layout-admin">-->
+<!--<div class="layui-body">-->
+<!-- 内容主体区域 -->
+<div style="padding: 15px;">
+    <!--<div class="proCon">-->
+    <form id="searchForm" class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>当前阶段：</label>
+                <div class="layui-input-block proInfo basicInfo">
+                    <p th:text="${xmxxgl.xmjd}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>变更阶段为：</label>
+                <div class="layui-input-block">
+                    <itech:code property="xmjd" parentCode="xmjd" type="select"
+                                th:value="${xmxxgl.xmjd}"/>
+                    <input id="id" name="id" type="hidden" th:value="${xmxxgl.id}" class="layui-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin:0 0 10px 0;">
+            <br><br><br>
+            <hr class="layui-bg-blue">
+            <div class="layui-input-block">
+                <button id="saveButton" class="layui-btn" lay-submit lay-filter="save">确定</button>
+                <button class="layui-btn layui-btn-primary" data-type="cancel">取消</button>
+            </div>
+        </div>
+    </form>
+    <!--主题内容结束-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+<script type="text/javascript" th:src="@{/js/app/xmxxgl/bgjd.js}"></script>
+
+</body>
+</html>

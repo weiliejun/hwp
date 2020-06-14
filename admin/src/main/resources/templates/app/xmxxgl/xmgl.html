@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>项目管理-投前</title>
+</head>
+
+
+<body class="layui-layout-body" style="overflow-y: auto">
+<div class="layui-layout layui-layout-admin">
+    <form id="searchForm" class="layui-form">
+        <div style="padding: 15px;">
+            <div class="layui-form-item" style="padding-top:0px;">
+                <div class="layui-inline">
+                    <h3 class="titNav">
+                        <a href="#" id="xmmx" class="layui-colorpicker-basis" title="点我查看详细信息"><i
+                                style=" color: #ec1a0d;"><p th:text="${xmxxgl.cpmc}"></p></i></a>
+                    </h3>
+                </div>
+                <div class="layui-inline layui-col-md-offset9">
+                    <label class="layui-form-label">当前阶段：</label>
+                    <div class="layui-input-block">
+                        <itech:code property="xmjd" parentCode="xmjd" type="select"
+                                    th:value="${xmxxgl.xmjd}"/>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="proCon">
+
+                <input id="id" name="id" type="hidden" th:value="${xmxxgl.id}" class="layui-input"/>
+                <div class="layui-form-item" style="padding-top:0px;">
+                    <div class="layui-inline">
+                        <h3 class="titH3" style="margin-top:30px;">全部任务</h3>
+                    </div>
+                    <div class="layui-inline layui-col-md-offset10">
+                        <button type="button" class="layui-btn" data-type="add"><i
+                                class="layui-icon layui-icon-add-1 layui-icon-circle"></i>新建
+                        </button>
+                    </div>
+                </div>
+                <div id="view"></div>
+                <script id="detailView" type="text/html">
+                    <table class="layui-table" lay-skin="line">
+                        <colgroup>
+                            <col width="170">
+                            <col>
+                        </colgroup>
+                        <!--<thead>
+                        <tr>
+                            <th width="15%">产品名称</th>
+                            <th width="15%">业务类型</th>
+                            <th width="15%">产品规模</th>
+                            <th width="15%">产品期限</th>
+                            <th width="15%">预期收益</th>
+                            <th width="15%">当前状态</th>
+                        </tr>
+                        </thead>-->
+                        <tbody>
+                        {{# layui.each(d, function(index, xmItem){ }}
+                        <tr>
+                            <td width="1%">{{ xmItem.rwxh }}</td>
+                            <td width="6%">{{ xmItem.status }}</td>
+                            <td width="36%">{{ xmItem.title }}</td>
+                            <td width="10%">{{ xmItem.startDate==null?"":(xmItem.startDate) }}</td>
+                            <td width="10%">{{ xmItem.endDate==null?"":(xmItem.endDate) }}</td>
+                            <td width="10%">{{ xmItem.fzrName==null?"":(xmItem.fzrName) }}</td>
+                            <td width="10%">
+                                <a class="layui-btn layui-btn-xs" lay-event="update"
+                                   id="updaterow"
+                                   href="javascript:updateData('{{ xmItem.id }}','{{ xmItem.xmId }}')"><i
+                                        class="layui-icon layui-icon-edit"></i>修改</a>
+                                <a class="layui-btn  layui-btn-danger layui-btn-xs" lay-event="delete"
+                                               id="removerow"
+                                               href="javascript:deleteData('{{ xmItem.id }}','{{ xmItem.xmId }}')"><i
+                                    class="layui-icon layui-icon-delete"></i>删除</a></td>
+                        </tr>
+                        {{# }); }}
+                        {{# if(d.length === 0){ }}
+                        <tr>
+                            <td colspan="6" align="center">无数据</td>
+                        </tr>
+                        {{# } }}
+                        </tbody>
+                    </table>
+                </script>
+                <hr class="layui-bg-blue">
+                <!--<a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>-->
+                <button type="button" class="layui-btn layui-btn-normal layui-btn-radius" data-type="goBack"><i
+                        class="layui-icon layui-icon-return layui-icon-circle"></i>返回
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" th:src="@{/js/app/xmxxgl/xmgl.js}"></script>
+</body>
+</html>
