@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userRiskMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userRisk.bean.UserRisk">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="USER_ID" jdbcType="VARCHAR" property="userId"/>
+        <result column="UUID" jdbcType="VARCHAR" property="uuid"/>
+        <result column="RISK_FLAG" jdbcType="VARCHAR" property="riskFlag"/>
+        <result column="SCORE" jdbcType="VARCHAR" property="score"/>
+        <result column="RISK_LEV" jdbcType="VARCHAR" property="riskLev"/>
+        <result column="EFFECTIVE_DATE" jdbcType="VARCHAR" property="effectiveDate"/>
+        <result column="DETAIL" jdbcType="VARCHAR" property="detail"/>
+        <result column="RISK_LEV_EXPLA" jdbcType="VARCHAR" property="riskLevExpla"/>
+        <result column="RETURN_CODE" jdbcType="VARCHAR" property="returnCode"/>
+        <result column="RETURN_MSG" jdbcType="VARCHAR" property="returnMsg"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hwp.common.model.userRisk.bean.UserRisk">
+        <result column="REMARK" jdbcType="LONGVARCHAR" property="remark"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, UUID, RISK_FLAG, SCORE, RISK_LEV, EFFECTIVE_DATE, DETAIL, RISK_LEV_EXPLA, 
+    RETURN_CODE, RETURN_MSG, DATA_STATUS, CREATE_TIME
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_RISK
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from USER_RISK
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.userRisk.bean.UserRisk">
+    insert into USER_RISK (ID, USER_ID, UUID, 
+      RISK_FLAG, SCORE, RISK_LEV, 
+      EFFECTIVE_DATE, DETAIL, RISK_LEV_EXPLA, 
+      RETURN_CODE, RETURN_MSG, DATA_STATUS, 
+      CREATE_TIME, REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, 
+      #{riskFlag,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, #{riskLev,jdbcType=VARCHAR}, 
+      #{effectiveDate,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{riskLevExpla,jdbcType=VARCHAR}, 
+      #{returnCode,jdbcType=VARCHAR}, #{returnMsg,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.userRisk.bean.UserRisk">
+        insert into USER_RISK
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="riskFlag != null">
+                RISK_FLAG,
+            </if>
+            <if test="score != null">
+                SCORE,
+            </if>
+            <if test="riskLev != null">
+                RISK_LEV,
+            </if>
+            <if test="effectiveDate != null">
+                EFFECTIVE_DATE,
+            </if>
+            <if test="detail != null">
+                DETAIL,
+            </if>
+            <if test="riskLevExpla != null">
+                RISK_LEV_EXPLA,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="riskFlag != null">
+                #{riskFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="score != null">
+                #{score,jdbcType=VARCHAR},
+            </if>
+            <if test="riskLev != null">
+                #{riskLev,jdbcType=VARCHAR},
+            </if>
+            <if test="effectiveDate != null">
+                #{effectiveDate,jdbcType=VARCHAR},
+            </if>
+            <if test="detail != null">
+                #{detail,jdbcType=VARCHAR},
+            </if>
+            <if test="riskLevExpla != null">
+                #{riskLevExpla,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.userRisk.bean.UserRisk">
+        update USER_RISK
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="riskFlag != null">
+                RISK_FLAG = #{riskFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="score != null">
+                SCORE = #{score,jdbcType=VARCHAR},
+            </if>
+            <if test="riskLev != null">
+                RISK_LEV = #{riskLev,jdbcType=VARCHAR},
+            </if>
+            <if test="effectiveDate != null">
+                EFFECTIVE_DATE = #{effectiveDate,jdbcType=VARCHAR},
+            </if>
+            <if test="detail != null">
+                DETAIL = #{detail,jdbcType=VARCHAR},
+            </if>
+            <if test="riskLevExpla != null">
+                RISK_LEV_EXPLA = #{riskLevExpla,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.userRisk.bean.UserRisk">
+    update USER_RISK
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      RISK_FLAG = #{riskFlag,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=VARCHAR},
+      RISK_LEV = #{riskLev,jdbcType=VARCHAR},
+      EFFECTIVE_DATE = #{effectiveDate,jdbcType=VARCHAR},
+      DETAIL = #{detail,jdbcType=VARCHAR},
+      RISK_LEV_EXPLA = #{riskLevExpla,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.userRisk.bean.UserRisk">
+    update USER_RISK
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      RISK_FLAG = #{riskFlag,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=VARCHAR},
+      RISK_LEV = #{riskLev,jdbcType=VARCHAR},
+      EFFECTIVE_DATE = #{effectiveDate,jdbcType=VARCHAR},
+      DETAIL = #{detail,jdbcType=VARCHAR},
+      RISK_LEV_EXPLA = #{riskLevExpla,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

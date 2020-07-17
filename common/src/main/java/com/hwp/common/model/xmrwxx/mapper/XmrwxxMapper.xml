@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XmrwxxMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.xmrwxx.bean.Xmrwxx">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="XM_ID" jdbcType="VARCHAR" property="xmId"/>
+        <result column="TITLE" jdbcType="VARCHAR" property="title"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="START_DATE" jdbcType="VARCHAR" property="startDate"/>
+        <result column="END_DATE" jdbcType="VARCHAR" property="endDate"/>
+        <result column="RWXQ" jdbcType="VARCHAR" property="rwxq"/>
+        <result column="RWMS" jdbcType="VARCHAR" property="rwms"/>
+        <result column="ZHZT" jdbcType="VARCHAR" property="zhzt"/>
+        <result column="ZHMS" jdbcType="VARCHAR" property="zhms"/>
+        <result column="FZR_ID" jdbcType="VARCHAR" property="fzrId"/>
+        <result column="FZR_NAME" jdbcType="VARCHAR" property="fzrName"/>
+        <result column="FZR_XX" jdbcType="VARCHAR" property="fzrXx"/>
+        <result column="FHR_ID" jdbcType="VARCHAR" property="fhrId"/>
+        <result column="FHR_NAME" jdbcType="VARCHAR" property="fhrName"/>
+        <result column="FHR_XX" jdbcType="VARCHAR" property="fhrXx"/>
+        <result column="ZHR_XX" jdbcType="VARCHAR" property="zhrXx"/>
+        <result column="ZHR_ID" jdbcType="VARCHAR" property="zhrId"/>
+        <result column="ZHR_NAME" jdbcType="VARCHAR" property="zhrName"/>
+        <result column="XMJD" jdbcType="VARCHAR" property="xmjd"/>
+        <result column="RWXH" jdbcType="VARCHAR" property="rwxh"/>
+        <result column="CREATOR_ID" jdbcType="VARCHAR" property="creatorId"/>
+        <result column="CREATOR_NAME" jdbcType="VARCHAR" property="creatorName"/>
+        <result column="CREATE_TIME" jdbcType="CHAR" property="createTime"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="EDIT_TIME" jdbcType="CHAR" property="editTime"/>
+        <result column="EDITOR_ID" jdbcType="INTEGER" property="editorId"/>
+        <result column="EDITOR_NAME" jdbcType="VARCHAR" property="editorName"/>
+        <result column="SPYJ" jdbcType="VARCHAR" property="spyj"/>
+        <result column="SPMS" jdbcType="VARCHAR" property="spms"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, XM_ID, TITLE, STATUS, START_DATE, END_DATE, RWXQ, RWMS, ZHZT, ZHMS, FZR_ID, FZR_NAME, 
+    FZR_XX, FHR_ID, FHR_NAME, FHR_XX, ZHR_XX, ZHR_ID, ZHR_NAME, XMJD, RWXH, CREATOR_ID, 
+    CREATOR_NAME, CREATE_TIME, REMARK, DATA_STATUS, EDIT_TIME, EDITOR_ID, EDITOR_NAME, 
+    SPYJ, SPMS
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from XMRWXX
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from XMRWXX
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.xmrwxx.bean.Xmrwxx">
+    insert into XMRWXX (ID, XM_ID, TITLE,
+      STATUS, START_DATE, END_DATE, 
+      RWXQ, RWMS, ZHZT, ZHMS, 
+      FZR_ID, FZR_NAME, FZR_XX, 
+      FHR_ID, FHR_NAME, FHR_XX, 
+      ZHR_XX, ZHR_ID, ZHR_NAME, 
+      XMJD, RWXH, CREATOR_ID, 
+      CREATOR_NAME, CREATE_TIME, REMARK, 
+      DATA_STATUS, EDIT_TIME, EDITOR_ID, 
+      EDITOR_NAME, SPYJ, SPMS
+      )
+    values (#{id,jdbcType=VARCHAR}, #{xmId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{startDate,jdbcType=VARCHAR}, #{endDate,jdbcType=VARCHAR}, 
+      #{rwxq,jdbcType=VARCHAR}, #{rwms,jdbcType=VARCHAR}, #{zhzt,jdbcType=VARCHAR}, #{zhms,jdbcType=VARCHAR}, 
+      #{fzrId,jdbcType=VARCHAR}, #{fzrName,jdbcType=VARCHAR}, #{fzrXx,jdbcType=VARCHAR}, 
+      #{fhrId,jdbcType=VARCHAR}, #{fhrName,jdbcType=VARCHAR}, #{fhrXx,jdbcType=VARCHAR}, 
+      #{zhrXx,jdbcType=VARCHAR}, #{zhrId,jdbcType=VARCHAR}, #{zhrName,jdbcType=VARCHAR}, 
+      #{xmjd,jdbcType=VARCHAR}, #{rwxh,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, 
+      #{creatorName,jdbcType=VARCHAR}, #{createTime,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{dataStatus,jdbcType=CHAR}, #{editTime,jdbcType=CHAR}, #{editorId,jdbcType=INTEGER}, 
+      #{editorName,jdbcType=VARCHAR}, #{spyj,jdbcType=VARCHAR}, #{spms,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.xmrwxx.bean.Xmrwxx">
+        insert into XMRWXX
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="xmId != null">
+                XM_ID,
+            </if>
+            <if test="title != null">
+                TITLE,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="startDate != null">
+                START_DATE,
+            </if>
+            <if test="endDate != null">
+                END_DATE,
+            </if>
+            <if test="rwxq != null">
+                RWXQ,
+            </if>
+            <if test="rwms != null">
+                RWMS,
+            </if>
+            <if test="zhzt != null">
+                ZHZT,
+            </if>
+            <if test="zhms != null">
+                ZHMS,
+            </if>
+            <if test="fzrId != null">
+                FZR_ID,
+            </if>
+            <if test="fzrName != null">
+                FZR_NAME,
+            </if>
+            <if test="fzrXx != null">
+                FZR_XX,
+            </if>
+            <if test="fhrId != null">
+                FHR_ID,
+            </if>
+            <if test="fhrName != null">
+                FHR_NAME,
+            </if>
+            <if test="fhrXx != null">
+                FHR_XX,
+            </if>
+            <if test="zhrXx != null">
+                ZHR_XX,
+            </if>
+            <if test="zhrId != null">
+                ZHR_ID,
+            </if>
+            <if test="zhrName != null">
+                ZHR_NAME,
+            </if>
+            <if test="xmjd != null">
+                XMJD,
+            </if>
+            <if test="rwxh != null">
+                RWXH,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME,
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID,
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME,
+            </if>
+            <if test="spyj != null">
+                SPYJ,
+            </if>
+            <if test="spms != null">
+                SPMS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="xmId != null">
+                #{xmId,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                #{startDate,jdbcType=VARCHAR},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=VARCHAR},
+            </if>
+            <if test="rwxq != null">
+                #{rwxq,jdbcType=VARCHAR},
+            </if>
+            <if test="rwms != null">
+                #{rwms,jdbcType=VARCHAR},
+            </if>
+            <if test="zhzt != null">
+                #{zhzt,jdbcType=VARCHAR},
+            </if>
+            <if test="zhms != null">
+                #{zhms,jdbcType=VARCHAR},
+            </if>
+            <if test="fzrId != null">
+                #{fzrId,jdbcType=VARCHAR},
+            </if>
+            <if test="fzrName != null">
+                #{fzrName,jdbcType=VARCHAR},
+            </if>
+            <if test="fzrXx != null">
+                #{fzrXx,jdbcType=VARCHAR},
+            </if>
+            <if test="fhrId != null">
+                #{fhrId,jdbcType=VARCHAR},
+            </if>
+            <if test="fhrName != null">
+                #{fhrName,jdbcType=VARCHAR},
+            </if>
+            <if test="fhrXx != null">
+                #{fhrXx,jdbcType=VARCHAR},
+            </if>
+            <if test="zhrXx != null">
+                #{zhrXx,jdbcType=VARCHAR},
+            </if>
+            <if test="zhrId != null">
+                #{zhrId,jdbcType=VARCHAR},
+            </if>
+            <if test="zhrName != null">
+                #{zhrName,jdbcType=VARCHAR},
+            </if>
+            <if test="xmjd != null">
+                #{xmjd,jdbcType=VARCHAR},
+            </if>
+            <if test="rwxh != null">
+                #{rwxh,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="editTime != null">
+                #{editTime,jdbcType=CHAR},
+            </if>
+            <if test="editorId != null">
+                #{editorId,jdbcType=INTEGER},
+            </if>
+            <if test="editorName != null">
+                #{editorName,jdbcType=VARCHAR},
+            </if>
+            <if test="spyj != null">
+                #{spyj,jdbcType=VARCHAR},
+            </if>
+            <if test="spms != null">
+                #{spms,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.xmrwxx.bean.Xmrwxx">
+        update XMRWXX
+        <set>
+            <if test="xmId != null">
+                XM_ID = #{xmId,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                TITLE = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                START_DATE = #{startDate,jdbcType=VARCHAR},
+            </if>
+            <if test="endDate != null">
+                END_DATE = #{endDate,jdbcType=VARCHAR},
+            </if>
+            <if test="rwxq != null">
+                RWXQ = #{rwxq,jdbcType=VARCHAR},
+            </if>
+            <if test="rwms != null">
+                RWMS = #{rwms,jdbcType=VARCHAR},
+            </if>
+            <if test="zhzt != null">
+                ZHZT = #{zhzt,jdbcType=VARCHAR},
+            </if>
+            <if test="zhms != null">
+                ZHMS = #{zhms,jdbcType=VARCHAR},
+            </if>
+            <if test="fzrId != null">
+                FZR_ID = #{fzrId,jdbcType=VARCHAR},
+            </if>
+            <if test="fzrName != null">
+                FZR_NAME = #{fzrName,jdbcType=VARCHAR},
+            </if>
+            <if test="fzrXx != null">
+                FZR_XX = #{fzrXx,jdbcType=VARCHAR},
+            </if>
+            <if test="fhrId != null">
+                FHR_ID = #{fhrId,jdbcType=VARCHAR},
+            </if>
+            <if test="fhrName != null">
+                FHR_NAME = #{fhrName,jdbcType=VARCHAR},
+            </if>
+            <if test="fhrXx != null">
+                FHR_XX = #{fhrXx,jdbcType=VARCHAR},
+            </if>
+            <if test="zhrXx != null">
+                ZHR_XX = #{zhrXx,jdbcType=VARCHAR},
+            </if>
+            <if test="zhrId != null">
+                ZHR_ID = #{zhrId,jdbcType=VARCHAR},
+            </if>
+            <if test="zhrName != null">
+                ZHR_NAME = #{zhrName,jdbcType=VARCHAR},
+            </if>
+            <if test="xmjd != null">
+                XMJD = #{xmjd,jdbcType=VARCHAR},
+            </if>
+            <if test="rwxh != null">
+                RWXH = #{rwxh,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME = #{editTime,jdbcType=CHAR},
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID = #{editorId,jdbcType=INTEGER},
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+            </if>
+            <if test="spyj != null">
+                SPYJ = #{spyj,jdbcType=VARCHAR},
+            </if>
+            <if test="spms != null">
+                SPMS = #{spms,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.xmrwxx.bean.Xmrwxx">
+    update XMRWXX
+    set XM_ID = #{xmId,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      START_DATE = #{startDate,jdbcType=VARCHAR},
+      END_DATE = #{endDate,jdbcType=VARCHAR},
+      RWXQ = #{rwxq,jdbcType=VARCHAR},
+      RWMS = #{rwms,jdbcType=VARCHAR},
+      ZHZT = #{zhzt,jdbcType=VARCHAR},
+      ZHMS = #{zhms,jdbcType=VARCHAR},
+      FZR_ID = #{fzrId,jdbcType=VARCHAR},
+      FZR_NAME = #{fzrName,jdbcType=VARCHAR},
+      FZR_XX = #{fzrXx,jdbcType=VARCHAR},
+      FHR_ID = #{fhrId,jdbcType=VARCHAR},
+      FHR_NAME = #{fhrName,jdbcType=VARCHAR},
+      FHR_XX = #{fhrXx,jdbcType=VARCHAR},
+      ZHR_XX = #{zhrXx,jdbcType=VARCHAR},
+      ZHR_ID = #{zhrId,jdbcType=VARCHAR},
+      ZHR_NAME = #{zhrName,jdbcType=VARCHAR},
+      XMJD = #{xmjd,jdbcType=VARCHAR},
+      RWXH = #{rwxh,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      EDIT_TIME = #{editTime,jdbcType=CHAR},
+      EDITOR_ID = #{editorId,jdbcType=INTEGER},
+      EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+      SPYJ = #{spyj,jdbcType=VARCHAR},
+      SPMS = #{spms,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectXmrwxxList" parameterType="com.hwp.common.model.xmrwxx.bean.Xmrwxx" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from XMRWXX
+        <where>
+            DATA_STATUS='1'
+            <if test="startTime != null">
+                AND CREATE_TIME <![CDATA[>=]]> #{startTime,jdbcType=VARCHAR}
+            </if>
+            <if test="endTime != null">
+                AND CREATE_TIME <![CDATA[<=]]> #{endTime,jdbcType=VARCHAR}
+            </if>
+            <if test="xmjd != null">
+                and XMJD = #{xmjd,jdbcType=VARCHAR}
+            </if>
+            <if test="xmId != null">
+                and XM_ID = #{xmId,jdbcType=VARCHAR}
+            </if>
+            <if test="today != null">
+                and START_DATE <![CDATA[<=]]> #{today,jdbcType=VARCHAR} and END_DATE<![CDATA[>=]]>#{today,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <select id="listXmrwxxByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from XMRWXX
+        <where>
+            DATA_STATUS='1'
+            <if test="startTime != null">
+                AND CREATE_TIME <![CDATA[>=]]> #{startTime,jdbcType=VARCHAR}
+            </if>
+            <if test="endTime != null">
+                AND CREATE_TIME <![CDATA[<=]]> #{endTime,jdbcType=VARCHAR}
+            </if>
+            <if test="xmjd != null">
+                and XMJD = #{xmjd,jdbcType=VARCHAR}
+            </if>
+            <if test="xmId != null">
+                and XM_ID = #{xmId,jdbcType=VARCHAR}
+            </if>
+            <if test="today != null">
+                and START_DATE <![CDATA[<=]]> #{today,jdbcType=VARCHAR} and END_DATE<![CDATA[>=]]>#{today,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY cast(RWXH as unsigned int) ASC
+    </select>
+</mapper>

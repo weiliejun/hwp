@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TenderRepaymentMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="TENDER_ID" property="tenderId" jdbcType="VARCHAR"/>
+        <result column="USER_INFO_ID" property="userInfoId" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR"/>
+        <result column="REPAY_TYPE" property="repayType" jdbcType="VARCHAR"/>
+        <result column="Pro_Num" property="proNum" jdbcType="VARCHAR"/>
+        <result column="CHANNEL_JNL_NO" property="channelJnlNo" jdbcType="VARCHAR"/>
+        <result column="JS_JNL_NO" property="jsJnlNo" jdbcType="VARCHAR"/>
+        <result column="Batch_Code" property="batchCode" jdbcType="VARCHAR"/>
+        <result column="Hx_Acct_No" property="hxAcctNo" jdbcType="VARCHAR"/>
+        <result column="REPAY_PLAN_DATE" property="repayPlanDate" jdbcType="VARCHAR"/>
+        <result column="Total_Amount" property="totalAmount" jdbcType="DECIMAL"/>
+        <result column="Total_Count" property="totalCount" jdbcType="DECIMAL"/>
+        <result column="Pay_List" property="payList" jdbcType="VARCHAR"/>
+        <result column="REQUEST_CONTENT" property="requestContent" jdbcType="VARCHAR"/>
+        <result column="RESP_CONTENT" property="respContent" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="REPAY_TIME" property="repayTime" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, TENDER_ID, USER_INFO_ID, UUID, PRODUCT_ID, REPAY_TYPE, Pro_Num, CHANNEL_JNL_NO, 
+    JS_JNL_NO, Batch_Code, Hx_Acct_No, REPAY_PLAN_DATE, Total_Amount, Total_Count, Pay_List, 
+    REQUEST_CONTENT, RESP_CONTENT, RETURN_CODE, RETURN_MSG, STATUS, REMARK, CREATE_TIME, 
+    DATA_STATUS, REPAY_TIME
+  </sql>
+    <select id="selectTenderRepaymentById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from TENDER_REPAYMENT
+        where ID = #{id,jdbcType=VARCHAR} and DATA_STATUS = '1'
+    </select>
+    <!--查询每个产品的购买用户-->
+    <select id="selectUserByProductId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT USER_INFO_ID,SUM(Total_Amount) Total_Amount,SUM(Total_Count) Total_Count
+    FROM TENDER_REPAYMENT
+    WHERE PRODUCT_ID= #{productId,jdbcType=VARCHAR} and DATA_STATUS = '1'
+    GROUP BY USER_INFO_ID
+  </select>
+
+    <!--查询tenderId 交易记录-->
+    <select id="selectTenderRepaymentByTenderId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM TENDER_REPAYMENT
+        WHERE TENDER_ID = #{tenderId,jdbcType=VARCHAR} and DATA_STATUS = '1'
+    </select>
+    <!--查询某个产品某个用户购买信息-->
+    <select id="selectUserInfoByProductIdAndUserId" resultMap="BaseResultMap"
+            parameterType="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM TENDER_REPAYMENT
+        WHERE PRODUCT_ID= #{productId,jdbcType=VARCHAR} and USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR}
+        and DATA_STATUS = '1'
+    </select>
+
+    <select id="selectTenderRepaymentList" resultMap="BaseResultMap"
+            parameterType="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+        select
+        <include refid="Base_Column_List"/>
+        from TENDER_REPAYMENT
+        <where>
+            <if test="tenderId != null">
+                and TENDER_ID = #{tenderId,jdbcType=VARCHAR}
+            </if>
+            <if test="userInfoId != null">
+                and USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR}
+            </if>
+            <if test="uuid != null">
+                and UUID = #{uuid,jdbcType=VARCHAR}
+            </if>
+            <if test="productId != null">
+                and PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+            </if>
+            <if test="repayType != null">
+                and REPAY_TYPE = #{repayType,jdbcType=VARCHAR}
+            </if>
+            <if test="proNum != null">
+                and Pro_Num = #{proNum,jdbcType=VARCHAR}
+            </if>
+            <if test="channelJnlNo != null">
+                and CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR}
+            </if>
+            <if test="jsJnlNo != null">
+                and JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR}
+            </if>
+            <if test="batchCode != null">
+                and Batch_Code = #{batchCode,jdbcType=VARCHAR}
+            </if>
+            <if test="hxAcctNo != null">
+                and Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR}
+            </if>
+            <if test="repayPlanDate != null">
+                and REPAY_PLAN_DATE = #{repayPlanDate,jdbcType=VARCHAR}
+            </if>
+            <if test="totalAmount != null">
+                and Total_Amount = #{totalAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="totalCount != null">
+                and Total_Count = #{totalCount,jdbcType=DECIMAL}
+            </if>
+            <if test="payList != null">
+                and Pay_List = #{payList,jdbcType=VARCHAR}
+            </if>
+            <if test="requestContent != null">
+                and REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR}
+            </if>
+            <if test="respContent != null">
+                and RESP_CONTENT = #{respContent,jdbcType=VARCHAR}
+            </if>
+            <if test="returnCode != null">
+                and RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+            </if>
+            <if test="returnMsg != null">
+                and RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and STATUS = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                and REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="repayTime != null">
+                and REPAY_TIME = #{repayTime,jdbcType=VARCHAR}
+            </if>
+            and DATA_STATUS = '1'
+        </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TENDER_REPAYMENT
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+    insert into TENDER_REPAYMENT (ID, TENDER_ID, USER_INFO_ID, 
+      UUID, PRODUCT_ID, REPAY_TYPE, 
+      Pro_Num, CHANNEL_JNL_NO, JS_JNL_NO, 
+      Batch_Code, Hx_Acct_No, REPAY_PLAN_DATE, 
+      Total_Amount, Total_Count, Pay_List, 
+      REQUEST_CONTENT, RESP_CONTENT, RETURN_CODE, 
+      RETURN_MSG, STATUS, REMARK, 
+      CREATE_TIME, DATA_STATUS, REPAY_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{tenderId,jdbcType=VARCHAR}, #{userInfoId,jdbcType=VARCHAR}, 
+      #{uuid,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{repayType,jdbcType=VARCHAR}, 
+      #{proNum,jdbcType=VARCHAR}, #{channelJnlNo,jdbcType=VARCHAR}, #{jsJnlNo,jdbcType=VARCHAR}, 
+      #{batchCode,jdbcType=VARCHAR}, #{hxAcctNo,jdbcType=VARCHAR}, #{repayPlanDate,jdbcType=VARCHAR}, 
+      #{totalAmount,jdbcType=DECIMAL}, #{totalCount,jdbcType=DECIMAL}, #{payList,jdbcType=VARCHAR}, 
+      #{requestContent,jdbcType=VARCHAR}, #{respContent,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, 
+      #{returnMsg,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, #{repayTime,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="addTenderRepayment" parameterType="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+        insert into TENDER_REPAYMENT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="tenderId != null">
+                TENDER_ID,
+            </if>
+            <if test="userInfoId != null">
+                USER_INFO_ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID,
+            </if>
+            <if test="repayType != null">
+                REPAY_TYPE,
+            </if>
+            <if test="proNum != null">
+                Pro_Num,
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO,
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO,
+            </if>
+            <if test="batchCode != null">
+                Batch_Code,
+            </if>
+            <if test="hxAcctNo != null">
+                Hx_Acct_No,
+            </if>
+            <if test="repayPlanDate != null">
+                REPAY_PLAN_DATE,
+            </if>
+            <if test="totalAmount != null">
+                Total_Amount,
+            </if>
+            <if test="totalCount != null">
+                Total_Count,
+            </if>
+            <if test="payList != null">
+                Pay_List,
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT,
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="repayTime != null">
+                REPAY_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderId != null">
+                #{tenderId,jdbcType=VARCHAR},
+            </if>
+            <if test="userInfoId != null">
+                #{userInfoId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="repayType != null">
+                #{repayType,jdbcType=VARCHAR},
+            </if>
+            <if test="proNum != null">
+                #{proNum,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hxAcctNo != null">
+                #{hxAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="repayPlanDate != null">
+                #{repayPlanDate,jdbcType=VARCHAR},
+            </if>
+            <if test="totalAmount != null">
+                #{totalAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="totalCount != null">
+                #{totalCount,jdbcType=DECIMAL},
+            </if>
+            <if test="payList != null">
+                #{payList,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                #{requestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="repayTime != null">
+                #{repayTime,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <!--根据产品Id修改部分信息-->
+    <update id="updateTenderRepaymentByProductId"
+            parameterType="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+        update TENDER_REPAYMENT
+        <set>
+            <if test="tenderId != null">
+                TENDER_ID = #{tenderId,jdbcType=VARCHAR},
+            </if>
+            <if test="userInfoId != null">
+                USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="repayType != null">
+                REPAY_TYPE = #{repayType,jdbcType=VARCHAR},
+            </if>
+            <if test="proNum != null">
+                Pro_Num = #{proNum,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                Batch_Code = #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hxAcctNo != null">
+                Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="repayPlanDate != null">
+                REPAY_PLAN_DATE = #{repayPlanDate,jdbcType=VARCHAR},
+            </if>
+            <if test="totalAmount != null">
+                Total_Amount = #{totalAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="totalCount != null">
+                Total_Count = #{totalCount,jdbcType=DECIMAL},
+            </if>
+            <if test="payList != null">
+                Pay_List = #{payList,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="repayTime != null">
+                REPAY_TIME = #{repayTime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateTenderRepaymentById" parameterType="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+        update TENDER_REPAYMENT
+        <set>
+            <if test="tenderId != null">
+                TENDER_ID = #{tenderId,jdbcType=VARCHAR},
+            </if>
+            <if test="userInfoId != null">
+                USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="repayType != null">
+                REPAY_TYPE = #{repayType,jdbcType=VARCHAR},
+            </if>
+            <if test="proNum != null">
+                Pro_Num = #{proNum,jdbcType=VARCHAR},
+            </if>
+            <if test="channelJnlNo != null">
+                CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="jsJnlNo != null">
+                JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+            </if>
+            <if test="batchCode != null">
+                Batch_Code = #{batchCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hxAcctNo != null">
+                Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="repayPlanDate != null">
+                REPAY_PLAN_DATE = #{repayPlanDate,jdbcType=VARCHAR},
+            </if>
+            <if test="totalAmount != null">
+                Total_Amount = #{totalAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="totalCount != null">
+                Total_Count = #{totalCount,jdbcType=DECIMAL},
+            </if>
+            <if test="payList != null">
+                Pay_List = #{payList,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="repayTime != null">
+                REPAY_TIME = #{repayTime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+    update TENDER_REPAYMENT
+    set TENDER_ID = #{tenderId,jdbcType=VARCHAR},
+      USER_INFO_ID = #{userInfoId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+      REPAY_TYPE = #{repayType,jdbcType=VARCHAR},
+      Pro_Num = #{proNum,jdbcType=VARCHAR},
+      CHANNEL_JNL_NO = #{channelJnlNo,jdbcType=VARCHAR},
+      JS_JNL_NO = #{jsJnlNo,jdbcType=VARCHAR},
+      Batch_Code = #{batchCode,jdbcType=VARCHAR},
+      Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR},
+      REPAY_PLAN_DATE = #{repayPlanDate,jdbcType=VARCHAR},
+      Total_Amount = #{totalAmount,jdbcType=DECIMAL},
+      Total_Count = #{totalCount,jdbcType=DECIMAL},
+      Pay_List = #{payList,jdbcType=VARCHAR},
+      REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+      RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      REPAY_TIME = #{repayTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateDataStatusById" parameterType="com.hwp.common.model.tenderRepayment.bean.TenderRepayment">
+    update TENDER_REPAYMENT
+    set DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

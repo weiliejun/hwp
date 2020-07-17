@@ -1,0 +1,4 @@
+上传图片文件到资源服务器
+com.baidu.ueditor.hunter.ImageHunter
+com.baidu.ueditor.upload.Base64Uploader
+com.baidu.ueditor.upload.BinaryUploader

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>人员变更知会</title>
+</head>
+<body class="layui-layout-body">
+<fieldset class="layui-elem-field layui-field-title" style="margin:20px 0 0 0;">
+    <legend>人员变更知会</legend>
+</fieldset>
+<div class="layui-layout layui-layout-admin">
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+
+            <div class="proCon">
+                <form id="searchForm" class="layui-form">
+                    <input id="cxmk" name="cxmk" type="hidden" th:value="${cxmk}" class="layui-input"/>
+                    <span>申请人：</span>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="100">
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr class="layui-bg-gray">
+                            <th width="15%">姓名</th>
+                            <th width="15%">部门</th>
+                            <th width="15%">职级</th>
+                            <th width="15%">申请时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><p th:text="${spsqxx.creatorName}"></p></td>
+                            <td><p th:text="${ryxxgl.dept}"></p></td>
+                            <td><p th:text="${ryxxgl.rank}"></p></td>
+                            <td><p th:text="${spsqxx.createTime}"></p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <fieldset class="layui-elem-field" style="margin:0;padding:0">
+                        <legend>审批详情：</legend>
+                        <div class="layui-field-box" style="padding-top:15px;">
+                            <div class="newInvest">
+                                <ul class="newInvestInfo">
+                                    <li class="layui-clear proInfo basicInfo">
+                                        <span class="layui-bg-gray">申请内容：</span>
+                                        <p th:text="${rybgsq.sqnr}"></p>
+                                        <input id="id" name="id" type="hidden" th:value="${spsqxx.id}"
+                                               class="layui-input"/>
+                                        <input id="glId" name="glId" type="hidden" th:value="${spsqxx.glId}"
+                                               class="layui-input"/>
+                                        <input id="splx" name="splx" type="hidden" th:value="${spsqxx.splx}"
+                                               class="layui-input"/>
+                                        <input id="ryId" name="ryId" type="hidden" th:value="${rybgsq.ryId}"
+                                               class="layui-input"/>
+                                    </li>
+                                    <li class="layui-clear proInfo basicInfo">
+                                        <span class="layui-bg-gray">变更说明：</span>
+                                        <p th:text="${rybgsq.bgsm}"></p>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span class="layui-bg-gray">审批人：</span>
+                                        <div class="articleState proInfo basicInfo">
+                                            <p th:text="${rybgsq.sprName}"></p>
+                                        </div>
+                                    </li>
+                                    <li class="layui-clear">
+                                        <span class="layui-bg-gray">知会人：</span>
+                                        <div class="articleState proInfo basicInfo">
+                                            <p th:text="${rybgsq.zhrName}"></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h3 class="titH3" style="margin-top:30px;">参与的项目</h3>
+                            <div id="view"></div>
+                            <script id="detailView" type="text/html">
+                                <table class="layui-table" lay-skin="line">
+                                    <colgroup>
+                                        <col width="170">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr class="layui-bg-gray">
+                                        <th width="15%">产品名称</th>
+                                        <th width="15%">业务类型</th>
+                                        <th width="15%">产品规模</th>
+                                        <th width="15%">产品期限</th>
+                                        <th width="15%">预期收益</th>
+                                        <th width="15%">当前状态</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{# layui.each(d, function(index, xmItem){ }}
+                                    <tr>
+                                        <td>{{ xmItem.cpmc }}</td>
+                                        <td>{{ xmItem.ywlx }}</td>
+                                        <td>{{ xmItem.cpgm }}</td>
+                                        <td>{{ xmItem.cpqx }}</td>
+                                        <td>{{ xmItem.yqsy }}</td>
+                                        <td>{{ xmItem.xmjd }}</td>
+                                    </tr>
+                                    {{# }); }}
+                                    {{# if(d.length === 0){ }}
+                                    <tr>
+                                        <td colspan="6" align="center">暂无相关数据</td>
+                                    </tr>
+                                    {{# } }}
+                                    </tbody>
+                                </table>
+                            </script>
+                        </div>
+                    </fieldset>
+                    <ul>
+                        <li class="layui-clear">
+                            <hr class="layui-bg-blue">
+                            <div class="pdfList layui-clear" id="demo22">
+                                <div th:each="att : ${spsqxxList}">
+                                    <a><span
+                                            th:text="${att.sprName}"></span>：<span
+                                            th:text="${att.spyj}"></span></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <br>
+                    <li class="layui-clear">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>知会意见：</label>
+                        <div class="layui-input-inline proInfo basicInfo">
+                            <p th:text="${spsqxx.spms}"></p>
+                        </div>
+                        <input id="spyj" name="spyj" type="hidden" th:value="${spsqxx.spyj}"
+                               class="layui-input"/>
+                    </li>
+                    <br>
+                    <!--<button id="saveButton" class="layui-btn layui-btn-green" lay-submit lay-filter="save2">同意</button>-->
+                    <!--<button id="saveButton2" class="layui-btn layui-btn-warm" lay-submit lay-filter="save2">拒绝</button>-->
+                    <a href="javascript:window.history.go(-1);" class="layui-btn layui-btn-primary">返回</a>
+                    <!--<button class="layui-btn layui-btn-primary" data-type="cancel">返回</button>-->
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--主题内容结束-->
+
+</div>
+<script type="text/javascript" th:src="@{/js/app/spsqxx/jsxmsp.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/ryxxgl/rybgsq.js}"></script>
+<script type="text/javascript">
+    // 清空上传图片
+    function clearUploadImg() {
+        // 提示文字
+        document.getElementById("isUpload").innerText = "未上传";
+        // 给input赋值
+        document.getElementById("logo").value = "";
+        // 回显原来图片
+        document.getElementById("imgSrc").src = "/images/workImg.png";
+
+    }
+</script>
+</body>
+</html>

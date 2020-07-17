@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userWorkInfoMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userWorkInfo.bean.UserWorkInfo">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="ID_NO" property="idNo" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="WORK_PROVE" property="workProve" jdbcType="VARCHAR"/>
+        <result column="WORK_DATA" property="workData" jdbcType="VARCHAR"/>
+        <result column="AUDIT_STATUS" property="auditStatus" jdbcType="CHAR"/>
+        <result column="AUDIT_TIME" property="auditTime" jdbcType="CHAR"/>
+        <result column="AUDITOR_ID" property="auditorId" jdbcType="VARCHAR"/>
+        <result column="AUDITOR_NAME" property="auditorName" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.userWorkInfo.bean.UserWorkInfo"
+               extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, USER_NAME, ID_NO, MOBILE, WORK_PROVE, WORK_DATA, AUDIT_STATUS, AUDIT_TIME, 
+    AUDITOR_ID, AUDITOR_NAME, DATA_STATUS, CREATE_TIME
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <!--根据身份证号查询是否被注册-->
+    <select id="selectWorkInfoByIdNo" resultMap="ResultMapWithBLOBs"
+            parameterType="com.hwp.common.model.userWorkInfo.bean.UserWorkInfo">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_WORK_INFO
+        where ID_NO = #{idNo,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_WORK_INFO
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from USER_WORK_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.userWorkInfo.bean.UserWorkInfo">
+    insert into USER_WORK_INFO (ID, USER_ID, USER_NAME, 
+      ID_NO, MOBILE, WORK_PROVE, 
+      WORK_DATA, AUDIT_STATUS, AUDIT_TIME, 
+      AUDITOR_ID, AUDITOR_NAME, DATA_STATUS, 
+      CREATE_TIME, REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{idNo,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{workProve,jdbcType=VARCHAR}, 
+      #{workData,jdbcType=VARCHAR}, #{auditStatus,jdbcType=CHAR}, #{auditTime,jdbcType=CHAR}, 
+      #{auditorId,jdbcType=VARCHAR}, #{auditorName,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.userWorkInfo.bean.UserWorkInfo">
+        insert into USER_WORK_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="userName != null">
+                USER_NAME,
+            </if>
+            <if test="idNo != null">
+                ID_NO,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+            <if test="workProve != null">
+                WORK_PROVE,
+            </if>
+            <if test="workData != null">
+                WORK_DATA,
+            </if>
+            <if test="auditStatus != null">
+                AUDIT_STATUS,
+            </if>
+            <if test="auditTime != null">
+                AUDIT_TIME,
+            </if>
+            <if test="auditorId != null">
+                AUDITOR_ID,
+            </if>
+            <if test="auditorName != null">
+                AUDITOR_NAME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="idNo != null">
+                #{idNo,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="workProve != null">
+                #{workProve,jdbcType=VARCHAR},
+            </if>
+            <if test="workData != null">
+                #{workData,jdbcType=VARCHAR},
+            </if>
+            <if test="auditStatus != null">
+                #{auditStatus,jdbcType=CHAR},
+            </if>
+            <if test="auditTime != null">
+                #{auditTime,jdbcType=CHAR},
+            </if>
+            <if test="auditorId != null">
+                #{auditorId,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorName != null">
+                #{auditorName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.userWorkInfo.bean.UserWorkInfo">
+        update USER_WORK_INFO
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                USER_NAME = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="idNo != null">
+                ID_NO = #{idNo,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="workProve != null">
+                WORK_PROVE = #{workProve,jdbcType=VARCHAR},
+            </if>
+            <if test="workData != null">
+                WORK_DATA = #{workData,jdbcType=VARCHAR},
+            </if>
+            <if test="auditStatus != null">
+                AUDIT_STATUS = #{auditStatus,jdbcType=CHAR},
+            </if>
+            <if test="auditTime != null">
+                AUDIT_TIME = #{auditTime,jdbcType=CHAR},
+            </if>
+            <if test="auditorId != null">
+                AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorName != null">
+                AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.userWorkInfo.bean.UserWorkInfo">
+    update USER_WORK_INFO
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      WORK_PROVE = #{workProve,jdbcType=VARCHAR},
+      WORK_DATA = #{workData,jdbcType=VARCHAR},
+      AUDIT_STATUS = #{auditStatus,jdbcType=CHAR},
+      AUDIT_TIME = #{auditTime,jdbcType=CHAR},
+      AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+      AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.userWorkInfo.bean.UserWorkInfo">
+    update USER_WORK_INFO
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      WORK_PROVE = #{workProve,jdbcType=VARCHAR},
+      WORK_DATA = #{workData,jdbcType=VARCHAR},
+      AUDIT_STATUS = #{auditStatus,jdbcType=CHAR},
+      AUDIT_TIME = #{auditTime,jdbcType=CHAR},
+      AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+      AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!--根据动态参数获取用户工作信息列表-->
+    <select id="listUserWorkInfoByParams" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_WORK_INFO
+        where DATA_STATUS='1'
+        <if test="userId != null">
+            and USER_ID = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null">
+            and USER_NAME = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="idNo != null">
+            and ID_NO = #{idNo,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            and MOBILE = #{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="workProve != null">
+            and WORK_PROVE = #{workProve,jdbcType=VARCHAR}
+        </if>
+        <if test="workData != null">
+            and WORK_DATA = #{workData,jdbcType=VARCHAR}
+        </if>
+        <if test="auditStatus != null">
+            and AUDIT_STATUS = #{auditStatus,jdbcType=CHAR}
+        </if>
+        <if test="auditTime != null">
+            and AUDIT_TIME = #{auditTime,jdbcType=CHAR}
+        </if>
+        <if test="auditorId != null">
+            and AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+        </if>
+        <if test="auditorName != null">
+            and AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            and DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark,jdbcType=LONGVARCHAR}
+        </if>
+
+        order by STR_TO_DATE(CREATE_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+
+    <!--获取用户工作信息未审核总人数-->
+    <select id="getUnAuditUserWorkInfoSum" resultType="java.lang.Integer">
+        SELECT
+	        count( 0 )
+        FROM
+	        USER_WORK_INFO
+        WHERE
+            DATA_STATUS='1'
+        AND
+	        AUDIT_STATUS = '0'
+    </select>
+</mapper>

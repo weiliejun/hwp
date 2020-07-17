@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="RwczjlMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.rwczjl.bean.Rwczjl">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="XM_ID" property="xmId" jdbcType="VARCHAR"/>
+        <result column="RW_ID" property="rwId" jdbcType="VARCHAR"/>
+        <result column="BGNR" property="bgnr" jdbcType="VARCHAR"/>
+        <result column="BGQ" property="bgq" jdbcType="VARCHAR"/>
+        <result column="BGH" property="bgh" jdbcType="VARCHAR"/>
+        <result column="CREATOR_ID" property="creatorId" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="CHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, XM_ID, RW_ID, BGNR, BGQ, BGH, CREATOR_ID, CREATE_TIME, REMARK, DATA_STATUS, CREATOR_NAME
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from RWCZJL
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from RWCZJL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.rwczjl.bean.Rwczjl">
+    insert into RWCZJL (ID, XM_ID, RW_ID, 
+      BGNR, BGQ, BGH, CREATOR_ID, 
+      CREATE_TIME, REMARK, DATA_STATUS, 
+      CREATOR_NAME)
+    values (#{id,jdbcType=VARCHAR}, #{xmId,jdbcType=VARCHAR}, #{rwId,jdbcType=VARCHAR}, 
+      #{bgnr,jdbcType=VARCHAR}, #{bgq,jdbcType=VARCHAR}, #{bgh,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
+      #{creatorName,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.rwczjl.bean.Rwczjl">
+        insert into RWCZJL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="xmId != null">
+                XM_ID,
+            </if>
+            <if test="rwId != null">
+                RW_ID,
+            </if>
+            <if test="bgnr != null">
+                BGNR,
+            </if>
+            <if test="bgq != null">
+                BGQ,
+            </if>
+            <if test="bgh != null">
+                BGH,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="xmId != null">
+                #{xmId,jdbcType=VARCHAR},
+            </if>
+            <if test="rwId != null">
+                #{rwId,jdbcType=VARCHAR},
+            </if>
+            <if test="bgnr != null">
+                #{bgnr,jdbcType=VARCHAR},
+            </if>
+            <if test="bgq != null">
+                #{bgq,jdbcType=VARCHAR},
+            </if>
+            <if test="bgh != null">
+                #{bgh,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.rwczjl.bean.Rwczjl">
+        update RWCZJL
+        <set>
+            <if test="xmId != null">
+                XM_ID = #{xmId,jdbcType=VARCHAR},
+            </if>
+            <if test="rwId != null">
+                RW_ID = #{rwId,jdbcType=VARCHAR},
+            </if>
+            <if test="bgnr != null">
+                BGNR = #{bgnr,jdbcType=VARCHAR},
+            </if>
+            <if test="bgq != null">
+                BGQ = #{bgq,jdbcType=VARCHAR},
+            </if>
+            <if test="bgh != null">
+                BGH = #{bgh,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.rwczjl.bean.Rwczjl">
+    update RWCZJL
+    set XM_ID = #{xmId,jdbcType=VARCHAR},
+      RW_ID = #{rwId,jdbcType=VARCHAR},
+      BGNR = #{bgnr,jdbcType=VARCHAR},
+      BGQ = #{bgq,jdbcType=VARCHAR},
+      BGH = #{bgh,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATOR_NAME = #{creatorName,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectRwczjlList" parameterType="com.hwp.common.model.rwczjl.bean.Rwczjl" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from RWCZJL
+        <where>
+            DATA_STATUS='1'
+            <if test="xmId != null">
+                and XM_ID = #{xmId,jdbcType=VARCHAR}
+            </if>
+            <if test="id != null">
+                and RW_ID = #{id,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+    <select id="listRwczjlByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from RWCZJL
+        <where>
+            DATA_STATUS='1'
+            <if test="xmId != null">
+                and XM_ID = #{xmId,jdbcType=VARCHAR}
+            </if>
+            <if test="id != null">
+                and RW_ID = #{id,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+</mapper>

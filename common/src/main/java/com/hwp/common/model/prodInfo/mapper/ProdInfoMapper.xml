@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProdInfoMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.prodInfo.bean.ProdInfo">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="PROD_NAME" property="prodName" jdbcType="VARCHAR"/>
+        <result column="PROD_ID" property="prodId" jdbcType="VARCHAR"/>
+        <result column="PROFIT_PER_ACC" property="profitPerAcc" jdbcType="DECIMAL"/>
+        <result column="NAV_Date" property="navDate" jdbcType="VARCHAR"/>
+        <result column="MERCHANT_NO" property="merchantNo" jdbcType="VARCHAR"/>
+        <result column="ANNUAL_RETURN_BYS" property="annualReturnBys" jdbcType="DECIMAL"/>
+        <result column="PROD_SUB_ID" property="prodSubId" jdbcType="VARCHAR"/>
+        <result column="TA_CODE" property="taCode" jdbcType="VARCHAR"/>
+        <result column="PROD_TYPE" property="prodType" jdbcType="VARCHAR"/>
+        <result column="PROD_SUB_NAME" property="prodSubName" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.prodInfo.bean.ProdInfo" extends="BaseResultMap">
+        <result column="PROD_SUB_DESC" property="prodSubDesc" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, PROD_NAME, PROD_ID, PROFIT_PER_ACC, NAV_Date, MERCHANT_NO, ANNUAL_RETURN_BYS, 
+    PROD_SUB_ID, TA_CODE, PROD_TYPE, PROD_SUB_NAME, DATA_STATUS, CREATE_TIME, UPDATE_TIME, 
+    RETURN_CODE, RETURN_MSG
+  </sql>
+    <sql id="Blob_Column_List">
+    PROD_SUB_DESC
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PROD_INFO
+        where ID = #{id,jdbcType=VARCHAR} and DATA_STATUS='1'
+    </select>
+
+    <select id="selectByProdSubId" resultMap="ResultMapWithBLOBs" parameterType="string">
+    select
+    ID, PROD_NAME, PROD_ID, PROFIT_PER_ACC, NAV_Date, MERCHANT_NO,CAST(ANNUAL_RETURN_BYS*100 AS DECIMAL(6,4))  ANNUAL_RETURN_BYS,
+    PROD_SUB_ID, TA_CODE, PROD_TYPE, PROD_SUB_NAME, DATA_STATUS, CREATE_TIME, UPDATE_TIME,
+    RETURN_CODE, RETURN_MSG
+    from PROD_INFO
+    where PROD_SUB_ID = #{prodSubId,jdbcType=VARCHAR} and DATA_STATUS='1'
+  </select>
+
+    <select id="listSelectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+            parameterType="com.hwp.common.model.prodInfo.bean.ProdInfo">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PROD_INFO
+        <where>
+            <if test="id != null">
+                and ID=#{id,jdbcType=VARCHAR},
+            </if>
+            <if test="prodName != null">
+                and PROD_NAME=#{prodName,jdbcType=VARCHAR},
+            </if>
+            <if test="prodId != null">
+                and PROD_ID=#{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="profitPerAcc != null">
+                and PROFIT_PERACC=#{profitPerAcc,jdbcType=DECIMAL},
+            </if>
+            <if test="navDate != null">
+                and NAV_DATE=#{navDate,jdbcType=VARCHAR},
+            </if>
+            <if test="merchantNo != null">
+                and MERCHANT_NO=#{merchantNo,jdbcType=VARCHAR},
+            </if>
+            <if test="annualReturnBys != null">
+                and ANNUAL_RETURN_BYS=#{annualReturnBys,jdbcType=DECIMAL},
+            </if>
+            <if test="prodSubId != null">
+                and PROD_SUB_ID=#{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="taCode != null">
+                and TA_CODE=#{taCode,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                and PROD_TYPE=#{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubName != null">
+                and PROD_SUB_NAME=#{prodSubName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                and DATE_STATUS=#{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME=#{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                and UPDATE_TIME=#{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                and RETURN_CODE=#{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                and RETURN_MSG=#{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubDesc != null">
+                and PROD_SUB_DESC=#{prodSubDesc,jdbcType=LONGVARCHAR},
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.hwp.common.model.prodInfo.bean.ProdInfo">
+    delete from PROD_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+
+    <insert id="insertSelective" parameterType="com.hwp.common.model.prodInfo.bean.ProdInfo">
+        insert into PROD_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="prodName != null">
+                PROD_NAME,
+            </if>
+            <if test="prodId != null">
+                PROD_ID,
+            </if>
+            <if test="profitPerAcc != null">
+                PROFIT_PER_ACC,
+            </if>
+            <if test="navDate != null">
+                NAV_Date,
+            </if>
+            <if test="merchantNo != null">
+                MERCHANT_NO,
+            </if>
+            <if test="annualReturnBys != null">
+                ANNUAL_RETURN_BYS,
+            </if>
+            <if test="prodSubId != null">
+                PROD_SUB_ID,
+            </if>
+            <if test="taCode != null">
+                TA_CODE,
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE,
+            </if>
+            <if test="prodSubName != null">
+                PROD_SUB_NAME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="prodSubDesc != null">
+                PROD_SUB_DESC,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="prodName != null">
+                #{prodName,jdbcType=VARCHAR},
+            </if>
+            <if test="prodId != null">
+                #{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="profitPerAcc != null">
+                #{profitPerAcc,jdbcType=DECIMAL},
+            </if>
+            <if test="navDate != null">
+                #{navDate,jdbcType=VARCHAR},
+            </if>
+            <if test="merchantNo != null">
+                #{merchantNo,jdbcType=VARCHAR},
+            </if>
+            <if test="annualReturnBys != null">
+                #{annualReturnBys,jdbcType=DECIMAL},
+            </if>
+            <if test="prodSubId != null">
+                #{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="taCode != null">
+                #{taCode,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubName != null">
+                #{prodSubName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubDesc != null">
+                #{prodSubDesc,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.prodInfo.bean.ProdInfo">
+        update PROD_INFO
+        <set>
+            <if test="prodName != null">
+                PROD_NAME = #{prodName,jdbcType=VARCHAR},
+            </if>
+            <if test="prodId != null">
+                PROD_ID = #{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="profitPerAcc != null">
+                PROFIT_PER_ACC = #{profitPerAcc,jdbcType=DECIMAL},
+            </if>
+            <if test="navDate != null">
+                NAV_Date = #{navDate,jdbcType=VARCHAR},
+            </if>
+            <if test="merchantNo != null">
+                MERCHANT_NO = #{merchantNo,jdbcType=VARCHAR},
+            </if>
+            <if test="annualReturnBys != null">
+                ANNUAL_RETURN_BYS = #{annualReturnBys,jdbcType=DECIMAL},
+            </if>
+            <if test="prodSubId != null">
+                PROD_SUB_ID = #{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="taCode != null">
+                TA_CODE = #{taCode,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE = #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubName != null">
+                PROD_SUB_NAME = #{prodSubName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubDesc != null">
+                PROD_SUB_DESC = #{prodSubDesc,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByDataStatus" parameterType="com.hwp.common.model.prodInfo.bean.ProdInfo">
+        update PROD_INFO
+        set
+        <if test="dataStatus != null">
+            DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+        </if>
+        UPDATE_TIME = #{now(),jdbcType=VARCHAR},
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>

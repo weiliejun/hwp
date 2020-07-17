@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userAuthenticationInfoMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userAuthenticationInfo.bean.UserAuthenticationInfo">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="ID_NO" property="idNo" jdbcType="VARCHAR"/>
+        <result column="UPLOAD_IDENTITY_STATUS" property="uploadIdentityStatus" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.userAuthenticationInfo.bean.UserAuthenticationInfo"
+               extends="BaseResultMap">
+        <result column="IDENTITY_FRONT" property="identityFront" jdbcType="LONGVARCHAR"/>
+        <result column="INENTITY_BACK" property="inentityBack" jdbcType="LONGVARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, UUID, USER_NAME, ID_NO, UPLOAD_IDENTITY_STATUS, RETURN_CODE, RETURN_MSG, 
+    CREATE_TIME, DATA_STATUS
+  </sql>
+    <sql id="Blob_Column_List">
+    IDENTITY_FRONT, INENTITY_BACK, REMARK
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_AUTHENTICATION_INFO
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByIdNo" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_AUTHENTICATION_INFO
+        where ID_NO = #{idNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from USER_AUTHENTICATION_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.userAuthenticationInfo.bean.UserAuthenticationInfo">
+    insert into USER_AUTHENTICATION_INFO (ID, USER_ID, UUID, 
+      USER_NAME, ID_NO, UPLOAD_IDENTITY_STATUS, 
+      RETURN_CODE, RETURN_MSG, CREATE_TIME, 
+      DATA_STATUS, IDENTITY_FRONT, INENTITY_BACK, 
+      REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{idNo,jdbcType=VARCHAR}, #{uploadIdentityStatus,jdbcType=VARCHAR}, 
+      #{returnCode,jdbcType=VARCHAR}, #{returnMsg,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{dataStatus,jdbcType=CHAR}, #{identityFront,jdbcType=LONGVARCHAR}, #{inentityBack,jdbcType=LONGVARCHAR}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective"
+            parameterType="com.hwp.common.model.userAuthenticationInfo.bean.UserAuthenticationInfo">
+        insert into USER_AUTHENTICATION_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="userName != null">
+                USER_NAME,
+            </if>
+            <if test="idNo != null">
+                ID_NO,
+            </if>
+            <if test="uploadIdentityStatus != null">
+                UPLOAD_IDENTITY_STATUS,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="identityFront != null">
+                IDENTITY_FRONT,
+            </if>
+            <if test="inentityBack != null">
+                INENTITY_BACK,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="idNo != null">
+                #{idNo,jdbcType=VARCHAR},
+            </if>
+            <if test="uploadIdentityStatus != null">
+                #{uploadIdentityStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="identityFront != null">
+                #{identityFront,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="inentityBack != null">
+                #{inentityBack,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <!--根据userId修改-->
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.hwp.common.model.userAuthenticationInfo.bean.UserAuthenticationInfo">
+        update USER_AUTHENTICATION_INFO
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                USER_NAME = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="idNo != null">
+                ID_NO = #{idNo,jdbcType=VARCHAR},
+            </if>
+            <if test="uploadIdentityStatus != null">
+                UPLOAD_IDENTITY_STATUS = #{uploadIdentityStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="identityFront != null">
+                IDENTITY_FRONT = #{identityFront,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="inentityBack != null">
+                INENTITY_BACK = #{inentityBack,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where USER_ID = #{userId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs"
+            parameterType="com.hwp.common.model.userAuthenticationInfo.bean.UserAuthenticationInfo">
+    update USER_AUTHENTICATION_INFO
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      UPLOAD_IDENTITY_STATUS = #{uploadIdentityStatus,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      IDENTITY_FRONT = #{identityFront,jdbcType=LONGVARCHAR},
+      INENTITY_BACK = #{inentityBack,jdbcType=LONGVARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey"
+            parameterType="com.hwp.common.model.userAuthenticationInfo.bean.UserAuthenticationInfo">
+    update USER_AUTHENTICATION_INFO
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      UPLOAD_IDENTITY_STATUS = #{uploadIdentityStatus,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userBankCardMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.userBankCard.bean.UserBankCard">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="AC_NO" property="acNo" jdbcType="VARCHAR"/>
+        <result column="AC_USER_NAME" property="acUserName" jdbcType="VARCHAR"/>
+        <result column="AC_ID_NO" property="acIdNo" jdbcType="VARCHAR"/>
+        <result column="MOBILE_PHONE" property="mobilePhone" jdbcType="VARCHAR"/>
+        <result column="BIND_TIME" property="bindTime" jdbcType="VARCHAR"/>
+        <result column="UNBIND_TIME" property="unbindTime" jdbcType="VARCHAR"/>
+        <result column="IS_BIND_CARD" property="isBindCard" jdbcType="VARCHAR"/>
+        <result column="BANK_NAME" property="bankName" jdbcType="VARCHAR"/>
+        <result column="BANK_ID" property="bankId" jdbcType="VARCHAR"/>
+        <result column="BANK_INNER" property="bankInner" jdbcType="VARCHAR"/>
+        <result column="CARD_LEN" property="cardLen" jdbcType="VARCHAR"/>
+        <result column="CARD_TYPE" property="cardType" jdbcType="VARCHAR"/>
+        <result column="LIMIT_AMOUNT" property="limitAmount" jdbcType="VARCHAR"/>
+        <result column="LIMIT_AMOUNT_PER_DAY" property="limitAmountPerDay" jdbcType="VARCHAR"/>
+        <result column="SIGN_STATE" property="signState" jdbcType="VARCHAR"/>
+        <result column="PIN" property="pin" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETURN_MSG" property="returnMsg" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.userBankCard.bean.UserBankCard"
+               extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, UUID, AC_NO, AC_USER_NAME, AC_ID_NO, MOBILE_PHONE, BIND_TIME, UNBIND_TIME, 
+    IS_BIND_CARD, BANK_NAME, BANK_ID, BANK_INNER, CARD_LEN, CARD_TYPE, LIMIT_AMOUNT, 
+    LIMIT_AMOUNT_PER_DAY, SIGN_STATE, PIN, RETURN_CODE, RETURN_MSG, DATA_STATUS, CREATE_TIME
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_BANK_CARD
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from USER_BANK_CARD
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.userBankCard.bean.UserBankCard">
+    insert into USER_BANK_CARD (ID, USER_ID, UUID, 
+      AC_NO, AC_USER_NAME, AC_ID_NO, 
+      MOBILE_PHONE, BIND_TIME, UNBIND_TIME, 
+      IS_BIND_CARD, BANK_NAME, BANK_ID, 
+      BANK_INNER, CARD_LEN, CARD_TYPE, 
+      LIMIT_AMOUNT, LIMIT_AMOUNT_PER_DAY, SIGN_STATE, 
+      PIN, RETURN_CODE, RETURN_MSG, 
+      DATA_STATUS, CREATE_TIME, REMARK
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, 
+      #{acNo,jdbcType=VARCHAR}, #{acUserName,jdbcType=VARCHAR}, #{acIdNo,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{bindTime,jdbcType=VARCHAR}, #{unbindTime,jdbcType=VARCHAR}, 
+      #{isBindCard,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankId,jdbcType=VARCHAR}, 
+      #{bankInner,jdbcType=VARCHAR}, #{cardLen,jdbcType=VARCHAR}, #{cardType,jdbcType=VARCHAR}, 
+      #{limitAmount,jdbcType=VARCHAR}, #{limitAmountPerDay,jdbcType=VARCHAR}, #{signState,jdbcType=VARCHAR}, 
+      #{pin,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, #{returnMsg,jdbcType=VARCHAR}, 
+      #{dataStatus,jdbcType=CHAR}, #{createTime,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.userBankCard.bean.UserBankCard">
+        insert into USER_BANK_CARD
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="acNo != null">
+                AC_NO,
+            </if>
+            <if test="acUserName != null">
+                AC_USER_NAME,
+            </if>
+            <if test="acIdNo != null">
+                AC_ID_NO,
+            </if>
+            <if test="mobilePhone != null">
+                MOBILE_PHONE,
+            </if>
+            <if test="bindTime != null">
+                BIND_TIME,
+            </if>
+            <if test="unbindTime != null">
+                UNBIND_TIME,
+            </if>
+            <if test="isBindCard != null">
+                IS_BIND_CARD,
+            </if>
+            <if test="bankName != null">
+                BANK_NAME,
+            </if>
+            <if test="bankId != null">
+                BANK_ID,
+            </if>
+            <if test="bankInner != null">
+                BANK_INNER,
+            </if>
+            <if test="cardLen != null">
+                CARD_LEN,
+            </if>
+            <if test="cardType != null">
+                CARD_TYPE,
+            </if>
+            <if test="limitAmount != null">
+                LIMIT_AMOUNT,
+            </if>
+            <if test="limitAmountPerDay != null">
+                LIMIT_AMOUNT_PER_DAY,
+            </if>
+            <if test="signState != null">
+                SIGN_STATE,
+            </if>
+            <if test="pin != null">
+                PIN,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="acNo != null">
+                #{acNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acUserName != null">
+                #{acUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="acIdNo != null">
+                #{acIdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="mobilePhone != null">
+                #{mobilePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="bindTime != null">
+                #{bindTime,jdbcType=VARCHAR},
+            </if>
+            <if test="unbindTime != null">
+                #{unbindTime,jdbcType=VARCHAR},
+            </if>
+            <if test="isBindCard != null">
+                #{isBindCard,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null">
+                #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="bankId != null">
+                #{bankId,jdbcType=VARCHAR},
+            </if>
+            <if test="bankInner != null">
+                #{bankInner,jdbcType=VARCHAR},
+            </if>
+            <if test="cardLen != null">
+                #{cardLen,jdbcType=VARCHAR},
+            </if>
+            <if test="cardType != null">
+                #{cardType,jdbcType=VARCHAR},
+            </if>
+            <if test="limitAmount != null">
+                #{limitAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="limitAmountPerDay != null">
+                #{limitAmountPerDay,jdbcType=VARCHAR},
+            </if>
+            <if test="signState != null">
+                #{signState,jdbcType=VARCHAR},
+            </if>
+            <if test="pin != null">
+                #{pin,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.userBankCard.bean.UserBankCard">
+        update USER_BANK_CARD
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="acNo != null">
+                AC_NO = #{acNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acUserName != null">
+                AC_USER_NAME = #{acUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="acIdNo != null">
+                AC_ID_NO = #{acIdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="mobilePhone != null">
+                MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="bindTime != null">
+                BIND_TIME = #{bindTime,jdbcType=VARCHAR},
+            </if>
+            <if test="unbindTime != null">
+                UNBIND_TIME = #{unbindTime,jdbcType=VARCHAR},
+            </if>
+            <if test="isBindCard != null">
+                IS_BIND_CARD = #{isBindCard,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null">
+                BANK_NAME = #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="bankId != null">
+                BANK_ID = #{bankId,jdbcType=VARCHAR},
+            </if>
+            <if test="bankInner != null">
+                BANK_INNER = #{bankInner,jdbcType=VARCHAR},
+            </if>
+            <if test="cardLen != null">
+                CARD_LEN = #{cardLen,jdbcType=VARCHAR},
+            </if>
+            <if test="cardType != null">
+                CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+            </if>
+            <if test="limitAmount != null">
+                LIMIT_AMOUNT = #{limitAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="limitAmountPerDay != null">
+                LIMIT_AMOUNT_PER_DAY = #{limitAmountPerDay,jdbcType=VARCHAR},
+            </if>
+            <if test="signState != null">
+                SIGN_STATE = #{signState,jdbcType=VARCHAR},
+            </if>
+            <if test="pin != null">
+                PIN = #{pin,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="returnMsg != null">
+                RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.userBankCard.bean.UserBankCard">
+    update USER_BANK_CARD
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      AC_NO = #{acNo,jdbcType=VARCHAR},
+      AC_USER_NAME = #{acUserName,jdbcType=VARCHAR},
+      AC_ID_NO = #{acIdNo,jdbcType=VARCHAR},
+      MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+      BIND_TIME = #{bindTime,jdbcType=VARCHAR},
+      UNBIND_TIME = #{unbindTime,jdbcType=VARCHAR},
+      IS_BIND_CARD = #{isBindCard,jdbcType=VARCHAR},
+      BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      BANK_ID = #{bankId,jdbcType=VARCHAR},
+      BANK_INNER = #{bankInner,jdbcType=VARCHAR},
+      CARD_LEN = #{cardLen,jdbcType=VARCHAR},
+      CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+      LIMIT_AMOUNT = #{limitAmount,jdbcType=VARCHAR},
+      LIMIT_AMOUNT_PER_DAY = #{limitAmountPerDay,jdbcType=VARCHAR},
+      SIGN_STATE = #{signState,jdbcType=VARCHAR},
+      PIN = #{pin,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.userBankCard.bean.UserBankCard">
+    update USER_BANK_CARD
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      AC_NO = #{acNo,jdbcType=VARCHAR},
+      AC_USER_NAME = #{acUserName,jdbcType=VARCHAR},
+      AC_ID_NO = #{acIdNo,jdbcType=VARCHAR},
+      MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+      BIND_TIME = #{bindTime,jdbcType=VARCHAR},
+      UNBIND_TIME = #{unbindTime,jdbcType=VARCHAR},
+      IS_BIND_CARD = #{isBindCard,jdbcType=VARCHAR},
+      BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      BANK_ID = #{bankId,jdbcType=VARCHAR},
+      BANK_INNER = #{bankInner,jdbcType=VARCHAR},
+      CARD_LEN = #{cardLen,jdbcType=VARCHAR},
+      CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+      LIMIT_AMOUNT = #{limitAmount,jdbcType=VARCHAR},
+      LIMIT_AMOUNT_PER_DAY = #{limitAmountPerDay,jdbcType=VARCHAR},
+      SIGN_STATE = #{signState,jdbcType=VARCHAR},
+      PIN = #{pin,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      RETURN_MSG = #{returnMsg,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!--根据动态参数查询用户银行卡列表-->
+    <select id="listUserBankCardByParams" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_BANK_CARD
+        where
+        DATA_STATUS = '1'
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="uuid != null">
+            AND UUID = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <if test="acNo != null">
+            AND AC_NO = #{acNo,jdbcType=VARCHAR}
+        </if>
+        <if test="acUserName != null">
+            AND AC_USER_NAME = #{acUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="acIdNo != null">
+            AND AC_ID_NO = #{acIdNo,jdbcType=VARCHAR}
+        </if>
+        <if test="mobilePhone != null">
+            AND MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR}
+        </if>
+        <if test="bindTime != null">
+            AND BIND_TIME = #{bindTime,jdbcType=VARCHAR}
+        </if>
+        <if test="unbindTime != null">
+            AND UNBIND_TIME = #{unbindTime,jdbcType=VARCHAR}
+        </if>
+        <if test="isBindCard != null">
+            AND IS_BIND_CARD = #{isBindCard,jdbcType=VARCHAR}
+        </if>
+        <if test="bankName != null">
+            AND BANK_NAME = #{bankName,jdbcType=VARCHAR}
+        </if>
+        <if test="bankId != null">
+            AND BANK_ID = #{bankId,jdbcType=VARCHAR}
+        </if>
+        <if test="bankInner != null">
+            AND BANK_INNER = #{bankInner,jdbcType=VARCHAR}
+        </if>
+        <if test="cardLen != null">
+            AND CARD_LEN = #{cardLen,jdbcType=VARCHAR}
+        </if>
+        <if test="cardType != null">
+            AND CARD_TYPE = #{cardType,jdbcType=VARCHAR}
+        </if>
+        <if test="limitAmount != null">
+            AND LIMIT_AMOUNT = #{limitAmount,jdbcType=VARCHAR}
+        </if>
+        <if test="limitAmountPerDay != null">
+            AND LIMIT_AMOUNT_PER_DAY = #{limitAmountPerDay,jdbcType=VARCHAR}
+        </if>
+        <if test="signState != null">
+            AND SIGN_STATE = #{signState,jdbcType=VARCHAR}
+        </if>
+        <if test="pin != null">
+            AND PIN = #{pin,jdbcType=VARCHAR}
+        </if>
+        <if test="returnCode != null">
+            AND RETURN_CODE = #{returnCode,jdbcType=VARCHAR}
+        </if>
+        <if test="returnMsg != null">
+            AND RETURN_MSG = #{returnMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=LONGVARCHAR}
+        </if>
+    </select>
+
+    <!--根据银行卡号获取银行卡信息-->
+    <select id="getUserBankCardByAcNo" parameterType="string" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from USER_BANK_CARD
+        where
+        AC_NO = #{acNo,jdbcType=VARCHAR}
+        LIMIT 1
+    </select>
+
+
+</mapper>

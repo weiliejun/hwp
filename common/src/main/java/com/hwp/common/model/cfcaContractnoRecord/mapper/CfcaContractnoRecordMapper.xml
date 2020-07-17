@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cfcaContractnoRecord">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.cfcaContractnoRecord.bean.CfcaContractnoRecord">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="BUSINESS_ID" jdbcType="VARCHAR" property="businessId"/>
+        <result column="BUSINESS_TYPE" jdbcType="VARCHAR" property="businessType"/>
+        <result column="CONTRACT_NO" jdbcType="VARCHAR" property="contractNo"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="CREATE_TIME" jdbcType="CHAR" property="createTime"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, BUSINESS_ID, BUSINESS_TYPE, CONTRACT_NO, REMARK, CREATE_TIME, DATA_STATUS
+  </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from CFCA_CONTRACTNO_RECORD
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="findCfcaContractnoRecordByParams" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from CFCA_CONTRACTNO_RECORD
+        where data_status = '1'
+        <if test="businessId != null">
+            AND BUSINESS_ID = #{businessId,jdbcType=VARCHAR}
+        </if>
+        <if test="businessType != null">
+            AND BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="findCfcaContractnoRecordCount" parameterType="java.util.HashMap" resultType="integer">
+        select count(*)
+        from CFCA_CONTRACTNO_RECORD
+        where data_status = '1'
+        <if test="businessId != null">
+            AND BUSINESS_ID = #{businessId,jdbcType=VARCHAR}
+        </if>
+        <if test="businessType != null">
+            AND BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="findProductCFCARecordsCount" parameterType="java.lang.String" resultType="java.util.HashMap">
+    select count(case when ccr.BUSINESS_TYPE = 'product' then ccr.BUSINESS_ID else null end) as product_cnt,
+            count(case when ccr.BUSINESS_TYPE = 'creditUndertakingAgreement' then ccr.BUSINESS_ID else null end) as credit_cnt,
+            count(case when ccr.BUSINESS_TYPE = 'infoConsultationAgreement' then ccr.BUSINESS_ID else null end) as consultation_cnt
+    from CFCA_CONTRACTNO_RECORD ccr
+    where ccr.data_status = '1'
+    AND BUSINESS_ID = #{productId,jdbcType=VARCHAR}
+  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CFCA_CONTRACTNO_RECORD
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.cfcaContractnoRecord.bean.CfcaContractnoRecord">
+    insert into CFCA_CONTRACTNO_RECORD (ID, BUSINESS_ID, BUSINESS_TYPE, 
+      CONTRACT_NO, REMARK, CREATE_TIME, 
+      DATA_STATUS)
+    values (#{id,jdbcType=VARCHAR}, #{businessId,jdbcType=VARCHAR}, #{businessType,jdbcType=VARCHAR}, 
+      #{contractNo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=CHAR}, 
+      #{dataStatus,jdbcType=CHAR})
+  </insert>
+    <insert id="insertCfcaContractnoRecord"
+            parameterType="com.hwp.common.model.cfcaContractnoRecord.bean.CfcaContractnoRecord">
+        insert into CFCA_CONTRACTNO_RECORD
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="businessId != null">
+                BUSINESS_ID,
+            </if>
+            <if test="businessType != null">
+                BUSINESS_TYPE,
+            </if>
+            <if test="contractNo != null">
+                CONTRACT_NO,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="businessId != null">
+                #{businessId,jdbcType=VARCHAR},
+            </if>
+            <if test="businessType != null">
+                #{businessType,jdbcType=VARCHAR},
+            </if>
+            <if test="contractNo != null">
+                #{contractNo,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateCfcaContractnoRecord"
+            parameterType="com.hwp.common.model.cfcaContractnoRecord.bean.CfcaContractnoRecord">
+        update CFCA_CONTRACTNO_RECORD
+        <set>
+            <if test="businessId != null">
+                BUSINESS_ID = #{businessId,jdbcType=VARCHAR},
+            </if>
+            <if test="businessType != null">
+                BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+            </if>
+            <if test="contractNo != null">
+                CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.cfcaContractnoRecord.bean.CfcaContractnoRecord">
+    update CFCA_CONTRACTNO_RECORD
+    set BUSINESS_ID = #{businessId,jdbcType=VARCHAR},
+      BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

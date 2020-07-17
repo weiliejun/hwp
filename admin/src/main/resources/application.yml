@@ -1,0 +1,58 @@
+server:
+  port: 84
+  servlet:
+    context-path: /
+  tomcat:
+    max-http-post-size: -1
+    basedir: /tmp/tomcat
+    uri-encoding: UTF-8
+    useBodyEncodingForURI: true
+resources:
+  static-locations: classpath:/resources/, classpath:/static/ ,classpath:/templates/
+
+spring:
+
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+
+  servlet:
+    multipart:
+      enabled: false
+      max-file-size: 20MB
+      max-request-size: 100MB
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  mail:
+    username: admin@ksfortune.com
+    #登陆密码Junde123456
+    password: RjSGNB8o3uTjXHJs
+    host: smtp.exmail.qq.com
+    port: 465
+    protocol: smtp
+    properties:
+      mail:
+        test-connection: true
+        smtp:
+          auth: "true"
+          timeout: 25000
+          ssl:
+            enable: true
+  freemarker:
+    content-type: text/html
+    #后缀名
+    suffix: .ftl
+    template-loader-path: classpath:/templates
+    charset: UTF-8
+    check-template-location: true
+logging:
+  level:
+    com.hwp.*: debug
+  #path: C\:\\Users\\zwj\\Desktop
+  path: /data/logs/admin
+  file: admin.log
+  config: classpath:logback-spring.xml

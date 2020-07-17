@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProductMapper">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.product.bean.Product">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="CODE" property="code" jdbcType="VARCHAR"/>
+        <result column="GE_NAME" property="geName" jdbcType="VARCHAR"/>
+        <result column="GE_CODE" property="geCode" jdbcType="VARCHAR"/>
+        <result column="AMOUNT" property="amount" jdbcType="DECIMAL"/>
+        <result column="TIME_LIMIT" property="timeLimit" jdbcType="DECIMAL"/>
+        <result column="TIME_LIMIT_UNIT" property="timeLimitUnit" jdbcType="VARCHAR"/>
+        <result column="ANNUAL_RATE" property="annualRate" jdbcType="DECIMAL"/>
+        <result column="REPAY_TYPE" property="repayType" jdbcType="VARCHAR"/>
+        <result column="TENDER_START_TIME" property="tenderStartTime" jdbcType="VARCHAR"/>
+        <result column="TENDER_END_TIME" property="tenderEndTime" jdbcType="VARCHAR"/>
+        <result column="TENDER_INIT_AMOUNT" property="tenderInitAmount" jdbcType="DECIMAL"/>
+        <result column="TENDER_INCREASE_AMOUNT" property="tenderIncreaseAmount" jdbcType="DECIMAL"/>
+        <result column="Hx_NAME" property="hxName" jdbcType="VARCHAR"/>
+        <result column="Hx_Acct_No" property="hxAcctNo" jdbcType="VARCHAR"/>
+        <result column="AUDIT_STATUS" property="auditStatus" jdbcType="VARCHAR"/>
+        <result column="AUDIT_DESC" property="auditDesc" jdbcType="VARCHAR"/>
+        <result column="AUDIT_TIME" property="auditTime" jdbcType="VARCHAR"/>
+        <result column="AUDITOR_ID" property="auditorId" jdbcType="VARCHAR"/>
+        <result column="AUDITOR_NAME" property="auditorName" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="CREATOR_ID" property="creatorId" jdbcType="VARCHAR"/>
+        <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR"/>
+        <result column="EDIT_TIME" property="editTime" jdbcType="VARCHAR"/>
+        <result column="EDITOR_ID" property="editorId" jdbcType="VARCHAR"/>
+        <result column="EDITOR_NAME" property="editorName" jdbcType="VARCHAR"/>
+        <result column="TENDER_AMOUNT" property="tenderAmount" jdbcType="DECIMAL"/>
+        <result column="TENDER_USERS" property="tenderUsers" jdbcType="DECIMAL"/>
+        <result column="TENDER_AUDITOR_ID" property="tenderAuditorId" jdbcType="VARCHAR"/>
+        <result column="TENDER_AUDITOR_NAME" property="tenderAuditorName" jdbcType="VARCHAR"/>
+        <result column="TENDER_AUDIT_TIME" property="tenderAuditTime" jdbcType="VARCHAR"/>
+        <result column="REPAY_START_DATE" property="repayStartDate" jdbcType="VARCHAR"/>
+        <result column="REPAY_END_DATE" property="repayEndDate" jdbcType="VARCHAR"/>
+        <result column="PUBLISH_STATUS" property="publishStatus" jdbcType="VARCHAR"/>
+        <result column="PUBLISH_TIME" property="publishTime" jdbcType="VARCHAR"/>
+        <result column="PUBLISHER_ID" property="publisherId" jdbcType="VARCHAR"/>
+        <result column="PUBLISHER_NAME" property="publisherName" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="TENDER_AUDIT_STATUS" property="tenderAuditStatus" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_AGREEMENT_TYPE" property="productAgreementType" jdbcType="VARCHAR"/>
+        <result column="HIGH_SINGLE_INVEST" property="highSingleInvest" jdbcType="DECIMAL"/>
+        <result column="CONTRACT_NO" property="contractNo" jdbcType="VARCHAR"/>
+        <!--<result column="TRADING_ACCOUNT_NO" property="tradingAccountNo" jdbcType="VARCHAR" />-->
+        <result column="TRUST_CONTRACT_NO" property="trustContractNo" jdbcType="VARCHAR"/>
+        <result column="PRO_ID" property="proId" jdbcType="VARCHAR"/>
+        <result column="IF_prepay" property="ifPrepay" jdbcType="VARCHAR"/>
+        <result column="syAmount" property="syAmount" jdbcType="CHAR"/>
+        <result column="bfbAmount" property="bfbAmount" jdbcType="CHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.product.bean.Product" extends="BaseResultMap">
+        <result column="Purchase_desc" property="purchaseDesc" jdbcType="LONGVARCHAR"/>
+        <result column="PRODUCT_ADVANTAGE" property="productAdvantage" jdbcType="LONGVARCHAR"/>
+        <result column="reasons_prepay" property="reasonsPrepay" jdbcType="LONGVARCHAR"/>
+        <result column="PROJECT_SUMMARY" property="projectSummary" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, NAME, CODE, GE_NAME, GE_CODE, AMOUNT, TIME_LIMIT, TIME_LIMIT_UNIT, ANNUAL_RATE, 
+    REPAY_TYPE, TENDER_START_TIME, TENDER_END_TIME, TENDER_INIT_AMOUNT, TENDER_INCREASE_AMOUNT, 
+    Hx_NAME, Hx_Acct_No, AUDIT_STATUS, AUDIT_DESC, AUDIT_TIME, AUDITOR_ID, AUDITOR_NAME, 
+    REMARK, DATA_STATUS, CREATE_TIME, CREATOR_ID, CREATOR_NAME, EDIT_TIME, EDITOR_ID, 
+    EDITOR_NAME, TENDER_AMOUNT, TENDER_USERS, TENDER_AUDITOR_ID, TENDER_AUDITOR_NAME,
+    TENDER_AUDIT_TIME, REPAY_START_DATE, REPAY_END_DATE, PUBLISH_STATUS, PUBLISH_TIME, 
+    PUBLISHER_ID, PUBLISHER_NAME, STATUS, TENDER_AUDIT_STATUS, PRODUCT_AGREEMENT_TYPE, 
+    HIGH_SINGLE_INVEST, CONTRACT_NO, TRUST_CONTRACT_NO, PRO_ID, IF_prepay
+  </sql>
+    <sql id="Blob_Column_List">
+    Purchase_desc, PRODUCT_ADVANTAGE, reasons_prepay, PROJECT_SUMMARY
+  </sql>
+    <select id="getProductById" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PRODUCT
+        where ID = #{id,jdbcType=VARCHAR} and DATA_STATUS='1'
+    </select>
+    <select id="selectProductList" parameterType="com.hwp.common.model.product.bean.Product"
+            resultMap="ResultMapWithBLOBs">
+        select CONVERT (AMOUNT-TENDER_AMOUNT , CHAR) syAmount ,CONVERT (CONVERT (TENDER_AMOUNT/AMOUNT*100, DECIMAL(6,2))
+        , CHAR) bfbAmount,
+        ID, NAME, AMOUNT, ANNUAL_RATE,
+        TENDER_START_TIME, TENDER_END_TIME, TENDER_INIT_AMOUNT, TENDER_INCREASE_AMOUNT,
+        TENDER_AMOUNT, TENDER_USERS,
+        STATUS,TIME_LIMIT,
+        HIGH_SINGLE_INVEST
+        from PRODUCT
+        where PUBLISH_STATUS='issue' OR PUBLISH_STATUS='notIssue'
+        <if test="name != null">
+            and NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="code != null">
+            and CODE = #{code,jdbcType=VARCHAR}
+        </if>
+        <if test="geName != null">
+            and GE_NAME = #{geName,jdbcType=VARCHAR}
+        </if>
+        <if test="geCode != null">
+            and GE_CODE = #{geCode,jdbcType=VARCHAR}
+        </if>
+        <if test="amount != null">
+            and AMOUNT = #{amount,jdbcType=DECIMAL}
+        </if>
+        <if test="timeLimit != null">
+            and TIME_LIMIT = #{timeLimit,jdbcType=DECIMAL}
+        </if>
+        <if test="timeLimitUnit != null">
+            and TIME_LIMIT_UNIT = #{timeLimitUnit,jdbcType=VARCHAR}
+        </if>
+        <if test="annualRate != null">
+            and ANNUAL_RATE = #{annualRate,jdbcType=DECIMAL}
+        </if>
+        <if test="repayType != null">
+            and REPAY_TYPE = #{repayType,jdbcType=VARCHAR}
+        </if>
+        <if test="tenderStartTime != null">
+            and TENDER_START_TIME = #{tenderStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="tenderEndTime != null">
+            and TENDER_END_TIME = #{tenderEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="tenderInitAmount != null">
+            and TENDER_INIT_AMOUNT = #{tenderInitAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="tenderIncreaseAmount != null">
+            and TENDER_INCREASE_AMOUNT = #{tenderIncreaseAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="hxName != null">
+            and Hx_NAME = #{hxName,jdbcType=VARCHAR}
+        </if>
+        <if test="hxAcctNo != null">
+            and Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR}
+        </if>
+        <if test="auditStatus != null">
+            and AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="auditDesc != null">
+            and AUDIT_DESC = #{auditDesc,jdbcType=VARCHAR}
+        </if>
+        <if test="auditTime != null">
+            and AUDIT_TIME = #{auditTime,jdbcType=VARCHAR}
+        </if>
+        <if test="auditorId != null">
+            and AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+        </if>
+        <if test="auditorName != null">
+            and AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            and DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="creatorId != null">
+            and CREATOR_ID = #{creatorId,jdbcType=VARCHAR}
+        </if>
+        <if test="creatorName != null">
+            and CREATOR_NAME = #{creatorName,jdbcType=VARCHAR}
+        </if>
+        <if test="editTime != null">
+            and EDIT_TIME = #{editTime,jdbcType=VARCHAR}
+        </if>
+        <if test="editorId != null">
+            and EDITOR_ID = #{editorId,jdbcType=VARCHAR}
+        </if>
+        <if test="editorName != null">
+            and EDITOR_NAME = #{editorName,jdbcType=VARCHAR}
+        </if>
+        <if test="tenderAmount != null">
+            and TENDER_AMOUNT = #{tenderAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="tenderUsers != null">
+            and TENDER_USERS = #{tenderUsers,jdbcType=DECIMAL}
+        </if>
+        <if test="tenderAuditorId != null">
+            and TENDER_AUDITOR_ID = #{tenderAuditorId,jdbcType=VARCHAR}
+        </if>
+        <if test="tenderAuditorName != null">
+            and TENDER_AUDITOR_NAME = #{tenderAuditorName,jdbcType=VARCHAR}
+        </if>
+        <if test="tenderAuditTime != null">
+            and TENDER_AUDIT_TIME = #{tenderAuditTime,jdbcType=VARCHAR}
+        </if>
+        <if test="repayStartDate != null">
+            and REPAY_START_DATE = #{repayStartDate,jdbcType=VARCHAR}
+        </if>
+        <if test="repayEndDate != null">
+            and REPAY_END_DATE = #{repayEndDate,jdbcType=VARCHAR}
+        </if>
+        <if test="publishStatus != null">
+            and PUBLISH_STATUS = #{publishStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="publishTime != null">
+            and PUBLISH_TIME = #{publishTime,jdbcType=VARCHAR}
+        </if>
+        <if test="publisherId != null">
+            and PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR}
+        </if>
+        <if test="publisherName != null">
+            and PUBLISHER_NAME = #{publisherName,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            and STATUS = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="tenderAuditStatus != null">
+            and TENDER_AUDIT_STATUS = #{tenderAuditStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="productAgreementType != null">
+            and PRODUCT_AGREEMENT_TYPE = #{productAgreementType,jdbcType=VARCHAR}
+        </if>
+        <if test="highSingleInvest != null">
+            and HIGH_SINGLE_INVEST = #{highSingleInvest,jdbcType=DECIMAL}
+        </if>
+        <if test="contractNo != null">
+            and CONTRACT_NO = #{contractNo,jdbcType=VARCHAR}
+        </if>
+        <if test="trustContractNo != null">
+            and TRUST_CONTRACT_NO = #{trustContractNo,jdbcType=VARCHAR}
+        </if>
+        <!--<if test="tradingAccountNo != null">-->
+        <!--and TRADING_ACCOUNT_NO = #{tradingAccountNo,jdbcType=VARCHAR}-->
+        <!--</if>-->
+        <if test="proId != null">
+            and PRO_ID = #{proId,jdbcType=VARCHAR}
+        </if>
+        <if test="ifPrepay != null">
+            and IF_prepay = #{ifPrepay,jdbcType=VARCHAR}
+        </if>
+        <if test="purchaseDesc != null">
+            and Purchase_desc = #{purchaseDesc,jdbcType=LONGVARCHAR}
+        </if>
+        <if test="productAdvantage != null">
+            and PRODUCT_ADVANTAGE = #{productAdvantage,jdbcType=LONGVARCHAR}
+        </if>
+        <if test="reasonsPrepay != null">
+            and reasons_prepay = #{reasonsPrepay,jdbcType=LONGVARCHAR}
+        </if>
+        <if test="projectSummary != null">
+            and PROJECT_SUMMARY = #{projectSummary,jdbcType=LONGVARCHAR}
+        </if>
+        ORDER BY FIELD(STATUS, 'tender','init','success','repaying','repayed','prepayed','fail') asc ,
+        STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s') DESC
+    </select>
+    <!--初始产品重复列表-->
+    <select id="selectProductListByRePeat" parameterType="com.hwp.common.model.product.bean.Product"
+            resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PRODUCT
+        <where>
+            <if test="name != null">
+                and NAME = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="code != null">
+                and CODE = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="contractNo != null">
+                and CONTRACT_NO = #{contractNo,jdbcType=VARCHAR}
+            </if>
+            <if test="auditStatus != null">
+                and AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="geName != null">
+                and GE_NAME = #{geName,jdbcType=VARCHAR}
+            </if>
+            <if test="geCode != null">
+                and GE_CODE = #{geCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+    <!--初始产品列表-->
+    <select id="selectProductListByMap" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PRODUCT
+        where DATA_STATUS = '1'
+        <if test="name != null">
+            and NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="code != null">
+            and CODE = #{code,jdbcType=VARCHAR}
+        </if>
+        <if test="auditStatus != null">
+            and AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR}
+        </if>
+        <!--<if test="auditStatus != null and auditStatus==fail">-->
+        <!--and AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR}-->
+        <!--</if>-->
+        <if test="startTime != null and endTime !=null">
+            and STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=CHAR}
+            and STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s')&lt;=#{endTime,jdbcType=CHAR}
+        </if>
+        <if test="auditStatus==null">
+            and (AUDIT_STATUS='init' or AUDIT_STATUS='fail')
+        </if>
+        order by STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+
+    <!--产品审核列表-->
+    <select id="selectProductExamListByMap" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PRODUCT
+        where DATA_STATUS ='1'
+        and AUDIT_STATUS = 'submit'
+        <if test="name != null">
+            and NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="code != null">
+            and CODE = #{code,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null and endTime !=null">
+            and STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=CHAR}
+            and STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s')&lt;=#{endTime,jdbcType=CHAR}
+        </if>
+        or AUDIT_STATUS = 'processing'
+        order by STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+    <!--产品发布管理-->
+    <select id="selectProductManagerIssueListByMap" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PRODUCT
+        where DATA_STATUS='1' and AUDIT_STATUS ='success'
+        and TENDER_AUDIT_STATUS='finish' and STATUS='init'
+        <if test="name != null">
+            and NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="code != null">
+            and CODE = #{code,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            and STATUS = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="publishStatus != null">
+            and PUBLISH_STATUS = #{publishStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="repayStartDate != null">
+            and STR_TO_DATE(REPAY_START_DATE, '%Y-%m-%d %H:%i:%s')&gt;= #{repayStartDate,jdbcType=VARCHAR}
+        </if>
+        <if test="repayEndDate != null">
+            and STR_TO_DATE(REPAY_END_DATE, '%Y-%m-%d %H:%i:%s')&lt;= #{repayEndDate,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null and endTime !=null">
+            and STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=CHAR}
+            and STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s')&lt;=#{endTime,jdbcType=CHAR}
+        </if>
+        order by STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+
+    <!--产品信息管理列表-->
+    <select id="selectProductManagerListByMap" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PRODUCT
+        where DATA_STATUS='1' and AUDIT_STATUS ='success'
+        and TENDER_AUDIT_STATUS='finish' and STATUS != 'init'
+        <if test="name != null">
+            and NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="code != null">
+            and CODE = #{code,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            and STATUS = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="repayStartDate != null">
+            and STR_TO_DATE(REPAY_START_DATE, '%Y-%m-%d %H:%i:%s')&gt;= #{repayStartDate,jdbcType=VARCHAR}
+        </if>
+        <if test="repayEndDate != null">
+            and STR_TO_DATE(REPAY_END_DATE, '%Y-%m-%d %H:%i:%s')&lt;= #{repayEndDate,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null and endTime !=null">
+            and STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s')&gt;=#{startTime,jdbcType=CHAR}
+            and STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s')&lt;=#{endTime,jdbcType=CHAR}
+        </if>
+        order by STR_TO_DATE(EDIT_TIME, '%Y-%m-%d %H:%i:%s') desc
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PRODUCT
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.product.bean.Product">
+    insert into PRODUCT (ID, NAME, CODE, 
+      GE_NAME, GE_CODE, AMOUNT, 
+      TIME_LIMIT, TIME_LIMIT_UNIT, ANNUAL_RATE, 
+      REPAY_TYPE, TENDER_START_TIME, TENDER_END_TIME, 
+      TENDER_INIT_AMOUNT, TENDER_INCREASE_AMOUNT, 
+      Hx_NAME, Hx_Acct_No, AUDIT_STATUS, 
+      AUDIT_DESC, AUDIT_TIME, AUDITOR_ID, 
+      AUDITOR_NAME, REMARK, DATA_STATUS, 
+      CREATE_TIME, CREATOR_ID, CREATOR_NAME, 
+      EDIT_TIME, EDITOR_ID, EDITOR_NAME, 
+      TENDER_AMOUNT, TENDER_USERS, TENDER_AUDITOR_ID, 
+      TENDER_AUDITOR_NAME, TENDER_AUDIT_TIME, REPAY_START_DATE, 
+      REPAY_END_DATE, PUBLISH_STATUS, PUBLISH_TIME, 
+      PUBLISHER_ID, PUBLISHER_NAME, STATUS, 
+      TENDER_AUDIT_STATUS, PRODUCT_AGREEMENT_TYPE, 
+      HIGH_SINGLE_INVEST, CONTRACT_NO, TRUST_CONTRACT_NO,
+      PRO_ID, IF_prepay, Purchase_desc,
+      PRODUCT_ADVANTAGE, reasons_prepay, 
+      PROJECT_SUMMARY)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{geName,jdbcType=VARCHAR}, #{geCode,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{timeLimit,jdbcType=DECIMAL}, #{timeLimitUnit,jdbcType=VARCHAR}, #{annualRate,jdbcType=DECIMAL}, 
+      #{repayType,jdbcType=VARCHAR}, #{tenderStartTime,jdbcType=VARCHAR}, #{tenderEndTime,jdbcType=VARCHAR}, 
+      #{tenderInitAmount,jdbcType=DECIMAL}, #{tenderIncreaseAmount,jdbcType=DECIMAL}, 
+      #{hxName,jdbcType=VARCHAR}, #{hxAcctNo,jdbcType=VARCHAR}, #{auditStatus,jdbcType=VARCHAR}, 
+      #{auditDesc,jdbcType=VARCHAR}, #{auditTime,jdbcType=VARCHAR}, #{auditorId,jdbcType=VARCHAR}, 
+      #{auditorName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, #{creatorName,jdbcType=VARCHAR}, 
+      #{editTime,jdbcType=VARCHAR}, #{editorId,jdbcType=VARCHAR}, #{editorName,jdbcType=VARCHAR}, 
+      #{tenderAmount,jdbcType=DECIMAL}, #{tenderUsers,jdbcType=DECIMAL}, #{tenderAuditorId,jdbcType=VARCHAR}, 
+      #{tenderAuditorName,jdbcType=VARCHAR}, #{tenderAuditTime,jdbcType=VARCHAR}, #{repayStartDate,jdbcType=VARCHAR}, 
+      #{repayEndDate,jdbcType=VARCHAR}, #{publishStatus,jdbcType=VARCHAR}, #{publishTime,jdbcType=VARCHAR}, 
+      #{publisherId,jdbcType=VARCHAR}, #{publisherName,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{tenderAuditStatus,jdbcType=VARCHAR}, #{productAgreementType,jdbcType=VARCHAR}, 
+      #{highSingleInvest,jdbcType=DECIMAL}, #{contractNo,jdbcType=VARCHAR}, #{trustContractNo,jdbcType=VARCHAR},
+      #{proId,jdbcType=VARCHAR}, #{ifPrepay,jdbcType=VARCHAR}, #{purchaseDesc,jdbcType=LONGVARCHAR}, 
+      #{productAdvantage,jdbcType=LONGVARCHAR}, #{reasonsPrepay,jdbcType=LONGVARCHAR}, 
+      #{projectSummary,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="addProduct" parameterType="com.hwp.common.model.product.bean.Product">
+        insert into PRODUCT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+            <if test="geName != null">
+                GE_NAME,
+            </if>
+            <if test="geCode != null">
+                GE_CODE,
+            </if>
+            <if test="amount != null">
+                AMOUNT,
+            </if>
+            <if test="timeLimit != null">
+                TIME_LIMIT,
+            </if>
+            <if test="timeLimitUnit != null">
+                TIME_LIMIT_UNIT,
+            </if>
+            <if test="annualRate != null">
+                ANNUAL_RATE,
+            </if>
+            <if test="repayType != null">
+                REPAY_TYPE,
+            </if>
+            <if test="tenderStartTime != null">
+                TENDER_START_TIME,
+            </if>
+            <if test="tenderEndTime != null">
+                TENDER_END_TIME,
+            </if>
+            <if test="tenderInitAmount != null">
+                TENDER_INIT_AMOUNT,
+            </if>
+            <if test="tenderIncreaseAmount != null">
+                TENDER_INCREASE_AMOUNT,
+            </if>
+            <if test="hxName != null">
+                Hx_NAME,
+            </if>
+            <if test="hxAcctNo != null">
+                Hx_Acct_No,
+            </if>
+            <if test="auditStatus != null">
+                AUDIT_STATUS,
+            </if>
+            <if test="auditDesc != null">
+                AUDIT_DESC,
+            </if>
+            <if test="auditTime != null">
+                AUDIT_TIME,
+            </if>
+            <if test="auditorId != null">
+                AUDITOR_ID,
+            </if>
+            <if test="auditorName != null">
+                AUDITOR_NAME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME,
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID,
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME,
+            </if>
+            <if test="tenderAmount != null">
+                TENDER_AMOUNT,
+            </if>
+            <if test="tenderUsers != null">
+                TENDER_USERS,
+            </if>
+            <if test="tenderAuditorId != null">
+                TENDER_AUDITOR_ID,
+            </if>
+            <if test="tenderAuditorName != null">
+                TENDER_AUDITOR_NAME,
+            </if>
+            <if test="tenderAuditTime != null">
+                TENDER_AUDIT_TIME,
+            </if>
+            <if test="repayStartDate != null">
+                REPAY_START_DATE,
+            </if>
+            <if test="repayEndDate != null">
+                REPAY_END_DATE,
+            </if>
+            <if test="publishStatus != null">
+                PUBLISH_STATUS,
+            </if>
+            <if test="publishTime != null">
+                PUBLISH_TIME,
+            </if>
+            <if test="publisherId != null">
+                PUBLISHER_ID,
+            </if>
+            <if test="publisherName != null">
+                PUBLISHER_NAME,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="tenderAuditStatus != null">
+                TENDER_AUDIT_STATUS,
+            </if>
+            <if test="productAgreementType != null">
+                PRODUCT_AGREEMENT_TYPE,
+            </if>
+            <if test="highSingleInvest != null">
+                HIGH_SINGLE_INVEST,
+            </if>
+            <if test="contractNo != null">
+                CONTRACT_NO,
+            </if>
+            <if test="trustContractNo != null">
+                TRUST_CONTRACT_NO,
+            </if>
+            <!--<if test="tradingAccountNo != null" >-->
+            <!--TRADING_ACCOUNT_NO,-->
+            <!--</if>-->
+            <if test="proId != null">
+                PRO_ID,
+            </if>
+            <if test="ifPrepay != null">
+                IF_prepay,
+            </if>
+            <if test="purchaseDesc != null">
+                Purchase_desc,
+            </if>
+            <if test="productAdvantage != null">
+                PRODUCT_ADVANTAGE,
+            </if>
+            <if test="reasonsPrepay != null">
+                reasons_prepay,
+            </if>
+            <if test="projectSummary != null">
+                PROJECT_SUMMARY,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="geName != null">
+                #{geName,jdbcType=VARCHAR},
+            </if>
+            <if test="geCode != null">
+                #{geCode,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="timeLimit != null">
+                #{timeLimit,jdbcType=DECIMAL},
+            </if>
+            <if test="timeLimitUnit != null">
+                #{timeLimitUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="annualRate != null">
+                #{annualRate,jdbcType=DECIMAL},
+            </if>
+            <if test="repayType != null">
+                #{repayType,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderStartTime != null">
+                #{tenderStartTime,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderEndTime != null">
+                #{tenderEndTime,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderInitAmount != null">
+                #{tenderInitAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="tenderIncreaseAmount != null">
+                #{tenderIncreaseAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="hxName != null">
+                #{hxName,jdbcType=VARCHAR},
+            </if>
+            <if test="hxAcctNo != null">
+                #{hxAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="auditStatus != null">
+                #{auditStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="auditDesc != null">
+                #{auditDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="auditTime != null">
+                #{auditTime,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorId != null">
+                #{auditorId,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorName != null">
+                #{auditorName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null">
+                #{editTime,jdbcType=VARCHAR},
+            </if>
+            <if test="editorId != null">
+                #{editorId,jdbcType=VARCHAR},
+            </if>
+            <if test="editorName != null">
+                #{editorName,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderAmount != null">
+                #{tenderAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="tenderUsers != null">
+                #{tenderUsers,jdbcType=DECIMAL},
+            </if>
+            <if test="tenderAuditorId != null">
+                #{tenderAuditorId,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderAuditorName != null">
+                #{tenderAuditorName,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderAuditTime != null">
+                #{tenderAuditTime,jdbcType=VARCHAR},
+            </if>
+            <if test="repayStartDate != null">
+                #{repayStartDate,jdbcType=VARCHAR},
+            </if>
+            <if test="repayEndDate != null">
+                #{repayEndDate,jdbcType=VARCHAR},
+            </if>
+            <if test="publishStatus != null">
+                #{publishStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="publishTime != null">
+                #{publishTime,jdbcType=VARCHAR},
+            </if>
+            <if test="publisherId != null">
+                #{publisherId,jdbcType=VARCHAR},
+            </if>
+            <if test="publisherName != null">
+                #{publisherName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderAuditStatus != null">
+                #{tenderAuditStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="productAgreementType != null">
+                #{productAgreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="highSingleInvest != null">
+                #{highSingleInvest,jdbcType=DECIMAL},
+            </if>
+            <if test="contractNo != null">
+                #{contractNo,jdbcType=VARCHAR},
+            </if>
+            <if test="trustContractNo != null">
+                #{trustContractNo,jdbcType=VARCHAR},
+            </if>
+            <if test="proId != null">
+                #{proId,jdbcType=VARCHAR},
+            </if>
+            <if test="ifPrepay != null">
+                #{ifPrepay,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseDesc != null">
+                #{purchaseDesc,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="productAdvantage != null">
+                #{productAdvantage,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="reasonsPrepay != null">
+                #{reasonsPrepay,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="projectSummary != null">
+                #{projectSummary,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateProductById" parameterType="com.hwp.common.model.product.bean.Product">
+        update PRODUCT
+        <set>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="geName != null">
+                GE_NAME = #{geName,jdbcType=VARCHAR},
+            </if>
+            <if test="geCode != null">
+                GE_CODE = #{geCode,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                AMOUNT = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="timeLimit != null">
+                TIME_LIMIT = #{timeLimit,jdbcType=DECIMAL},
+            </if>
+            <if test="timeLimitUnit != null">
+                TIME_LIMIT_UNIT = #{timeLimitUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="annualRate != null">
+                ANNUAL_RATE = #{annualRate,jdbcType=DECIMAL},
+            </if>
+            <if test="repayType != null">
+                REPAY_TYPE = #{repayType,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderStartTime != null">
+                TENDER_START_TIME = #{tenderStartTime,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderEndTime != null">
+                TENDER_END_TIME = #{tenderEndTime,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderInitAmount != null">
+                TENDER_INIT_AMOUNT = #{tenderInitAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="tenderIncreaseAmount != null">
+                TENDER_INCREASE_AMOUNT = #{tenderIncreaseAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="hxName != null">
+                Hx_NAME = #{hxName,jdbcType=VARCHAR},
+            </if>
+            <if test="hxAcctNo != null">
+                Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="auditStatus != null">
+                AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="auditDesc != null">
+                AUDIT_DESC = #{auditDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="auditTime != null">
+                AUDIT_TIME = #{auditTime,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorId != null">
+                AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+            </if>
+            <if test="auditorName != null">
+                AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID = #{editorId,jdbcType=VARCHAR},
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderAmount != null">
+                TENDER_AMOUNT = #{tenderAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="tenderUsers != null">
+                TENDER_USERS = #{tenderUsers,jdbcType=DECIMAL},
+            </if>
+            <if test="tenderAuditorId != null">
+                TENDER_AUDITOR_ID = #{tenderAuditorId,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderAuditorName != null">
+                TENDER_AUDITOR_NAME = #{tenderAuditorName,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderAuditTime != null">
+                TENDER_AUDIT_TIME = #{tenderAuditTime,jdbcType=VARCHAR},
+            </if>
+            <if test="repayStartDate != null">
+                REPAY_START_DATE = #{repayStartDate,jdbcType=VARCHAR},
+            </if>
+            <if test="repayEndDate != null">
+                REPAY_END_DATE = #{repayEndDate,jdbcType=VARCHAR},
+            </if>
+            <if test="publishStatus != null">
+                PUBLISH_STATUS = #{publishStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="publishTime != null">
+                PUBLISH_TIME = #{publishTime,jdbcType=VARCHAR},
+            </if>
+            <if test="publisherId != null">
+                PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR},
+            </if>
+            <if test="publisherName != null">
+                PUBLISHER_NAME = #{publisherName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="tenderAuditStatus != null">
+                TENDER_AUDIT_STATUS = #{tenderAuditStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="productAgreementType != null">
+                PRODUCT_AGREEMENT_TYPE = #{productAgreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="highSingleInvest != null">
+                HIGH_SINGLE_INVEST = #{highSingleInvest,jdbcType=DECIMAL},
+            </if>
+            <if test="contractNo != null">
+                CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+            </if>
+            <if test="trustContractNo != null">
+                TRUST_CONTRACT_NO = #{trustContractNo,jdbcType=VARCHAR},
+            </if>
+            <!--<if test="tradingAccountNo != null" >-->
+            <!--TRADING_ACCOUNT_NO = #{tradingAccountNo,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <if test="proId != null">
+                PRO_ID = #{proId,jdbcType=VARCHAR},
+            </if>
+            <if test="ifPrepay != null">
+                IF_prepay = #{ifPrepay,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseDesc != null">
+                Purchase_desc = #{purchaseDesc,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="productAdvantage != null">
+                PRODUCT_ADVANTAGE = #{productAdvantage,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="reasonsPrepay != null">
+                reasons_prepay = #{reasonsPrepay,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="projectSummary != null">
+                PROJECT_SUMMARY = #{projectSummary,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwp.common.model.product.bean.Product">
+    update PRODUCT
+    set NAME = #{name,jdbcType=VARCHAR},
+      CODE = #{code,jdbcType=VARCHAR},
+      GE_NAME = #{geName,jdbcType=VARCHAR},
+      GE_CODE = #{geCode,jdbcType=VARCHAR},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      TIME_LIMIT = #{timeLimit,jdbcType=DECIMAL},
+      TIME_LIMIT_UNIT = #{timeLimitUnit,jdbcType=VARCHAR},
+      ANNUAL_RATE = #{annualRate,jdbcType=DECIMAL},
+      REPAY_TYPE = #{repayType,jdbcType=VARCHAR},
+      TENDER_START_TIME = #{tenderStartTime,jdbcType=VARCHAR},
+      TENDER_END_TIME = #{tenderEndTime,jdbcType=VARCHAR},
+      TENDER_INIT_AMOUNT = #{tenderInitAmount,jdbcType=DECIMAL},
+      TENDER_INCREASE_AMOUNT = #{tenderIncreaseAmount,jdbcType=DECIMAL},
+      Hx_NAME = #{hxName,jdbcType=VARCHAR},
+      Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR},
+      AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR},
+      AUDIT_DESC = #{auditDesc,jdbcType=VARCHAR},
+      AUDIT_TIME = #{auditTime,jdbcType=VARCHAR},
+      AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+      AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      EDITOR_ID = #{editorId,jdbcType=VARCHAR},
+      EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+      TENDER_AMOUNT = #{tenderAmount,jdbcType=DECIMAL},
+      TENDER_USERS = #{tenderUsers,jdbcType=DECIMAL},
+      TENDER_AUDITOR_ID = #{tenderAuditorId,jdbcType=VARCHAR},
+      TENDER_AUDITOR_NAME = #{tenderAuditorName,jdbcType=VARCHAR},
+      TENDER_AUDIT_TIME = #{tenderAuditTime,jdbcType=VARCHAR},
+      REPAY_START_DATE = #{repayStartDate,jdbcType=VARCHAR},
+      REPAY_END_DATE = #{repayEndDate,jdbcType=VARCHAR},
+      PUBLISH_STATUS = #{publishStatus,jdbcType=VARCHAR},
+      PUBLISH_TIME = #{publishTime,jdbcType=VARCHAR},
+      PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR},
+      PUBLISHER_NAME = #{publisherName,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      TENDER_AUDIT_STATUS = #{tenderAuditStatus,jdbcType=VARCHAR},
+      PRODUCT_AGREEMENT_TYPE = #{productAgreementType,jdbcType=VARCHAR},
+      HIGH_SINGLE_INVEST = #{highSingleInvest,jdbcType=DECIMAL},
+      CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+      TRUST_CONTRACT_NO = #{trustContractNo,jdbcType=VARCHAR},
+--       TRADING_ACCOUNT_NO = #{tradingAccountNo,jdbcType=VARCHAR},
+      PRO_ID = #{proId,jdbcType=VARCHAR},
+      IF_prepay = #{ifPrepay,jdbcType=VARCHAR},
+      Purchase_desc = #{purchaseDesc,jdbcType=LONGVARCHAR},
+      PRODUCT_ADVANTAGE = #{productAdvantage,jdbcType=LONGVARCHAR},
+      reasons_prepay = #{reasonsPrepay,jdbcType=LONGVARCHAR},
+      PROJECT_SUMMARY = #{projectSummary,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.product.bean.Product">
+    update PRODUCT
+    set NAME = #{name,jdbcType=VARCHAR},
+      CODE = #{code,jdbcType=VARCHAR},
+      GE_NAME = #{geName,jdbcType=VARCHAR},
+      GE_CODE = #{geCode,jdbcType=VARCHAR},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      TIME_LIMIT = #{timeLimit,jdbcType=DECIMAL},
+      TIME_LIMIT_UNIT = #{timeLimitUnit,jdbcType=VARCHAR},
+      ANNUAL_RATE = #{annualRate,jdbcType=DECIMAL},
+      REPAY_TYPE = #{repayType,jdbcType=VARCHAR},
+      TENDER_START_TIME = #{tenderStartTime,jdbcType=VARCHAR},
+      TENDER_END_TIME = #{tenderEndTime,jdbcType=VARCHAR},
+      TENDER_INIT_AMOUNT = #{tenderInitAmount,jdbcType=DECIMAL},
+      TENDER_INCREASE_AMOUNT = #{tenderIncreaseAmount,jdbcType=DECIMAL},
+      Hx_NAME = #{hxName,jdbcType=VARCHAR},
+      Hx_Acct_No = #{hxAcctNo,jdbcType=VARCHAR},
+      AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR},
+      AUDIT_DESC = #{auditDesc,jdbcType=VARCHAR},
+      AUDIT_TIME = #{auditTime,jdbcType=VARCHAR},
+      AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+      AUDITOR_NAME = #{auditorName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      EDITOR_ID = #{editorId,jdbcType=VARCHAR},
+      EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+      TENDER_AMOUNT = #{tenderAmount,jdbcType=DECIMAL},
+      TENDER_USERS = #{tenderUsers,jdbcType=DECIMAL},
+      TENDER_AUDITOR_ID = #{tenderAuditorId,jdbcType=VARCHAR},
+      TENDER_AUDITOR_NAME = #{tenderAuditorName,jdbcType=VARCHAR},
+      TENDER_AUDIT_TIME = #{tenderAuditTime,jdbcType=VARCHAR},
+      REPAY_START_DATE = #{repayStartDate,jdbcType=VARCHAR},
+      REPAY_END_DATE = #{repayEndDate,jdbcType=VARCHAR},
+      PUBLISH_STATUS = #{publishStatus,jdbcType=VARCHAR},
+      PUBLISH_TIME = #{publishTime,jdbcType=VARCHAR},
+      PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR},
+      PUBLISHER_NAME = #{publisherName,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      TENDER_AUDIT_STATUS = #{tenderAuditStatus,jdbcType=VARCHAR},
+      PRODUCT_AGREEMENT_TYPE = #{productAgreementType,jdbcType=VARCHAR},
+      HIGH_SINGLE_INVEST = #{highSingleInvest,jdbcType=DECIMAL},
+      CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+      TRUST_CONTRACT_NO = #{trustContractNo,jdbcType=VARCHAR},
+--       TRADING_ACCOUNT_NO = #{tradingAccountNo,jdbcType=VARCHAR},
+      PRO_ID = #{proId,jdbcType=VARCHAR},
+      IF_prepay = #{ifPrepay,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateDataStatusById" parameterType="com.hwp.common.model.product.bean.Product">
+    update PRODUCT
+    set  DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

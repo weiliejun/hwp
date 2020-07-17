@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProdRevenueStatus">
+    <resultMap id="BaseResultMap" type="com.hwp.common.model.prodrevenueStatus.bean.ProdRevenueStatus">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="PROD_ID" property="prodId" jdbcType="VARCHAR"/>
+        <result column="PROD_SUB_ID" property="prodSubId" jdbcType="VARCHAR"/>
+        <result column="PROFIT_LAST_DATE" property="profitLastDate" jdbcType="VARCHAR"/>
+        <result column="LAST_PROFIT" property="lastProfit" jdbcType="DECIMAL"/>
+        <result column="TOTAL_SHARE" property="totalShare" jdbcType="DECIMAL"/>
+        <result column="DY_AMOUNT" property="dyAmount" jdbcType="DECIMAL"/>
+        <result column="ACCOUNT_NO" property="accountNo" jdbcType="VARCHAR"/>
+        <result column="LOADING_SHARE" property="loadingShare" jdbcType="DECIMAL"/>
+        <result column="TOTAL_ALL_PROFITS" property="totalAllProfits" jdbcType="DECIMAL"/>
+        <result column="PROFIT_PER_ACCT" property="profitPerAcct" jdbcType="DECIMAL"/>
+        <result column="SIGN_RESULT" property="signResult" jdbcType="CHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="UUID" property="uuid" jdbcType="VARCHAR"/>
+        <result column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"/>
+        <result column="RETUEN_MSG" property="retuenMsg" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hwp.common.model.prodrevenueStatus.bean.ProdRevenueStatus"
+               extends="BaseResultMap">
+        <result column="REMARK" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USER_ID, PROD_ID, PROD_SUB_ID, PROFIT_LAST_DATE, LAST_PROFIT, TOTAL_SHARE, DY_AMOUNT, 
+    ACCOUNT_NO, LOADING_SHARE, TOTAL_ALL_PROFITS, PROFIT_PER_ACCT, SIGN_RESULT, DATA_STATUS, 
+    CREATE_TIME, UUID, RETURN_CODE, RETUEN_MSG
+  </sql>
+    <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PROD_REVENUE_STATUS
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByUserId" resultMap="ResultMapWithBLOBs" parameterType="ProdRevenueStatus">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PROD_REVENUE_STATUS
+        where USER_ID = #{userId,jdbcType=VARCHAR} and CREATE_TIME=#{createTime,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByUUId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from PROD_REVENUE_STATUS
+        where UUID = #{uuid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PROD_REVENUE_STATUS
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hwp.common.model.prodrevenueStatus.bean.ProdRevenueStatus">
+    insert into PROD_REVENUE_STATUS (ID, USER_ID, PROD_ID, 
+      PROD_SUB_ID, PROFIT_LAST_DATE, LAST_PROFIT, 
+      TOTAL_SHARE, DY_AMOUNT, ACCOUNT_NO, 
+      LOADING_SHARE, TOTAL_ALL_PROFITS, PROFIT_PER_ACCT, 
+      SIGN_RESULT, DATA_STATUS, CREATE_TIME, 
+      UUID, RETURN_CODE, RETUEN_MSG, 
+      REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{prodId,jdbcType=VARCHAR}, 
+      #{prodSubId,jdbcType=VARCHAR}, #{profitLastDate,jdbcType=VARCHAR}, #{lastProfit,jdbcType=DECIMAL}, 
+      #{totalShare,jdbcType=DECIMAL}, #{dyAmount,jdbcType=DECIMAL}, #{accountNo,jdbcType=VARCHAR}, 
+      #{loadingShare,jdbcType=DECIMAL}, #{totalAllProfits,jdbcType=DECIMAL}, #{profitPerAcct,jdbcType=DECIMAL}, 
+      #{signResult,jdbcType=CHAR}, #{dataStatus,jdbcType=CHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{uuid,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, #{retuenMsg,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.hwp.common.model.prodrevenueStatus.bean.ProdRevenueStatus">
+        insert into PROD_REVENUE_STATUS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="prodId != null">
+                PROD_ID,
+            </if>
+            <if test="prodSubId != null">
+                PROD_SUB_ID,
+            </if>
+            <if test="profitLastDate != null">
+                PROFIT_LAST_DATE,
+            </if>
+            <if test="lastProfit != null">
+                LAST_PROFIT,
+            </if>
+            <if test="totalShare != null">
+                TOTAL_SHARE,
+            </if>
+            <if test="dyAmount != null">
+                DY_AMOUNT,
+            </if>
+            <if test="accountNo != null">
+                ACCOUNT_NO,
+            </if>
+            <if test="loadingShare != null">
+                LOADING_SHARE,
+            </if>
+            <if test="totalAllProfits != null">
+                TOTAL_ALL_PROFITS,
+            </if>
+            <if test="profitPerAcct != null">
+                PROFIT_PER_ACCT,
+            </if>
+            <if test="signResult != null">
+                SIGN_RESULT,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE,
+            </if>
+            <if test="retuenMsg != null">
+                RETUEN_MSG,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodId != null">
+                #{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubId != null">
+                #{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="profitLastDate != null">
+                #{profitLastDate,jdbcType=VARCHAR},
+            </if>
+            <if test="lastProfit != null">
+                #{lastProfit,jdbcType=DECIMAL},
+            </if>
+            <if test="totalShare != null">
+                #{totalShare,jdbcType=DECIMAL},
+            </if>
+            <if test="dyAmount != null">
+                #{dyAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="accountNo != null">
+                #{accountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="loadingShare != null">
+                #{loadingShare,jdbcType=DECIMAL},
+            </if>
+            <if test="totalAllProfits != null">
+                #{totalAllProfits,jdbcType=DECIMAL},
+            </if>
+            <if test="profitPerAcct != null">
+                #{profitPerAcct,jdbcType=DECIMAL},
+            </if>
+            <if test="signResult != null">
+                #{signResult,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="retuenMsg != null">
+                #{retuenMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.hwp.common.model.prodrevenueStatus.bean.ProdRevenueStatus">
+        update PROD_REVENUE_STATUS
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodId != null">
+                PROD_ID = #{prodId,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubId != null">
+                PROD_SUB_ID = #{prodSubId,jdbcType=VARCHAR},
+            </if>
+            <if test="profitLastDate != null">
+                PROFIT_LAST_DATE = #{profitLastDate,jdbcType=VARCHAR},
+            </if>
+            <if test="lastProfit != null">
+                LAST_PROFIT = #{lastProfit,jdbcType=DECIMAL},
+            </if>
+            <if test="totalShare != null">
+                TOTAL_SHARE = #{totalShare,jdbcType=DECIMAL},
+            </if>
+            <if test="dyAmount != null">
+                DY_AMOUNT = #{dyAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="accountNo != null">
+                ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="loadingShare != null">
+                LOADING_SHARE = #{loadingShare,jdbcType=DECIMAL},
+            </if>
+            <if test="totalAllProfits != null">
+                TOTAL_ALL_PROFITS = #{totalAllProfits,jdbcType=DECIMAL},
+            </if>
+            <if test="profitPerAcct != null">
+                PROFIT_PER_ACCT = #{profitPerAcct,jdbcType=DECIMAL},
+            </if>
+            <if test="signResult != null">
+                SIGN_RESULT = #{signResult,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                UUID = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCode != null">
+                RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="retuenMsg != null">
+                RETUEN_MSG = #{retuenMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByDataStatus" parameterType="com.hwp.common.model.prodrevenueStatus.bean.ProdRevenueStatus">
+    update PROD_REVENUE_STATUS
+    set
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

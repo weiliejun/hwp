@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech"
+      lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>项目信息管理</title>
+
+    <style>
+        .layui-table{
+            height:auto;
+            overflow:visible;
+            text-overflow:inherit;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<!--<div class="layui-layout layui-layout-admin">-->
+<!--<div class="layui-body">-->
+<!-- 内容主体区域 -->
+<div style="padding: 15px;overflow-y: scroll;">
+    <!--<div class="proCon">-->
+    <form id="searchForm" class="layui-form">
+        <input id="xmId" name="xmId" type="hidden" th:value="${xmrwxx.xmId}" class="layui-input"/>
+        <input id="rwId" name="rwId" type="hidden" th:value="${xmrwxx.id}" class="layui-input"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i> 任务备注：</label>
+            <div class="layui-input-block">
+                            <textarea id="remark" name="remark" placeholder="请输入任务备注" lay-verify="required"
+                                      class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">发送通知</label>
+            <div class="layui-input-block">
+                <input type="checkbox" id="fstz" name="fstz" lay-skin="switch" lay-text="发送|不发送">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin:0 0 10px 0;">
+            <br><br><br>
+            <hr class="layui-bg-blue">
+            <div class="layui-input-block">
+                <button id="saveButton" class="layui-btn" lay-submit lay-filter="save">确定</button>
+                <button class="layui-btn layui-btn-primary" data-type="cancel">取消</button>
+            </div>
+            <hr class="layui-bg-blue">
+        </div>
+
+        <table class="layui-table" lay-skin="line" style="overflow-y: scroll;">
+            <colgroup>
+                <col width="170">
+                <col>
+            </colgroup>
+            <thead>
+            <tr class="title">
+                <th width="20%">发送时间</th>
+                <th width="10%">发送人</th>
+                <th width="60%">备注内容</th>
+                <th width="10%">发送通知</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rwbzjl : ${rwbzjlList}">
+                <td th:text="${rwbzjl.createTime}"></td>
+                <td th:text="${rwbzjl.creatorName}"></td>
+                <td th:text="${rwbzjl.remark}"></td>
+                <td th:text="${rwbzjl.fstz}"></td>
+            </tr>
+            <tr>
+                <td colspan="6" align="center" th:if="${rwbzjlList == null}" th:text="暂无相关数据"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <!--主题内容结束-->
+</div>
+
+<script type="text/javascript" th:src="@{/js/app/xmrwxx/rwbz.js}"></script>
+
+</body>
+</html>

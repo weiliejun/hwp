@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apploginLog">
+    <resultMap id="appLoginLogResultMap" type="com.hwp.common.model.loginlog.bean.AppLoginLog">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="MANAGER_ID" jdbcType="VARCHAR" property="managerId"/>
+        <result column="MANAGER_CODE" jdbcType="VARCHAR" property="managerCode"/>
+        <result column="MANAGER_NAME" jdbcType="VARCHAR" property="managerName"/>
+        <result column="IP" jdbcType="VARCHAR" property="ip"/>
+        <result column="LOGIN_TIME" jdbcType="CHAR" property="loginTime"/>
+        <result column="LOGOFF_TIME" jdbcType="CHAR" property="logoffTime"/>
+        <result column="SESSION_ID" jdbcType="VARCHAR" property="sessionId"/>
+        <result column="ROLE_TYPE" jdbcType="VARCHAR" property="roleType"/>
+        <result column="TERMINAL" jdbcType="VARCHAR" property="terminal"/>
+        <result column="APP_TYPE" jdbcType="VARCHAR" property="appType"/>
+        <result column="OPTION_TYPE" jdbcType="VARCHAR" property="optionType"/>
+        <result column="CHANNLE_ID" jdbcType="VARCHAR" property="channleId"/>
+        <result column="APP_ID" jdbcType="VARCHAR" property="appId"/>
+    </resultMap>
+    <sql id="appLoginLogColumn">
+    ID, MANAGER_ID, MANAGER_CODE, MANAGER_NAME, IP, LOGIN_TIME, LOGOFF_TIME, SESSION_ID, 
+    ROLE_TYPE, TERMINAL, APP_TYPE, OPTION_TYPE, CHANNLE_ID, APP_ID
+  </sql>
+    <select id="selectAppLoginLog" parameterType="java.lang.String" resultMap="appLoginLogResultMap">
+        select
+        <include refid="appLoginLogColumn"/>
+        from APP_LOGIN_LOG
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByManagerId" resultMap="appLoginLogResultMap" parameterType="string">
+        select
+        <include refid="appLoginLogColumn"/>
+        from APP_LOGIN_LOG
+        where MANAGER_ID = #{managerId,jdbcType=VARCHAR}
+        and LOGOFF_TIME is null
+        order by LOGIN_TIME desc
+    </select>
+
+    <!-- 查询最后一次登录信息 -->
+    <select id="selectLastLoginByManagerId" resultMap="appLoginLogResultMap" parameterType="string">
+		SELECT
+	ID,
+	MANAGER_ID,
+	MANAGER_CODE,
+	MANAGER_NAME,
+	IP,
+	LOGIN_TIME,
+	LOGOFF_TIME,
+	SESSION_ID,
+	ROLE_TYPE,
+	TERMINAL,
+	APP_ID,
+	CHANNLE_ID
+FROM
+	(
+		SELECT
+			ID,
+			MANAGER_ID,
+			MANAGER_CODE,
+			MANAGER_NAME,
+			IP,
+			LOGIN_TIME,
+			LOGOFF_TIME,
+			SESSION_ID,
+			ROLE_TYPE,
+			TERMINAL,
+			APP_ID,
+			CHANNLE_ID
+		FROM
+			APP_LOGIN_LOG
+		WHERE
+			MANAGER_ID = #{managerId,jdbcType=VARCHAR}
+		AND LOGOFF_TIME IS NOT NULL
+		ORDER BY
+			LOGIN_TIME DESC
+	)
+LIMIT 1
+	</select>
+
+    <!-- 查询APP最后一次登录信息 -->
+    <select id="selectLastAppLoginByManagerId" resultMap="appLoginLogResultMap" parameterType="string">
+		SELECT
+	ID,
+	MANAGER_ID,
+	MANAGER_CODE,
+	MANAGER_NAME,
+	IP,
+	LOGIN_TIME,
+	LOGOFF_TIME,
+	SESSION_ID,
+	ROLE_TYPE,
+	TERMINAL,
+	APP_ID,
+	CHANNLE_ID
+FROM
+	(
+		SELECT
+			ID,
+			MANAGER_ID,
+			MANAGER_CODE,
+			MANAGER_NAME,
+			IP,
+			LOGIN_TIME,
+			LOGOFF_TIME,
+			SESSION_ID,
+			ROLE_TYPE,
+			TERMINAL,
+			APP_ID,
+			CHANNLE_ID
+		FROM
+			APP_LOGIN_LOG
+		WHERE
+			MANAGER_ID = #{managerId,jdbcType=VARCHAR} 
+		AND LOGOFF_TIME IS NOT NULL
+		AND TERMINAL IN ('android', 'ios')
+		ORDER BY LOGIN_TIME DESC
+	) t
+LIMIT 1
+	</select>
+
+    <update id="updateLoginLog" parameterType="map">
+        update APP_LOGIN_LOG set LOGOFF_TIME = #{logoffTime,jdbcType=VARCHAR}
+        <if test="optionType != null and optionType !='' ">
+            and OPTION_TYPE = #{optionType,jdbcType=VARCHAR}
+        </if>
+        where SESSION_ID = #{sessionId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateLoginLogByChannelId" parameterType="map">
+        update APP_LOGIN_LOG t
+        set LOGOFF_TIME = #{logoffTime,jdbcType=VARCHAR}
+        <if test="optionType != null and optionType !='' ">
+            and OPTION_TYPE = #{optionType,jdbcType=VARCHAR}
+        </if>
+        where ID = (
+        SELECT
+        ID
+        FROM
+        (
+        SELECT t.ID FROM APP_LOGIN_LOG t
+        WHERE
+        t.MANAGER_ID = #{userId,jdbcType=VARCHAR}
+        AND t.CHANNLE_ID = #{channelId,jdbcType=VARCHAR}
+        AND t.OPTION_TYPE = 'login'
+        ORDER BY
+        t.LOGIN_TIME DESC
+        )t0
+        LIMIT 1
+        )
+    </update>
+
+    <insert id="insertLoginLog" parameterType="apploginlog">
+        insert into APP_LOGIN_LOG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="managerId != null">
+                MANAGER_ID,
+            </if>
+            <if test="managerCode != null">
+                MANAGER_CODE,
+            </if>
+            <if test="managerName != null">
+                MANAGER_NAME,
+            </if>
+            <if test="ip != null">
+                IP,
+            </if>
+            <if test="loginTime != null">
+                LOGIN_TIME,
+            </if>
+            <if test="logoffTime != null">
+                LOGOFF_TIME,
+            </if>
+            <if test="sessionId != null">
+                SESSION_ID,
+            </if>
+            <if test="roleType != null">
+                ROLE_TYPE,
+            </if>
+            <if test="terminal != null">
+                TERMINAL,
+            </if>
+            <if test="appType != null">
+                APP_TYPE,
+            </if>
+            <if test="optionType != null">
+                OPTION_TYPE,
+            </if>
+            <if test="channleId != null">
+                CHANNLE_ID,
+            </if>
+            <if test="appId != null">
+                APP_ID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="managerId != null">
+                #{managerId,jdbcType=VARCHAR},
+            </if>
+            <if test="managerCode != null">
+                #{managerCode,jdbcType=VARCHAR},
+            </if>
+            <if test="managerName != null">
+                #{managerName,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="loginTime != null">
+                #{loginTime,jdbcType=CHAR},
+            </if>
+            <if test="logoffTime != null">
+                #{logoffTime,jdbcType=CHAR},
+            </if>
+            <if test="sessionId != null">
+                #{sessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleType != null">
+                #{roleType,jdbcType=VARCHAR},
+            </if>
+            <if test="terminal != null">
+                #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="appType != null">
+                #{appType,jdbcType=VARCHAR},
+            </if>
+            <if test="optionType != null">
+                #{optionType,jdbcType=VARCHAR},
+            </if>
+            <if test="channleId != null">
+                #{channleId,jdbcType=VARCHAR},
+            </if>
+            <if test="appId != null">
+                #{appId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateAppLoginLog" parameterType="apploginlog">
+        update APP_LOGIN_LOG
+        <set>
+            <if test="managerId != null">
+                MANAGER_ID = #{managerId,jdbcType=VARCHAR},
+            </if>
+            <if test="managerCode != null">
+                MANAGER_CODE = #{managerCode,jdbcType=VARCHAR},
+            </if>
+            <if test="managerName != null">
+                MANAGER_NAME = #{managerName,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                IP = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="loginTime != null">
+                LOGIN_TIME = #{loginTime,jdbcType=CHAR},
+            </if>
+            <if test="logoffTime != null">
+                LOGOFF_TIME = #{logoffTime,jdbcType=CHAR},
+            </if>
+            <if test="sessionId != null">
+                SESSION_ID = #{sessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleType != null">
+                ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+            </if>
+            <if test="terminal != null">
+                TERMINAL = #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="appType != null">
+                APP_TYPE = #{appType,jdbcType=VARCHAR},
+            </if>
+            <if test="optionType != null">
+                OPTION_TYPE = #{optionType,jdbcType=VARCHAR},
+            </if>
+            <if test="channleId != null">
+                CHANNLE_ID = #{channleId,jdbcType=VARCHAR},
+            </if>
+            <if test="appId != null">
+                APP_ID = #{appId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech"
+      lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>新建任务</title>
+</head>
+<!--<script type="text/javascript" src="/js/jquery-1.11.2.js"></script>-->
+<!--<script type="text/javascript" src="/js/number/format-number.js"></script>-->
+
+<body class="layui-layout-body">
+<fieldset class="layui-elem-field layui-field-title" style="margin:20px 0 0 0;">
+    <legend><h3 class="titNav">
+        <a href="javascript:;"> 新建任务</a>
+    </h3></legend>
+</fieldset>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-body">
+        <form id="searchForm" class="layui-form">
+            <input type="hidden" id="id" name="id" th:value="${xmrwxx.id}">
+            <input type="hidden" id="xmId" name="xmId" th:value="${xmrwxx.xmId}">
+            <input type="hidden" id="xmjd" name="xmjd" th:value="${xmrwxx.xmjd}">
+            <input type="hidden" id="rwxq" name="rwxq" th:value="${xmrwxx.rwxq}">
+            <input type="hidden" id="zhzt" name="zhzt" th:value="${xmrwxx.zhzt}">
+            <input type="hidden" id="rwxh" name="rwxh" th:value="${xmrwxx.rwxh}">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>任务名称：</label>
+                        <div class="layui-input-inline">
+                            <input id="title" name="title" th:value="${xmrwxx.title}" type="text" class="layui-input"
+                                   placeholder="输入任务名称" lay-verify="required"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>负责人：</label>
+                        <div class="layui-input-inline">
+                            <input lay-verify="required" id="fzrName" name="fzrName" type="text" readonly
+                                   th:value="${xmrwxx.fzrName}" class="layui-input"/>
+                            <input id="fzrId" name="fzrId" type="hidden" th:value="${xmrwxx.fzrId}"
+                                   class="layui-input"/>
+                            <input id="fzrXx" name="fzrXx" type="hidden" th:value="${xmrwxx.fzrXx}"
+                                   class="layui-input"/>
+                        </div>
+                        <div class="layui-input-inline">
+                            <button type="button" class="layui-btn layui-btn-normal layui-btn-radius"
+                                    data-type="selectFzr"><i
+                                    class="layui-icon layui-icon-add-circle-fine"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>任务状态：</label>
+                        <div class="layui-input-inline">
+                            <itech:code property="status" parentCode="rwzt" type="select"
+                                        th:value="${xmrwxx.status}"/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>开始时间：</label>
+                        <div class="layui-input-inline">
+                            <input id="startDate" name="startDate" th:value="${xmrwxx.startDate}" type="text"
+                                   class="layui-input"
+                                   placeholder="输入任务开始时间" lay-verify="required" readonly/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>结束时间：</label>
+                        <div class="layui-input-inline">
+                            <input id="endDate" name="endDate" th:value="${xmrwxx.endDate}" type="text"
+                                   class="layui-input"
+                                   placeholder="输入任务结束时间" lay-verify="required" readonly/>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item" style="padding-top:0px;">
+                    <div class="layui-inline proNav layui-clear">
+                        <a id="jbInfo" href="javascript:;">任务信息</a>
+                        <a id="fuJ" class="" href="javascript:;">附件</a>
+                        <a id="czjl" class="" href="javascript:;">操作记录</a>
+
+                    </div>
+                    <div class="layui-inline layui-col-md-offset5">
+                        <button class="layui-btn layui-btn-green" id="saveButtonOne" lay-submit lay-filter="rwfh"><i
+                                class="layui-icon layui-icon-vercode"></i>提交审核
+                        </button>
+                        <button type="button" class="layui-btn layui-btn-normal layui-btn-radius" data-type="goBack"><i
+                                class="layui-icon layui-icon-return layui-icon-circle"></i>返回
+                        </button>
+                    </div>
+                </div>
+                <div id="dataOne" class="proCon">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i> 任务详情：</label>
+                        <div class="layui-input-block">
+                            <div id="view"></div>
+                            <script id="detailView" type="text/html">
+                                <table class="layui-table" lay-skin="line" id="tab">
+                                    <colgroup>
+                                        <col width="170">
+                                        <col>
+                                    </colgroup>
+                                    <!--<thead>
+                                    <tr>
+                                        <th width="15%">任务序号</th>
+                                        <th width="15%">任务名称</th>
+                                        <th width="15%">操作</th>
+                                    </tr>
+                                    </thead>-->
+                                    <tbody>
+                                    {{# layui.each(d, function(index, xmItem){ }}
+                                    <tr id="tr">
+                                        <td width="5%"><input id="zrwxh" name="zrwxh" type="text" class="layui-input"
+                                                              placeholder="请输入任务序号" lay-verify="required"/></td>
+                                        <td width="55%"><input id="rwmc" name="rwmc"
+                                                               value="{{ xmItem.rwmc==null?'':(xmItem.rwmc) }}"
+                                                               type="text" class="layui-input"
+                                                               placeholder="请输入子任务名称" lay-verify="required"/></td>
+                                        <td width="20%"><input id="cron" name="cron"
+                                                               value="{{ xmItem.cron==null?'':(xmItem.cron) }}"
+                                                               type="text" class="layui-input"
+                                                               placeholder="设定提醒时间" readonly/></td>
+                                        <td width="20%">
+
+                                            <input type="button"
+                                                   class="layui-btn layui-btn-xs layui-btn-green layui-icon layui-icon-notice"
+                                                   onclick="javascript:dstx(this)" value="定时提醒"/>
+                                            <input type="button"
+                                                   class="layui-btn  layui-btn-danger layui-btn-xs layui-icon layui-icon-delete"
+                                                   onclick="javascript:deleteData(this)" value="删  除"/>
+                                        </td>
+                                    </tr>
+                                    {{# }); }}
+                                    {{# if(d.length === 0){ }}
+                                    <tr>
+                                        <td colspan="6" align="center">暂无相关数据</td>
+                                    </tr>
+                                    {{# } }}
+                                    </tbody>
+                                </table>
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn layui-btn-radius"
+                                    id="addrow"><i
+                                    class="layui-icon layui-icon-add-circle-fine"></i>新增子任务
+                            </button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i> 任务描述：</label>
+                        <div class="layui-input-block">
+                            <textarea id="rwms" name="rwms" placeholder="请输入任务描述" lay-verify="required"
+                                      class="layui-textarea" th:text="${xmrwxx.rwms}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" id="fhrDiv">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>复核人：</label>
+                            <div class="layui-input-inline">
+                                <input id="fhrName" name="fhrName" type="text" th:value="${xmrwxx.fhrName}" readonly
+                                       class="layui-input" lay-verify="required"/>
+                                <input id="fhrId" name="fhrId" type="hidden" th:value="${xmrwxx.fhrId}"
+                                       class="layui-input"/>
+                                <input id="fhrXx" name="fhrXx" type="hidden" th:value="${xmrwxx.fhrXx}"
+                                       class="layui-input"/>
+                            </div>
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-green"
+                                        data-type="selectFhr"><i
+                                        class="layui-icon layui-icon-add-circle-fine"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" id="zhrDiv">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>知会人：</label>
+                            <div class="layui-input-inline">
+                                <input id="zhrName" name="zhrName" type="text" th:value="${xmrwxx.zhrName}" readonly
+                                       class="layui-input" lay-verify="required"/>
+                                <input id="zhrId" name="zhrId" type="hidden" th:value="${xmrwxx.zhrId}"
+                                       class="layui-input"/>
+                                <input id="zhrXx" name="zhrXx" type="hidden" th:value="${xmrwxx.zhrXx}"
+                                       class="layui-input"/>
+                            </div>
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-warm"
+                                        data-type="selectZhr"><i
+                                        class="layui-icon layui-icon-add-circle-fine"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<a id="temporaryStorage" href="javascript:;" class="layui-btn" >暂存</a>-->
+                    <!--<a href="/fujian" class="layui-btn" >附件</a>-->
+                    <!--<a id="two_show_issue" href="javascript:;" class="layui-btn" lay-submit
+                       lay-filter="addXmrwxxIssue">下一步</a>-->
+
+                    <a id="two_show" href="javascript:;" class="layui-btn" lay-submit
+                       lay-filter="addXmrwxx"><i
+                            class="layui-icon layui-icon-form"></i>保存</a>
+
+                </div>
+            </div>
+            <!--</form>-->
+
+            <!------第二步--附件-------------------------------->
+            <!--<form id="searchForm" class="layui-form">-->
+            <div id="dataTwo" class="proCon">
+                <p class="upTip"><i>*</i>请上传任务相关的说明、审批文件等(jpg、jpeg、gif、png、doc、docx、pdf、xls、xlsx、ppt、pptx)，附件大小20M以下</p>
+                <div class="pdfList layui-clear" id="demo2">
+                    <div th:each="att : ${AttachFileList}">
+                        <a th:href="${att.fileUrl}" target="_blank"><i class="layui-icon layui-icon-close"></i><span
+                                th:text="${att.fileName}"></span></a>
+                    </div>
+                </div>
+                <br/>
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn layui-btn-warm" id="test2">多文件上传</button>
+                    <input type="hidden" id="attachFile" name="attachFile" required  th:value="${productOtherAttachFile.attachFile}">
+                </div>
+
+                <div class="btnBox">
+                    <!--<a id="one_show" href="javascript:;" class="layui-btn">上一步</a>-->
+                    <button id="saveButton2" class="layui-btn" lay-submit lay-filter="save"><i
+                            class="layui-icon layui-icon-form"></i>保存</button>
+
+                    <span>若无法保存，请返回上一步查看必填项是否填写</span>
+                </div>
+            </div>
+            <!------第三步--操作记录-------------------------------->
+            <div id="dataThree" class="proCon">
+                <div class="layui-row">
+                    <table class="layui-table recordInfo" id="czjlTables"
+                           lay-filter="czjlTables">
+                    </table>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!--主题内容结束-->
+
+<!--<div class="layui-footer">-->
+<!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+<!--勘设底部区域-->
+<!--</div>-->
+</div>
+<script>
+    var n1 = new FormatNumber();
+    n1.init({trigger: $('[data-type="int"]'), decimal: 0});
+    // $('#amount').FormatNumber({decimal:0});
+</script>
+<script type="text/javascript" th:src="@{/js/app/xmrwxx/add.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/xmrwxx/czjl.js}"></script>
+</body>
+</html>
