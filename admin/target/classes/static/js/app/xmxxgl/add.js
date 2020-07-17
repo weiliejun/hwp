@@ -117,25 +117,25 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
     //按钮事件定义
     var active = {
         selectXmfzr: function () {
-            Common.openFrame("/ryxxgl/selectList?cxmk=selectXmfzr", "选择项目负责人", '1000px', '600px');
+            Common.openFrame("/ryxxgl/selectList?cxmk=selectXmfzr&ryid=" + $("#xmfzrId").val(), "选择项目负责人", '1000px', '600px');
         },
         selectXmjbr: function () {
-            Common.openFrame("/ryxxgl/selectList?cxmk=selectXmjbr", "选择项目经办人", '1000px', '600px');
+            Common.openFrame("/ryxxgl/selectList?cxmk=selectXmjbr&ryid=" + $("#xmjbrId").val(), "选择项目经办人", '1000px', '600px');
         },
         selectFwfzr: function () {
-            Common.openFrame("/ryxxgl/selectList?cxmk=selectFwfzr", "选择法务负责人", '1000px', '600px');
+            Common.openFrame("/ryxxgl/selectList?cxmk=selectFwfzr&ryid=" + $("#fwfzrId").val(), "选择法务负责人", '1000px', '600px');
         },
         selectFkfzr: function () {
-            Common.openFrame("/ryxxgl/selectList?cxmk=selectFkfzr", "选择风控负责人", '1000px', '600px');
+            Common.openFrame("/ryxxgl/selectList?cxmk=selectFkfzr&ryid=" + $("#fkfzrId").val(), "选择风控负责人", '1000px', '600px');
         },
         selectCwfzr: function () {
-            Common.openFrame("/ryxxgl/selectList?cxmk=selectCwfzr", "选择财务负责人", '1000px', '600px');
+            Common.openFrame("/ryxxgl/selectList?cxmk=selectCwfzr&ryid=" + $("#cwfzrId").val(), "选择财务负责人", '1000px', '600px');
         },
         selectXmqtcy: function () {
-            Common.openFrame("/ryxxgl/selectList?cxmk=selectXmqtcy", "选择项目其他成员", '1000px', '600px');
+            Common.openFrame("/ryxxgl/selectList?cxmk=selectXmqtcy&ryid=" + $("#xmqtcyId").val(), "选择项目其他成员", '1000px', '600px');
         },
         selectSpr: function () {
-            Common.openFrame("/ryxxgl/selectList?cxmk=selectSpr", "选择审批人", '1000px', '600px');
+            Common.openFrame("/ryxxgl/selectList?cxmk=selectSpr&ryid=" + $("#sprId").val(), "选择审批人", '1000px', '600px');
         }
     };
 });

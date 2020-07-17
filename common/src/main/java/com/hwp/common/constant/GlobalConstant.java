@@ -1,7 +1,10 @@
 package com.hwp.common.constant;
 
 
+import com.hwp.common.util.DateHelper;
+
 import java.io.File;
+import java.util.Date;
 
 /**
  * 系统全局常量
@@ -32,10 +35,10 @@ public class GlobalConstant {
     // 用户上传工作凭证路径
     public static final String USER_VOUCHER_TEMP_PATH = "/upload/user/gzpz/";
     // 用户上传本地路径
-    public static final String APP_QIYEBAO_TEMP_USER_PHOTO_PATH = File.separator+"upload"+File.separator+"xmxxgl"+File.separator+"jsxm";
+    public static final String APP_QIYEBAO_TEMP_USER_PHOTO_PATH = File.separator + "upload" + File.separator + DateHelper.getNoSeparatorYMDFormatDate(new Date());
 
     // 用户数据库上传路径
-    public static final String APP_QIYEBAO_USER_PHOTO_PATH = File.separator+"upload"+File.separator+"xmxxgl"+File.separator+"jsxm";
+    public static final String APP_QIYEBAO_USER_PHOTO_PATH = File.separator + "upload" + File.separator + DateHelper.getNoSeparatorYMDFormatDate(new Date());
 
     public static final String EEC_SERVICE_DOC = "/upload/eecservice/doc/";
     //管理后台初始密码

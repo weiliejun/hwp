@@ -11,10 +11,7 @@ import com.hwp.common.model.sysMessage.bean.SysMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedHashMap;
@@ -90,7 +87,7 @@ public class SysMessageController extends AbstractBaseController {
      */
     @RequestMapping(value = "/delete")
     @ResponseBody
-    public Map<String, Object> operate(String id) {
+    public Map<String, Object> operate(@RequestParam(value = "id", required = false) String id) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         SysMessage sysMessage = sysMessageService.getSysMessageById(id);
         if (sysMessage == null) {

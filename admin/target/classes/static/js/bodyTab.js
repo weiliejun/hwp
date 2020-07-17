@@ -15,6 +15,63 @@ layui.define(["element", "jquery"], function (exports) {
             }
         };
 
+    //组装子菜单的方法
+    function loadchild(menu){
+        if(menu==null){
+            return;
+        }
+
+        var ulHtml='';
+        if (menu.children != undefined && menu.children.length > 0) {
+            ulHtml += '<a>';
+            if (menu.icon != undefined && menu.icon != '') {
+                if (menu.icon.indexOf("icon-") != -1) {
+                    ulHtml += '<i class="seraph ' + menu.icon + '" data-icon="' + menu.icon + '"></i>';
+                } else {
+                    ulHtml += '<i class="layui-icon" data-icon="' + menu.icon + '">' + menu.icon + '</i>';
+                }
+            }
+            ulHtml += '<cite>' + menu.title + '</cite>';
+            ulHtml += '<span class="layui-nav-more"></span>';
+            ulHtml += '</a>';
+            ulHtml += '<dl class="layui-nav-child">';
+            for (var j = 0; j < menu.children.length; j++) {
+                /*if (menu.children[j].target == "_blank") {
+                    ulHtml += '<dd><a data-url="' + menu.children[j].href + '" target="' + menu.children[j].target + '">';
+                } else {
+                    ulHtml += '<dd><a data-url="' + menu.children[j].href + '">';
+                }
+                if (menu.children[j].icon != undefined && menu.children[j].icon != '') {
+                    if (menu.children[j].icon.indexOf("icon-") != -1) {
+                        ulHtml += '<i class="seraph ' + menu.children[j].icon + '" data-icon="' + menu.children[j].icon + '"></i>';
+                    } else {
+                        ulHtml += '<i class="layui-icon" data-icon="' + menu.children[j].icon + '">' + menu.children[j].icon + '</i>';
+                    }
+                }*/
+                ulHtml += '<dd>';
+                ulHtml +=loadchild(menu.children[j]);
+                // ulHtml += '<cite>' + menu.children[j].title + '</cite></a></dd>';
+                ulHtml += '</dd>';
+            }
+            ulHtml += "</dl>";
+        } else {
+            if (menu.target == "_blank") {
+                ulHtml += '<a data-url="' + encodeURI(menu.href) + '" target="' + menu.target + '">';
+            } else {
+                ulHtml += '<a data-url="' + encodeURI(menu.href) + '">';
+            }
+            if (menu.icon != undefined && menu.icon != '') {
+                if (menu.icon.indexOf("icon-") != -1) {
+                    ulHtml += '<i class="seraph ' + menu.icon + '" data-icon="' + menu.icon + '"></i>';
+                } else {
+                    ulHtml += '<i class="layui-icon" data-icon="' + menu.icon + '">' + menu.icon + '</i>';
+                }
+            }
+            ulHtml += '<cite>' + menu.title + '</cite></a>';
+        }
+        return ulHtml;
+    }
+
     //生成左侧菜单
     Tab.prototype.navBar = function (strData) {
         var data;
@@ -30,7 +87,8 @@ layui.define(["element", "jquery"], function (exports) {
             } else {
                 ulHtml += '<li class="layui-nav-item">';
             }
-            if (data[i].children != undefined && data[i].children.length > 0) {
+            ulHtml +=loadchild(data[i]);
+            /*if (data[i].children != undefined && data[i].children.length > 0) {
                 ulHtml += '<a>';
                 if (data[i].icon != undefined && data[i].icon != '') {
                     if (data[i].icon.indexOf("icon-") != -1) {
@@ -73,7 +131,7 @@ layui.define(["element", "jquery"], function (exports) {
                     }
                 }
                 ulHtml += '<cite>' + data[i].title + '</cite></a>';
-            }
+            }*/
             ulHtml += '</li>';
         }
         return ulHtml;
@@ -103,6 +161,7 @@ layui.define(["element", "jquery"], function (exports) {
 
         layui.each($(".layui-nav-child"), function () {
             $(this).find("dd").removeClass("layui-this");
+            $(this).find("dd:last").removeClass("layui-this");
         });
 
         $(".layui-nav-child dd").each(function () {
@@ -117,6 +176,19 @@ layui.define(["element", "jquery"], function (exports) {
                 }
             }
         });
+
+        /*$(".layui-nav-child dl dd").each(function () {
+            var data_url2 = $(this).find("a").attr("data-url");
+            console.log("data-url:" + data_url2);
+            if (data_url2 != undefined && data_url2 == href) {
+                if ($(this).find("cite").text() == title) {
+                    // console.log("设置高亮:");
+                    $("li").removeClass("layui-nav-itemed");
+                    $(this).parent().parent().addClass("layui-nav-itemed");
+                    $(this).attr("class", "layui-this");
+                }
+            }
+        });*/
     }
 
     //参数设置

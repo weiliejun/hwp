@@ -3,123 +3,65 @@ package com.hwp.common.model.xmxxgl.bean;
 import java.io.Serializable;
 
 public class Xmxxgl implements Serializable {
-    private String id;
-
-    private String ywlx;
-
-    private String cpmc;
-
-    private String cpgm;
-
-    private String cpqx;
-
-    private String yqsy;
-
-    private String xmly;
-
-    private String zjly;
-
-    private String btfw;
-
-    private String cjzt;
-
-    private String ztxm;
-
-    private String jtxm;
-
-    private String tztj;
-
-    private String glf;
-
-    private String rgf;
-
-    private String tgf;
-
-    private String sgf;
-
-    private String xsf;
-
-    private String shf;
-
-    private String xmfzrId;
-
-    private String xmfzrName;
-
-    private String xmfzrXx;
-
-    private String xmjbrId;
-
-    private String xmjbrName;
-
-    private String xmjbrXx;
-
-    private String fwfzrId;
-
-    private String fwfzrName;
-
-    private String fwfzrXx;
-
-    private String fkfzrId;
-
-    private String fkfzrName;
-
-    private String fkfzrXx;
-
-    private String cwfzrId;
-
-    private String cwfzrName;
-
-    private String cwfzrXx;
-
-    private String xmqtcy;
-
-    private String xmqtcyId;
-
-    private String xmqtcyName;
-
-    private String spr;
-
-    private String sprId;
-
-    private String sprName;
-
-    private String xmjd;
-
-    private String gdlb;
-
-    private String xxms;
-
-    private String jsyy;
-
-    private String gdsj;
-
-    private String creatorId;
-
-    private String creatorName;
-
-    private String createTime;
-
-    private String remark;
-
-    private String dataStatus;
-
-    private String editTime;
-
-    private Integer editorId;
-
-    private String editorName;
-
-    private String jsxmSpr;
-
-    private String jsxmSprId;
-
-    private String jsxmSprName;
-
-    private String spyj;
-
-    private String spms;
-
     private static final long serialVersionUID = 1L;
+    private String id;
+    private String ywlx;
+    private String cpmc;
+    private String cpgm;
+    private String cpqx;
+    private String yqsy;
+    private String xmly;
+    private String zjly;
+    private String btfw;
+    private String cjzt;
+    private String ztxm;
+    private String jtxm;
+    private String tztj;
+    private String glf;
+    private String rgf;
+    private String tgf;
+    private String sgf;
+    private String xsf;
+    private String shf;
+    private String xmfzrId;
+    private String xmfzrName;
+    private String xmfzrXx;
+    private String xmjbrId;
+    private String xmjbrName;
+    private String xmjbrXx;
+    private String fwfzrId;
+    private String fwfzrName;
+    private String fwfzrXx;
+    private String fkfzrId;
+    private String fkfzrName;
+    private String fkfzrXx;
+    private String cwfzrId;
+    private String cwfzrName;
+    private String cwfzrXx;
+    private String xmqtcy;
+    private String xmqtcyId;
+    private String xmqtcyName;
+    private String spr;
+    private String sprId;
+    private String sprName;
+    private String xmjd;
+    private String gdlb;
+    private String xxms;
+    private String jsyy;
+    private String gdsj;
+    private String creatorId;
+    private String creatorName;
+    private String createTime;
+    private String remark;
+    private String dataStatus;
+    private String editTime;
+    private Integer editorId;
+    private String editorName;
+    private String jsxmSpr;
+    private String jsxmSprId;
+    private String jsxmSprName;
+    private String spyj;
+    private String spms;
 
     public String getId() {
         return id;

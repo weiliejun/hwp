@@ -151,10 +151,10 @@ public class XmxxglController extends AbstractBaseController {
                 if (StringUtils.isNotBlank(attachFile)) {
                     //对去除空格转义符处理
                     String a = HtmlUtils.htmlUnescape(attachFile.replaceAll(" ", ""));
-                    AttachFileHref attachFileHref = new AttachFileHref();
                     Map<String, String> parse = (Map<String, String>) JSON.parse(a);
                     List<AttachFileHref> fileHrefList = new ArrayList<>();
                     for (Map.Entry<String, String> entry : parse.entrySet()) {
+                        AttachFileHref attachFileHref = new AttachFileHref();
                         attachFileHref.setFileName(entry.getKey());
                         attachFileHref.setFileUrl(entry.getValue());
                         fileHrefList.add(attachFileHref);
@@ -162,7 +162,6 @@ public class XmxxglController extends AbstractBaseController {
                     model.addAttribute("productOtherAttachFile", productOtherAttachFile);
                     model.addAttribute("AttachFileList", fileHrefList);
                 }
-
             }
             return "/app/xmxxgl/jsxm";
         } else if (StringHelper.isNotBlank(type) && type.equalsIgnoreCase("bgjd")) {
@@ -188,6 +187,7 @@ public class XmxxglController extends AbstractBaseController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getXmxxgl(HttpServletRequest request, Model model) {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
+        model.addAttribute("gdlb", request.getParameter("gdlb"));
         return "/app/xmxxgl/list";
     }
 
@@ -402,6 +402,9 @@ public class XmxxglController extends AbstractBaseController {
             if (productOtherAttachFile2 == null) {
                 productOtherAttachFileService.addProductOtherAttachFile(productOtherAttachFile);
             } else {
+                productOtherAttachFile.setEditorId(currentManager.getId().toString());
+                productOtherAttachFile.setEditorName(currentManager.getName());
+                productOtherAttachFile.setEditTime(DateHelper.getYMDHMSFormatDate(new Date()));
                 productOtherAttachFileService.updateProductOtherAttachFileById(productOtherAttachFile);
             }
 
@@ -559,7 +562,8 @@ public class XmxxglController extends AbstractBaseController {
             return resultMap;
         } else {//编辑
             Xmxxgl xmxxgl_old = xmxxglService.getXmxxglById(xmxxgl.getId());
-            String diff = BeanHelper.getDifferentProperty(xmxxgl_old, xmxxgl, new String[]{"id", "xmfzrId", "xmfzrXx", "xmjbrId", "xmjbrXx", "fwfzrId", "fwfzrXx", "cwfzrId", "cwfzrXx", "xmqtcyId", "xmqtcy", "sprId", "spr"});
+            Map<String, Object> rtn = BeanHelper.getDifferentProperty(xmxxgl_old, xmxxgl, new String[]{"id", "xmfzrId", "xmfzrXx", "xmjbrId", "xmjbrXx", "fwfzrId", "fwfzrXx", "cwfzrId", "cwfzrXx", "xmqtcyId", "xmqtcy", "sprId", "spr"});
+            String diff = rtn.get("diff").toString();
             if (StringHelper.isNotBlank(diff)) {
                 Map<String, String> zdm = new HashMap<String, String>();
                 zdm.put("ywlx", "业务类型");

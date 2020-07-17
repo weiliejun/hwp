@@ -23,7 +23,8 @@
                         </li>
                         <li>
                             <i></i>
-                            <input id="password" name="password" type="password" class="passText" placeholder="请输入密码" th:value="123456"
+                            <input id="password" name="password" type="password" class="passText" placeholder="请输入密码"
+                                   th:value="123456"
                                    lay-verify="required|password">
                         </li>
                         <li>
@@ -54,6 +55,15 @@
         var layer = layui.layer,
             $ = layui.jquery,
             form = layui.form;
+
+        $(function () {
+            document.onkeydown = function (e) {
+                var ev = document.all ? window.event : e;
+                if (ev.keyCode == 13) {
+                    $("#loginBtn").trigger("click");
+                }
+            }
+        });
 
         // 表单校验
         form.verify({

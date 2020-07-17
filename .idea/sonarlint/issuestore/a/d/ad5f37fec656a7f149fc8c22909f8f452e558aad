@@ -1,0 +1,90 @@
+
+o
+java:S2293ì"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ë´õ
+u
+java:S2293ù"YReplace the type specification in this constructor call with the diamond operator ("<>").(„ã©½ùÿÿÿÿ
+u
+java:S2293ú"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ı°ÿÿÿÿÿÿ
+W	java:S125‹"<This block of commented-out lines of code should be removed.(Ìæ÷şÿÿÿÿ
+J
+java:S1874."/Remove this use of "notNull"; it is deprecated.(²Ôöşøÿÿÿÿ
+[
+java:S1124-"EReorder the modifiers to comply with the Java Language Specification.(ÃØÓ
+F
+java:S3740Å"/Provide the parametrized type for this generic.(ÕóÒÚ
+T	java:S106–"9Replace this use of System.out or System.err by a logger.(‡¼¯õùÿÿÿÿ
+E
+java:S1874/"/Remove this use of "notNull"; it is deprecated.(€Ú®
+T	java:S106¾"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+
+java:S1130}"sRemove the declaration of thrown exception 'org.springframework.beans.BeansException' which is a runtime exception.(®¾Ãøÿÿÿÿ
+W	java:S125¶"<This block of commented-out lines of code should be removed.(Ìæ÷şÿÿÿÿ
+F
+java:S3740Í"/Provide the parametrized type for this generic.(Ñ™í
+Q	java:S125"<This block of commented-out lines of code should be removed.(×¯í“
+T	java:S106Á"9Replace this use of System.out or System.err by a logger.(‡¼¯õùÿÿÿÿ
+u
+java:S2293¤"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ı°ÿÿÿÿÿÿ
+E
+java:S3740ş"/Provide the parametrized type for this generic.(Ò°Ä>
+u
+java:S2293¦"YReplace the type specification in this constructor call with the diamond operator ("<>").(œŠŒ¶ıÿÿÿÿ
+7
+java:S3878Ù"Remove this array creation.(†ß®šÿÿÿÿÿ
+F
+java:S3740¥"/Provide the parametrized type for this generic.(Ñ™í
+J
+java:S1874;"/Remove this use of "notNull"; it is deprecated.(²Ôöşøÿÿÿÿ
+J
+java:S1874<"/Remove this use of "hasText"; it is deprecated.(÷…ä¾şÿÿÿÿ
+p
+java:S2293ø"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¬á¢
+J
+java:S3740b"/Provide the parametrized type for this generic.(ê³”öúÿÿÿÿ
+`
+java:S1124E"EReorder the modifiers to comply with the Java Language Specification.(ƒª™Ìıÿÿÿÿ
+T	java:S106“"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+u
+java:S2293£"YReplace the type specification in this constructor call with the diamond operator ("<>").(„ã©½ùÿÿÿÿ
+J
+java:S1874%"/Remove this use of "hasText"; it is deprecated.(÷…ä¾şÿÿÿÿ
+
+java:S1130”"sRemove the declaration of thrown exception 'org.springframework.beans.BeansException' which is a runtime exception.(¼Äùÿÿÿÿ
+=
+java:S1872f"'Use an "instanceof" comparison instead.(ø…«ˆ
+p
+java:S2293¢"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¬á¢
+[
+java:S1124#"EReorder the modifiers to comply with the Java Language Specification.(íÿÜÂ
+J
+java:S1874Q"/Remove this use of "hasText"; it is deprecated.(æ ğ úÿÿÿÿ
+K
+java:S3740”"/Provide the parametrized type for this generic.(¼Äùÿÿÿÿ
+J
+java:S1874F"4Remove this use of "isAccessible"; it is deprecated.(¼«èµ
+Š
+java:S1130«"sRemove the declaration of thrown exception 'org.springframework.beans.BeansException' which is a runtime exception.(ûÉˆé
+i
+java:S3776À"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(‚îâí
+T
+java:S3878Ş"8Remove this array creation and simply pass the elements.(íææ†ÿÿÿÿÿ
+J
+java:S1874$"/Remove this use of "notNull"; it is deprecated.(²Ôöşøÿÿÿÿ
+E
+java:S3740©"/Provide the parametrized type for this generic.(Ò°Ä>
+J
+java:S1874X"4Remove this use of "isAccessible"; it is deprecated.(à´ìó
+F
+java:S3740À"/Provide the parametrized type for this generic.(‚îâí
+u
+java:S2293û"YReplace the type specification in this constructor call with the diamond operator ("<>").(œŠŒ¶ıÿÿÿÿ
+Š
+java:S1130À"sRemove the declaration of thrown exception 'org.springframework.beans.BeansException' which is a runtime exception.(‚îâí
+[
+java:S1124:"EReorder the modifiers to comply with the Java Language Specification.(ÙÀàª
+J
+java:S18740"4Remove this use of "isAccessible"; it is deprecated.(¼«èµ
+[
+java:S1124O"EReorder the modifiers to comply with the Java Language Specification.(à©÷
+J
+java:S1874P"/Remove this use of "notNull"; it is deprecated.(²Ôöşøÿÿÿÿ

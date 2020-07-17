@@ -40,26 +40,26 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             field: 'dept',
             title: '部门',
             align: 'center',
-            width: '10%',
+            width: '5%',
             sort: true
         }, {
             field: 'rank',
             title: '职级',
             align: 'center',
-            width: '10%',
+            width: '5%',
             sort: true
         }, {
             field: 'createTime',
             title: '创建时间',
             align: 'center',
-            width: '10%',
+            width: '15%',
             sort: true
         }, {
             title: '常用操作',
             align: 'center',
             fixed: "right",
             toolbar: '#ryxxglBar',
-            width: '10%',
+            width: '25%',
             sort: true
         }
     ]];
@@ -73,51 +73,10 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         //修改
         if (obj.event === 'update') {
             window.location.href = PageContext.getUrl("/ryxxgl/get/update/" + data.id);
-
         } else if (obj.event === 'view') {
             window.location.href = PageContext.getUrl("/ryxxgl/get/view/" + data.id);
-        } else if (obj.event === 'up') {//上架操作
-            layer.confirm('真的要上架么？', function (index) {
-                var ajaxReturnData;
-                $.ajax({
-                    url: PageContext.getUrl('/ryxxgl/update/up'),
-                    type: 'post',
-                    async: false,
-                    data: {id: data.id},
-                    success: function (data) {
-                        ajaxReturnData = data;
-                    }
-                });
-                if (ajaxReturnData.flag == 'true') {
-                    Common.searchTable('searchForm', initTable);
-                    // table.reload('ryxxglTables');
-                    layer.msg(ajaxReturnData.msg, {icon: 1});
-                } else {
-                    layer.msg('操作失败', {icon: 5});
-                }
-                layer.close(index);
-            });
-        } else if (obj.event === 'down') {//下架操作
-            layer.confirm('真的要下架么？？', function (index) {
-                var ajaxReturnData;
-                $.ajax({
-                    url: PageContext.getUrl('/ryxxgl/update/down'),
-                    type: 'post',
-                    async: false,
-                    data: {id: data.id},
-                    success: function (data) {
-                        ajaxReturnData = data;
-                    }
-                });
-                if (ajaxReturnData.flag == 'true') {
-                    Common.searchTable('searchForm', initTable);
-                    // table.reload('ryxxglTables');
-                    layer.msg(ajaxReturnData.msg, {icon: 1});
-                } else {
-                    layer.msg('操作失败', {icon: 5});
-                }
-                layer.close(index);
-            });
+        } else if (obj.event === 'rybgsq') {
+            window.location.href = PageContext.getUrl("/rybgsq/toAdd?ryId=" + data.id);
         }
     });
 

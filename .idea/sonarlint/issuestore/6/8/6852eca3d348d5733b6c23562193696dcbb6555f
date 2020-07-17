@@ -1,0 +1,58 @@
+
+h
+java:S1192"MDefine a constant instead of duplicating this literal "######0.0000" 3 times.(ì¹È½úÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÿ“±
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÿ“±
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂúØª
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂúØª
+~
+java:S1488"hImmediately return this expression instead of assigning it to the temporary variable "d2ToBigDeWithPre".(È¸ É
+~
+java:S1488$"hImmediately return this expression instead of assigning it to the temporary variable "d2ToBigDeWithPre".(È¸ É
+m
+java:S4144"WUpdate this method so that its implementation is not identical to "average" on line 11.(ÂúØª
+S	java:S106"9Replace this use of System.out or System.err by a logger.(­ð»œüÿÿÿÿ
+I
+java:S1874".Remove this use of "divide"; it is deprecated.(¦ôæ¤úÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(’¥™Ìýÿÿÿÿ
+D
+java:S1874".Remove this use of "divide"; it is deprecated.(­¥«Ï
+K
+java:S1874"5Remove this use of "ROUND_HALF_UP"; it is deprecated.(­¥«Ï
+S	java:S106"9Replace this use of System.out or System.err by a logger.(»½„Ÿþÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(­ð»œüÿÿÿÿ
+I
+java:S1874 ".Remove this use of "divide"; it is deprecated.(¦ôæ¤úÿÿÿÿ
+S	java:S106!"9Replace this use of System.out or System.err by a logger.(’¥™Ìýÿÿÿÿ
+D
+java:S1874"".Remove this use of "divide"; it is deprecated.(­¥«Ï
+K
+java:S1874""5Remove this use of "ROUND_HALF_UP"; it is deprecated.(­¥«Ï
+S	java:S106#"9Replace this use of System.out or System.err by a logger.(»½„Ÿþÿÿÿÿ
+H
+java:S1135)"2Complete the task associated to this TODO comment.(êžÊª
+M
+java:S1135-"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+<
+java:S21112"!Use "BigDecimal.valueOf" instead.(Ù‹ÔÓþÿÿÿÿ
+7
+java:S21113"!Use "BigDecimal.valueOf" instead.(‡º¯Á
+7
+java:S21114"!Use "BigDecimal.valueOf" instead.(çÂöí
+I
+java:S18748".Remove this use of "divide"; it is deprecated.(’âŸÏúÿÿÿÿ
+P
+java:S18748"5Remove this use of "ROUND_HALF_UP"; it is deprecated.(’âŸÏúÿÿÿÿ
+S	java:S106:"9Replace this use of System.out or System.err by a logger.(ªªò¾üÿÿÿÿ
+N	java:S106;"9Replace this use of System.out or System.err by a logger.(“ŸãŸ
+N	java:S106="9Replace this use of System.out or System.err by a logger.(Õˆþõ
+N	java:S106G"9Replace this use of System.out or System.err by a logger.(³ÎÄò
+S	java:S106H"9Replace this use of System.out or System.err by a logger.(º‹Âßÿÿÿÿÿ
+N	java:S106I"9Replace this use of System.out or System.err by a logger.(Ê·¦ç
+S	java:S106K"9Replace this use of System.out or System.err by a logger.(ø¹ùûýÿÿÿÿ
+<
+java:S2111K"!Use "BigDecimal.valueOf" instead.(ø¹ùûýÿÿÿÿ
+<
+java:S2111K"!Use "BigDecimal.valueOf" instead.(ø¹ùûýÿÿÿÿ
+7
+java:S1116L"Remove this empty statement.(Åñ­õþÿÿÿÿ

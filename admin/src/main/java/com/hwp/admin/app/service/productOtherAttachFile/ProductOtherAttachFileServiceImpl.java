@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 产品附件信息
@@ -115,5 +116,10 @@ public class ProductOtherAttachFileServiceImpl implements ProductOtherAttachFile
     @Override
     public int updateDataStatusById(ProductOtherAttachFile record) {
         return productOtherAttachFileMapper.updateDataStatusById(record);
+    }
+
+    @Override
+    public List<ProductOtherAttachFile> listWdmbByParams(Map<String, Object> params) {
+        return productOtherAttachFileMapper.listWdmbByParams(params);
     }
 }

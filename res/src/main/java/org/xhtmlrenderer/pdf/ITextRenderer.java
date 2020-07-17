@@ -94,6 +94,10 @@ public class ITextRenderer {
         return this._doc;
     }
 
+    public void setDocument(String uri) {
+        setDocument(loadDocument(uri), uri);
+    }
+
     public void setDocument(File file) throws IOException {
         File parent = file.getAbsoluteFile().getParentFile();
         setDocument(loadDocument(file.toURI().toURL().toExternalForm()), parent == null ? "" : parent.toURI().toURL().toExternalForm());
@@ -105,10 +109,6 @@ public class ITextRenderer {
 
     private org.w3c.dom.Document loadDocument(String uri) {
         return this._sharedContext.getUac().getXMLResource(uri).getDocument();
-    }
-
-    public void setDocument(String uri) {
-        setDocument(loadDocument(uri), uri);
     }
 
     public void setDocument(org.w3c.dom.Document doc, String url) {

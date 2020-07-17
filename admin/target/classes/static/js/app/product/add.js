@@ -622,7 +622,7 @@ layui.use(['form', 'layer', 'laydate', 'jquery', 'upload'], function () {
                 layer.msg("文件" + res.tmpFileName + "上传失败");
                 $('#demo2').html(" ");
             } else if (res.code = 'big') {
-                layer.msg("文件" + res.tmpFileName + "大小不能超过1M");
+                layer.msg("文件" + res.tmpFileName + "大小不能超过20M");
                 $('#demo2').html(" ");
             } else {
                 layer.msg("文件上传时发生错误,请稍后重试");

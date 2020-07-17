@@ -1,0 +1,17 @@
+
+c
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(¼ÃÜÌýÿÿÿÿ
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(šÞš°
+>
+java:S1148'"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+>
+java:S11489"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+H
+java:S4925"-Remove this "Class.forName()", it is useless.(åÂëƒýÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(‹ÝÔÍ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(„Ú·ú
+S	java:S106""9Replace this use of System.out or System.err by a logger.(È™è¤üÿÿÿÿ
+N	java:S1065"9Replace this use of System.out or System.err by a logger.(æÛ¾²
+@
+java:S1068"*Remove this unused "logger" private field.(–”’—

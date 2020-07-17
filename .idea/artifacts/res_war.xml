@@ -1,12 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="war" name="res:war">
     <output-path>$PROJECT_DIR$/res/target</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <module>res</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
     <root id="archive" name="res-0.0.1-SNAPSHOT.war">
       <element id="artifact" artifact-name="res:war exploded" />
     </root>

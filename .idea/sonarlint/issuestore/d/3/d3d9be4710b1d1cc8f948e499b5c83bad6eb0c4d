@@ -1,0 +1,21 @@
+
+Y
+java:S1155I">Use isEmpty() to check whether the collection is empty or not.(Ó·ÈÒûÿÿÿÿ
+Y
+java:S37522">Add a "method" parameter to this "@RequestMapping" annotation.(˜’­¾ıÿÿÿÿ
+Y
+java:S3752=">Add a "method" parameter to this "@RequestMapping" annotation.(êã–Òıÿÿÿÿ
+T
+java:S3752_">Add a "method" parameter to this "@RequestMapping" annotation.(çƒóµ
+^
+java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(’ÖÕÏ
+e
+java:S4488""JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ÿ¶Ãëøÿÿÿÿ
+o
+java:S2293%"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+t
+java:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¹óùÿÿÿÿ
+o
+java:S2293E"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¬á¢
+t
+java:S2293b"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¹óùÿÿÿÿ

@@ -232,4 +232,23 @@
     set DATA_STATUS = #{dataStatus,jdbcType=CHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+
+    <select id="listWdmbByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from PRODUCT_OTHER_ATTACH_FILE
+        <where>
+            DATA_STATUS='1' and TYPE = 'wdmbAttachFile'
+            <if test="fileName != null">
+                and ATTACH_FILE like CONCAT('%',#{fileName},'%')
+            </if>
+            <if test="startTime != null">
+                AND CREATE_TIME <![CDATA[>=]]> #{startTime,jdbcType=VARCHAR}
+            </if>
+            <if test="endTime != null">
+                AND CREATE_TIME <![CDATA[<=]]> #{endTime,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
 </mapper>

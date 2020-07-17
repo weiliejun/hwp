@@ -2,145 +2,556 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7efcbce-b3a7-4d71-b961-4be45138f708" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/test/JunitTest/BaseDAOTEST.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/test/TestDate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/test/TestJDBC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/test/TestMysql.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/test/TestNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/test/TestOracle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_10_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/2/020e51386635a109e10befb2ed4d8d39f494e9af" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/3/034e4a845582188797a3d5e89ab01c44f35a46cf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/1/11568f740606138cb67a57bc323eec9e0a394043" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/12df7b661eec5a944993fc7ace146cf3ecb2b492" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c5575bbbf8a2ecd82be468f0a21916cbd56df95" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/23278efae73c551ada5b0e6bb3a9f6ece2524bdd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/5/25a2d8d7c1cbbef9ea8af4a5af3c614e87f72cd6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/5/25cdd728b92164fba419bbe0e27650de361965b0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/26b7bbb1afef30e913adc603000b4cee14e1c4b9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/28173c2338864e431161e49bd3210a84ad0aa446" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/1/318425116a4a1f74f95e78f8b26189cae7a31fc5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38b0c782af6f71178e118c60d560e1f2579fc7ea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38e216669a779d0135eb56c20ee24e0ee2ec1188" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/a/3ad4883f04834f034e6643a7d1fe7edf1a07065d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/477c75b0dca936a7f96989da5a06a903d7ae9160" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/482bd5f1e637e6bf5f58f391d24ea28ccd54beee" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a18fd823a73c129ce11ae4115cfc3f13b35afd6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4b8ecad3a3b89b258bad1c1c116d05d658da6f30" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4d590f6d36a6460b8c9a8b320956b18b0c731e6b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/0/50e69476ad7509e3b9674f99507b86399f68db75" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/2/52265c3bd1d1c9ec836e28c8b9fc07d6f297a621" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/4/54ec8e1a244591dc9cd5afaa775d63df19161ee5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/569e0dd56c5f91e3554cd4df7080fd4e37ebcfd5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/9/598ca58b3e1ad9d7340b4bed0e9017b4a2f00f48" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f361e1353b58d2059ead690c605ad7b3a68a4a5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/6055ca71d9dfa3a4de589b3731f297ab24caad67" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/66a79b928b1e6e92b3ccbaa509e4737d3ccb45f3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/6722e42c98c5dcda37701a431a6b03d414b64397" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/6852eca3d348d5733b6c23562193696dcbb6555f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/9/6955135cb5e9ac0e4c96c26f717d38056097f9bc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/1/71007da302db06072ece23f1c754c907b0a7d871" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73a87b1ad3dd5309c886344caff46992e9c4b5ee" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74e4e7c418a26f49e3dccad007c4d6039dc4303d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/79b4be927aaf8de8b9ca010d240736b89ecbd86a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/e/7ecdaa06e15f6d0e0ba54b7d6687d3c98ccc1f87" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80b53e7bb6f2a7cc16931235434a789d8132c719" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/81c7e4d8a12fe61bd99a16bf54f1245a97bdc58d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8b1c1019c0f43a1623effe3c18d716a62ec66415" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f940d8879f6014e74e6a2a007d7296759e306b7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/90474bd678a05cb8bf0db6198744dad2f733f0d9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/9079ce4d035cad27d043f47a8ec49a57e6ba4472" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/9469f4d57875357768abac44d9570c96323bd10a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/98954b8675fad30d0e4aabfd084b5d912159fb56" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b68469df57eec03bca332a627690a95da795131" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c1604671162e49f9c2c1d47e72e075aa7627df5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f8b5c4d2f2c9ff4c36b6b800830a1a88f704071" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0435bb0efd082fc3446bb01d01e6de160607b84" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6a91eb335184a0b4c03d8d5a3166b101a8e637b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/ab7ad957866e94793c67ef64a1943e0d0af866e8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/d/ad5f37fec656a7f149fc8c22909f8f452e558aad" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/0/b035cebd481af85e546601d990ffed987c0e1659" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/0/b0d8b000d35b0c144f915b92e05a0d0b4adcbd84" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/2/b28c0d3b443bb158414b87d80202871ab2593d00" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b3a28f14af0f65a671e65c2e9ef58b677fa7e95b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b4cb2dc8f2401cb3ebaa1d30647b4dae21d80d15" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7a765e7dbd5a8fb0454be111eba829683ff11c7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c28c168bfa24b76b89190dc13c4f2a1aba65e1de" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3bb94aa81f92a483900de4408440c722dc23533" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/6/c608a6bc6481ee7888b45f2692a7b6ab971c7761" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cdd6d99f21d0a9cefd7744d04dd7cee33226f7fc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/e/ce6eceee5a9f4923019cc6f9a7b6d750a1ca8c85" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/e/ce8347a2faa6ba5e6fe14201fc020a91bf837c08" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/f/cf2036765538bce2f7a7ed4c4d8f8f9070fac9ea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d00cf6ed917b0e5781068a61f96f1b178dd1fa52" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3d9be4710b1d1cc8f948e499b5c83bad6eb0c4d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7f0f016dac88c78686a2deda1b9e723cca3fa2b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/dba015e05f144357ba23b739471489d72bcdc111" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/dbe469af064d18165e54a32d1861eb5689b8adb1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dca3072b1d7030ec19e0cccbfa40da83f200dfc1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0d56712bae89dcd808994af53b3510b5e473e52" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/5/e55677cb5f15a07c24fbe56e9ab2eaefb8ebb2d7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef96fa4177aa6e10915632390acee1028baf52b3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f24edb91bb63e13e585df336b557a855a80f50b5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f4f45a6e30c25ae8aa7dbe250229b4c251c8c4d9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f78329a7b4dee4d77b16d8e5148ded2867529e7b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f8780177e3c1279bb8a663c3ea1f69d65ad2e5ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd6566f6accab5a06f83b61e7c318da0c6af2566" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ff3fe2a903af8a5b1cb8bea9742898353ca082d5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml.bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/RFCConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/RybgsqController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/event/RwfhspSendEmailEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/event/RwfhspSendEmailEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/event/RybgspSendEmailEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/event/RybgspSendEmailEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/event/RybgsqSendEmailEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/event/RybgsqSendEmailEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/rybgsq/RybgsqService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/rybgsq/RybgsqServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/ryxxgl/rybgsq.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/xmrwxx/toCron.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/rybgsq.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/spsqxx/rwfhView.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/spsqxx/rwfhsp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/spsqxx/rybgView.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/spsqxx/rybgsp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/rybgsq/bean/Rybgsq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/rybgsq/dao/RybgsqMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/rybgsq/mapper/RybgsqMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/admin_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/admin_war.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/admin_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/admin_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/res_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/res_war.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/res_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/res_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2c8fe67f-9fd0-4365-943a-bcda7d1d9809.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2c8fe67f-9fd0-4365-943a-bcda7d1d9809/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/CCSHR.PdzPAw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/CCSHR.PdzPAw.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/PUBLIC.aaZQjQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/SYS.rUIBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/SYSTEM.L2avkg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/YTH.jVgBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/YTH.jVgBAA.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/ksghi.QKkZBg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/ksghi.QKkZBg.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/yth.rdQBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a96c9c52-40ef-4de7-91b5-c353ab161125/storage_v2/_src_/schema/yth.rdQBAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_1_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/46d68cf2fcffa8f45f7cf44689a972c9db989e9f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/46d68cf2fcffa8f45f7cf44689a972c9db989e9f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/9/9973d308ec7ba073f988cb6e323ebf037760c2db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/9/9973d308ec7ba073f988cb6e323ebf037760c2db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/a/aa5e291cfba88832201bf6ed4c5656725abb2d54" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/a/aa5e291cfba88832201bf6ed4c5656725abb2d54" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APP_LOGIN_LOG.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/EmailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/EmailConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/TaskExecutorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/TaskExecutorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/ProductUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/ProductUploadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/RyxxglController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/RyxxglController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/XmxxglController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/XmxxglController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/event/JsxmSendEmailEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/event/JsxmSendEmailEventListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/ryxxgl/RyxxglService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/ryxxgl/RyxxglService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/ryxxgl/RyxxglServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/ryxxgl/RyxxglServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/xmxxgl/XmxxglServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/xmxxgl/XmxxglServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/components/message/mail/MailSenderServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/components/message/mail/MailSenderServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/components/message/sms/SmsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/components/message/sms/SmsClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/components/message/wechat/WechatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/components/message/wechat/WechatClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/quarz/ProductQuartz.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/quarz/ProductQuartz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/system/controller/SysMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/system/controller/SysMessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/system/controller/SysMessageTmplController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/system/controller/SysMessageTmplController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/web/base/AbstractBaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/web/base/AbstractBaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/product/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/product/add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/ryxxgl/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/ryxxgl/add.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/ryxxgl/selectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/ryxxgl/selectList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/xmxxgl/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/static/js/app/xmxxgl/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/investmentArticle/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/investmentArticle/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/product/listProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/product/listProduct.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/product/listProductManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/product/listProductManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/product/listProductManageIssue.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/product/listProductManageIssue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/product/addProductOne.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/product/addProductOne.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/selectList.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/selectList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/ryxxgl/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/userInfo/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/userInfo/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/jsxm.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/jsxm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/xmgl.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/app/xmxxgl/xmgl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/business/user/topUp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/business/user/topUp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/common/cron/paramconfig/toCron.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/common/cron/paramconfig/toCron.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/common/cron/resource/css/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/common/cron/resource/css/icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/common/cron/resource/js/cron.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/common/cron/resource/js/cron.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/common/public.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/common/public.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/ryxxgl/RyxxglService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/ryxxgl/RyxxglService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/ryxxgl/RyxxglServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/ryxxgl/RyxxglServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/xmxxgl/XmxxglServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/xmxxgl/XmxxglServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/sms/SmsClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/sms/SmsClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/wechat/WechatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/components/message/wechat/WechatClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/admin/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/admin/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/admin/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/admin/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/admin/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/admin/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/admin/role.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/admin/role.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/category-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/category-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/category-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/category-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/复制 list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/article/复制 list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/addInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/addInput.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/del.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/del.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/member/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/order/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/pages/order/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceApply/customizationlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceApply/customizationlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceApply/iaaslist.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceApply/iaaslist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceApply/paaslist.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceApply/paaslist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceApply/saaslist.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceApply/saaslist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceInfo/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceInfo/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceInfo/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/serviceInfo/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/sysFunction/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/sysFunction/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/sysMessage/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/sysMessage/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/sysMessageTmpl/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/sysMessageTmpl/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/sysdictionary/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/sysdictionary/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/userExpense/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/userExpense/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/userExpense/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/userExpense/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/system/userSmsSignature/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/system/userSmsSignature/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/static/plugins/form/demo/demo/tinymce/themes/simple/skins/default/ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/static/plugins/form/demo/demo/tinymce/themes/simple/skins/default/ui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/templates/common/cron/resource/css/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/templates/common/cron/resource/css/icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/templates/common/cron/resource/js/cron.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.0.1-SNAPSHOT/WEB-INF/classes/templates/common/cron/resource/js/cron.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/Mo.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/Mo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKClientProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKClientProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKServiceBindingStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKServiceBindingStub.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKServiceLocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/SDKServiceLocator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/StatusReport.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/b2m/eucp/sdkhttp/StatusReport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/emay/sdk/client/api/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/exclusive/emay/sdk/client/api/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/Mo.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/Mo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKClientProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKClientProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKServiceBindingStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKServiceBindingStub.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKServiceLocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/SDKServiceLocator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/StatusReport.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/share/b2m/eucp/sdkhttp/StatusReport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/cn/share/emay/sdk/client/api/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/cn/share/emay/sdk/client/api/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/ActionEnter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/ActionEnter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/ConfigManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/ConfigManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/Encoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/Encoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/PathFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/PathFormat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/UeditorUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/UeditorUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/ActionMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/ActionMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/ActionState.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/ActionState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/AppInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/AppInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/BaseState.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/BaseState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/FileType.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/FileType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/MIMEType.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/MIMEType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/MultiState.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/MultiState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/define/State.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/hunter/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/hunter/FileManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/hunter/ImageHunter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/hunter/ImageHunter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/upload/Base64Uploader.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/upload/Base64Uploader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/upload/BinaryUploader.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/upload/BinaryUploader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/upload/StorageManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/upload/StorageManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/upload/Uploader.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/ueditor/upload/Uploader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/annotation/R.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/annotation/R.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/callback/YunHttpObservable.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/callback/YunHttpObservable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/callback/YunHttpObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/callback/YunHttpObserver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/callback/YunLogHttpCallBack.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/callback/YunLogHttpCallBack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/config/HttpConfigure.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/config/HttpConfigure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/event/YunHttpEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/event/YunHttpEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/exception/YunHttpClientException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/exception/YunHttpClientException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/CollectionRestrictFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/CollectionRestrictFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/HttpParamKeyNameFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/HttpParamKeyNameFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/HttpPathKeyNameFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/HttpPathKeyNameFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/IFieldFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/IFieldFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/RangeRestrictFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/RangeRestrictFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/RegexRestrictFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/filter/RegexRestrictFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/httpclient/YunHttpClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/httpclient/YunHttpClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/httpclient/YunHttpClient$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/httpclient/YunHttpClient$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/httpclient/YunHttpClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/httpclient/YunHttpClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/JSONParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/JSONParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/JSONParserTokenManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/JSONParserTokenManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/JsonParserDomTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/JsonParserDomTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/ParseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/ParseException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/SimpleCharStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/SimpleCharStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/Token.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/TokenMgrError.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/json/TokenMgrError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/log/DefaultYunLogHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/log/DefaultYunLogHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/log/NullYunLogHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/log/NullYunLogHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/log/YunLogEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/log/YunLogEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/log/YunLogHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/log/YunLogHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/model/BCMSKeyPair.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/model/BCMSKeyPair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/model/ErrorResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/model/ErrorResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/model/HttpRestResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/model/HttpRestResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/IOUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/IOUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/MapObjectUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/MapObjectUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/MessageDigestUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/MessageDigestUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/Native2AsciiUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/Native2AsciiUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/StringUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/StringUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/YunCommonUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/core/utility/YunCommonUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/auth/PushKeyPair.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/auth/PushKeyPair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/auth/signature/PushSignatureDigest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/auth/signature/PushSignatureDigest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPush.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPush.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPushAsync.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPushAsync.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPushAsyncClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPushAsyncClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPushAsyncClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPushAsyncClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPushClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/client/BaiduPushClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/exception/PushClientException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/exception/PushClientException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/exception/PushServerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/exception/PushServerException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/AddDevicesToTagRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/AddDevicesToTagRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/BindInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/BindInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/CreateTagRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/CreateTagRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/DeleteDevicesFromTagRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/DeleteDevicesFromTagRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/DeleteTagRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/DeleteTagRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/KeyValueForAck.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/KeyValueForAck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/KeyValueForDevice.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/KeyValueForDevice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/KeyValueForMsg.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/KeyValueForMsg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/KeyValueForTopic.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/KeyValueForTopic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/MsgSendInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/MsgSendInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushBatchUniMsgRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushBatchUniMsgRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToAllRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToAllRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToSingleDeviceRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToSingleDeviceRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToSingleDeviceResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToSingleDeviceResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToSmartTagRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToSmartTagRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToTagRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushMsgToTagRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/PushRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryDeviceNumInTagRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryDeviceNumInTagRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryMsgStatusRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryMsgStatusRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryStatisticDeviceRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryStatisticDeviceRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryStatisticMsgRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryStatisticMsgRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryStatisticTopicRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryStatisticTopicRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTagsRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTagsRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTimerListRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTimerListRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTimerRecordsRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTimerRecordsRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTopicListRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTopicListRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTopicRecordsRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/model/QueryTopicRecordsRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AddDevicesToTag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AddDevicesToTag$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AddDevicesToTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AddDevicesToTag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushBatchUniMsg$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushBatchUniMsg$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushBatchUniMsg.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushBatchUniMsg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToAll$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToAll$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToAll.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToAll.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToSingleDevice$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToSingleDevice$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToSingleDevice.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToSingleDevice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToSmartTag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToSmartTag$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToSmartTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToSmartTag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToTag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToTag$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/AndroidPushMsgToTag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/CreateTag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/CreateTag$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/CreateTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/CreateTag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/DeleteDevicesFromTag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/DeleteDevicesFromTag$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/DeleteDevicesFromTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/DeleteDevicesFromTag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/DeleteTag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/DeleteTag$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/DeleteTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/DeleteTag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToAll$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToAll$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToAll.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToAll.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToSingleDevice$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToSingleDevice$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToSingleDevice.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToSingleDevice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToTag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToTag$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/IOSPushNotificationToTag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryDeviceNumInTag$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryDeviceNumInTag$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryDeviceNumInTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryDeviceNumInTag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryMsgStatus$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryMsgStatus$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryMsgStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryMsgStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticDevice$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticDevice$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticDevice.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticDevice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticMsg$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticMsg$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticMsg.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticMsg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticTopic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticTopic$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticTopic.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryStatisticTopic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTags$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTags$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTags.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTags.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTimerList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTimerList$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTimerList.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTimerList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTimerRecords$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTimerRecords$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTimerRecords.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTimerRecords.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTopicList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTopicList$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTopicList.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTopicList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTopicRecords$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTopicRecords$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTopicRecords.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/sample/QueryTopicRecords.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/transform/PushRestRequestChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/transform/PushRestRequestChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/transform/PushRestRequestMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/transform/PushRestRequestMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/transform/PushRestResponseJsonUnmapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/transform/PushRestResponseJsonUnmapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/transform/utils/TransformUtilitiy.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/baidu/yun/push/transform/utils/TransformUtilitiy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/Admin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/EmailConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/EmailConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/MyBeanFactoryPostProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/MyBeanFactoryPostProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/TaskExecutorConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/TaskExecutorConfig$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/TaskExecutorConfig$MyAsyncExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/TaskExecutorConfig$MyAsyncExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/WebAppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/WebAppConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/FundTransactionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/FundTransactionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/InsuranceOrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/InsuranceOrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/InvestmentArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/InvestmentArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/ProductTransactionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/ProductTransactionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/ProductUploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/ProductUploadController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/RyxxglController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/RyxxglController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/UserInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/UserTransactionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/UserTransactionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/UserWorkInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/UserWorkInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/WebsiteAdvertiseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/WebsiteAdvertiseController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/XmxxglController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/controller/XmxxglController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/JsxmSendEmailEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/JsxmSendEmailEventListener$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/JsxmSendEmailEventListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/BgjdSendEmailEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/BgjdSendEmailEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/BgjdSendEmailEventListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/BgjdSendEmailEventListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/BgjdSendEmailEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/BgjdSendEmailEventListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/CreateXmSendEmailEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/CreateXmSendEmailEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/CreateXmSendEmailEventListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/CreateXmSendEmailEventListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/CreateXmSendEmailEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/CreateXmSendEmailEventListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/ModifyXmSendEmailEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/ModifyXmSendEmailEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/ModifyXmSendEmailEventListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/ModifyXmSendEmailEventListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/ModifyXmSendEmailEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/ModifyXmSendEmailEventListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/test/SendEmailEventHTTPTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/event/test/SendEmailEventHTTPTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/dateInfo/DateInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/dateInfo/DateInfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/dateInfo/DateInfoServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/dateInfo/DateInfoServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/fund/FundTransactionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/fund/FundTransactionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/fund/FundTransactionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/fund/FundTransactionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/insuranceOrder/InsuranceOrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/insuranceOrder/InsuranceOrderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/insuranceOrder/InsuranceOrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/insuranceOrder/InsuranceOrderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/investmentArticle/InvestmentArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/investmentArticle/InvestmentArticleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/investmentArticle/InvestmentArticleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/investmentArticle/InvestmentArticleServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/product/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/product/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/product/ProductServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/product/ProductServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productOtherAttachFile/ProductOtherAttachFileServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productTransaction/ProductTransactionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productTransaction/ProductTransactionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productTransaction/ProductTransactionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productTransaction/ProductTransactionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productUnFreezePayService/ProductUnFreezePayService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productUnFreezePayService/ProductUnFreezePayService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productUnFreezePayService/ProductUnFreezePayServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/productUnFreezePayService/ProductUnFreezePayServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/ryxxgl/RyxxglService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/ryxxgl/RyxxglService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/ryxxgl/RyxxglServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/ryxxgl/RyxxglServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userInfo/UserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userInfo/UserInfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userInfo/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userInfo/UserInfoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userTransaction/UserTransactionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userTransaction/UserTransactionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userTransaction/UserTransactionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userTransaction/UserTransactionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userWorkInfo/UserWorkInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userWorkInfo/UserWorkInfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userWorkInfo/UserWorkInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/userWorkInfo/UserWorkInfoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/websiteAdvertise/WebsiteAdvertiseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/websiteAdvertise/WebsiteAdvertiseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/websiteAdvertise/WebsiteAdvertiseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/websiteAdvertise/WebsiteAdvertiseServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/xmxxgl/XmxxglService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/xmxxgl/XmxxglService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/xmxxgl/XmxxglServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/app/service/xmxxgl/XmxxglServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MQService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MQService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MQServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MQServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MessageBusiType.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MessageBusiType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MessageTemplateParse.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MessageTemplateParse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MessageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/MessageType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/SubscribeRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/SubscribeRedis.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/TemplateMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/TemplateMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/MessageBusiTypeTmplInexistenceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/MessageBusiTypeTmplInexistenceException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/MessageRuntimeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/MessageRuntimeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/MessageSenderFailedException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/MessageSenderFailedException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/MessageTypeTmplInexistenceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/MessageTypeTmplInexistenceException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/ParameterNullPointerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/ParameterNullPointerException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/TemplateInexistenceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/exception/TemplateInexistenceException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/MailSenderServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/SendTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/SendTest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/TestMail.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/mail/TestMail.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/sms/SmsClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/sms/SmsClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/wechat/WechatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/message/wechat/WechatClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/quarz/ProductQuartz.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/quarz/ProductQuartz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/redactor/action/UploadFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/redactor/action/UploadFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/CtrlExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/CtrlExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/KickoutSessionControlFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/KickoutSessionControlFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/MyShiroRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/MyShiroRealm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/PasswordHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/PasswordHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/RetryLimitHashedCredentialsMatcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/RetryLimitHashedCredentialsMatcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/ShiroCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/ShiroCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/ShiroConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/ShiroRedisCacheManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/shiro/ShiroRedisCacheManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/TrustSignController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/TrustSignController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterAndSignEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterAndSignEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterAndSignListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterAndSignListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterAndSignListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterAndSignListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignRegisterListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignUploadContractEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignUploadContractEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignUploadContractListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignUploadContractListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignUploadContractListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/event/TrustSignUploadContractListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/TrustSignInterfaceCallService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/TrustSignInterfaceCallService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/TrustSignInterfaceCallServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/TrustSignInterfaceCallServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/TrustSignService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/TrustSignService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/TrustSignServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/TrustSignServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/logger/CfcaTrustSignRecordLogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/logger/CfcaTrustSignRecordLogService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/logger/CfcaTrustSignRecordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/logger/CfcaTrustSignRecordService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/logger/CfcaTrustSignRecordServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/trustsign/service/logger/CfcaTrustSignRecordServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/ueditor/UEditorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/components/ueditor/UEditorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/error/PageException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/error/PageException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/portal/controller/ImageCodeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/portal/controller/ImageCodeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/portal/controller/PortalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/portal/controller/PortalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/quarz/SpringUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/quarz/SpringUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysDictionaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysDictionaryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysFunctionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysFunctionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysManagerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysMessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysMessageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysMessageTmplController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysMessageTmplController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysRoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/SysRoleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/UserSmsSignatureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/UserSmsSignatureController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/WebsiteBulletinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/controller/WebsiteBulletinController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/MonitorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/MonitorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/MonitorServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/MonitorServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SecurityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SecurityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SecurityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SecurityServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysDictionaryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysDictionaryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysDictionaryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysDictionaryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysManagerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysManagerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysManagerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysManagerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysMessageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysMessageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysMessageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysMessageServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysMessageTmplService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysMessageTmplService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysMessageTmplServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/SysMessageTmplServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/UserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/UserInfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/UserInfoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/UserSmsTemplateApplicationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/UserSmsTemplateApplicationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/UserSmsTemplateApplicationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/UserSmsTemplateApplicationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/WebsiteBulletinService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/WebsiteBulletinService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/WebsiteBulletinServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/system/service/WebsiteBulletinServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/web/base/AbstractBaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/web/base/AbstractBaseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/web/interceptor/SessionInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/hwp/admin/web/interceptor/SessionInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/app/product/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/app/product/add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/app/ryxxgl/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/app/ryxxgl/add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/app/ryxxgl/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/app/ryxxgl/list.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/app/ryxxgl/selectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/app/ryxxgl/selectList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/app/xmxxgl/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/app/xmxxgl/add.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/app/xmxxgl/jsxm.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/app/xmxxgl/jsxm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/app/xmxxgl/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/app/xmxxgl/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/bodyTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/bodyTab.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/public.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/investmentArticle/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/investmentArticle/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/product/listProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/product/listProduct.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/product/listProductManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/product/listProductManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/product/listProductManageIssue.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/product/listProductManageIssue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/static/js/system/sysMessage/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/js/system/sysMessage/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/static/plugins/form/demo/demo/tinymce/themes/simple/skins/default/ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/static/plugins/form/demo/demo/tinymce/themes/simple/skins/default/ui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/product/addProductOne.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/product/addProductOne.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/ryxxgl/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/ryxxgl/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/ryxxgl/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/ryxxgl/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/ryxxgl/selectList.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/ryxxgl/selectList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/ryxxgl/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/ryxxgl/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/userInfo/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/userInfo/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/xmxxgl/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/xmxxgl/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/xmxxgl/jsxm.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/xmxxgl/jsxm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/xmxxgl/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/xmxxgl/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/app/xmxxgl/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/app/xmxxgl/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/business/user/topUp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/business/user/topUp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/common/cron/paramconfig/toCron.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/common/cron/paramconfig/toCron.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/common/cron/resource/css/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/common/cron/resource/css/icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/common/cron/resource/js/cron.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/common/cron/resource/js/cron.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/common/public.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/common/public.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/admin/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/admin/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/admin/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/admin/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/admin/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/admin/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/admin/role.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/admin/role.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/category-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/category-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/category-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/category-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/复制 list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/article/复制 list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/addInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/addInput.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/del.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/del.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/member/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/pages/order/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/pages/order/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceApply/customizationlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceApply/customizationlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceApply/iaaslist.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceApply/iaaslist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceApply/paaslist.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceApply/paaslist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceApply/saaslist.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceApply/saaslist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceInfo/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceInfo/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceInfo/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/serviceInfo/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/sysFunction/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/sysFunction/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/sysMessage/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/sysMessage/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/sysMessageTmpl/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/sysMessageTmpl/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/sysdictionary/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/sysdictionary/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/userExpense/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/userExpense/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/userExpense/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/userExpense/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/templates/system/userSmsSignature/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/templates/system/userSmsSignature/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/common/common.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/components/filesync/FileSynchronizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/components/filesync/FileSynchronizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/ryxxgl/dao/RyxxglMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/ryxxgl/dao/RyxxglMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/ryxxgl/mapper/RyxxglMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/ryxxgl/mapper/RyxxglMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/csii/bop/pcommon/signature/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/csii/bop/pcommon/signature/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/constant/GlobalConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/constant/GlobalConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/xmxxgl/bean/Xmxxgl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/xmxxgl/bean/Xmxxgl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/xmxxgl/mapper/XmxxglMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/model/xmxxgl/mapper/XmxxglMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/web/taglibs/code/CodeTagProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/web/taglibs/code/CodeTagProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/util/BeanHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/util/BeanHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/util/FileHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/util/FileHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/util/JsonHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/hwp/common/util/JsonHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/resources/mybatis-generator/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/mybatis-generator/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/components/filesync/FileSynchronizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/components/filesync/FileSynchronizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/ryxxgl/dao/RyxxglMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/ryxxgl/dao/RyxxglMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/ryxxgl/mapper/RyxxglMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/ryxxgl/mapper/RyxxglMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/rebel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/rebel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/csii/bop/pcommon/signature/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/csii/bop/pcommon/signature/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/constant/GlobalConstant$MessageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/constant/GlobalConstant$MessageType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/constant/GlobalConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/constant/GlobalConstant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/productOtherAttachFile/dao/ProductOtherAttachFileMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/productOtherAttachFile/dao/ProductOtherAttachFileMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/productOtherAttachFile/mapper/ProductOtherAttachFileMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/productOtherAttachFile/mapper/ProductOtherAttachFileMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/xmxxgl/bean/Xmxxgl.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/xmxxgl/bean/Xmxxgl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/xmxxgl/mapper/XmxxglMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/model/xmxxgl/mapper/XmxxglMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/web/taglibs/code/CodeTagProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/web/taglibs/code/CodeTagProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/util/BeanHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/util/BeanHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/hwp/common/util/FileHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/hwp/common/util/FileHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/config/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/config/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/mybatis-generator/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/mybatis-generator/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/rebel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/rebel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/common-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/common-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hwp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hwp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/src/main/java/org/xhtmlrenderer/pdf/ITextRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/res/src/main/java/org/xhtmlrenderer/pdf/ITextRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/src/main/resources/rebel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/src/main/resources/rebel.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +609,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1dDoEN9M0Dz2vkhs8pWqzQZm9UX" />
+  <component name="ProjectId" id="1eofcI9XORMHejc5xZCDYX6sVrn" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="1" id="Remove" />
@@ -210,17 +621,17 @@
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="15" />
-    <property name="RequestMappingsPanelWidth1" value="15" />
-    <property name="SearchEverywhereHistoryKey" value="xmrwxx&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/XmrwxxController.java&#10;ryxxgl&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/RyxxglController.java&#10;xmxxgl&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/XmxxglController.java&#10;xmrw&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/XmrwxxController.java&#10;ShiroConfig&#9;PSI&#9;JAVA://com.hwp.admin.components.shiro.ShiroConfig&#10;API&#9;PSI&#9;JAVA://com.hwp.common.util.APIUrlHelper&#10;SendEmailEventHTTPTest&#9;PSI&#9;JAVA://com.hwp.admin.app.event.test.SendEmailEventHTTPTest&#10;xmxx&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/XmxxglController.java&#10;bean&#9;FILE&#9;file://E:/Workspaces/hwp/common/src/main/java/com/hwp/common/util/BeanHelper.java&#10;current&#9;PSI&#9;JAVA://com.hwp.common.web.bean.CurrentManager&#10;beanh&#9;PSI&#9;JAVA://com.hwp.common.util.BeanHelper&#10;sysd&#9;PSI&#9;JAVA://com.hwp.common.model.sysdictionary.bean.SysDictionary&#10;CfcaTrustsignRecordMapper.xml&#9;FILE&#9;file://E:/Workspaces/hwp/common/src/main/java/com/hwp/common/model/cfcaTrustsignRecord/mapper/CfcaTrustsignRecordMapper.xml&#10;rebel.xml&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/resources/rebel.xml" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SearchEverywhereHistoryKey" value="sysMessage&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/system/controller/SysMessageController.java&#10;public.h&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/resources/templates/common/public.html&#10;public.js&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/resources/static/js/public.js&#10;spsqxx&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/SpsqxxController.java&#10;json&#9;PSI&#9;JAVA://com.hwp.common.util.JsonHelper&#10;xmrwxx&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/XmrwxxController.java&#10;glo&#9;PSI&#9;JAVA://com.hwp.common.constant.GlobalConstant&#10;tru&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/components/trustsign/TrustSignController.java&#10;fileh&#9;PSI&#9;JAVA://com.hwp.common.util.FileHelper&#10;ryxxgl&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/RyxxglController.java&#10;xmrw&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/XmrwxxController.java&#10;ryxx&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/RyxxglController.java&#10;productu&#9;PSI&#9;JAVA://com.hwp.admin.app.controller.ProductUploadController&#10;ToStringStyle&#9;PSI&#9;JAVA://org.springframework.core.style.ToStringStyler&#10;xmxxgl&#9;PSI&#9;JAVA://com.hwp.admin.app.controller.XmxxglController&#10;pro&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/ProductUploadController.java&#10;Rybgsq&#9;PSI&#9;JAVA://com.hwp.common.model.rybgsq.bean.Rybgsq&#10;public&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/resources/templates/common/public.html&#10;sysfunction&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/system/controller/SysFunctionController.java&#10;ryx&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/RyxxglController.java&#10;xmxx&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/java/com/hwp/admin/app/controller/XmxxglController.java&#10;public.&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/resources/templates/common/public.html&#10;DateHelper&#9;PSI&#9;JAVA://com.hwp.common.util.DateHelper&#10;Rwczjl&#9;FILE&#9;file://E:/Workspaces/hwp/common/src/main/java/com/hwp/common/model/rwczjl/bean/Rwczjl.java&#10;ShiroConfig&#9;PSI&#9;JAVA://com.hwp.admin.components.shiro.ShiroConfig&#10;API&#9;PSI&#9;JAVA://com.hwp.common.util.APIUrlHelper&#10;SendEmailEventHTTPTest&#9;PSI&#9;JAVA://com.hwp.admin.app.event.test.SendEmailEventHTTPTest&#10;bean&#9;FILE&#9;file://E:/Workspaces/hwp/common/src/main/java/com/hwp/common/util/BeanHelper.java&#10;current&#9;PSI&#9;JAVA://com.hwp.common.web.bean.CurrentManager&#10;beanh&#9;PSI&#9;JAVA://com.hwp.common.util.BeanHelper&#10;sysd&#9;PSI&#9;JAVA://com.hwp.common.model.sysdictionary.bean.SysDictionary&#10;CfcaTrustsignRecordMapper.xml&#9;FILE&#9;file://E:/Workspaces/hwp/common/src/main/java/com/hwp/common/model/cfcaTrustsignRecord/mapper/CfcaTrustsignRecordMapper.xml&#10;rebel.xml&#9;FILE&#9;file://E:/Workspaces/hwp/admin/src/main/resources/rebel.xml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/common/src/main/java" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -230,18 +641,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.hwp.admin.app.event" />
       <recent name="com.hwp.admin.app.controller" />
+      <recent name="com.hwp.admin.app.event" />
+      <recent name="com.hwp.admin.app.service.rwbzjl" />
+      <recent name="com.hwp.admin.app.service.rwczjl" />
       <recent name="com.hwp.common.model.spsqxx.bean" />
-      <recent name="com.hwp.common.model.ryxxgl.bean" />
-      <recent name="com.hwp.admin.app.service.ryxxgl.investmentArticle" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Workspaces\hwp\common\src\main\java" />
-      <recent name="E:\Workspaces\hwp\admin\src\main\resources\static\js\app\xmrwxx" />
-      <recent name="E:\Workspaces\hwp\admin\src\main\resources\templates\app\xmrwxx" />
-      <recent name="E:\Workspaces\hwp\admin\src\main\resources\templates\app\xmxxgl" />
-      <recent name="E:\Workspaces\hwp\admin\src\main\resources\static\js\app\xmxxgl" />
+      <recent name="E:\Workspaces\hwp\admin\src\main\resources\templates\app\wdmb" />
+      <recent name="E:\Workspaces\hwp\admin\src\main\resources\static\js\app\wdmb" />
+      <recent name="E:\Workspaces\hwp\admin\src\main\resources\templates\app\spsqxx" />
+      <recent name="E:\Workspaces\hwp\admin\src\main\resources\static\js\app\ryxxgl" />
+      <recent name="E:\Workspaces\hwp\admin\src\main\resources\templates\app\ryxxgl" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -251,21 +662,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestMysql">
-    <configuration name="TestMysql" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.TestMysql" />
-      <module name="common" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.ResApplication">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -342,135 +739,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="_hwp" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="62089" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="JRebel Debug">
-        <option name="DEBUG_PORT" value="62090" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Executor">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="TomeeConfiguration" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="targets">
-            <list>
-              <WatchedTargetModelImpl>
-                <option name="name" value="CONTEXT_XML" />
-                <name>CONTEXT_XML</name>
-              </WatchedTargetModelImpl>
-              <StagingTargetModelImpl>
-                <option name="name" value="STAGING" />
-                <name>STAGING</name>
-              </StagingTargetModelImpl>
-            </list>
-          </option>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="TOMCAT_LOCALHOST_LOG_ID" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="62091" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="JRebel Debug">
-        <option name="DEBUG_PORT" value="62092" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings>
@@ -484,9 +752,6 @@
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="50280" />
       </RunnerSettings>
-      <RunnerSettings RunnerId="JRebel Debug">
-        <option name="DEBUG_PORT" value="62063" />
-      </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -503,36 +768,6 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Executor">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -566,54 +801,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="targets">
-            <list>
-              <WatchedTargetModelImpl>
-                <option name="name" value="CONTEXT_XML" />
-                <name>CONTEXT_XML</name>
-              </WatchedTargetModelImpl>
-              <StagingTargetModelImpl>
-                <option name="name" value="STAGING" />
-                <name>STAGING</name>
-              </StagingTargetModelImpl>
-            </list>
-          </option>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="TOMCAT_LOCALHOST_LOG_ID" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="62094" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="JRebel Debug">
-        <option name="DEBUG_PORT" value="62095" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="JUnit.SendTest.sendSimpleEmail2" />
       <item itemvalue="JUnit.SendTest.sendSimpleEmail" />
       <item itemvalue="Spring Boot.ResApplication" />
       <item itemvalue="Spring Boot.Admin" />
-      <item itemvalue="Application.TestMysql" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestMysql" />
         <item itemvalue="JUnit.SendTest.sendSimpleEmail2" />
         <item itemvalue="JUnit.SendTest.sendSimpleEmail" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
   </component>
   <component name="SvnConfiguration" cleanupOnStartRun="true">
     <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
@@ -662,355 +864,371 @@
       <workItem from="1591587776610" duration="43916000" />
       <workItem from="1591751335607" duration="32197000" />
       <workItem from="1591842473319" duration="21543000" />
-      <workItem from="1591924660918" duration="17957000" />
-      <workItem from="1591968918897" duration="2771000" />
-      <workItem from="1592004778771" duration="9073000" />
-      <workItem from="1592120089981" duration="776000" />
+      <workItem from="1591924660918" duration="18073000" />
+      <workItem from="1591953074700" duration="1106000" />
+      <workItem from="1592183099054" duration="48049000" />
+      <workItem from="1592354637148" duration="35317000" />
+      <workItem from="1592448891776" duration="46231000" />
+      <workItem from="1592786728658" duration="62266000" />
+      <workItem from="1592975721843" duration="13212000" />
+      <workItem from="1593306532907" duration="300000" />
+      <workItem from="1593307926881" duration="22345000" />
+      <workItem from="1593398420286" duration="47677000" />
+      <workItem from="1593573094466" duration="58069000" />
+      <workItem from="1593999125102" duration="3692000" />
+      <workItem from="1594005533773" duration="41553000" />
+      <workItem from="1594173329162" duration="24380000" />
+      <workItem from="1594257196666" duration="56651000" />
+      <workItem from="1594602771676" duration="52867000" />
+      <workItem from="1594776567993" duration="24771000" />
+      <workItem from="1594860469063" duration="50464000" />
+      <workItem from="1594992948002" duration="359000" />
+      <workItem from="1594993331848" duration="904000" />
     </task>
-    <task id="LOCAL-00129" summary="11">
-      <created>1591261409050</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
+    <task id="LOCAL-00303" summary="11">
+      <created>1593756774045</created>
+      <option name="number" value="00303" />
+      <option name="presentableId" value="LOCAL-00303" />
       <option name="project" value="LOCAL" />
-      <updated>1591261409050</updated>
+      <updated>1593756774045</updated>
     </task>
-    <task id="LOCAL-00130" summary="11">
-      <created>1591261460044</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
+    <task id="LOCAL-00304" summary="11">
+      <created>1594001440047</created>
+      <option name="number" value="00304" />
+      <option name="presentableId" value="LOCAL-00304" />
       <option name="project" value="LOCAL" />
-      <updated>1591261460044</updated>
+      <updated>1594001440048</updated>
     </task>
-    <task id="LOCAL-00131" summary="11">
-      <created>1591328534048</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
+    <task id="LOCAL-00305" summary="11">
+      <created>1594002891328</created>
+      <option name="number" value="00305" />
+      <option name="presentableId" value="LOCAL-00305" />
       <option name="project" value="LOCAL" />
-      <updated>1591328534049</updated>
+      <updated>1594002891328</updated>
     </task>
-    <task id="LOCAL-00132" summary="11">
-      <created>1591335531045</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
+    <task id="LOCAL-00306" summary="11">
+      <created>1594013334051</created>
+      <option name="number" value="00306" />
+      <option name="presentableId" value="LOCAL-00306" />
       <option name="project" value="LOCAL" />
-      <updated>1591335531045</updated>
+      <updated>1594013334051</updated>
     </task>
-    <task id="LOCAL-00133" summary="11">
-      <created>1591337923049</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
+    <task id="LOCAL-00307" summary="11">
+      <created>1594090404045</created>
+      <option name="number" value="00307" />
+      <option name="presentableId" value="LOCAL-00307" />
       <option name="project" value="LOCAL" />
-      <updated>1591337923049</updated>
+      <updated>1594090404045</updated>
     </task>
-    <task id="LOCAL-00134" summary="11">
-      <created>1591338717051</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
+    <task id="LOCAL-00308" summary="11">
+      <created>1594093169054</created>
+      <option name="number" value="00308" />
+      <option name="presentableId" value="LOCAL-00308" />
       <option name="project" value="LOCAL" />
-      <updated>1591338717051</updated>
+      <updated>1594093169054</updated>
     </task>
-    <task id="LOCAL-00135" summary="11">
-      <created>1591339376046</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
+    <task id="LOCAL-00309" summary="11">
+      <created>1594101369046</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
       <option name="project" value="LOCAL" />
-      <updated>1591339376046</updated>
+      <updated>1594101369046</updated>
     </task>
-    <task id="LOCAL-00136" summary="11">
-      <created>1591341676041</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
+    <task id="LOCAL-00310" summary="11">
+      <created>1594103066193</created>
+      <option name="number" value="00310" />
+      <option name="presentableId" value="LOCAL-00310" />
       <option name="project" value="LOCAL" />
-      <updated>1591341676041</updated>
+      <updated>1594103066193</updated>
     </task>
-    <task id="LOCAL-00137" summary="11">
-      <created>1591351167048</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
+    <task id="LOCAL-00311" summary="11">
+      <created>1594103109163</created>
+      <option name="number" value="00311" />
+      <option name="presentableId" value="LOCAL-00311" />
       <option name="project" value="LOCAL" />
-      <updated>1591351167048</updated>
+      <updated>1594103109163</updated>
     </task>
-    <task id="LOCAL-00138" summary="11">
-      <created>1591595155058</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
+    <task id="LOCAL-00312" summary="11">
+      <created>1594103639126</created>
+      <option name="number" value="00312" />
+      <option name="presentableId" value="LOCAL-00312" />
       <option name="project" value="LOCAL" />
-      <updated>1591595155059</updated>
+      <updated>1594103639126</updated>
     </task>
-    <task id="LOCAL-00139" summary="11">
-      <created>1591595668042</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
+    <task id="LOCAL-00313" summary="11">
+      <created>1594103661167</created>
+      <option name="number" value="00313" />
+      <option name="presentableId" value="LOCAL-00313" />
       <option name="project" value="LOCAL" />
-      <updated>1591595668042</updated>
+      <updated>1594103661167</updated>
     </task>
-    <task id="LOCAL-00140" summary="11">
-      <created>1591596871053</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
+    <task id="LOCAL-00314" summary="11">
+      <created>1594106250061</created>
+      <option name="number" value="00314" />
+      <option name="presentableId" value="LOCAL-00314" />
       <option name="project" value="LOCAL" />
-      <updated>1591596871053</updated>
+      <updated>1594106250061</updated>
     </task>
-    <task id="LOCAL-00141" summary="11">
-      <created>1591609166040</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
+    <task id="LOCAL-00315" summary="11">
+      <created>1594106356053</created>
+      <option name="number" value="00315" />
+      <option name="presentableId" value="LOCAL-00315" />
       <option name="project" value="LOCAL" />
-      <updated>1591609166041</updated>
+      <updated>1594106356053</updated>
     </task>
-    <task id="LOCAL-00142" summary="11">
-      <created>1591669687055</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
+    <task id="LOCAL-00316" summary="11">
+      <created>1594180683050</created>
+      <option name="number" value="00316" />
+      <option name="presentableId" value="LOCAL-00316" />
       <option name="project" value="LOCAL" />
-      <updated>1591669687055</updated>
+      <updated>1594180683051</updated>
     </task>
-    <task id="LOCAL-00143" summary="11">
-      <created>1591674332040</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
+    <task id="LOCAL-00317" summary="11">
+      <created>1594271321064</created>
+      <option name="number" value="00317" />
+      <option name="presentableId" value="LOCAL-00317" />
       <option name="project" value="LOCAL" />
-      <updated>1591674332040</updated>
+      <updated>1594271321065</updated>
     </task>
-    <task id="LOCAL-00144" summary="11">
-      <created>1591674668043</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
+    <task id="LOCAL-00318" summary="11">
+      <created>1594272323046</created>
+      <option name="number" value="00318" />
+      <option name="presentableId" value="LOCAL-00318" />
       <option name="project" value="LOCAL" />
-      <updated>1591674668043</updated>
+      <updated>1594272323046</updated>
     </task>
-    <task id="LOCAL-00145" summary="11">
-      <created>1591678848049</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
+    <task id="LOCAL-00319" summary="11">
+      <created>1594352609230</created>
+      <option name="number" value="00319" />
+      <option name="presentableId" value="LOCAL-00319" />
       <option name="project" value="LOCAL" />
-      <updated>1591678848049</updated>
+      <updated>1594352609231</updated>
     </task>
-    <task id="LOCAL-00146" summary="11">
-      <created>1591683733164</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
+    <task id="LOCAL-00320" summary="11">
+      <created>1594363247043</created>
+      <option name="number" value="00320" />
+      <option name="presentableId" value="LOCAL-00320" />
       <option name="project" value="LOCAL" />
-      <updated>1591683733165</updated>
+      <updated>1594363247043</updated>
     </task>
-    <task id="LOCAL-00147" summary="11">
-      <created>1591686223093</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
+    <task id="LOCAL-00321" summary="11">
+      <created>1594373239048</created>
+      <option name="number" value="00321" />
+      <option name="presentableId" value="LOCAL-00321" />
       <option name="project" value="LOCAL" />
-      <updated>1591686223094</updated>
+      <updated>1594373239048</updated>
     </task>
-    <task id="LOCAL-00148" summary="11">
-      <created>1591689347047</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
+    <task id="LOCAL-00322" summary="11">
+      <created>1594607894059</created>
+      <option name="number" value="00322" />
+      <option name="presentableId" value="LOCAL-00322" />
       <option name="project" value="LOCAL" />
-      <updated>1591689347048</updated>
+      <updated>1594607894060</updated>
     </task>
-    <task id="LOCAL-00149" summary="11">
-      <created>1591693901445</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
+    <task id="LOCAL-00323" summary="11">
+      <created>1594610860042</created>
+      <option name="number" value="00323" />
+      <option name="presentableId" value="LOCAL-00323" />
       <option name="project" value="LOCAL" />
-      <updated>1591693901445</updated>
+      <updated>1594610860042</updated>
     </task>
-    <task id="LOCAL-00150" summary="11">
-      <created>1591695769040</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
+    <task id="LOCAL-00324" summary="11">
+      <created>1594611548041</created>
+      <option name="number" value="00324" />
+      <option name="presentableId" value="LOCAL-00324" />
       <option name="project" value="LOCAL" />
-      <updated>1591695769040</updated>
+      <updated>1594611548041</updated>
     </task>
-    <task id="LOCAL-00151" summary="11">
-      <created>1591695804046</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
+    <task id="LOCAL-00325" summary="11">
+      <created>1594612764039</created>
+      <option name="number" value="00325" />
+      <option name="presentableId" value="LOCAL-00325" />
       <option name="project" value="LOCAL" />
-      <updated>1591695804046</updated>
+      <updated>1594612764039</updated>
     </task>
-    <task id="LOCAL-00152" summary="11">
-      <created>1591754482484</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
+    <task id="LOCAL-00326" summary="11">
+      <created>1594618224112</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
       <option name="project" value="LOCAL" />
-      <updated>1591754482486</updated>
+      <updated>1594618224112</updated>
     </task>
-    <task id="LOCAL-00153" summary="11">
-      <created>1591755152042</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
+    <task id="LOCAL-00327" summary="11">
+      <created>1594626386052</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
       <option name="project" value="LOCAL" />
-      <updated>1591755152042</updated>
+      <updated>1594626386052</updated>
     </task>
-    <task id="LOCAL-00154" summary="11">
-      <created>1591755257056</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
+    <task id="LOCAL-00328" summary="11">
+      <created>1594709691048</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
       <option name="project" value="LOCAL" />
-      <updated>1591755257056</updated>
+      <updated>1594709691049</updated>
     </task>
-    <task id="LOCAL-00155" summary="11">
-      <created>1591756820043</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
+    <task id="LOCAL-00329" summary="11">
+      <created>1594715130040</created>
+      <option name="number" value="00329" />
+      <option name="presentableId" value="LOCAL-00329" />
       <option name="project" value="LOCAL" />
-      <updated>1591756820044</updated>
+      <updated>1594715130040</updated>
     </task>
-    <task id="LOCAL-00156" summary="11">
-      <created>1591759819125</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
+    <task id="LOCAL-00330" summary="11">
+      <created>1594716778045</created>
+      <option name="number" value="00330" />
+      <option name="presentableId" value="LOCAL-00330" />
       <option name="project" value="LOCAL" />
-      <updated>1591759819125</updated>
+      <updated>1594716778045</updated>
     </task>
-    <task id="LOCAL-00157" summary="11">
-      <created>1591766239066</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
+    <task id="LOCAL-00331" summary="11">
+      <created>1594717498042</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
       <option name="project" value="LOCAL" />
-      <updated>1591766239066</updated>
+      <updated>1594717498042</updated>
     </task>
-    <task id="LOCAL-00158" summary="11">
-      <created>1591769064075</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
+    <task id="LOCAL-00332" summary="11">
+      <created>1594717519043</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
       <option name="project" value="LOCAL" />
-      <updated>1591769064075</updated>
+      <updated>1594717519043</updated>
     </task>
-    <task id="LOCAL-00159" summary="11">
-      <created>1591769913075</created>
-      <option name="number" value="00159" />
-      <option name="presentableId" value="LOCAL-00159" />
+    <task id="LOCAL-00333" summary="11">
+      <created>1594718845044</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
       <option name="project" value="LOCAL" />
-      <updated>1591769913075</updated>
+      <updated>1594718845044</updated>
     </task>
-    <task id="LOCAL-00160" summary="11">
-      <created>1591770299211</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
+    <task id="LOCAL-00334" summary="11">
+      <created>1594720655040</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
       <option name="project" value="LOCAL" />
-      <updated>1591770299211</updated>
+      <updated>1594720655040</updated>
     </task>
-    <task id="LOCAL-00161" summary="11">
-      <created>1591770454894</created>
-      <option name="number" value="00161" />
-      <option name="presentableId" value="LOCAL-00161" />
+    <task id="LOCAL-00335" summary="11">
+      <created>1594783683142</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
       <option name="project" value="LOCAL" />
-      <updated>1591770454914</updated>
+      <updated>1594783683145</updated>
     </task>
-    <task id="LOCAL-00162" summary="11">
-      <created>1591777201062</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
+    <task id="LOCAL-00336" summary="11">
+      <created>1594789752038</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
       <option name="project" value="LOCAL" />
-      <updated>1591777201062</updated>
+      <updated>1594789752038</updated>
     </task>
-    <task id="LOCAL-00163" summary="11">
-      <created>1591836705446</created>
-      <option name="number" value="00163" />
-      <option name="presentableId" value="LOCAL-00163" />
+    <task id="LOCAL-00337" summary="11">
+      <created>1594800846189</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
       <option name="project" value="LOCAL" />
-      <updated>1591836705446</updated>
+      <updated>1594800846189</updated>
     </task>
-    <task id="LOCAL-00164" summary="11">
-      <created>1591846407048</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
+    <task id="LOCAL-00338" summary="11">
+      <created>1594801974060</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
       <option name="project" value="LOCAL" />
-      <updated>1591846407048</updated>
+      <updated>1594801974060</updated>
     </task>
-    <task id="LOCAL-00165" summary="11">
-      <created>1591846733042</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
+    <task id="LOCAL-00339" summary="11">
+      <created>1594802086047</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
       <option name="project" value="LOCAL" />
-      <updated>1591846733043</updated>
+      <updated>1594802086047</updated>
     </task>
-    <task id="LOCAL-00166" summary="11">
-      <created>1591857504043</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
+    <task id="LOCAL-00340" summary="11">
+      <created>1594864630056</created>
+      <option name="number" value="00340" />
+      <option name="presentableId" value="LOCAL-00340" />
       <option name="project" value="LOCAL" />
-      <updated>1591857504043</updated>
+      <updated>1594864630058</updated>
     </task>
-    <task id="LOCAL-00167" summary="11">
-      <created>1591859153059</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
+    <task id="LOCAL-00341" summary="11">
+      <created>1594865946074</created>
+      <option name="number" value="00341" />
+      <option name="presentableId" value="LOCAL-00341" />
       <option name="project" value="LOCAL" />
-      <updated>1591859153059</updated>
+      <updated>1594865946074</updated>
     </task>
-    <task id="LOCAL-00168" summary="11">
-      <created>1591859252040</created>
-      <option name="number" value="00168" />
-      <option name="presentableId" value="LOCAL-00168" />
+    <task id="LOCAL-00342" summary="11">
+      <created>1594879986091</created>
+      <option name="number" value="00342" />
+      <option name="presentableId" value="LOCAL-00342" />
       <option name="project" value="LOCAL" />
-      <updated>1591859252040</updated>
+      <updated>1594879986091</updated>
     </task>
-    <task id="LOCAL-00169" summary="11">
-      <created>1591861095045</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
+    <task id="LOCAL-00343" summary="11">
+      <created>1594891597056</created>
+      <option name="number" value="00343" />
+      <option name="presentableId" value="LOCAL-00343" />
       <option name="project" value="LOCAL" />
-      <updated>1591861095045</updated>
+      <updated>1594891597057</updated>
     </task>
-    <task id="LOCAL-00170" summary="11">
-      <created>1591863211050</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
+    <task id="LOCAL-00344" summary="11">
+      <created>1594950581046</created>
+      <option name="number" value="00344" />
+      <option name="presentableId" value="LOCAL-00344" />
       <option name="project" value="LOCAL" />
-      <updated>1591863211050</updated>
+      <updated>1594950581046</updated>
     </task>
-    <task id="LOCAL-00171" summary="11">
-      <created>1591928221058</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
+    <task id="LOCAL-00345" summary="11">
+      <created>1594953869041</created>
+      <option name="number" value="00345" />
+      <option name="presentableId" value="LOCAL-00345" />
       <option name="project" value="LOCAL" />
-      <updated>1591928221059</updated>
+      <updated>1594953869041</updated>
     </task>
-    <task id="LOCAL-00172" summary="11">
-      <created>1591931141041</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
+    <task id="LOCAL-00346" summary="11">
+      <created>1594955845099</created>
+      <option name="number" value="00346" />
+      <option name="presentableId" value="LOCAL-00346" />
       <option name="project" value="LOCAL" />
-      <updated>1591931141041</updated>
+      <updated>1594955845099</updated>
     </task>
-    <task id="LOCAL-00173" summary="11">
-      <created>1591939969099</created>
-      <option name="number" value="00173" />
-      <option name="presentableId" value="LOCAL-00173" />
+    <task id="LOCAL-00347" summary="11">
+      <created>1594966684055</created>
+      <option name="number" value="00347" />
+      <option name="presentableId" value="LOCAL-00347" />
       <option name="project" value="LOCAL" />
-      <updated>1591939969100</updated>
+      <updated>1594966684055</updated>
     </task>
-    <task id="LOCAL-00174" summary="11">
-      <created>1591942103044</created>
-      <option name="number" value="00174" />
-      <option name="presentableId" value="LOCAL-00174" />
+    <task id="LOCAL-00348" summary="11">
+      <created>1594970668053</created>
+      <option name="number" value="00348" />
+      <option name="presentableId" value="LOCAL-00348" />
       <option name="project" value="LOCAL" />
-      <updated>1591942103044</updated>
+      <updated>1594970668053</updated>
     </task>
-    <task id="LOCAL-00175" summary="11">
-      <created>1591945409042</created>
-      <option name="number" value="00175" />
-      <option name="presentableId" value="LOCAL-00175" />
+    <task id="LOCAL-00349" summary="11">
+      <created>1594972541048</created>
+      <option name="number" value="00349" />
+      <option name="presentableId" value="LOCAL-00349" />
       <option name="project" value="LOCAL" />
-      <updated>1591945409042</updated>
+      <updated>1594972541048</updated>
     </task>
-    <task id="LOCAL-00176" summary="11">
-      <created>1591946298046</created>
-      <option name="number" value="00176" />
-      <option name="presentableId" value="LOCAL-00176" />
+    <task id="LOCAL-00350" summary="11">
+      <created>1594975456041</created>
+      <option name="number" value="00350" />
+      <option name="presentableId" value="LOCAL-00350" />
       <option name="project" value="LOCAL" />
-      <updated>1591946298046</updated>
+      <updated>1594975456041</updated>
     </task>
-    <task id="LOCAL-00177" summary="11">
-      <created>1591949260040</created>
-      <option name="number" value="00177" />
-      <option name="presentableId" value="LOCAL-00177" />
+    <task id="LOCAL-00351" summary="11">
+      <created>1594976481060</created>
+      <option name="number" value="00351" />
+      <option name="presentableId" value="LOCAL-00351" />
       <option name="project" value="LOCAL" />
-      <updated>1591949260040</updated>
+      <updated>1594976481060</updated>
     </task>
-    <option name="localTasksCounter" value="178" />
+    <option name="localTasksCounter" value="352" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1064,95 +1282,70 @@
     <option name="LAST_COMMIT_MESSAGE" value="11" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="94" key="#Project_Structure" timestamp="1591971315140">
+    <state width="636" height="282" key="GridCell.Tab.0.bottom" timestamp="1594994149252">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1591971315140" />
-    <state x="414" y="175" width="1174" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592007045598">
+    <state width="636" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149252" />
+    <state width="636" height="282" key="GridCell.Tab.0.center" timestamp="1594994149252">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" width="1174" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592007045598" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592015421374">
+    <state width="636" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149252" />
+    <state width="636" height="282" key="GridCell.Tab.0.left" timestamp="1594994149252">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592015421374" />
-    <state width="993" height="289" key="GridCell.Tab.0.bottom" timestamp="1592120674651">
+    <state width="636" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149252" />
+    <state width="636" height="282" key="GridCell.Tab.0.right" timestamp="1594994149252">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674651" />
-    <state width="993" height="289" key="GridCell.Tab.0.center" timestamp="1592120674651">
+    <state width="636" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149252" />
+    <state width="636" height="282" key="GridCell.Tab.1.bottom" timestamp="1594994149047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674651" />
-    <state width="993" height="289" key="GridCell.Tab.0.left" timestamp="1592120674650">
+    <state width="636" height="282" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149047" />
+    <state width="636" height="282" key="GridCell.Tab.1.center" timestamp="1594994149047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674650" />
-    <state width="993" height="289" key="GridCell.Tab.0.right" timestamp="1592120674651">
+    <state width="636" height="282" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149047" />
+    <state width="636" height="282" key="GridCell.Tab.1.left" timestamp="1594994149047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674651" />
-    <state width="993" height="289" key="GridCell.Tab.1.bottom" timestamp="1592120674464">
+    <state width="636" height="282" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149047" />
+    <state width="636" height="282" key="GridCell.Tab.1.right" timestamp="1594994149047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674464" />
-    <state width="993" height="289" key="GridCell.Tab.1.center" timestamp="1592120674464">
+    <state width="636" height="282" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149047" />
+    <state width="636" height="282" key="GridCell.Tab.2.bottom" timestamp="1594994149048">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674464" />
-    <state width="993" height="289" key="GridCell.Tab.1.left" timestamp="1592120674464">
+    <state width="636" height="282" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149048" />
+    <state width="636" height="282" key="GridCell.Tab.2.center" timestamp="1594994149047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674464" />
-    <state width="993" height="289" key="GridCell.Tab.1.right" timestamp="1592120674464">
+    <state width="636" height="282" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149047" />
+    <state width="636" height="282" key="GridCell.Tab.2.left" timestamp="1594994149047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674464" />
-    <state width="993" height="289" key="GridCell.Tab.2.bottom" timestamp="1592120674465">
+    <state width="636" height="282" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149047" />
+    <state width="636" height="282" key="GridCell.Tab.2.right" timestamp="1594994149047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674465" />
-    <state width="993" height="289" key="GridCell.Tab.2.center" timestamp="1592120674464">
+    <state width="636" height="282" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594994149047" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1594993889275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674464" />
-    <state width="993" height="289" key="GridCell.Tab.2.left" timestamp="1592120674464">
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594993889275" />
+    <state x="662" y="252" width="596" height="536" key="find.popup" timestamp="1594993819200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="993" height="289" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674464" />
-    <state width="993" height="289" key="GridCell.Tab.2.right" timestamp="1592120674465">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="993" height="289" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592120674465" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1592007176177">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592007176177" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1591969331343">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591969331343" />
-    <state x="662" y="252" width="652" height="536" key="find.popup" timestamp="1592011442005">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="662" y="252" width="652" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592011442005" />
-    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup" timestamp="1592120837248">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592120837248" />
+    <state x="662" y="252" width="596" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594993819200" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/XmxxglController.java</url>
-          <line>817</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/app/controller/XmxxglController.java</url>
-          <line>170</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/admin/src/main/java/com/hwp/admin/system/controller/SysMessageController.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="435" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1170,5 +1363,82 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>admin:war</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web|admin</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

@@ -16,7 +16,7 @@
                                 style=" color: #ec1a0d;"><p th:text="${xmxxgl.cpmc}"></p></i></a>
                     </h3>
                 </div>
-                <div class="layui-inline layui-col-md-offset9">
+                <div class="layui-inline layui-col-md-offset8">
                     <label class="layui-form-label">当前阶段：</label>
                     <div class="layui-input-block">
                         <itech:code property="xmjd" parentCode="xmjd" type="select"
@@ -45,20 +45,21 @@
                             <col width="170">
                             <col>
                         </colgroup>
-                        <!--<thead>
-                        <tr>
-                            <th width="15%">产品名称</th>
-                            <th width="15%">业务类型</th>
-                            <th width="15%">产品规模</th>
-                            <th width="15%">产品期限</th>
-                            <th width="15%">预期收益</th>
-                            <th width="15%">当前状态</th>
+                        <thead>
+                        <tr class="title layui-bg-gray">
+                            <th width="2%">序号</th>
+                            <th width="6%">状态</th>
+                            <th width="36%">名称</th>
+                            <th width="10%">开始时间</th>
+                            <th width="10%">截止时间</th>
+                            <th width="10%">负责人</th>
+                            <th width="15%">操作</th>
                         </tr>
-                        </thead>-->
+                        </thead>
                         <tbody>
                         {{# layui.each(d, function(index, xmItem){ }}
                         <tr>
-                            <td width="1%">{{ xmItem.rwxh }}</td>
+                            <td width="2%">{{ xmItem.rwxh }}</td>
                             <td width="6%">{{ xmItem.status }}</td>
                             <td width="36%">{{ xmItem.title }}</td>
                             <td width="10%">{{ xmItem.startDate==null?"":(xmItem.startDate) }}</td>
@@ -70,14 +71,18 @@
                                    href="javascript:updateData('{{ xmItem.id }}','{{ xmItem.xmId }}')"><i
                                         class="layui-icon layui-icon-edit"></i>修改</a>
                                 <a class="layui-btn  layui-btn-danger layui-btn-xs" lay-event="delete"
-                                               id="removerow"
-                                               href="javascript:deleteData('{{ xmItem.id }}','{{ xmItem.xmId }}')"><i
-                                    class="layui-icon layui-icon-delete"></i>删除</a></td>
+                                   id="removerow"
+                                   href="javascript:deleteData('{{ xmItem.id }}','{{ xmItem.xmId }}')"><i
+                                        class="layui-icon layui-icon-delete"></i>删除</a>
+                                <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="update"
+                                   id="beizhu"
+                                   href="javascript:rwbz('{{ xmItem.id }}','{{ xmItem.xmId }}')"><i
+                                        class="layui-icon layui-icon-login-wechat"></i>备注</a></td>
                         </tr>
                         {{# }); }}
                         {{# if(d.length === 0){ }}
                         <tr>
-                            <td colspan="6" align="center">无数据</td>
+                            <td colspan="6" align="center">暂无相关数据</td>
                         </tr>
                         {{# } }}
                         </tbody>

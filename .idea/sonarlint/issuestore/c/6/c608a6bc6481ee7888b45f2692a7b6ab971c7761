@@ -1,0 +1,106 @@
+
+l	java:S117É"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÈ”¾şÿÿÿÿ
+K
+java:S3740†"/Provide the parametrized type for this generic.(ìÀºåùÿÿÿÿ
+|
+java:S1192ç"YDefine a constant instead of duplicating this literal "ä¿®æ”¹é¡¹ç›®ä»»åŠ¡ä¿¡æ¯" 3 times.(Ñ‘€´ùÿÿÿÿ8—´ ä¬.
+p
+java:S2293ú"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+u
+java:S2293Î"YReplace the type specification in this constructor call with the diamond operator ("<>").(çœµ‰şÿÿÿÿ
+d
+java:S4488…"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÏÊÃ×ûÿÿÿÿ
+]
+java:S1854":Remove this useless assignment to local variable "rwczjl".(ÙË›¸ûÿÿÿÿ8—´ ä¬.
+b
+java:S3252«"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(èˆì‰8—´ ä¬.
+p
+java:S3776ƒ"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(£™¢õ8—´ ä¬.
+Q	java:S125õ"<This block of commented-out lines of code should be removed.(î“Ë/
+l	java:S117“"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÈ”¾şÿÿÿÿ
+I
+java:S1135Ó"2Complete the task associated to this TODO comment.(ÚëÚô
+i
+java:S2259¥"MA "NullPointerException" could be thrown; "createTimeScope" is nullable here.(šœÍˆşÿÿÿÿ
+o
+java:S1192¶"YDefine a constant instead of duplicating this literal "é¡¹ç›®ä»»åŠ¡ä¿¡æ¯ç®¡ç†" 5 times.(İ«±}
+d
+java:S1192‹"FDefine a constant instead of duplicating this literal "zrwxh" 5 times.(èˆì‰8—´ ä¬.
+l
+java:S1192Ÿ"PDefine a constant instead of duplicating this literal "createTimeScope" 3 times.(ıĞ¨ùÿÿÿÿÿ
+f
+java:S4488Ã"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(œ›¼Ÿ8—´ ä¬.
+k
+java:S4488Ù"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(—·Œÿÿÿÿÿ8—´ ä¬.
+^
+java:S1192"GDefine a constant instead of duplicating this literal "xmrwxx" 3 times.(ÙŸ˜è
+]
+java:S1854Ã":Remove this useless assignment to local variable "rwczjl".(ÙË›¸ûÿÿÿÿ8—´ ä¬.
+u	java:S116B"[Rename this field "FileSynchronizer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¶¤®ûÿÿÿÿ
+w
+java:S2293Í"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»8—´ ä¬.
+F
+java:S3740„"/Provide the parametrized type for this generic.(ÑÖ³±
+P
+java:S1135ä"2Complete the task associated to this TODO comment.(ÚëÚô8—´ ä¬.
+f
+java:S5361™"HReplace this call to "replaceAll()" by a call to the "replace()" method.(´²»²8—´ ä¬.
+b
+java:S3252‹"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(èˆì‰8—´ ä¬.
+I
+java:S1135À"2Complete the task associated to this TODO comment.(ÚëÚô
+v
+java:S1192‡"ZDefine a constant instead of duplicating this literal "[{'zrwxh':'', 'rwmc':''}]" 3 times.(üÎ¹ùÿÿÿÿ
+>
+java:S1659"'Declare "startTime" on a separate line.(®÷ŞÜ
+n
+java:S1192·"PDefine a constant instead of duplicating this literal "/app/xmrwxx/add" 3 times.(…Ù®…8—´ ä¬.
+J
+java:S3752l"/Consider narrowing this list of methods to one.(×÷˜åùÿÿÿÿ
+W
+java:S3457t"AFormat specifiers should be used instead of string concatenation.(ôë™Á
+H
+java:S1135~"2Complete the task associated to this TODO comment.(ÚëÚô
+d
+java:S4488×"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ïâãòúÿÿÿÿ
+g
+java:S3252¬"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(Ê¡ÆÈÿÿÿÿÿ8—´ ä¬.
+W	java:S125à"<This block of commented-out lines of code should be removed.(ÿ˜ºˆşÿÿÿÿ
+^	java:S125ß"<This block of commented-out lines of code should be removed.(ç¯è¹şÿÿÿÿ8—´ ä¬.
+<
+java:S1659"%Declare "endTime" on a separate line.(®÷ŞÜ
+p
+java:S2293È"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+w
+java:S2293ë"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»8—´ ä¬.
+J
+java:S1066]"/Merge this if statement with the enclosing one.(ÑÎ¤½ùÿÿÿÿ
+g
+java:S3252²"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(Ê¡ÆÈÿÿÿÿÿ8—´ ä¬.
+M
+java:S3740™"/Provide the parametrized type for this generic.(ÑÖ³±8—´ ä¬.
+I
+java:S1135"2Complete the task associated to this TODO comment.(ÚëÚô
+_
+java:S4488‚"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(°¢ÍË
+P
+java:S1135Å"2Complete the task associated to this TODO comment.(ÚëÚô8—´ ä¬.
+N
+java:S1135"2Complete the task associated to this TODO comment.(àÇ­şÿÿÿÿ
+i
+java:S4042i"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(áùˆ«ûÿÿÿÿ
+p
+java:S2293—"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+I
+java:S1135¿"2Complete the task associated to this TODO comment.(ÚëÚô
+P
+java:S1135ò"2Complete the task associated to this TODO comment.(ÚëÚô8—´ ä¬.
+R
+java:S3740›"/Provide the parametrized type for this generic.(ìÀºåùÿÿÿÿ8—´ ä¬.
+‚
+java:S1192ä"_Define a constant instead of duplicating this literal "é¡¹ç›®ä»»åŠ¡ä¿¡æ¯ä¿®æ”¹æˆåŠŸ" 3 times.(ÎáĞ˜øÿÿÿÿ8—´ ä¬.
+g
+java:S3252Œ"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(Ê¡ÆÈÿÿÿÿÿ8—´ ä¬.
+b
+java:S3252±"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(èˆì‰8—´ ä¬.
+l	java:S117û"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÈ”¾şÿÿÿÿ

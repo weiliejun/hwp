@@ -87,6 +87,7 @@ E:\Workspaces\hwp\common\src\main\java\com\hwp\common\components\cfca\trustsign\
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\util\StringHelper.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\loginlog\bean\AppLoginLog.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\userRecharge\bean\UserRecharge.java
+E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\rwbzjl\bean\Rwbzjl.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\websiteCase\bean\WebsiteCase.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\service\userManage\UserAuthenticationInfoService.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\service\userProdSigingService\UserProdSigingService.java
@@ -130,6 +131,7 @@ E:\Workspaces\hwp\common\src\main\java\com\hwp\common\thirdparty\service\ThirdPa
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\components\cfca\trustsign\common\vo\request\tx3\Tx3001ReqVO.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\util\GetMacAddress.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\util\CommonReadParam.java
+E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\rwczjl\bean\Rwczjl.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\userTransaction\dto\UserTransactionSumDTO.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\components\cfca\trustsign\common\vo\cs\ContractVO.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\components\cfca\trustsign\common\vo\response\tx3\Tx3002ResVO.java
@@ -140,6 +142,7 @@ E:\Workspaces\hwp\common\src\main\java\com\hwp\common\components\cfca\trustsign\
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\userWebsiteBulletinRead\dao\UserWebsiteBulletinReadDao.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\components\exception\IORuntimeException.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\service\userRechargeManage\UserRechargeService.java
+E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\rwczjl\dao\RwczjlMapper.java
 E:\Workspaces\hwp\common\src\main\java\com\csii\bop\pcommon\signature\keymanager\DataCertCreate.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\web\filter\XssHttpServletRequestWrapper.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\web\bean\CurrentUser.java
@@ -196,6 +199,7 @@ E:\Workspaces\hwp\common\src\main\java\com\hwp\common\components\filesync\action
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\util\KeyManager.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\redis\RedisCacheConfig.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\util\HttpConnectionManager.java
+E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\rybgsq\bean\Rybgsq.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\constant\MessageBusiType.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\db\AbstractBaseDao.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\spsqxx\bean\Spsqxx.java
@@ -216,6 +220,7 @@ E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\spsqxx\bean\XmSpsqxx
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\redis\RedisCluster.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\service\broadcastManage\BroadcastService.java
 E:\Workspaces\hwp\common\src\main\java\test\TestNumber.java
+E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\rwbzjl\dao\RwbzjlMapper.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\util\BASE64Util.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\user\dto\UserProductInfoDTO.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\components\cfca\trustsign\common\vo\response\tx3\Tx3204ResVO.java
@@ -301,6 +306,7 @@ E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\userSmsTemplateAppli
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\thirdparty\service\ThirdPartyCallServiceImpl.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\constant\ResultCode.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\userTransaction\dto\UserAndProductAndTransactionDTO.java
+E:\Workspaces\hwp\common\src\main\java\com\hwp\common\model\rybgsq\dao\RybgsqMapper.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\service\prodRevenueStatusService\ProdRevenueStatusService.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\constant\JinShangInterfaceConstant.java
 E:\Workspaces\hwp\common\src\main\java\com\hwp\common\util\HttpClientUtil.java

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="RybgsqMapper" >
+  <resultMap id="BaseResultMap" type="com.hwp.common.model.rybgsq.bean.Rybgsq" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="RY_ID" property="ryId" jdbcType="VARCHAR" />
+    <result column="SQNR" property="sqnr" jdbcType="VARCHAR" />
+    <result column="BGSM" property="bgsm" jdbcType="VARCHAR" />
+    <result column="SPR" property="spr" jdbcType="VARCHAR" />
+    <result column="SPR_ID" property="sprId" jdbcType="VARCHAR" />
+    <result column="SPR_NAME" property="sprName" jdbcType="VARCHAR" />
+    <result column="CREATOR_ID" property="creatorId" jdbcType="VARCHAR" />
+    <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="CHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR" />
+    <result column="EDIT_TIME" property="editTime" jdbcType="CHAR" />
+    <result column="EDITOR_ID" property="editorId" jdbcType="INTEGER" />
+    <result column="EDITOR_NAME" property="editorName" jdbcType="VARCHAR" />
+    <result column="SPYJ" property="spyj" jdbcType="VARCHAR" />
+    <result column="SPMS" property="spms" jdbcType="VARCHAR" />
+    <result column="ZHR" property="zhr" jdbcType="VARCHAR" />
+    <result column="ZHR_ID" property="zhrId" jdbcType="VARCHAR" />
+    <result column="ZHR_NAME" property="zhrName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, RY_ID, SQNR, BGSM, SPR, SPR_ID, SPR_NAME, CREATOR_ID, CREATOR_NAME, CREATE_TIME, 
+    REMARK, DATA_STATUS, EDIT_TIME, EDITOR_ID, EDITOR_NAME, SPYJ, SPMS, ZHR, ZHR_ID, 
+    ZHR_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from RYBGSQ
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from RYBGSQ
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hwp.common.model.rybgsq.bean.Rybgsq" >
+    insert into RYBGSQ (ID, RY_ID, SQNR, 
+      BGSM, SPR, SPR_ID, SPR_NAME, 
+      CREATOR_ID, CREATOR_NAME, CREATE_TIME, 
+      REMARK, DATA_STATUS, EDIT_TIME, 
+      EDITOR_ID, EDITOR_NAME, SPYJ, 
+      SPMS, ZHR, ZHR_ID, ZHR_NAME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{ryId,jdbcType=VARCHAR}, #{sqnr,jdbcType=VARCHAR}, 
+      #{bgsm,jdbcType=VARCHAR}, #{spr,jdbcType=VARCHAR}, #{sprId,jdbcType=VARCHAR}, #{sprName,jdbcType=VARCHAR}, 
+      #{creatorId,jdbcType=VARCHAR}, #{creatorName,jdbcType=VARCHAR}, #{createTime,jdbcType=CHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, #{editTime,jdbcType=CHAR}, 
+      #{editorId,jdbcType=INTEGER}, #{editorName,jdbcType=VARCHAR}, #{spyj,jdbcType=VARCHAR}, 
+      #{spms,jdbcType=VARCHAR}, #{zhr,jdbcType=VARCHAR}, #{zhrId,jdbcType=VARCHAR}, #{zhrName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hwp.common.model.rybgsq.bean.Rybgsq" >
+    insert into RYBGSQ
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="ryId != null" >
+        RY_ID,
+      </if>
+      <if test="sqnr != null" >
+        SQNR,
+      </if>
+      <if test="bgsm != null" >
+        BGSM,
+      </if>
+      <if test="spr != null" >
+        SPR,
+      </if>
+      <if test="sprId != null" >
+        SPR_ID,
+      </if>
+      <if test="sprName != null" >
+        SPR_NAME,
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID,
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS,
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME,
+      </if>
+      <if test="editorId != null" >
+        EDITOR_ID,
+      </if>
+      <if test="editorName != null" >
+        EDITOR_NAME,
+      </if>
+      <if test="spyj != null" >
+        SPYJ,
+      </if>
+      <if test="spms != null" >
+        SPMS,
+      </if>
+      <if test="zhr != null" >
+        ZHR,
+      </if>
+      <if test="zhrId != null" >
+        ZHR_ID,
+      </if>
+      <if test="zhrName != null" >
+        ZHR_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="ryId != null" >
+        #{ryId,jdbcType=VARCHAR},
+      </if>
+      <if test="sqnr != null" >
+        #{sqnr,jdbcType=VARCHAR},
+      </if>
+      <if test="bgsm != null" >
+        #{bgsm,jdbcType=VARCHAR},
+      </if>
+      <if test="spr != null" >
+        #{spr,jdbcType=VARCHAR},
+      </if>
+      <if test="sprId != null" >
+        #{sprId,jdbcType=VARCHAR},
+      </if>
+      <if test="sprName != null" >
+        #{sprName,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=CHAR},
+      </if>
+      <if test="editorId != null" >
+        #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="editorName != null" >
+        #{editorName,jdbcType=VARCHAR},
+      </if>
+      <if test="spyj != null" >
+        #{spyj,jdbcType=VARCHAR},
+      </if>
+      <if test="spms != null" >
+        #{spms,jdbcType=VARCHAR},
+      </if>
+      <if test="zhr != null" >
+        #{zhr,jdbcType=VARCHAR},
+      </if>
+      <if test="zhrId != null" >
+        #{zhrId,jdbcType=VARCHAR},
+      </if>
+      <if test="zhrName != null" >
+        #{zhrName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hwp.common.model.rybgsq.bean.Rybgsq" >
+    update RYBGSQ
+    <set >
+      <if test="ryId != null" >
+        RY_ID = #{ryId,jdbcType=VARCHAR},
+      </if>
+      <if test="sqnr != null" >
+        SQNR = #{sqnr,jdbcType=VARCHAR},
+      </if>
+      <if test="bgsm != null" >
+        BGSM = #{bgsm,jdbcType=VARCHAR},
+      </if>
+      <if test="spr != null" >
+        SPR = #{spr,jdbcType=VARCHAR},
+      </if>
+      <if test="sprId != null" >
+        SPR_ID = #{sprId,jdbcType=VARCHAR},
+      </if>
+      <if test="sprName != null" >
+        SPR_NAME = #{sprName,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME = #{editTime,jdbcType=CHAR},
+      </if>
+      <if test="editorId != null" >
+        EDITOR_ID = #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="editorName != null" >
+        EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+      </if>
+      <if test="spyj != null" >
+        SPYJ = #{spyj,jdbcType=VARCHAR},
+      </if>
+      <if test="spms != null" >
+        SPMS = #{spms,jdbcType=VARCHAR},
+      </if>
+      <if test="zhr != null" >
+        ZHR = #{zhr,jdbcType=VARCHAR},
+      </if>
+      <if test="zhrId != null" >
+        ZHR_ID = #{zhrId,jdbcType=VARCHAR},
+      </if>
+      <if test="zhrName != null" >
+        ZHR_NAME = #{zhrName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.rybgsq.bean.Rybgsq" >
+    update RYBGSQ
+    set RY_ID = #{ryId,jdbcType=VARCHAR},
+      SQNR = #{sqnr,jdbcType=VARCHAR},
+      BGSM = #{bgsm,jdbcType=VARCHAR},
+      SPR = #{spr,jdbcType=VARCHAR},
+      SPR_ID = #{sprId,jdbcType=VARCHAR},
+      SPR_NAME = #{sprName,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      EDIT_TIME = #{editTime,jdbcType=CHAR},
+      EDITOR_ID = #{editorId,jdbcType=INTEGER},
+      EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+      SPYJ = #{spyj,jdbcType=VARCHAR},
+      SPMS = #{spms,jdbcType=VARCHAR},
+      ZHR = #{zhr,jdbcType=VARCHAR},
+      ZHR_ID = #{zhrId,jdbcType=VARCHAR},
+      ZHR_NAME = #{zhrName,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectRybgsqList" parameterType="com.hwp.common.model.rybgsq.bean.Rybgsq" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from RYBGSQ
+    <where>
+      DATA_STATUS='1'
+      <if test="ryId != null">
+        and RY_ID = #{ryId,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY CREATE_TIME DESC
+  </select>
+  <select id="listRybgsqByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from RYBGSQ
+    <where>
+      DATA_STATUS='1'
+      <if test="ryId != null">
+        and RY_ID = #{ryId,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY CREATE_TIME DESC
+  </select>
+  <select id="selectByRyId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from RYBGSQ
+    where RY_ID = #{ryId,jdbcType=VARCHAR}
+  </select>
+</mapper>

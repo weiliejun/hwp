@@ -2,13 +2,19 @@ package com.hwp.admin;
 
 import com.github.pagehelper.PageHelper;
 import com.hwp.common.web.filter.CustomCookieFilter;
+import org.apache.catalina.Context;
 import org.apache.ibatis.plugin.Interceptor;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -36,6 +42,9 @@ import java.util.Properties;
 public class Admin extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Admin.class, args);
+
+        System.setProperty("tomcat.util.http.parser.HttpParser.requestTargetAllow","[]|{}^\"\\<\\>");
+
     }
 
     @Override
@@ -96,4 +105,20 @@ public class Admin extends SpringBootServletInitializer {
         return factory.createMultipartConfig();
     }*/
 
+    @Bean
+    public WebServerFactoryCustomizer<TomcatServletWebServerFactory>
+    containerCustomizer(){
+        return new EmbeddedTomcatCustomizer();
+    }
+
+    private static class EmbeddedTomcatCustomizer implements WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
+
+        @Override
+        public void customize(TomcatServletWebServerFactory factory) {
+            factory.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> {
+                connector.setAttribute("relaxedPathChars", "<>[\\]^`{|}");
+                connector.setAttribute("relaxedQueryChars", "<>[\\]^`{|}");
+            });
+        }
+    }
 }

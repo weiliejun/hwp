@@ -386,7 +386,7 @@ public class Constants {
     public static final String USER_TYPE_PUBLIC = "0"; //大众版或直接支付
     //渠道类型
     public static final String CHANNEL_TYPE_PUBLIC = "0"; //大众版或直接支付
-//	public static final String USER_TYPE_PROFESSIONAL = "1"; //专业�?
+    //	public static final String USER_TYPE_PROFESSIONAL = "1"; //专业�?
 //	public static final String USER_TYPE_COMMPANY = "2"; //公司客户
 //	public static final String USER_TYPE_SIGN = "3"; //个人签约客户
 //	public static final String USER_TYPE_COMMPANY_SIGN = "4";// 公司签约客户
@@ -535,10 +535,10 @@ public class Constants {
     public static final String CHONGZHENG = "4"; //冲销
     public static final String MEMOCODETRANSID = "MemoCodeTransId";   //摘要�?
 
-//    public static final String FILENAME="FILNAME";   //文件�?
+    //    public static final String FILENAME="FILNAME";   //文件�?
     public static final String HOSTSEQNO = "HostSeqNo";
 
-//    public static final String HOSTSERSEQNO="SerSeqNo";
+    //    public static final String HOSTSERSEQNO="SerSeqNo";
     public static final String HOSTDATE = "HostDate";
     public static final String DEPARTMENTENTITY = "departmentEntity";
     public static final String AGREEMENTENTITY = "AgreementEntity";
@@ -572,7 +572,7 @@ public class Constants {
     public static final String FILE_BATCH_HANDLER_SINGLE = "6"; //可以产生单笔�?�?
     public static final String FILE_BATCH_FILE_NO_HANDLE = "0"; //未处�?
 
-//	public static final String FILE_BATCH_HANDLER_SINGLE_DOWNFAIL = "7"; //下载批量�?款文件失�?
+    //	public static final String FILE_BATCH_HANDLER_SINGLE_DOWNFAIL = "7"; //下载批量�?款文件失�?
     public static final String STATUS_U = "U"; //交易处理�?(未知状�??)
     public static final String STATUS_Y = "Y"; //交易成功
     public static final String STATUS_N = "N"; //交易失败
@@ -664,6 +664,7 @@ public class Constants {
      */
     public static final String MER_ISBANK_0 = "0"; //本行
     public static final String MER_ISBANK_1 = "1"; //他行
+
     private Constants() {
 
     }

@@ -47,7 +47,7 @@
         var PageContext = {
             contextPath: [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]],
             getUrl: function (url) {
-                return this.contextPath + url;
+                return this.contextPath + encodeURI(url);
             }
         };
         layui.config({
@@ -81,12 +81,23 @@
     </script>
 
     <style>
-        .layui-form-label{
+        .layui-form-label {
             width: 100px;
         }
+
         .layui-input-block {
             margin-left: 130px;
             min-height: 36px
+        }
+
+        .layui-nav-child {
+            margin-left: 10px;
+        }
+
+        /*{# 设置table每一行的height #}*/
+        .layui-table-cell {
+            height: auto;
+            line-height: 28px;
         }
     </style>
 </head>

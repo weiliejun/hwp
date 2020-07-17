@@ -204,7 +204,7 @@ public class ProductUploadController extends AbstractBaseController {
                     .getOriginalFilename());
             String extension = StringHelper.unqualify(fileName).toLowerCase();
             int type = ImageHelper.IMAGE_UNKNOWN;
-            if (uploadFile.getSize() > 1048576) {
+            if (uploadFile.getSize() > 20480000) {
                 map.put("code", "big");
                 map.put("tmpFileName", fileName);
             } else if (extension.equals("jpg") || extension.equals("jpeg")
@@ -228,7 +228,7 @@ public class ProductUploadController extends AbstractBaseController {
                 try {
                     // 临时文件名称不能有汉字，统一重命名
                     String tmpFileName = RandomUtil.getSerialNumber() + "." + extension;
-                    String tmpPath = GlobalConstant.APP_QIYEBAO_TEMP_USER_PHOTO_PATH + File.separator;
+                    String tmpPath = GlobalConstant.APP_QIYEBAO_TEMP_USER_PHOTO_PATH;
                     if (uploadFile != null && !uploadFile.isEmpty()) {
                         logger.info("原临时图片不存在或已删除！");
                         logger.info("tmpPath=======================" + tmpPath);
@@ -257,7 +257,7 @@ public class ProductUploadController extends AbstractBaseController {
                             jsonAry = new JSONArray();
                             JSONObject uploadFileInfo = new JSONObject();
                             uploadFileInfo.put("name", file.getName());
-                            uploadFileInfo.put("path", FileSynchronizer.getReceiverUrl() + savePath + file.getName());
+                            uploadFileInfo.put("path", FileSynchronizer.getReceiverUrl() + savePath.replaceAll("\\\\","/") + file.getName());
                             uploadFileInfo.put("type", file.getName().substring(file.getName().indexOf(".") + 1, file.getName().length()));
                             uploadFileInfo.put("thumbnail", "null");
                             jsonAry.add(uploadFileInfo);

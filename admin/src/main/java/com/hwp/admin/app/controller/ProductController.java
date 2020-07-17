@@ -101,10 +101,10 @@ public class ProductController extends AbstractBaseController {
             if (StringUtils.isNotBlank(attachFile)) {
                 //对去除空格转义符处理
                 String a = HtmlUtils.htmlUnescape(attachFile.replaceAll(" ", ""));
-                AttachFileHref attachFileHref = new AttachFileHref();
                 Map<String, String> parse = (Map<String, String>) JSON.parse(a);
                 List<AttachFileHref> fileHrefList = new ArrayList<>();
                 for (Map.Entry<String, String> entry : parse.entrySet()) {
+                    AttachFileHref attachFileHref = new AttachFileHref();
                     attachFileHref.setFileName(entry.getKey());
                     attachFileHref.setFileUrl(entry.getValue());
                     fileHrefList.add(attachFileHref);
@@ -150,10 +150,10 @@ public class ProductController extends AbstractBaseController {
             if (StringUtils.isNotBlank(attachFile)) {
                 //对去除空格转义符处理
                 String a = HtmlUtils.htmlUnescape(attachFile.replaceAll(" ", ""));
-                AttachFileHref attachFileHref = new AttachFileHref();
                 Map<String, String> parse = (Map<String, String>) JSON.parse(a);
                 List<AttachFileHref> fileHrefList = new ArrayList<>();
                 for (Map.Entry<String, String> entry : parse.entrySet()) {
+                    AttachFileHref attachFileHref = new AttachFileHref();
                     attachFileHref.setFileName(entry.getKey());
                     attachFileHref.setFileUrl(entry.getValue());
                     fileHrefList.add(attachFileHref);
@@ -196,11 +196,11 @@ public class ProductController extends AbstractBaseController {
             model.addAttribute("message", "产品附件不存在");
         } else {
             String attachFile = productOtherAttachFile.getAttachFile();
-            AttachFileHref attachFileHref = new AttachFileHref();
             String a = HtmlUtils.htmlUnescape(attachFile.replaceAll(" ", ""));
             Map<String, String> parse = (Map<String, String>) JSON.parse(a);
             List<AttachFileHref> fileHrefList = new ArrayList<>();
             for (Map.Entry<String, String> entry : parse.entrySet()) {
+                AttachFileHref attachFileHref = new AttachFileHref();
                 attachFileHref.setFileName(entry.getKey());
                 attachFileHref.setFileUrl(entry.getValue());
                 fileHrefList.add(attachFileHref);
@@ -243,11 +243,11 @@ public class ProductController extends AbstractBaseController {
             model.addAttribute("message", "产品附件不存在");
         } else {
             String attachFile = productOtherAttachFile.getAttachFile();
-            AttachFileHref attachFileHref = new AttachFileHref();
             String a = HtmlUtils.htmlUnescape(attachFile.replaceAll(" ", ""));
             Map<String, String> parse = (Map<String, String>) JSON.parse(a);
             List<AttachFileHref> fileHrefList = new ArrayList<>();
             for (Map.Entry<String, String> entry : parse.entrySet()) {
+                AttachFileHref attachFileHref = new AttachFileHref();
                 attachFileHref.setFileName(entry.getKey());
                 attachFileHref.setFileUrl(entry.getValue());
                 fileHrefList.add(attachFileHref);

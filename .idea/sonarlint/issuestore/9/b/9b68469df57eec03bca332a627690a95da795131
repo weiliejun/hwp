@@ -1,0 +1,30 @@
+
+S	java:S106("9Replace this use of System.out or System.err by a logger.(Å˜õçüÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(áó¡½üÿÿÿÿ
+>
+java:S1148B"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+S	java:S106)"9Replace this use of System.out or System.err by a logger.(»µ‚·ÿÿÿÿÿ
+S	java:S1065"9Replace this use of System.out or System.err by a logger.(² ßÍÿÿÿÿÿ
+Z
+java:S2147@"DCombine this catch with the one at line 61, which has the same body.(”ı¾
+N	java:S106'"9Replace this use of System.out or System.err by a logger.(ÁÁˆ»
+]
+java:S2095%"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(‚µŠ¯
+>
+java:S1148?"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+c
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(ÏÚŸÅşÿÿÿÿ
+b
+java:S2095!"GUse try-with-resources or close this "Statement" in a "finally" clause.(ùÃ›ßúÿÿÿÿ
+S	java:S106&"9Replace this use of System.out or System.err by a logger.(Å˜õçüÿÿÿÿ
+S	java:S106*"9Replace this use of System.out or System.err by a logger.(Å˜õçüÿÿÿÿ
+H
+java:S1135A"2Complete the task associated to this TODO comment.(‡ñÅ¼
+S	java:S106;"9Replace this use of System.out or System.err by a logger.(İ„ó¡ıÿÿÿÿ
+M	java:S106D"9Replace this use of System.out or System.err by a logger.(Ë³ø{
+E
+java:S1068	"*Remove this unused "logger" private field.(ÂÊˆ®øÿÿÿÿ
+m
+java:S1192&"RDefine a constant instead of duplicating this literal "-----------------" 3 times.(Å˜õçüÿÿÿÿ
+>
+java:S1148<"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ

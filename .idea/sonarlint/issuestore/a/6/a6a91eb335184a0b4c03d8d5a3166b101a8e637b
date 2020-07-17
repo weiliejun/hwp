@@ -1,0 +1,16 @@
+
+J
+java:S3740I"/Provide the parametrized type for this generic.(ôÊ©üÿÿÿÿ
+w
+java:S1128"URemove this unused import 'org.apache.tomcat.util.descriptor.web.SecurityCollection'.(‹˜¯‹ıÿÿÿÿ8ò¤öæ±.
+
+java:S1130+"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÙØ¤Şıÿÿÿÿ8±Òıæ¬.
+Q	java:S125a"<This block of commented-out lines of code should be removed.(æºöŒ
+J
+java:S3740I"/Provide the parametrized type for this generic.(ôÊ©üÿÿÿÿ
+Q
+java:S3740H"/Provide the parametrized type for this generic.(‰ÿú½ùÿÿÿÿ8¼Ñ‡¾±.
+w
+java:S1128"URemove this unused import 'org.apache.tomcat.util.descriptor.web.SecurityConstraint'.(¦é®‡ıÿÿÿÿ8ò¤öæ±.
+Z
+java:S1128"8Remove this unused import 'org.apache.catalina.Context'.(‹ß´Şûÿÿÿÿ8ò¤öæ±.

@@ -1,7 +1,10 @@
 /**
  * @Description Common包含表单加载公共方法。
  */
+var quanju = new Array();//全局
+var huancun = new Array();//缓存
 var Common = function () {
+
 
     // 初始化表格
     var initTable = function (ele, url, cols, table, doneCallBack) {
@@ -9,7 +12,7 @@ var Common = function () {
             id: 'ID',
             toolbar: '#toolbarDemo',
             elem: ele,
-            height: 660,
+            height: 600,
             // width: 1650,
             limit: 10,
             limits: [10, 20, 50, 100],
@@ -29,17 +32,37 @@ var Common = function () {
             where: getParams('searchForm'),
             page: true,
             // toolbar: true, //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
-            totalRow: true, //开启合计行
-            skin: 'layui-bg-gray',
+            // totalRow: true, //开启合计行
+            skin: 'line',
+            // skin:'nob',// 无边框风格
             even: true,
+            loading: true,//显示加载条
+            text: {
+                none: '暂无相关数据' //默认：暂无相关数据。注：该属性为 layui 2.2.5 开始新增
+            },
             cols: cols,
+            // size: 'sm',
             done: function (res, curr, count) {
                 if (typeof(doneCallBack) === "function") {
                     doneCallBack(res);
                 }
+                var that = this.elem.next();
+                res.data.forEach(function (item, index) {
+                    //console.log(item.empName);item表示每列显示的数据
+                    if (index % 2 == 0) {
+                        var tr = that.find(".layui-table-box tbody tr[data-index='" + index + "']").css("background-color", "#fff");
+                    } else {
+                        var tr = that.find(".layui-table-box tbody tr[data-index='" + index + "']").css("background-color", "#f7f7f7");
+                    }
+                });
+
+                $('tr').css({'background-color': '#009688', 'color': '#fff'});
+                $(".layui-table thead tr").css({'background-color': '#009688', 'color': '#fff'});
+                $(".layui-table-box .layui-table-header .layui-table thead tr").addClass("layui-bg-gray");
             }
         });
     };
+
 
     // 条件查询
     var searchTable = function (formId, tableIns) {
@@ -50,6 +73,7 @@ var Common = function () {
             page: {
                 curr: 1 //重新从第 1 页开始
             },
+            even: true,
             done: function (res, curr, count) {
                 layer.close(index);
             }

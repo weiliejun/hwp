@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>新建任务</title>
+</head>
+<!--<script type="text/javascript" src="/js/jquery-1.11.2.js"></script>-->
+<!--<script type="text/javascript" src="/js/number/format-number.js"></script>-->
+
+<body class="layui-layout-body">
+<fieldset class="layui-elem-field layui-field-title" style="margin:20px 0 0 0;">
+    <legend><h3 class="titNav">
+        <a href="javascript:;">复核任务审批</a>
+    </h3></legend>
+</fieldset>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-body">
+        <form id="searchForm" class="layui-form">
+            <input id="id" name="id" type="hidden" th:value="${spsqxx.id}"/>
+            <input id="splx" name="splx" type="hidden" th:value="${spsqxx.splx}"/>
+            <input id="glId" name="glId" type="hidden" th:value="${spsqxx.glId}"
+                   class="layui-input"/>
+            <input type="hidden" id="xmId" name="xmId" th:value="${xmrwxx.xmId}">
+            <input type="hidden" id="xmjd" name="xmjd" th:value="${xmrwxx.xmjd}">
+            <input type="hidden" id="rwxq" name="rwxq" th:value="${xmrwxx.rwxq}">
+            <input type="hidden" id="zhzt" name="zhzt" th:value="${xmrwxx.zhzt}">
+            <input type="hidden" id="rwxh" name="rwxh" th:value="${xmrwxx.rwxh}">
+            <input id="cxmk" name="cxmk" type="hidden" th:value="${cxmk}" class="layui-input"/>
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>任务名称：</label>
+                        <div class="layui-input-inline proInfo basicInfo">
+                            <p th:text="${xmrwxx.title}"></p>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>负责人：</label>
+                        <div class="layui-input-inline proInfo basicInfo">
+                            <p th:text="${xmrwxx.fzrName}"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>任务状态：</label>
+                        <div class="layui-input-inline proInfo basicInfo">
+                            <p th:text="${xmrwxx.status}"></p>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>开始时间：</label>
+                        <div class="layui-input-inline proInfo basicInfo">
+                            <p th:text="${xmrwxx.startDate}"></p>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>结束时间：</label>
+                        <div class="layui-input-inline proInfo basicInfo">
+                            <p th:text="${xmrwxx.endDate}"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item" style="padding-top:0px;">
+                    <div class="layui-inline proNav layui-clear">
+                        <a id="jbInfo" href="javascript:;">任务信息</a>
+                        <a id="fuJ" class="" href="javascript:;">附件</a>
+                        <a id="czjl" class="" href="javascript:;">操作记录</a>
+
+                    </div>
+                </div>
+                <div id="dataOne" class="proCon">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i> 任务详情：</label>
+                        <div class="layui-input-block">
+                            <div id="view"></div>
+                            <script id="detailView" type="text/html">
+                                <table class="layui-table" lay-skin="line" id="tab">
+                                    <colgroup>
+                                        <col width="170">
+                                        <col>
+                                    </colgroup>
+                                    <!--<thead>
+                                    <tr>
+                                        <th width="15%">任务序号</th>
+                                        <th width="15%">任务名称</th>
+                                        <th width="15%">操作</th>
+                                    </tr>
+                                    </thead>-->
+                                    <tbody>
+                                    {{# layui.each(d, function(index, xmItem){ }}
+                                    <tr id="tr">
+                                        <td width="5%"><input id="zrwxh" name="zrwxh" type="text" class="layui-input"
+                                                              placeholder="请输入任务序号" lay-verify="required" readonly/>
+                                        </td>
+                                        <td width="55%"><input id="rwmc" name="rwmc"
+                                                               value="{{ xmItem.rwmc==null?'':(xmItem.rwmc) }}"
+                                                               type="text" class="layui-input"
+                                                               placeholder="请输入子任务名称" lay-verify="required" readonly/>
+                                        </td>
+                                        <td width="20%"><input id="cron" name="cron"
+                                                               value="{{ xmItem.cron==null?'':(xmItem.cron) }}"
+                                                               type="text" class="layui-input"
+                                                               placeholder="设定提醒时间" readonly/></td>
+
+                                    </tr>
+                                    {{# }); }}
+                                    {{# if(d.length === 0){ }}
+                                    <tr>
+                                        <td colspan="6" align="center">暂无相关数据</td>
+                                    </tr>
+                                    {{# } }}
+                                    </tbody>
+                                </table>
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i> 任务描述：</label>
+                        <div class="layui-input-block proInfo basicInfo">
+                            <p th:text="${xmrwxx.rwms}"></p>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" id="fhrDiv">
+                        <div class="layui-inline">
+                            <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>复核人：</label>
+                            <div class="layui-input-inline proInfo basicInfo">
+                                <p th:text="${xmrwxx.fhrName}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" id="zhrDiv">
+                        <div class="layui-inline">
+                            <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>知会人：</label>
+                            <div class="layui-input-inline proInfo basicInfo">
+                                <p th:text="${xmrwxx.zhrName}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="layui-clear">
+                            <hr class="layui-bg-blue">
+                            <div class="pdfList layui-clear" id="demo22">
+                                <div th:each="att : ${spsqxxList}">
+                                    <a><span
+                                            th:text="${att.sprName}"></span>：<span
+                                            th:text="${att.spyj}"></span></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <br>
+                    <li class="layui-clear">
+                        <label class="layui-form-label layui-bg-gray"><i style=" color: #ec1a0d;">* </i>审批意见：</label>
+                        <div class="layui-input-inline proInfo basicInfo">
+                            <p th:text="${spsqxx.spms}"></p>
+                        </div>
+                        <input id="spyj" name="spyj" type="hidden" th:value="${spsqxx.spyj}"
+                               class="layui-input"/>
+                    </li>
+                    <br>
+                    <!--<button id="saveButton" class="layui-btn layui-btn-green" lay-submit lay-filter="save2">同意</button>-->
+                    <!--<button id="saveButton2" class="layui-btn layui-btn-warm" lay-submit lay-filter="save2">拒绝</button>-->
+                    <a href="javascript:window.history.go(-1);" class="layui-btn layui-btn-primary">返回</a>
+
+                </div>
+            </div>
+            <!--</form>-->
+
+            <!------第二步--附件-------------------------------->
+            <!--<form id="searchForm" class="layui-form">-->
+            <div id="dataTwo" class="proCon">
+                <p class="upTip"><i>*</i>请上传任务相关的说明、审批文件等(jpg、jpeg、gif、png、doc、docx、pdf、xls、xlsx、ppt、pptx)，附件大小20M以下</p>
+                <div class="pdfList layui-clear" id="demo2">
+                    <div th:each="att : ${AttachFileList}">
+                        <a th:href="${att.fileUrl}" target="_blank"><i class="layui-icon layui-icon-close"></i><span
+                                th:text="${att.fileName}"></span></a>
+                    </div>
+                </div>
+                <br/>
+                <div class="layui-upload">
+                    <!--<button type="button" class="layui-btn layui-btn-warm" id="test2">多文件上传</button>-->
+                    <input type="hidden" id="attachFile" name="attachFile" required>
+                </div>
+
+            </div>
+            <!------第三步--操作记录-------------------------------->
+            <div id="dataThree" class="proCon">
+                <div class="layui-row">
+                    <table class="layui-table recordInfo" id="czjlTables"
+                           lay-filter="czjlTables">
+                    </table>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!--主题内容结束-->
+
+<!--<div class="layui-footer">-->
+<!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+<!--勘设底部区域-->
+<!--</div>-->
+</div>
+<script>
+    var n1 = new FormatNumber();
+    n1.init({trigger: $('[data-type="int"]'), decimal: 0});
+    // $('#amount').FormatNumber({decimal:0});
+</script>
+<script type="text/javascript" th:src="@{/js/app/xmrwxx/add.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/xmrwxx/czjl.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/spsqxx/jsxmsp.js}"></script>
+</body>
+</html>

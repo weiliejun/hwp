@@ -21,7 +21,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/huawuprojects_normal?useTimezone=true&amp;serverTimezone=GMT%2B8"
+                        connectionURL="jdbc:mysql://192.168.1.37:3306/huawuprojects_test?useSSL=false&amp;useTimezone=true&amp;serverTimezone=GMT%2B8"
                         userId="huwwu.dba"
                         password="Huawu@191108">
         </jdbcConnection>
@@ -38,7 +38,7 @@
         </javaTypeResolver>
 
 
-        <javaModelGenerator targetPackage="com.hwp.common.model.xmrwxx.bean"
+        <javaModelGenerator targetPackage="com.hwp.common.model.rybgsq.bean"
                             targetProject="E:\Workspaces\hwp\common\src\main\java">
             <!-- //针对 oracle 数据库的一个配置，是否把 schema 作为字包名-->
             <property name="enableSubPackages" value="true"/>
@@ -48,19 +48,19 @@
 
 
         <!-- targetPackage 和 targetProject：生成的 mapper.xml文件的包和位置 -->
-        <sqlMapGenerator targetPackage="com.hwp.common.model.xmrwxx.mapper"
+        <sqlMapGenerator targetPackage="com.hwp.common.model.rybgsq.mapper"
                          targetProject="E:\Workspaces\hwp\common\src\main\java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!-- targetPackage 和 targetProject：生成的 dao 文件的包和位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.hwp.common.model.xmrwxx.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.hwp.common.model.rybgsq.dao"
                              targetProject="E:\Workspaces\hwp\common\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="XMRWXX"
-               domainObjectName="Xmrwxx"
+        <table tableName="RYBGSQ"
+               domainObjectName="Rybgsq"
                enableInsert="true"
                enableCountByExample="false"
                enableUpdateByExample="false"

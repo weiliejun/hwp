@@ -14,6 +14,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
     var toolbar = '#toolbarDemo';
     var type = $("#type").val();
     var cxmk = $("#cxmk").val();
+
     var cols = [[
         {type: type},
         {
@@ -72,7 +73,8 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
                     layer.alert("请选择一条数据！");
                     return false;
                 }
-                layer.alert(JSON.stringify(data));
+                // layer.alert(JSON.stringify(data));
+
                 var json = eval('(' + JSON.stringify(data) + ')');
                 // var  json= $.parseJSON(JSON.stringify(data));
                 console.log("type------" + type);
@@ -123,13 +125,39 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         ;
     });
 
-    function Person(id, name, gsyx, gryx) {
-        this.id = id;
-        this.name = name;
-        this.gsyx = gsyx;
-        this.gryx = gryx;
-    }
+    //点击table行选中复选框  开始////
+    $(document).on("click",".layui-table-body table.layui-table tbody tr",function(){
+        var obj = event ? event.target : event.srcElement;
+        var tag = obj.tagName;
+        var checkbox = $(this).find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+        if(checkbox.length!=0){
+            if(tag == 'DIV') {
+                checkbox.click();
+            }
+        }
 
+    });
+
+    $(document).on("click","td div.laytable-cell-checkbox div.layui-form-checkbox",function(e){
+        e.stopPropagation();
+    });
+
+    $(document).on("click",".layui-table-body table.layui-table tbody tr",function(){
+        var obj = event ? event.target : event.srcElement;
+        var tag = obj.tagName;
+        var radio = $(this).find("td div.laytable-cell-radio div.layui-form-radio I");
+        if(radio.length!=0){
+            if(tag == 'DIV') {
+                radio.click();
+            }
+        }
+
+    });
+
+    $(document).on("click","td div.laytable-cell-radio div.layui-form-radio",function(e){
+        e.stopPropagation();
+    });
+    //点击table行选中复选框 结束////
     //按钮事件监听
     $('.layui-btn').on('click', function () {
         var type = $(this).data('type');

@@ -6,6 +6,27 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
         laytpl = layui.laytpl,
         layer = layui.layer;
 
+    /*$(function () {
+        $.ajax({
+            url: PageContext.getUrl("/ryxxgl/detail/" + $("#id").val()),
+            type: 'post',
+            async: false,
+            success: function (data) {
+                // alert(data)
+                // console.log(data);
+                if (data.flag === "true") {
+                    var getTpl = document.getElementById('detailView').innerHTML
+                        , view = document.getElementById('view');
+                    laytpl(getTpl).render(data.data, function (html) {
+                        view.innerHTML = html;
+                    });
+
+                }
+
+            }
+        });
+    });*/
+
     form.on('submit(save)', function (data) {
         console.log(data.field);
         var ajaxReturnData;

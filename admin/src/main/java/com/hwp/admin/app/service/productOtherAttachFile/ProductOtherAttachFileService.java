@@ -4,6 +4,7 @@ import com.hwp.common.model.product.bean.Product;
 import com.hwp.common.model.productOtherAttachFile.bean.ProductOtherAttachFile;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductOtherAttachFileService {
     /**
@@ -63,4 +64,6 @@ public interface ProductOtherAttachFileService {
      * @UpdateDate 2019/07/18 10:12
      */
     int updateDataStatusById(ProductOtherAttachFile record);
+
+    public List<ProductOtherAttachFile> listWdmbByParams(Map<String, Object> params);
 }

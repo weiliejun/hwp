@@ -1,0 +1,58 @@
+
+v
+java:S1192a"`Define a constant instead of duplicating this literal "æœªå®šä¹‰contentæ¨¡æ¿å†…å®¹ï¼" 3 times.(µ‹â­
+b
+java:S1192L"GDefine a constant instead of duplicating this literal "false" 13 times.(è¬¥‰øÿÿÿÿ
+y
+java:S1192X"^Define a constant instead of duplicating this literal "æœªå®šä¹‰titleæ¨¡æ¿å†…å®¹ï¼" 3 times.(¹ò·Šüÿÿÿÿ
+o
+java:S1192M"YDefine a constant instead of duplicating this literal "å‚æ•°userIdä¸èƒ½ä¸ºç©º" 3 times.(œ”—û
+^
+java:S1192^"HDefine a constant instead of duplicating this literal "content" 3 times.(ä üÉ
+a
+java:S1192U"FDefine a constant instead of duplicating this literal "title" 3 times.(¡š‘¿ÿÿÿÿÿ
+?
+java:S1148§"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148Ê"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148“"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148µ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148¸"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148‚"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148‘"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+D
+java:S1604Á"(Make this anonymous inner class a lambda(ÿ¡µÀÿÿÿÿÿ
+D
+java:S1604Ğ"(Make this anonymous inner class a lambda(ÿ¡µÀÿÿÿÿÿ
+t
+java:S2293D"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¹óùÿÿÿÿ
+t
+java:S2293r"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¹óùÿÿÿÿ
+`
+java:S1764Æ"JCorrect one of the identical sub-expressions on both sides of operator "&"(ŸÃÃ5
+/
+java:S2178Æ"Correct this "&" to "&&".(ŸÃÃ5
+`
+java:S1764É"JCorrect one of the identical sub-expressions on both sides of operator "&"(ŸÃÃ5
+/
+java:S2178É"Correct this "&" to "&&".(ŸÃÃ5
+u
+java:S2293ß"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¹óùÿÿÿÿ
+u
+java:S2293å"YReplace the type specification in this constructor call with the diamond operator ("<>").(Æšç»ÿÿÿÿÿ
+U
+java:S1858ù">"next" returns a string, there's no need to call "toString()".(ëÄû
+V	java:S125O"<This block of commented-out lines of code should be removed.(ÿø†ãûÿÿÿÿ
+Q	java:S125Z"<This block of commented-out lines of code should be removed.(Ä¯³¼
+Q	java:S125c"<This block of commented-out lines of code should be removed.(ƒ•™
+V	java:S125}"<This block of commented-out lines of code should be removed.(ÿø†ãûÿÿÿÿ
+W	java:S125‡"<This block of commented-out lines of code should be removed.(¾ÛÎÊúÿÿÿÿ
+R	java:S125"<This block of commented-out lines of code should be removed.(Ä¯³¼
+R	java:S125š"<This block of commented-out lines of code should be removed.(ƒ•™
+R	java:S125º"<This block of commented-out lines of code should be removed.(ü¦¿Á
+R	java:S125û"<This block of commented-out lines of code should be removed.(Ä¯³¼

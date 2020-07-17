@@ -1,0 +1,62 @@
+
+n
+java:S1192“"RDefine a constant instead of duplicating this literal "checked='checked'" 6 times.(‹’Šúÿÿÿÿ
+_
+java:S1192h"IDefine a constant instead of duplicating this literal "' name='" 3 times.(¨ÔÜ²
+j
+java:S1192k"TDefine a constant instead of duplicating this literal "selected='selected'" 3 times.(÷¶Ê½
+m
+java:S1192f"WDefine a constant instead of duplicating this literal " lay-verify='required'" 3 times.(¾™É–
+7
+java:S1643{"Use a StringBuilder instead.(£Ç€»üÿÿÿÿ
+3
+java:S1643¢"Use a StringBuilder instead.(ÌÁÿ•
+3
+java:S1643È"Use a StringBuilder instead.(è½…°
+Y
+java:S1155c">Use isEmpty() to check whether the collection is empty or not.(ÓÃÄùÿÿÿÿ
+Z
+java:S1155Œ">Use isEmpty() to check whether the collection is empty or not.(ÓÃÄùÿÿÿÿ
+Z
+java:S1155²">Use isEmpty() to check whether the collection is empty or not.(ÓÃÄùÿÿÿÿ
+[
+java:S1854;"@Remove this useless assignment to local variable "defaultValue".(³¿ôúøÿÿÿÿ
+W
+java:S18548"<Remove this useless assignment to local variable "property".(·û£µıÿÿÿÿ
+>	java:S108I")Either remove or fill this block of code.(å¥‡
+N
+java:S1854^"8Remove this useless assignment to local variable "type".(“ØÜ°
+g
+java:S3776Y"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(úÜİ~
+F
+java:S1905p"0Remove this unnecessary cast to "SysDictionary".(¯ˆÓù
+O
+java:S1854‡"8Remove this useless assignment to local variable "type".(“ØÜ°
+T
+java:S1854"=Remove this useless assignment to local variable "selVerify".(¾™É–
+W
+java:S1854“";Remove this useless assignment to local variable "checked".(‹’Šúÿÿÿÿ
+n
+java:S3776‚"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÉÈÚúÿÿÿÿÿ
+O
+java:S1854­"8Remove this useless assignment to local variable "type".(“ØÜ°
+T
+java:S1854µ"=Remove this useless assignment to local variable "selVerify".(¾™É–
+W
+java:S1854¹";Remove this useless assignment to local variable "checked".(‹’Šúÿÿÿÿ
+n
+java:S3776¨"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¿ğ„·ÿÿÿÿÿ
+H
+java:S14818"-Remove this unused "property" local variable.(·û£µıÿÿÿÿ
+L
+java:S1481;"1Remove this unused "defaultValue" local variable.(³¿ôúøÿÿÿÿ
+?
+java:S1481^")Remove this unused "type" local variable.(“ØÜ°
+J
+java:S1481".Remove this unused "selVerify" local variable.(¿ÚàØûÿÿÿÿ
+@
+java:S1481‡")Remove this unused "type" local variable.(“ØÜ°
+J
+java:S1481³".Remove this unused "selVerify" local variable.(¿ÚàØûÿÿÿÿ
+@
+java:S1481­")Remove this unused "type" local variable.(“ØÜ°

@@ -71,7 +71,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
     ]];
 
     // 表格渲染
-    var initTable = Common.initTable('#xmxxglTables', '/xmxxgl/list', cols, table);
+    var initTable = Common.initTable('#xmxxglTables', '/xmxxgl/list?gdlb='+$("#gdlb").val(), cols, table);
 
     //监听工具条
     table.on('tool(xmxxglTables)', function (obj) {
@@ -122,5 +122,10 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
     function addTab(_this) {
         tab.tabAdd(_this);
     }
+
+    $('body').on("mouseenter", ".layui-table-body tr", function () {
+        $(this).siblings().find("div").css("color", "#666");
+        $(this).find("div").css("color", "#4DA1FF");
+    })
 });
 

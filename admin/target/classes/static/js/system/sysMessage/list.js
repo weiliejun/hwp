@@ -7,38 +7,34 @@ layui.use(['layer', 'form', 'table'], function () {
     var cols = [[
         {
             field: 'topic',
-            width: 220,
-            title: '名称',
-            align: 'center'
-        }, {
-            field: 'code',
-            width: 200,
-            title: '手机号验证码',
-            align: 'center'
-        }, {
-            field: 'mobile',
-            width: 200,
-            title: '手机号',
-            align: 'center'
+            width: '10%',
+            title: '标题',
+            align: 'center',
+            sort: true
         }, {
             field: 'content',
-            width: 280,
+            width: '60%',
+            hight: 500,
             title: '内容',
-            align: 'center'
+            align: 'center',
+            sort: true
         }, {
             field: 'status',
-            width: 255,
+            width: '10%',
             title: '状态',
             align: 'center',
-            templet: '#status'
+            templet: '#status',
+            sort: true
         }, {
             field: 'createTime',
-            width: 250,
+            width: '10%',
             title: '时间',
             align: 'center',
-            templet: '#createTime'
+            templet: '#createTime',
+            sort: true
         }, {
             title: '常用操作',
+            width: '10%',
             align: 'center',
             fixed: "right",
             toolbar: '#sysMessagebar'
@@ -55,7 +51,7 @@ layui.use(['layer', 'form', 'table'], function () {
             layer.confirm('真的删除该消息么？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
-                    url: PageContext.getUrl('/sysMessage/delete'),
+                    url: PageContext.getUrl('/sysMessage/delete?id='+data.id),
                     type: 'post',
                     async: false,
                     data: {id: data.id},

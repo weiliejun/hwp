@@ -1,0 +1,19 @@
+
+>
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148'"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148:"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148C"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148L"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+H
+java:S4925"-Remove this "Class.forName()", it is useless.(İˆùÿÿÿÿ
+Q
+java:S18548"6Remove this useless assignment to local variable "rs".(ŒÇ›ğùÿÿÿÿ
+Q
+java:S1854A"6Remove this useless assignment to local variable "ps".(õ¢Èşÿÿÿÿ
+S
+java:S1854J"8Remove this useless assignment to local variable "conn".(€×³›ÿÿÿÿÿ

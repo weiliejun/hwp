@@ -13,6 +13,7 @@ import com.hwp.common.model.sysManager.bean.SysManager;
 import com.hwp.common.model.xmxxgl.bean.Xmxxgl;
 import com.hwp.common.util.DateHelper;
 import com.hwp.common.util.StringHelper;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,8 @@ public class RyxxglController extends AbstractBaseController {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
         if (StringHelper.isNotBlank(type) && type.equalsIgnoreCase("view")) {
             return "/app/ryxxgl/view";
+        } else if (StringHelper.isNotBlank(type) && type.equalsIgnoreCase("rybgsq")) {
+            return "/app/ryxxgl/rybgsq";
         }
         return "/app/ryxxgl/add";
     }
@@ -199,45 +202,56 @@ public class RyxxglController extends AbstractBaseController {
     public String selectListGet(HttpServletRequest request, Model model) {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
         Map<String, Object> params = formQueryRemember(request);
+        String ryid = params.containsKey("ryid") ? params.get("ryid").toString() : "";
         if (params.get("cxmk").equals("selectXmfzr")) {
             model.addAttribute("type", "radio");
             model.addAttribute("cxmk", "selectXmfzr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
         } else if (params.get("cxmk").equals("selectFwfzr")) {
             model.addAttribute("type", "radio");
             model.addAttribute("cxmk", "selectFwfzr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
         } else if (params.get("cxmk").equals("selectCwfzr")) {
             model.addAttribute("type", "radio");
             model.addAttribute("cxmk", "selectCwfzr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
         } else if (params.get("cxmk").equals("selectSpr")) {
             model.addAttribute("type", "checkbox");
             model.addAttribute("cxmk", "selectSpr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
         } else if (params.get("cxmk").equals("selectXmjbr")) {
             model.addAttribute("type", "radio");
             model.addAttribute("cxmk", "selectXmjbr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
         } else if (params.get("cxmk").equals("selectXmqtcy")) {
             model.addAttribute("type", "checkbox");
             model.addAttribute("cxmk", "selectXmqtcy");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
         } else if (params.get("cxmk").equals("selectJsxmSpr")) {
             model.addAttribute("type", "checkbox");
             model.addAttribute("cxmk", "selectJsxmSpr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
-        }else if (params.get("cxmk").equals("selectFzr")) {
+        } else if (params.get("cxmk").equals("selectFzr")) {
             model.addAttribute("type", "radio");
             model.addAttribute("cxmk", "selectFzr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
-        }else if (params.get("cxmk").equals("selectFhr")) {
+        } else if (params.get("cxmk").equals("selectFhr")) {
             model.addAttribute("type", "checkbox");
             model.addAttribute("cxmk", "selectFhr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
-        }else if (params.get("cxmk").equals("selectZhr")) {
+        } else if (params.get("cxmk").equals("selectZhr")) {
             model.addAttribute("type", "checkbox");
             model.addAttribute("cxmk", "selectZhr");
+            model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
         }
         return "/app/ryxxgl/selectList";
@@ -264,10 +278,26 @@ public class RyxxglController extends AbstractBaseController {
         Map<String, Object> params = getQureyParams(requestParams);
 
         final Page<RyxxglSelect> results = (Page<RyxxglSelect>) ryxxglService.selectList(params);
+        //设置选中状态
+        List<RyxxglSelect> rtn = results.getResult();
+        List<JSONObject> data = new ArrayList<JSONObject>();
+        String ryid = params.containsKey("ryid") ? params.get("ryid").toString() : "";
+        String[] ryids = ryid.split(",");
+        for (String s : ryids) {
+            for (RyxxglSelect ryxxglSelect : rtn) {
+                JSONObject json = JSONObject.fromObject(ryxxglSelect);
+                if (s.equalsIgnoreCase(json.getString("id"))) {
+                    json.put("LAY_CHECKED", true);
+                    data.add(json);
+                } else {
+                    data.add(json);
+                }
+            }
+        }
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
         resultMap.put("count", String.valueOf(results.getTotal()));
-        resultMap.put("data", results.getResult());
+        resultMap.put("data", data);
 
 
         return resultMap;

@@ -1,5 +1,6 @@
 package com.hwp.common.util;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.*;
 import org.springframework.util.Assert;
@@ -243,45 +244,19 @@ public class BeanHelper extends org.apache.commons.beanutils.BeanUtils {
         return emptyNames.toArray(result);
     }
 
-    public static String getDifferentProperty(Object obj1, Object obj2) {
-
-            List<String> textList = new ArrayList<String>();
-            StringBuilder rtn=new StringBuilder();
-            try {
-                Class clazz = obj1.getClass();
-                Field[] fields = obj1.getClass().getDeclaredFields();
-                for (Field field : fields) {
-                    PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
-                    Method getMethod = pd.getReadMethod();
-                    Object o1 = getMethod.invoke(obj1);
-                    Object o2 = getMethod.invoke(obj2);
-                    String s1 = o1 == null ? "" : o1.toString();//避免空指针异常
-                    String s2 = o2 == null ? "" : o2.toString();//避免空指针异常
-                    //思考下面注释的这一行：会bug的，虽然被try catch了，程序没报错，但是结果不是我们想要的
-                    //if (!o1.toString().equals(o2.toString())) {
-                    if (!s1.equals(s2)&&StringHelper.isNotBlank(s2)) {
-                        textList.add("修改的属性字段：" + field.getName() + " 属性值：[变更前：" + s1 + ",变更后：" + s2 + "]<br/>");
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            for (Object object : textList) {
-                System.out.println(object);
-                rtn.append(object.toString());
-            }
-
-            return rtn.toString();
-    }
-
-    public static String getDifferentProperty(Object obj1, Object obj2, String[] ignoreProperties) {
-        List ignoreList = (ignoreProperties != null) ? Arrays.asList(ignoreProperties) : null;
+    public static Map<String, Object> getDifferentProperty(Object obj1, Object obj2) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> bgq = new HashMap<String, Object>();
+        Map<String, Object> bgh = new HashMap<String, Object>();
         List<String> textList = new ArrayList<String>();
-        StringBuilder rtn=new StringBuilder();
+        StringBuilder rtn = new StringBuilder();
         try {
             Class clazz = obj1.getClass();
             Field[] fields = obj1.getClass().getDeclaredFields();
             for (Field field : fields) {
+                if ("serialVersionUID".equalsIgnoreCase(field.getName())) {
+                    continue;
+                }
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
                 Method getMethod = pd.getReadMethod();
                 Object o1 = getMethod.invoke(obj1);
@@ -290,8 +265,10 @@ public class BeanHelper extends org.apache.commons.beanutils.BeanUtils {
                 String s2 = o2 == null ? "" : o2.toString();//避免空指针异常
                 //思考下面注释的这一行：会bug的，虽然被try catch了，程序没报错，但是结果不是我们想要的
                 //if (!o1.toString().equals(o2.toString())) {
-                if (!s1.equals(s2)&&StringHelper.isNotBlank(s2) && (ignoreProperties == null || (!ignoreList.contains(pd.getName())))) {
+                if (!s1.equals(s2) && StringHelper.isNotBlank(s2)) {
                     textList.add("修改的属性字段：" + field.getName() + " 属性值：[变更前：" + s1 + ",变更后：" + s2 + "]<br/>");
+                    bgq.put(field.getName(), s1);
+                    bgh.put(field.getName(), s2);
                 }
             }
         } catch (Exception e) {
@@ -302,6 +279,90 @@ public class BeanHelper extends org.apache.commons.beanutils.BeanUtils {
             rtn.append(object.toString());
         }
 
-        return rtn.toString();
+        params.put("diff", rtn.toString());
+        params.put("bgq", new JSONObject(bgq).toString());
+        params.put("bgh", new JSONObject(bgh).toString());
+
+        return params;
+    }
+
+    public static Map<String, Object> getDifferentProperty(Object obj1, Object obj2, String[] ignoreProperties) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> bgq = new HashMap<String, Object>();
+        Map<String, Object> bgh = new HashMap<String, Object>();
+        List ignoreList = (ignoreProperties != null) ? Arrays.asList(ignoreProperties) : null;
+        List<String> textList = new ArrayList<String>();
+        StringBuilder rtn = new StringBuilder();
+        try {
+            Class clazz = obj1.getClass();
+            Field[] fields = obj1.getClass().getDeclaredFields();
+            for (Field field : fields) {
+                if ("serialVersionUID".equalsIgnoreCase(field.getName())) {
+                    continue;
+                }
+                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
+                Method getMethod = pd.getReadMethod();
+                Object o1 = getMethod.invoke(obj1);
+                Object o2 = getMethod.invoke(obj2);
+                String s1 = o1 == null ? "" : o1.toString();//避免空指针异常
+                String s2 = o2 == null ? "" : o2.toString();//避免空指针异常
+                //思考下面注释的这一行：会bug的，虽然被try catch了，程序没报错，但是结果不是我们想要的
+                //if (!o1.toString().equals(o2.toString())) {
+                if (!s1.equals(s2) && StringHelper.isNotBlank(s2) && (ignoreProperties == null || (!ignoreList.contains(pd.getName())))) {
+                    textList.add("修改的属性字段：" + field.getName() + " 属性值：[变更前：" + s1 + ",变更后：" + s2 + "]<br/>");
+                    bgq.put(field.getName(), s1);
+                    bgh.put(field.getName(), s2);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        for (Object object : textList) {
+            System.out.println(object);
+            rtn.append(object.toString());
+        }
+
+        params.put("diff", rtn.toString());
+        params.put("bgq", new JSONObject(bgq).toString());
+        params.put("bgh", new JSONObject(bgh).toString());
+
+        return params;
+    }
+
+    public static Field findDeclaredField(Class<?> clazz, String name) {
+        try {
+            return clazz.getDeclaredField(name);
+        } catch (NoSuchFieldException ex) {
+            if (clazz.getSuperclass() != null) {
+                return findDeclaredField(clazz.getSuperclass(), name);
+            }
+            return null;
+        }
+    }
+
+    public static Field findField(Class<?> clazz, String name) {
+        try {
+            return clazz.getField(name);
+        } catch (NoSuchFieldException ex) {
+            return findDeclaredField(clazz, name);
+        }
+    }
+
+    public static Object getBeanProperty(Object obj, String name) throws NoSuchFieldException {
+        Object value = null;
+        Field field = findField(obj.getClass(), name);
+        if (field == null) {
+//            throw new NoSuchFieldException("no such field [" + name + "]");
+            return value;
+        }
+        boolean accessible = field.isAccessible();
+        field.setAccessible(true);
+        try {
+            value = field.get(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        field.setAccessible(accessible);
+        return value;
     }
 }

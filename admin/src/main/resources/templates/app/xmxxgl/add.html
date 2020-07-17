@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i> 投资条件</label>
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i> 投资条件：</label>
                         <div class="layui-input-block">
                             <textarea id="tztj" name="tztj" placeholder="请输入投资条件" lay-verify="required"
                                       class="layui-textarea" th:text="${xmxxgl.tztj}"></textarea>
@@ -255,7 +255,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>审批人：</label>
                             <div class="layui-input-inline">
-                                <input id="sprName" name="sprName" type="text" th:value="${xmxxgl.sprName}" readonly
+                                <input th:if="${xmxxgl.id != null}" lay-verify="required" id="sprName" name="sprName" type="text" th:value="${xmxxgl.sprName}" readonly
                                        class="layui-input"/>
                                 <input id="sprId" name="sprId" type="hidden" th:value="${xmxxgl.sprId}"
                                        class="layui-input"/>
@@ -272,7 +272,8 @@
                     <div class="layui-form-item" style="margin:0 0 10px 0;">
                         <hr class="layui-bg-blue">
                         <div class="layui-input-block">
-                            <button id="saveButton" class="layui-btn" lay-submit lay-filter="save">保存</button>
+                            <button id="saveButton" class="layui-btn" lay-submit lay-filter="save"><i
+                                    class="layui-icon layui-icon-form"></i>提交</button>
                             <a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>

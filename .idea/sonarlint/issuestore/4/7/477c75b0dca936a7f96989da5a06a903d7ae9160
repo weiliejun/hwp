@@ -1,0 +1,58 @@
+
+b
+java:S1192Ë"FDefine a constant instead of duplicating this literal "radio" 5 times.(Ï©ä‘üÿÿÿÿ
+e
+java:S1192×"IDefine a constant instead of duplicating this literal "checkbox" 5 times.(ìßµşÿÿÿÿ
+o
+java:S1192¸"SDefine a constant instead of duplicating this literal "äººå‘˜ä¿¡æ¯ç®¡ç†" 3 times.(õÌÛôùÿÿÿÿ
+b
+java:S1192V"GDefine a constant instead of duplicating this literal "ryxxgl" 3 times.(ƒö”šøÿÿÿÿ
+s
+java:S1192Í"WDefine a constant instead of duplicating this literal "app/ryxxgl/selectList" 10 times.(ñ‡·¡ıÿÿÿÿ
+J
+java:S1066:"/Merge this if statement with the enclosing one.(ÑÎ¤½ùÿÿÿÿ
+u	java:S1160"[Rename this field "FileSynchronizer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¶¤®ûÿÿÿÿ
+i
+java:S4042F"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(áùˆ«ûÿÿÿÿ
+^
+java:S4488R"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(°¢ÍË
+H
+java:S1135N"2Complete the task associated to this TODO comment.(ÚëÚô
+c
+java:S4488f"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ïâãòúÿÿÿÿ
+H
+java:S1135b"2Complete the task associated to this TODO comment.(ÚëÚô
+M
+java:S1135t"2Complete the task associated to this TODO comment.(Ç›¤±ûÿÿÿÿ
+<
+java:S1659}"!Declare "msg" on a separate line.(·¶Â¥øÿÿÿÿ
+W
+java:S3457{"AFormat specifiers should be used instead of string concatenation.(©Ş‚°
+o
+java:S2293|"YReplace the type specification in this constructor call with the diamond operator ("<>").(ˆ¥ÏÛ
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¬á¢
+d
+java:S4488˜"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÏÊÃ×ûÿÿÿÿ
+N
+java:S1135”"2Complete the task associated to this TODO comment.(àÇ­şÿÿÿÿ
+I
+java:S1135£"2Complete the task associated to this TODO comment.(ÚëÚô
+p
+java:S2293ª"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+d
+java:S4488Æ"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Äõâêûÿÿÿÿ
+N
+java:S1135Â"2Complete the task associated to this TODO comment.(àÇ­şÿÿÿÿ
+N
+java:S1135û"2Complete the task associated to this TODO comment.(àÇ­şÿÿÿÿ
+p
+java:S2293ƒ"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+^
+java:S1854¡"BRemove this useless assignment to local variable "currentManager".(™²¬Äûÿÿÿÿ
+I
+java:S1135™"2Complete the task associated to this TODO comment.(ÚëÚô
+p
+java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»
+O
+java:S1481¡"3Remove this unused "currentManager" local variable.(™²¬Äûÿÿÿÿ
