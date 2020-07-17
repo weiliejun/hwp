@@ -1,0 +1,27 @@
+Index: admin/src/main/java/com/hwp/admin/app/event/TenderAuditEndListener.java
+===================================================================
+--- admin/src/main/java/com/hwp/admin/app/event/TenderAuditEndListener.java	(revision 1601)
++++ admin/src/main/java/com/hwp/admin/app/event/TenderAuditEndListener.java	(revision 1601)
+@@ -1,22 +0,0 @@
+-package com.hwp.admin.app.event;
+-
+-import com.hwp.admin.components.message.mail.MailSenderService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.context.ApplicationListener;
+-import org.springframework.stereotype.Component;
+-
+-/**
+- * 渠道佣金详情
+- *
+- * @author Administrator
+- */
+-@Component
+-public class TenderAuditEndListener implements ApplicationListener<TenderAuditEndEvent> {
+-
+-    @Autowired
+-    private MailSenderService mailSenderService;
+-
+-    @Override
+-    public void onApplicationEvent(TenderAuditEndEvent event) {
+-    }
+-}
