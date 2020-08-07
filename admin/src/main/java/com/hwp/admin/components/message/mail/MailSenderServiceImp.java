@@ -154,7 +154,7 @@ public class MailSenderServiceImp implements MailSenderService {
             //throw new TemplateInexistenceException("未定义content模板内容！");
         }
         sysMessage.setContent(content);
-        sysMessage.setDataStatus(GlobalConstant.KS_DATA_VALID);
+        sysMessage.setDataStatus(GlobalConstant.DATA_VALID);
         sysMessage.setCreateTime(new Date());
         sysMessage.setStatus(GlobalConstant.STATUS_INVALID);
         mailEntity.setText(content);
@@ -292,7 +292,7 @@ public class MailSenderServiceImp implements MailSenderService {
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-            helper.setFrom(fromMail, "华物北京");
+            helper.setFrom(fromMail, "华物项目管理系统");
             helper.setTo(mailEntity.getTo());
             helper.setSubject(mailEntity.getSubject());
             helper.setText(mailEntity.getText(), true);

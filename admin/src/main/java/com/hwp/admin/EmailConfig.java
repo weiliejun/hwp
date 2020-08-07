@@ -29,6 +29,7 @@ public class EmailConfig {
         properties.setProperty("mail.smtp.socketFactory.port", "465");//设置ssl端口
         properties.setProperty("mail.smtp.socketFactory.fallback", "false");
         properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.starttls.enable", "true");
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         javaMailSender.setHost(host);
         javaMailSender.setPort(port);

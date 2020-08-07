@@ -213,6 +213,11 @@ public class RyxxglController extends AbstractBaseController {
             model.addAttribute("cxmk", "selectFwfzr");
             model.addAttribute("ryid", ryid);
             return "app/ryxxgl/selectList";
+        } else if (params.get("cxmk").equals("selectFkfzr")) {
+            model.addAttribute("type", "radio");
+            model.addAttribute("cxmk", "selectFkfzr");
+            model.addAttribute("ryid", ryid);
+            return "app/ryxxgl/selectList";
         } else if (params.get("cxmk").equals("selectCwfzr")) {
             model.addAttribute("type", "radio");
             model.addAttribute("cxmk", "selectCwfzr");

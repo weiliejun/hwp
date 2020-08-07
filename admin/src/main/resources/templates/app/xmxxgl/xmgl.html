@@ -59,7 +59,8 @@
                         <tbody>
                         {{# layui.each(d, function(index, xmItem){ }}
                         <tr>
-                            <td width="2%">{{ xmItem.rwxh }}</td>
+                            <td width="3%"><input id="rwxh" name="rwxh" type="text" class="layui-input" value="{{ xmItem.rwxh }}" style="border: 0px;outline:none;"
+                                                  placeholder="请输入任务序号" lay-verify="required" readonly/></td>
                             <td width="6%">{{ xmItem.status }}</td>
                             <td width="36%">{{ xmItem.title }}</td>
                             <td width="10%">{{ xmItem.startDate==null?"":(xmItem.startDate) }}</td>

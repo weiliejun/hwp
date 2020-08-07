@@ -16,19 +16,19 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             field: 'attachFileName',
             title: '文档名称',
             align: 'center',
-            width: '15%',
+            width: '20%',
             sort: true
-        }, {
+        }/*, {
             field: 'attachFilePath',
             title: '文档路径',
             align: 'center',
             width: '35%',
             sort: true
-        }, {
+        }*/, {
             field: 'creatorName',
             title: '上传人',
             align: 'center',
-            width: '10%',
+            width: '15%',
             sort: true
         }, {
             field: 'createTime',
@@ -83,7 +83,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         },
         add: function () {
             //Common.openFrame("/app/wdmb/add", "新增人员", '1200px', '1000px');
-            window.location.href = "/wdmb/toAdd";
+            window.location.href = PageContext.getUrl("/wdmb/toAdd");
         }
     };
 

@@ -94,7 +94,8 @@ public class SysMessageTmplServiceImpl implements SysMessageTmplService {
 
                     String val = values.get(variable);
                     if (StringUtils.isEmpty(val)) {
-                        throw new ParameterNullPointerException(variable);
+//                        throw new ParameterNullPointerException(variable);
+                        val = "";
                     }
                     content = content.replace("${" + variable + "}", val);
                 }

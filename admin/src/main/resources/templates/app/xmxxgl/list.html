@@ -85,6 +85,7 @@
             <script id="xmxxglBar" type="text/html">
                 <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="view"><i
                         class="layui-icon fa-ban layui-icon-read"></i>查看</a>
+                {{#  if(document.getElementById("gdlb").value=="运行中项目列表"){ }}
                 <a class="layui-btn layui-btn-xs" lay-event="update"><i
                         class="layui-icon layui-icon-edit"></i>修改</a>
                 <a class="layui-btn layui-btn-xs  layui-btn-warm" lay-event="xmgl"><i
@@ -93,6 +94,7 @@
                         class="layui-icon layui-icon-senior"></i>变更阶段</a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="jsxm"><i
                         class="layui-icon layui-icon-circle-dot"></i>结束项目</a>
+                {{#  } }}
             </script>
 
         </div>

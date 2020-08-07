@@ -1,14 +1,19 @@
 package com.hwp.common.web.interceptor;
 
 
+import com.hwp.common.redis.service.CacheService;
+import com.hwp.common.redis.util.RedisEnum;
+import com.hwp.common.redis.util.RedisUtil;
 import com.hwp.common.web.SessionUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.URLEncoder;
 import java.util.Enumeration;
 
 /**
@@ -18,9 +23,13 @@ import java.util.Enumeration;
 public class SecurityInterceptor extends HandlerInterceptorAdapter {
     private static final Log logger = LogFactory.getLog(SecurityInterceptor.class);
 
+    @Autowired
+    private CacheService cacheService;
+
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        SessionUser sessionUser = null;
-		/*if (sessionUser == null) {
+        String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{request.getSession().getId()});
+        SessionUser sessionUser = (SessionUser) cacheService.getObject(key);
+		if (sessionUser == null) {
 			String returnUrl = null;
 			if(isAjaxRequest(request)){
 				returnUrl = getReferer(request);
@@ -36,7 +45,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 			}
 			response.sendRedirect(redirectUrl.toString());
 			return false;
-		}*/
+		}
         return true;
     }
 

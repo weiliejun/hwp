@@ -73,7 +73,12 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <div class="layui-inline" id="btfw1">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>被投范围：</label>
+                        <div class="layui-input-inline">
+                            <itech:code property="btfw" parentCode="btfw" type="select"
+                                        th:value="${xmxxgl.btfw}"/>
+                        </div>
+                        <!--<div class="layui-inline" id="btfw1">
                             <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>被投范围：</label>
                             <div class="layui-input-inline">
                                 <itech:code property="btfw" parentCode="btfw" type="select"
@@ -86,7 +91,7 @@
                                 <itech:code property="btfw" parentCode="btfw2" type="select"
                                             th:value="${xmxxgl.btfw}"/>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="layui-inline">
                             <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>承接主体：</label>
                             <div class="layui-input-inline">
@@ -215,6 +220,23 @@
                             </div>
                         </div>
                         <div class="layui-inline">
+                            <label class="layui-form-label "><i style=" color: #ec1a0d;">* </i>法务经办人：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="fkfzrName" name="fkfzrName" lay-verify="required" readonly
+                                       th:value="${xmxxgl.fkfzrName}" class="layui-input">
+                                <input id="fkfzrId" name="fkfzrId" type="hidden" th:value="${xmxxgl.fkfzrId}"
+                                       class="layui-input"/>
+                                <input id="fkfzrXx" name="fkfzrXx" type="hidden" th:value="${xmxxgl.fkfzrXx}"
+                                       class="layui-input"/>
+                            </div>
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-green" data-type="selectFkfzr"><i
+                                        class="layui-icon layui-icon-add-circle-fine"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
                             <label class="layui-form-label "><i style=" color: #ec1a0d;">* </i>财务负责人：</label>
                             <div class="layui-input-inline">
                                 <input type="text" id="cwfzrName" name="cwfzrName" lay-verify="required" readonly
@@ -232,9 +254,9 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>其他成员：</label>
+                            <label class="layui-form-label">其他成员：</label>
                             <div class="layui-input-inline">
-                                <input lay-verify="required" id="xmqtcyName" name="xmqtcyName" type="text"
+                                <input id="xmqtcyName" name="xmqtcyName" type="text"
                                        th:value="${xmxxgl.xmqtcyName}" readonly class="layui-input"/>
                                 <input id="xmqtcyId" name="xmqtcyId" type="hidden" th:value="${xmxxgl.xmqtcyId}"
                                        class="layui-input"/>
@@ -273,6 +295,8 @@
                         <hr class="layui-bg-blue">
                         <div class="layui-input-block">
                             <button id="saveButton" class="layui-btn" lay-submit lay-filter="save"><i
+                                    class="layui-icon layui-icon-form"></i>保存</button>
+                            <button id="saveButton2" class="layui-btn" lay-submit lay-filter="save2"><i
                                     class="layui-icon layui-icon-form"></i>提交</button>
                             <a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>

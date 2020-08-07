@@ -42,7 +42,7 @@ layui.use(['layer', 'form', 'table'], function () {
     ]];
 
     // 表格渲染
-    var initTable = Common.initTable('#sysMessageTables', '/sysMessage/list', cols, table);
+    var initTable = Common.initTable('#sysMessageTables', '/sysMessage/list?cxmk='+$("#cxmk").val(), cols, table);
 
     //监听工具条
     table.on('tool(sysMessageTables)', function (obj) {
@@ -51,7 +51,7 @@ layui.use(['layer', 'form', 'table'], function () {
             layer.confirm('真的删除该消息么？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
-                    url: PageContext.getUrl('/sysMessage/delete?id='+data.id),
+                    url: PageContext.getUrl('/sysMessage/delete'),
                     type: 'post',
                     async: false,
                     data: {id: data.id},
@@ -62,6 +62,7 @@ layui.use(['layer', 'form', 'table'], function () {
                 //删除结果
                 if (ajaxReturnData.flag == 'true') {
                     table.reload('sysMessageTables');
+                    document.location.reload();
                     layer.msg(ajaxReturnData.msg, {icon: 1});
                 } else {
                     layer.msg('删除失败', {icon: 5});

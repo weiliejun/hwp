@@ -114,7 +114,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         },
         add: function () {
             // Common.openFrame("/xmxxgl/toAdd", "新增人员", '1200px', '1000px');
-            window.location.href = "/xmxxgl/toAdd";
+            window.location.href = PageContext.getUrl("/xmxxgl/toAdd");
         }
     };
 

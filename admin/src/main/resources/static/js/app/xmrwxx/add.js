@@ -107,7 +107,7 @@ layui.use(['form', 'layer', 'laydate', 'jquery', 'laytpl', 'upload'], function (
                     $("#dataOne").hide();
                     $("#dataTwo").show();
                     $("#dataThree").hide();
-                    // window.location.href="/product/list";
+                    // window.location.href=PageContext.getUrl("/product/list");
                     // layer.msg("添加成功");
                 }
                 //重新加载当前页面
@@ -317,7 +317,7 @@ layui.use(['form', 'layer', 'laydate', 'jquery', 'laytpl', 'upload'], function (
         var rows = $(elem).parents("tr").prevAll().length;
         var zrwxh = mytable.rows[rows].cells[0].childNodes[0].value;
         var cron = mytable.rows[rows].cells[2].childNodes[0].value;
-        Common.openFrame("/xmrwxx/toCron" + "?zrwxh=" + zrwxh + "&cron=" + cron, "设置任务定时提醒", '1000px', '600px');
+        Common.openFrame("/xmrwxx/toCron" + "?zrwxh=" + zrwxh + "&cron=" + cron, "设置任务定时提醒", '1050px', '580px');
     }
 
     //新增子任务

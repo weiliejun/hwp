@@ -138,8 +138,8 @@ public abstract class AbstractBaseController {
      */
     protected SysManager getSessionSysManager() {
         Subject subject = SecurityUtils.getSubject();
-        subject.getSession();
-        CurrentManager currentManager = (CurrentManager) subject.getSession().getAttribute(ApplicationSessionKeys.CURRENT_USER);
+        Session session = subject.getSession();
+        CurrentManager currentManager = (CurrentManager) session.getAttribute(ApplicationSessionKeys.CURRENT_USER);
         if (currentManager != null) {
             return currentManager.getSysManager();
         }

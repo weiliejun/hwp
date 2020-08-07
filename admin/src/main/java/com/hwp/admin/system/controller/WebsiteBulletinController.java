@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.hwp.admin.system.service.WebsiteBulletinService;
 import com.hwp.admin.web.base.AbstractBaseController;
 import com.hwp.common.constant.GlobalConstant;
+import com.hwp.common.model.ryxxgl.bean.Ryxxgl;
 import com.hwp.common.model.sysManager.bean.SysManager;
 import com.hwp.common.model.websiteBulletin.bean.WebsiteBulletin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,14 @@ public class WebsiteBulletinController extends AbstractBaseController {
      * @auther: cyp
      * @UpadteDate: 2019/2/27 11:08
      */
-    @RequestMapping(value = {"/toadd"}, method = RequestMethod.GET)
-    public String toAddWebsiteBulletin() {
+    @RequestMapping(value = {"/system/toAdd"}, method = RequestMethod.GET)
+    public String toAdd(Model model, @RequestParam(value = "id", required = false) String id, HttpServletRequest request) {
+        if (id != null) {
+            WebsiteBulletin websiteBulletin = websiteBulletinService.getWebsiteBulletinById(new Integer(id));
+            model.addAttribute("websiteBulletin", websiteBulletin);
+        } else {
+            model.addAttribute("websiteBulletin", new WebsiteBulletin());
+        }
         return "/system/websiteBulletin/add";
     }
 
@@ -102,8 +109,7 @@ public class WebsiteBulletinController extends AbstractBaseController {
             return resultMap;
         } else {//编辑
             websiteBulletin.setPublisherId(currentManager.getId());
-            websiteBulletin.setPublisherName(currentManager.getName());
-            websiteBulletin.setPublishStatus("1");//默认发布
+            websiteBulletin.setPublisherName(currentManager.getName());            
             websiteBulletin.setUpdateTime(new Date());
             websiteBulletinService.updateWebsiteBulletin(websiteBulletin);
             resultMap.put("flag", "true");

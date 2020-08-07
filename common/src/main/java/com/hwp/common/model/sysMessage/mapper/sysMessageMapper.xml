@@ -19,7 +19,7 @@
     ID, USER_ID, TOPIC, CONTENT, TYPE, BUSI_TYPE, STATUS, CREATE_TIME, REMARK, DATA_STATUS,
     MOBILE, CODE
   </sql>
-    <select id="getSysMessageById" parameterType="java.lang.Integer" resultMap="sysMessageResultMap">
+    <select id="getSysMessageById" parameterType="java.lang.String" resultMap="sysMessageResultMap">
         select
         <include refid="sysMessageColumn"/>
         from SYS_MESSAGE
@@ -154,10 +154,10 @@
             AND USER_ID = #{userId,jdbcType=VARCHAR}
         </if>
         <if test="topic != null">
-            AND TOPIC = #{topic,jdbcType=VARCHAR}
+            AND TOPIC like CONCAT('%',#{topic},'%')
         </if>
         <if test="content != null">
-            AND CONTENT = #{content,jdbcType=VARCHAR}
+            AND CONTENT like CONCAT('%',#{content},'%')
         </if>
         <if test="type != null">
             AND TYPE = #{type,jdbcType=VARCHAR}
@@ -216,6 +216,7 @@
     <!-- 根据id获取用户信息 -->
     <select id="listSysMessageByParams" parameterType="java.util.Map" resultMap="sysMessageResultMap">
         <include refid="listSysMessage_fragment"/>
+        ORDER BY CREATE_TIME DESC
     </select>
 
 </mapper>

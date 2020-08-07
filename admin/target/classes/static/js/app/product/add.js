@@ -443,7 +443,7 @@ layui.use(['form', 'layer', 'laydate', 'jquery', 'upload'], function () {
                     $("#jbInfo").addClass("layui-btn layui-btn-primary");
                     $("#dataOne").hide();
                     $("#dataTwo").show();
-                    // window.location.href="/product/list";
+                    // window.location.href=PageContext.getUrl("/product/list");
                     // layer.msg("添加成功");
                 } else {
                     if (data.res == "notFind") {
@@ -496,7 +496,7 @@ layui.use(['form', 'layer', 'laydate', 'jquery', 'upload'], function () {
                     $("#jbInfo").addClass("layui-btn layui-btn-primary");
                     $("#dataOne").hide();
                     $("#dataTwo").show();
-                    // window.location.href="/product/listManageIssue";
+                    // window.location.href=PageContext.getUrl("/product/listManageIssue");
                     // layer.msg("添加成功");
                 } else {
                     if (data.result == "reName") {
@@ -525,7 +525,7 @@ layui.use(['form', 'layer', 'laydate', 'jquery', 'upload'], function () {
             data: data.field,
             success: function (data) {
                 if (data.flag == "true") {
-                    window.location.href = "/product/list";
+                    window.location.href = PageContext.getUrl("/product/list");
                     // layer.msg("添加成功");
                 } else {
                     lay.msg(data.msg)
@@ -546,7 +546,7 @@ layui.use(['form', 'layer', 'laydate', 'jquery', 'upload'], function () {
             data: data.field,
             success: function (data) {
                 if (data.flag == "true") {
-                    window.location.href = "/product/listManageIssue";
+                    window.location.href = PageContext.getUrl("/product/listManageIssue");
                     // layer.msg("添加成功");
                 } else {
                     lay.msg(data.msg)

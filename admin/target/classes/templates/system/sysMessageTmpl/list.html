@@ -19,16 +19,16 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">业务类型</label>
                         <div class="layui-input-block">
-                            <itech:code property="busiType" parentCode="user.message.busiType" type="select"
+                            <itech:code property="busiType" parentCode="busi_type" type="select"
                                         th:defaultValue="${busiType}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <a class="layui-btn" data-type="search">
-                            <i class="layui-icon layui-icon-search"></i>
-                        </a>
-                        <button type="button" class="layui-btn" data-type="searchFormClear">
-                            <i class="layui-icon layui-icon-delete"></i>
+                        <button type="button" class="layui-btn" data-type="search"><i
+                                class="layui-icon layui-icon-search"></i>查询
+                        </button>
+                        <button type="button" class="layui-btn" data-type="searchFormClear"><i
+                                class="layui-icon layui-icon-refresh"></i>清空
                         </button>
                     </div>
                 </div>

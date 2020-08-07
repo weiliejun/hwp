@@ -96,7 +96,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         },
         add: function () {
             //Common.openFrame("/app/ryxxgl/add", "新增人员", '1200px', '1000px');
-            window.location.href = "/ryxxgl/toAdd";
+            window.location.href = PageContext.getUrl("/ryxxgl/toAdd");
         }
     };
 

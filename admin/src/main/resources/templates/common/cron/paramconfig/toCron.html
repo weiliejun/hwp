@@ -38,7 +38,7 @@
 <body onload="btnFan();">
 <input type="hidden" id="zrwxh" name="zrwxh" th:value="${zrwxh}">
 <center>
-    <div class="easyui-layout" style="width:830px;height:560px; border: 1px rgb(202, 196, 196) solid;
+    <div class="easyui-layout" style="width:880px;height:560px; border: 1px rgb(202, 196, 196) solid;
             border-radius: 5px;">
         <div style="height: 100%;">
             <div class="easyui-tabs" data-options="fit:true,border:false">
@@ -494,7 +494,7 @@
             </div>
         </div>
         <div data-options="region:'south',border:false" style="height:250px">
-            <fieldset style="border-radius: 3px; height: 150px;">
+            <fieldset style="border-radius: 3px; height: 250px;">
                 <legend>表达式</legend>
                 <table style="height: 100px;">
                     <tbody>
@@ -555,6 +555,10 @@
                         /></td>
                         <!--<td><input type="button" value="反解析到UI " id="btnFan" onclick="btnFan()"/></td>-->
                         <td>
+                            <button type="button" class="layui-btn layui-btn-radius" onclick="jyCron()"
+                                    id="addrow"><i
+                                    class="layui-icon layui-icon-add-circle-fine"></i>校验
+                            </button>
                             <button type="button" class="layui-btn layui-btn-radius" onclick="setCron()"
                                     id="addrow"><i
                                     class="layui-icon layui-icon-add-circle-fine"></i>确定
@@ -566,13 +570,13 @@
                         </td>
                     </tr>
 
-                    <!--<tr >
+                    <tr >
                         <td colspan="8" >最近5次运行时间:</td>
                     </tr>
                     <tr>
                         <td colspan="8" id="runTime">
                         </td>
-                    </tr>-->
+                    </tr>
                     </tbody>
                 </table>
             </fieldset>
@@ -738,6 +742,9 @@
                         }
                     }
 
+                    function jyCron() {
+                        $("#cron").trigger("change");
+                    }
                     function setCron() {
                         window.parent.setCronCallback(document.getElementById('zrwxh').value, document.getElementById("cron").value);
                         //当你在iframe页面关闭自身时

@@ -69,17 +69,17 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         switch (obj.event) {
             case 'getCheckData':
                 var data = checkStatus.data;  //获取选中行数据
-                if (data == null || data == undefined || data == "") {
+                /*if (data == null || data == undefined || data == "") {
                     layer.alert("请选择一条数据！");
                     return false;
-                }
+                }*/
                 // layer.alert(JSON.stringify(data));
 
                 var json = eval('(' + JSON.stringify(data) + ')');
                 // var  json= $.parseJSON(JSON.stringify(data));
                 console.log("type------" + type);
                 console.log("cxmk------" + cxmk);
-
+                console.log("data------" + JSON.stringify(data));
                 if (cxmk == "selectXmfzr") {
                     //项目负责人
                     window.parent.selectXmfzrCallback(json[0]);
@@ -89,6 +89,9 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
                 } else if (cxmk == "selectFwfzr") {
                     //法务负责人
                     window.parent.selectFwfzrCallback(json[0]);
+                } else if (cxmk == "selectFkfzr") {
+                    //法务经办人
+                    window.parent.selectFkfzrCallback(json[0]);
                 } else if (cxmk == "selectCwfzr") {
                     //财务负责人
                     window.parent.selectCwfzrCallback(json[0]);

@@ -12,6 +12,7 @@ import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class DynamicTask implements SchedulingConfigurer {
     @Autowired
     private ApplicationContext applicationContext;
     private volatile ScheduledTaskRegistrar registrar;
-//    private volatile List<TaskConstant> taskConstants = Lists.newArrayList();
+    //    private volatile List<TaskConstant> taskConstants = Lists.newArrayList();
     private volatile Map<String, String> taskConstants = new HashMap<String, String>();
     @Autowired
     private ThreadPoolTaskScheduler threadPoolTaskScheduler;
@@ -76,6 +77,7 @@ public class DynamicTask implements SchedulingConfigurer {
         System.out.println("当前cron="+this.cron+"->将被改变为："+cron);
         this.cron = cron;
     }*/
+
     /**
      * 创建ThreadPoolTaskScheduler线程池
      */
@@ -115,10 +117,10 @@ public class DynamicTask implements SchedulingConfigurer {
                     logger.debug("cron表达式无效");
                     continue;
                 }
-                if (!CollectionUtils.isEmpty(taskConstants)&&taskConstants.containsKey(rwmc)) {
-                    cron=taskConstants.get(rwmc);
-                }else{
-                    taskConstants.put(rwmc,cron);
+                if (!CollectionUtils.isEmpty(taskConstants) && taskConstants.containsKey(rwmc)) {
+                    cron = taskConstants.get(rwmc);
+                } else {
+                    taskConstants.put(rwmc, cron);
                 }
 
                 Xmxxgl xmxxgl = xmxxglService.getXmxxglById(xmrwxx.getXmId());
@@ -150,23 +152,25 @@ public class DynamicTask implements SchedulingConfigurer {
                     public Date nextExecutionTime(TriggerContext triggerContext) {
                         //执行于每一次任务的触发
                         // String cron = "这里就可以随意设置你的数据源咯";
-                        if (!taskConstants.containsKey(rwmc)||StringHelper.isBlank(taskConstants.get(rwmc))) {
+                        logger.info("cron expression is [{}]", taskConstants.get(rwmc));
+                        logger.info("trigger list size is [{}]", registrar.getTriggerTaskList().size());
+                        if (!taskConstants.containsKey(rwmc) || StringHelper.isBlank(taskConstants.get(rwmc))) {
                             //cron为空
                             logger.debug("cron为空");
 //                            taskConstants.put(rwmc,"0 0/1 * * * ? 2019");
-                            return null;
+                            return DateUtils.addYears(new Date(), -1);
+                        } else {
+                            CronTrigger cronTrigger = new CronTrigger(taskConstants.get(rwmc));
+                            Date nextExecTime = cronTrigger.nextExecutionTime(triggerContext);
+                            logger.info("nextExecTime is [{}]", nextExecTime);
+                            return nextExecTime;
                         }
-                        logger.info("cron expression is [{}]", taskConstants.get(rwmc));
-                        logger.info("trigger list size is [{}]", registrar.getTriggerTaskList().size());
-
-                        CronTrigger cronTrigger = new CronTrigger(taskConstants.get(rwmc));
-                        Date nextExecTime = cronTrigger.nextExecutionTime(triggerContext);
-                        return nextExecTime;
                     }
                 };
 
 //                registrar.addTriggerTask(task, getTrigger(taskConstants.get(rwmc)));
-                registrar.addTriggerTask(task, trigger);
+//                registrar.addTriggerTask(task, trigger);
+                addTriggerTask(rwmc, new TriggerTask(task, trigger));
             }
         }
     }
@@ -217,6 +221,40 @@ public class DynamicTask implements SchedulingConfigurer {
     }
 
     /**
+     * 添加任务
+     *
+     * @param taskId
+     * @param triggerTask
+     */
+    private void addTriggerTask(String taskId, TriggerTask triggerTask) {
+       /* if (taskFutures.containsKey(taskId))
+        {
+            throw new SchedulingException("the taskId[" + taskId + "] was added.");
+        }
+        TaskScheduler scheduler = taskRegistrar.getScheduler();
+        ScheduledFuture<?> future = scheduler.schedule(triggerTask.getRunnable(), triggerTask.getTrigger());
+        getScheduledFutures().add(future);
+        taskFutures.put(taskId, future);*/
+
+        ScheduledFuture<?> future = registrar.getScheduler().schedule(triggerTask.getRunnable(), triggerTask.getTrigger());
+//        cronTasks.put(taskId, triggerTask);
+        scheduledFutures.put(taskId, future);
+    }
+
+    /**
+     * 取消任务
+     *
+     * @param taskId
+     */
+    private void cancelTriggerTask(String taskId) {
+        ScheduledFuture<?> future = scheduledFutures.get(taskId);
+        if (future != null) {
+            future.cancel(true);
+        }
+        scheduledFutures.remove(taskId);
+    }
+
+    /**
      * 业务触发器
      *
      * @return
@@ -252,7 +290,7 @@ public class DynamicTask implements SchedulingConfigurer {
         Set<String> taskIds = scheduledFutures.keySet();
         for (String taskId : taskIds) {
             if (!exists(tasks, taskId)) {
-                scheduledFutures.get(taskId).cancel(true);
+                scheduledFutures.get(taskId).cancel(false);
                 scheduledFutures.remove(taskId);
                 cronTasks.remove(taskId);
             }
@@ -262,7 +300,7 @@ public class DynamicTask implements SchedulingConfigurer {
             if (StringUtils.isBlank(expression) || !CronSequenceGenerator.isValidExpression(expression)) {
                 logger.error("定时任务DynamicTask cron表达式不合法: " + expression);
                 if (hasTask(tt.getTaskId())) {
-                    scheduledFutures.get(tt.getTaskId()).cancel(true);
+                    scheduledFutures.get(tt.getTaskId()).cancel(false);
                     scheduledFutures.remove(tt.getTaskId());
                     cronTasks.remove(tt.getTaskId());
                 }
@@ -284,7 +322,6 @@ public class DynamicTask implements SchedulingConfigurer {
             cronTasks.put(tt.getTaskId(), task);
             scheduledFutures.put(tt.getTaskId(), future);
 
-//            registrar.addTriggerTask(task.getRunnable(), getTrigger(expression));
         }
     }
 
@@ -299,7 +336,14 @@ public class DynamicTask implements SchedulingConfigurer {
 
     @PreDestroy
     public void destroy() {
+        for (Object rwmc : taskConstants.keySet()) {
+            System.out.println("key=" + rwmc + " value=" + taskConstants.get(rwmc));
+            cancelTriggerTask(rwmc.toString());
+
+        }
         this.registrar.destroy();
+        taskConstants.clear();
+
     }
 
     public static class TaskConstant {

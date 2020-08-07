@@ -22,7 +22,7 @@
         <result column="GRYX" jdbcType="VARCHAR" property="gryx"/>
     </resultMap>
     <sql id="Base_Column_List">
-    ID, NAME, PHONE, GSYX, GRYX, DEPT, STATUS, CREATE_TIME, REMARK, DATA_STATUS, RYXXGL.RANK
+    ID, RYXXGL.NAME, PHONE, GSYX, GRYX, DEPT, STATUS, CREATE_TIME, REMARK, DATA_STATUS, RYXXGL.RANK
   </sql>
     <select id="selectRyxxglList" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl" resultMap="BaseResultMap">
         select
@@ -31,7 +31,7 @@
         <where>
             DATA_STATUS='1'
             <if test="name != null">
-                and NAME like CONCAT('%',#{name},'%')
+                and RYXXGL.NAME like CONCAT('%',#{name},'%')
             </if>
             <if test="phone != null">
                 and PHONE like CONCAT('%',#{phone},'%')
@@ -52,7 +52,7 @@
         <where>
             DATA_STATUS='1'
             <if test="name != null">
-                and NAME like CONCAT('%',#{name},'%')
+                and RYXXGL.NAME like CONCAT('%',#{name},'%')
             </if>
             <if test="phone != null">
                 and PHONE like CONCAT('%',#{phone},'%')
@@ -67,12 +67,12 @@
         ORDER BY CREATE_TIME DESC
     </select>
     <select id="selectList" parameterType="java.util.Map" resultMap="selectListResultMap">
-        select ID, NAME, PHONE, GSYX, GRYX
+        select ID, RYXXGL.NAME, PHONE, GSYX, GRYX
         from RYXXGL
         <where>
             DATA_STATUS='1'
             <if test="name != null">
-                and NAME like CONCAT('%',#{name},'%')
+                and RYXXGL.NAME like CONCAT('%',#{name},'%')
             </if>
             <if test="phone != null">
                 and PHONE like CONCAT('%',#{phone},'%')
@@ -97,7 +97,7 @@
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
     <insert id="insert" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl">
-    insert into RYXXGL (ID, NAME, PHONE,
+    insert into RYXXGL (ID, RYXXGL.NAME, PHONE,
       GSYX, GRYX, DEPT, STATUS,
       CREATE_TIME, REMARK, DATA_STATUS,
       RYXXGL.RANK)
@@ -113,7 +113,7 @@
                 ID,
             </if>
             <if test="name != null">
-                NAME,
+                RYXXGL.NAME,
             </if>
             <if test="phone != null">
                 PHONE,
@@ -183,7 +183,7 @@
         update RYXXGL
         <set>
             <if test="name != null">
-                NAME = #{name,jdbcType=VARCHAR},
+                RYXXGL.NAME = #{name,jdbcType=VARCHAR},
             </if>
             <if test="phone != null">
                 PHONE = #{phone,jdbcType=VARCHAR},
@@ -217,7 +217,7 @@
     </update>
     <update id="updateByPrimaryKey" parameterType="com.hwp.common.model.ryxxgl.bean.Ryxxgl">
     update RYXXGL
-    set NAME = #{name,jdbcType=VARCHAR},
+    set RYXXGL.NAME = #{name,jdbcType=VARCHAR},
       PHONE = #{phone,jdbcType=VARCHAR},
       GSYX = #{gsyx,jdbcType=VARCHAR},
       GRYX = #{gryx,jdbcType=VARCHAR},
@@ -234,6 +234,6 @@
         select
         <include refid="Base_Column_List"/>
         from RYXXGL
-        where NAME = #{name,jdbcType=VARCHAR}
+        where RYXXGL.NAME = #{name,jdbcType=VARCHAR}
     </select>
 </mapper>

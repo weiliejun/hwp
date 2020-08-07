@@ -51,10 +51,12 @@ public class BgjdSendEmailEventListener implements ApplicationListener<BgjdSendE
                 JSONObject cwfzr = JSONObject.fromObject(xmxxgl.getCwfzrXx());
                 mailSenderService.sendEmailMessage(cwfzr.get("id").toString(), "bgjd", cwfzr.get("gsyx").toString(), params);
                 //5、其他项目成员
-                JSONArray selectXmqtcy = JSONArray.fromObject(xmxxgl.getXmqtcy());
-                for (int i = 0; i < selectXmqtcy.size(); i++) {
-                    JSONObject xmqtcy = selectXmqtcy.getJSONObject(i);
-                    mailSenderService.sendEmailMessage(xmqtcy.get("id").toString(), "bgjd", xmqtcy.get("gsyx").toString(), params);
+                if(StringHelper.isNotBlank(xmxxgl.getXmqtcy())) {
+                    JSONArray selectXmqtcy = JSONArray.fromObject(xmxxgl.getXmqtcy());
+                    for (int i = 0; i < selectXmqtcy.size(); i++) {
+                        JSONObject xmqtcy = selectXmqtcy.getJSONObject(i);
+                        mailSenderService.sendEmailMessage(xmqtcy.get("id").toString(), "bgjd", xmqtcy.get("gsyx").toString(), params);
+                    }
                 }
                 //6、审批人
                 if (StringHelper.isNotBlank(xmxxgl.getSpr())) {
@@ -64,6 +66,9 @@ public class BgjdSendEmailEventListener implements ApplicationListener<BgjdSendE
                         mailSenderService.sendEmailMessage(spr.get("id").toString(), "modifyXm", spr.get("gsyx").toString(), params);
                     }
                 }
+                //7、法务经办人
+                JSONObject fkfzr = JSONObject.fromObject(xmxxgl.getFkfzrXx());
+                mailSenderService.sendEmailMessage(fkfzr.get("id").toString(), "modifyXm", fkfzr.get("gsyx").toString(), params);
             }
 
         });

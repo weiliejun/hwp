@@ -162,7 +162,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         },
         add: function () {
             //Common.openFrame("/app/investmentArticle/add", "新增投资观点", '1200px', '1000px');
-            window.location.href = "/investmentArticle/toAdd";
+            window.location.href = PageContext.getUrl("/investmentArticle/toAdd");
         }
     };
 

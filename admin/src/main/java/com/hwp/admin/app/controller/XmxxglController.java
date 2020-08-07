@@ -461,9 +461,9 @@ public class XmxxglController extends AbstractBaseController {
      * @Date 2020/5/15 15:07
      * @Param
      **/
-    @PostMapping(value = "/addOrUpdate")
+    @PostMapping(value = "/addOrUpdate/{type}")
     @ResponseBody
-    public Map<String, Object> addOrUpdateXmxxgl(@RequestBody Xmxxgl xmxxgl) {
+    public Map<String, Object> addOrUpdateXmxxgl(@RequestBody Xmxxgl xmxxgl, @PathVariable("type") String type) {
         SysManager currentManager = getSessionSysManager();
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         //新增
@@ -557,14 +557,16 @@ public class XmxxglController extends AbstractBaseController {
             // 记录操作日志
             saveBusinessLog("项目信息管理", "新增项目信息", xmxxgl);
             //发送邮件
-            applicationContext.publishEvent(new CreateXmSendEmailEvent(xmxxgl));
+            if (StringHelper.isNotBlank(type)&&type.equalsIgnoreCase("sendMail")) {
+                applicationContext.publishEvent(new CreateXmSendEmailEvent(xmxxgl));
+            }
 
             return resultMap;
         } else {//编辑
             Xmxxgl xmxxgl_old = xmxxglService.getXmxxglById(xmxxgl.getId());
             Map<String, Object> rtn = BeanHelper.getDifferentProperty(xmxxgl_old, xmxxgl, new String[]{"id", "xmfzrId", "xmfzrXx", "xmjbrId", "xmjbrXx", "fwfzrId", "fwfzrXx", "cwfzrId", "cwfzrXx", "xmqtcyId", "xmqtcy", "sprId", "spr"});
             String diff = rtn.get("diff").toString();
-            if (StringHelper.isNotBlank(diff)) {
+//            if (StringHelper.isNotBlank(diff)) {
                 Map<String, String> zdm = new HashMap<String, String>();
                 zdm.put("ywlx", "业务类型");
                 zdm.put("cpmc", "产品名称");
@@ -609,11 +611,13 @@ public class XmxxglController extends AbstractBaseController {
                 saveBusinessLog("项目信息管理", "修改项目信息", diff);
 
                 //给审批人发送邮件
-                applicationContext.publishEvent(new ModifyXmSendEmailEvent(this, diff, xmxxgl));
-            } else {
+                if (StringHelper.isNotBlank(type)&&type.equalsIgnoreCase("sendMail")) {
+                    applicationContext.publishEvent(new ModifyXmSendEmailEvent(this, diff, xmxxgl));
+                }
+            /*} else {
                 resultMap.put("flag", "true");
                 resultMap.put("msg", "项目信息没有变化");
-            }
+            }*/
             return resultMap;
         }
 
