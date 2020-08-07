@@ -131,7 +131,7 @@ $(function () {
         //设置最近五次运行时间
         $.ajax({
             type: 'get',
-            url: "CalcRunTime.ashx",
+            url: "/xmrwxx/seeExcuteTime",
             dataType: "json",
             data: {"CronExpression": $("#cron").val()},
             success: function (data) {
@@ -143,7 +143,7 @@ $(function () {
                     strHTML += "</ul>"
                     $("#runTime").html(strHTML);
                 } else {
-                    $("#runTime").html("");
+                    $("#runTime").html("<div style=\"color: red\"><b>Cron 表达式校验未通过！</b></div>");
                 }
             }
         });
