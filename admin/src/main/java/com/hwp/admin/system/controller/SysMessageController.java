@@ -2,12 +2,16 @@ package com.hwp.admin.system.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.hwp.admin.app.service.ryxxgl.RyxxglService;
 import com.hwp.admin.components.message.mail.MailSenderService;
 import com.hwp.admin.system.service.SysManagerService;
 import com.hwp.admin.system.service.SysMessageService;
 import com.hwp.admin.web.base.AbstractBaseController;
 import com.hwp.common.constant.GlobalConstant;
+import com.hwp.common.model.ryxxgl.bean.Ryxxgl;
+import com.hwp.common.model.sysManager.bean.SysManager;
 import com.hwp.common.model.sysMessage.bean.SysMessage;
+import com.hwp.common.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +39,9 @@ public class SysMessageController extends AbstractBaseController {
     @Autowired
     private MailSenderService mailSenderService;
 
+    @Autowired
+    private RyxxglService ryxxglService;
+
     /**
      * @Description 新增系统消息
      * @auther: cyp
@@ -48,13 +55,7 @@ public class SysMessageController extends AbstractBaseController {
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String toListSysManagers(HttpServletRequest request, Model model) {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
-
-//            MailEntity mailEntity = new MailEntity();
-//            mailEntity.setTo("weiliejun@163.com");
-//            mailEntity.setText("测试测试测试测试测试测试测试测试测试测试测试测试测试测试");
-//            mailEntity.setSubject("测试");
-//
-//        mailSenderService.sendMailWithPureText(mailEntity);
+        model.addAttribute("cxmk", request.getParameter("cxmk"));
         return "/system/sysMessage/list";
     }
 
@@ -66,11 +67,21 @@ public class SysMessageController extends AbstractBaseController {
     @PostMapping(value = "/list")
     @ResponseBody
     public Map<String, Object> listSysManagers(HttpServletRequest request) {
+        SysManager currentManager = getSessionSysManager();
+        Ryxxgl ryxxgl = ryxxglService.getRyxxglByName(currentManager.getName());
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         Map<String, Object> requestParams = formQueryRemember(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
+
+        if (params.containsKey("cxmk")) {
+            String cxmk = params.get("cxmk").toString();
+            if (StringHelper.isNotBlank(cxmk) && cxmk.equalsIgnoreCase("通知我的")) {
+                params.put("userId", ryxxgl.getId());
+            }
+        }
+
         final Page<SysMessage> results = (Page<SysMessage>) sysMessageService.listSysMessagesByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");

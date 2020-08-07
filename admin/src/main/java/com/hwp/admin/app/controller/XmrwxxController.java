@@ -44,7 +44,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -100,6 +101,23 @@ public class XmrwxxController extends AbstractBaseController {
     @Value("${resourceServer.AccessURL}")
     private String resourceServerURL;
 
+    /**
+     * json to map
+     */
+    public static Map<String, String> JsonArray2map(net.sf.json.JSONArray jsonArray) {
+        Map<String, String> map = new HashMap<String, String>();
+        for (int i = 0; i < jsonArray.size(); i++) {
+            net.sf.json.JSONObject spr = jsonArray.getJSONObject(i);
+            String rwmc = spr.getString("rwmc");
+            String cron = spr.getString("cron");
+            if (StringHelper.isNotBlank(cron)) {
+                map.put(rwmc, cron);
+            }
+        }
+
+        return map;
+    }
+
     @RequestMapping(value = {"/delete/{id}/{xmId}"}, method = {RequestMethod.POST, RequestMethod.GET})
     public String deleteById(@PathVariable("id") String id, @PathVariable("xmId") String xmId, @RequestParam(value = "xmjd", required = false) String xmjd) {
         Xmrwxx xmrwxx = new Xmrwxx();
@@ -118,10 +136,12 @@ public class XmrwxxController extends AbstractBaseController {
                 net.sf.json.JSONObject spr = jsonArray.getJSONObject(i);
                 String rwmc = spr.getString("rwmc");
                 String cron = spr.getString("cron");
-                if (StringHelper.isNotBlank(cron)&&CronSequenceGenerator.isValidExpression(cron)) {
+                if (taskConstants.containsKey(rwmc)) {
+//                if (StringHelper.isNotBlank(cron) && CronSequenceGenerator.isValidExpression(cron)) {
 //                    taskConstants.remove(rwmc);
-                    taskConstants.put(rwmc,null);
                     dynamicTask.execute();
+//                    taskConstants.put(rwmc, null);
+                    break;
                 }
             }
             dynamicTask.setTaskConstants(taskConstants);
@@ -229,6 +249,45 @@ public class XmrwxxController extends AbstractBaseController {
         return "/common/cron/paramconfig/toCron";
     }
 
+
+
+    /**
+     *
+     * @desc 计算表达式近5次时间
+     * @auth josnow
+     * @date 2017年5月31日 下午12:16:25
+     * @param cron
+     * @return
+     */
+    @RequestMapping(value = {"/seeExcuteTime"}, method = RequestMethod.GET)
+    @ResponseBody
+    public List<String> seeExcuteTime(@RequestParam(value = "CronExpression", required = false) String cron){
+        List<String> list = new ArrayList<>(5);
+        if (StringUtils.isEmpty(cron)) {
+//            throw new IllegalArgumentException("参数不能为空");
+            return list;
+        }
+        CronSequenceGenerator cronSequenceGenerator = null;
+        try {
+             cronSequenceGenerator = new CronSequenceGenerator(cron);
+        }catch(Exception e) {
+            e.printStackTrace();
+            return list;
+        }
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+
+        Date nextTimePoint = new Date();
+        for (int i = 0; i < 5; i++) {
+            // 计算下次时间点的开始时间
+            nextTimePoint = cronSequenceGenerator.next(nextTimePoint);
+            list.add(sdf.format(nextTimePoint));
+        }
+        return list;
+    }
     /**
      * 修改项目任务信息页面
      *
@@ -589,8 +648,8 @@ public class XmrwxxController extends AbstractBaseController {
                 net.sf.json.JSONObject spr = jsonArray.getJSONObject(i);
                 String rwmc = spr.getString("rwmc");
                 String cron = spr.getString("cron");
-                if (StringHelper.isNotBlank(cron)&&CronSequenceGenerator.isValidExpression(cron)) {
-                    taskConstants.put(rwmc,cron);
+                if (StringHelper.isNotBlank(cron) && CronSequenceGenerator.isValidExpression(cron)) {
+                    taskConstants.put(rwmc, cron);
                 }
             }
             dynamicTask.setTaskConstants(taskConstants);
@@ -635,30 +694,38 @@ public class XmrwxxController extends AbstractBaseController {
                     net.sf.json.JSONArray jsonArray_old = net.sf.json.JSONArray.fromObject(xmrwxx_old.getRwxq());
                     Map<String, String> taskConstants = dynamicTask.getTaskConstants();
                     for (int i = 0; i < jsonArray_old.size(); i++) {
-                        net.sf.json.JSONObject spr = jsonArray.getJSONObject(i);
+                        net.sf.json.JSONObject spr = jsonArray_old.getJSONObject(i);
                         String rwmc = spr.getString("rwmc");
                         String cron = spr.getString("cron");
-                        //子任务被删除
-                        if (JsonArray2map(jsonArray_old).containsKey(rwmc)&&!JsonArray2map(jsonArray).containsKey(rwmc)) {
+                        //cron被清空
+                        if (JsonArray2map(jsonArray_old).containsKey(rwmc) && !JsonArray2map(jsonArray).containsKey(rwmc)) {
 //                            taskConstants.remove(rwmc);
-                            taskConstants.put(rwmc,null);
                             dynamicTask.execute();
+//                            taskConstants.put(rwmc, null);
+                            break;
                         }
                     }
                     for (int i = 0; i < jsonArray.size(); i++) {
                         net.sf.json.JSONObject spr = jsonArray.getJSONObject(i);
                         String rwmc = spr.getString("rwmc");
                         String cron = spr.getString("cron");
-                        //cron被清空
-                        if (StringHelper.isBlank(cron)&&JsonArray2map(jsonArray).containsKey(rwmc)&&JsonArray2map(jsonArray_old).containsKey(rwmc)){
+                        //子任务被删除
+                        if (StringHelper.isBlank(cron) && JsonArray2map(jsonArray).containsKey(rwmc) && JsonArray2map(jsonArray_old).containsKey(rwmc)) {
 //                            taskConstants.remove(rwmc);
-                            taskConstants.put(rwmc,null);
                             dynamicTask.execute();
+//                            taskConstants.put(rwmc, null);
+                            break;
                         }
                         //更新taskConstants
-                        if (StringHelper.isNotBlank(cron)&&CronSequenceGenerator.isValidExpression(cron)) {
+                        if (StringHelper.isNotBlank(cron) && CronSequenceGenerator.isValidExpression(cron)) {
 //                        if (StringHelper.isNotBlank(cron)&&cron.matches(regEx)) {
-                            taskConstants.put(rwmc,cron);
+                            if (taskConstants.containsKey(rwmc)) {
+                                taskConstants.put(rwmc, cron);
+                            } else {//新增定时任务
+                                dynamicTask.execute();
+//                                taskConstants.put(rwmc, cron);
+                                break;
+                            }
                         }
                     }
                     dynamicTask.setTaskConstants(taskConstants);
@@ -666,6 +733,7 @@ public class XmrwxxController extends AbstractBaseController {
 
                 resultMap.put("flag", "true");
                 resultMap.put("msg", "项目任务信息修改成功");
+                resultMap.put("id", xmrwxx.getId());
 
                 // 记录操作日志
                 saveBusinessLog("项目任务信息管理", "修改项目任务信息", diff);
@@ -695,22 +763,6 @@ public class XmrwxxController extends AbstractBaseController {
 
     }
 
-    /**
-     *  json to map
-     */
-    public static Map<String, String> JsonArray2map(net.sf.json.JSONArray jsonArray) {
-        Map<String, String> map  = new HashMap<String, String>();
-        for (int i = 0; i < jsonArray.size(); i++) {
-            net.sf.json.JSONObject spr = jsonArray.getJSONObject(i);
-            String rwmc = spr.getString("rwmc");
-            String cron = spr.getString("cron");
-            if (StringHelper.isNotBlank(cron)) {
-                map.put(rwmc,cron);
-            }
-        }
-
-        return map;
-    }
     /**
      * 项目任务操作记录信息加载页面
      *

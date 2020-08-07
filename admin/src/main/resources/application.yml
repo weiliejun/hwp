@@ -30,7 +30,7 @@ spring:
   mail:
     username: admin@ksfortune.com
     #登陆密码Junde123456
-    password: RjSGNB8o3uTjXHJs
+    password: sikLADwu2xuHaL52
     host: smtp.exmail.qq.com
     port: 465
     protocol: smtp
@@ -41,6 +41,8 @@ spring:
           auth: "true"
           timeout: 25000
           ssl:
+            enable: true
+          starttls:
             enable: true
   freemarker:
     content-type: text/html
