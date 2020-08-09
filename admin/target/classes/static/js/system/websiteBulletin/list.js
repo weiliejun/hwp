@@ -1,10 +1,42 @@
-layui.use(['layer', 'form', 'table'], function () {
+layui.use(['layer', 'form', 'table','util'], function () {
     var $ = layui.$,
         layer = layui.layer,
         form = layui.form,
-        table = layui.table;
+        table = layui.table,
+        util = layui.util;
+    /* 时间格式转换函数 */
+    function _util(date) {
+        if (date && date !== '' && date !== null) {   //条件必须写完善，否则会出现错误，如：不写undefined 的话，也会默认认为有，但是实则没有，就会渲染当前时间了
+            return util.toDateString(date, 'yyyy-MM-dd HH:mm:ss')
+        } else {
+            return '';
+        }
+    }
 
-    var cols = [[
+    //时间转换函数
+    function showTime(tempDate)
+    {
+        var d = new Date(tempDate);
+        var year = d.getFullYear();
+        var month = d.getMonth();
+        month++;
+        var day = d.getDate();
+        var hours = d.getHours();
+
+        var minutes = d.getMinutes();
+        var seconds = d.getSeconds();
+        month = month<10 ? "0"+month:month;
+        day = day<10 ? "0"+day:day;
+        hours = hours<10 ? "0"+hours:hours;
+        minutes = minutes<10 ? "0"+minutes:minutes;
+        seconds = seconds<10 ? "0"+seconds:seconds;
+
+
+        var time = year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
+        return time;
+    }
+
+        var cols = [[
         {
             field: 'topic',
             width: 220,
@@ -35,7 +67,11 @@ layui.use(['layer', 'form', 'table'], function () {
             width: 250,
             title: '创建时间',
             align: 'center',
-            templet: '#createTime',
+            templet : "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>",
+            // templet:'#createTime',
+            /*templet: function (d) {
+                return showTime(d.createTime);
+            },*/
             sort: true
         }, {
             title: '常用操作',

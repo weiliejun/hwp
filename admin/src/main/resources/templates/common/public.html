@@ -66,19 +66,6 @@
 
     <!-- 公共插件引用 start -->
     <!-- 公共插件引用 end -->
-    <!-- 列表中时间格式化 -->
-    <script id="createTime" type="text/html">
-        {{#
-        var date;
-        if(d.createTime){
-        date = new Date(d.createTime);
-        return date.Format("yyyy-MM-dd hh:mm:ss");
-        }else if(d.CREATE_TIME){
-        date = new Date(d.CREATE_TIME);
-        return date.Format("yyyy-MM-dd hh:mm:ss");
-        }
-        }}
-    </script>
 
     <style>
         .layui-form-label {
