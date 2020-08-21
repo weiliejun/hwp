@@ -84,8 +84,22 @@
                         </dd>
                         <dd><a href="javascript:;" class="closePageAll"><i class="seraph icon-guanbi"></i> 关闭全部</a></dd>
                     </dl>
+
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon">&#xe643;</i> 一级菜单</a>
+                    <dl class="layui-nav-child">
+                            <dd class="layui-nav topLevelMenus" th:each="function : ${session.currentUser.levelOneFunctions}"
+                                th:data-menu="${function.code}">
+                                <ul><li><a href="javascript:;"><i class="layui-icon" th:data-icon="${function.icon}"
+                                                          th:utext="${function.icon}"></i><cite
+                                        th:text="${function.name}"></cite></a></li></ul>
+                            </dd>
+                    </dl>
                 </li>
             </ul>
+
             <div class="layui-tab-content clildFrame">
                 <div class="layui-tab-item layui-show">
                     <iframe th:src="@{/main}"></iframe>
@@ -130,6 +144,13 @@
 
         //通过顶部菜单获取左侧菜单
         $(".topLevelMenus li").click(function () {
+            $(".layui-layout-admin").removeClass("showMenu");
+            $("body").addClass("site-mobile");
+            getData($(this).data("menu"));
+            //渲染顶部窗口
+            tab.tabMove();
+        })
+        $(".topLevelMenus").click(function () {
             $(".layui-layout-admin").removeClass("showMenu");
             $("body").addClass("site-mobile");
             getData($(this).data("menu"));
@@ -289,6 +310,19 @@
         function addTab(_this) {
             tab.tabAdd(_this);
         }
+
+        //手机设备的简单适配
+        var treeMobile = $('.site-tree-mobile'),
+            shadeMobile = $('.site-mobile-shade')
+
+        treeMobile.on('click', function(){
+            $('body').addClass('site-mobile');
+            $(".layui-layout-admin").toggleClass("showMenu");
+        });
+
+        shadeMobile.on('click', function(){
+            $('body').removeClass('site-mobile');
+        });
     });
 </script>
 </body>

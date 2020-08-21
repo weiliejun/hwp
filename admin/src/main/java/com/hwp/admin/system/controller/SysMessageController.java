@@ -78,7 +78,9 @@ public class SysMessageController extends AbstractBaseController {
         if (params.containsKey("cxmk")) {
             String cxmk = params.get("cxmk").toString();
             if (StringHelper.isNotBlank(cxmk) && cxmk.equalsIgnoreCase("通知我的")) {
-                params.put("userId", ryxxgl.getId());
+                if(ryxxgl!=null) {
+                    params.put("userId", ryxxgl.getId());
+                }
             }
         }
 
