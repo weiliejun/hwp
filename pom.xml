@@ -33,7 +33,7 @@
         <dubbo-spring-boot>1.0.0</dubbo-spring-boot>
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
         <commons-fileupload.version>1.3.3</commons-fileupload.version>
-        <httpClient.version>4.5.2</httpClient.version>
+        <httpClient.version>4.5.13</httpClient.version>
         <tomcat.version>8.5.20</tomcat.version>
     </properties>
     <!-- 声明一些项目依赖管理，方便我们的依赖版本管理 -->
